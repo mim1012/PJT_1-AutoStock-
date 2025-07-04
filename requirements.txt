@@ -1,0 +1,10 @@
+requests==2.31.0
+pytz==2023.3
+pandas==2.0.3
+numpy==1.24.3
+python-dotenv==1.0.0
+websocket-client==1.6.1
+schedule==1.2.2
+requests
+pytz
+

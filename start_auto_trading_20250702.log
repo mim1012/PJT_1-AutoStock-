@@ -1,0 +1,1861 @@
+2025-07-02 23:10:17,677 - __main__ - WARNING - 🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨
+2025-07-02 23:10:17,677 - __main__ - WARNING - ⚠️ 실전투자 자동매매 시스템 시작!
+2025-07-02 23:10:17,677 - __main__ - WARNING - ⚠️ 실제 돈으로 거래가 실행됩니다!
+2025-07-02 23:10:17,677 - __main__ - WARNING - 🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨
+2025-07-02 23:10:24,315 - token_manager - INFO - 기존 토큰 사용 (남은시간: 23시간 59분)
+2025-07-02 23:10:24,315 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-02 23:10:24,315 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-02 23:10:24,315 - token_manager - INFO - 기존 토큰 사용 (남은시간: 23시간 59분)
+2025-07-02 23:10:24,315 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-02 23:10:24,966 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-02 23:10:24,966 - __main__ - INFO - ✅ 안전 점검 통과 (예수금: $0.00, 주문수: 0)
+2025-07-02 23:10:24,976 - __main__ - WARNING - 🔴 현재 운영 시간이 아닙니다. 거래시간까지 1시간 19분 남음
+2025-07-02 23:10:24,976 - __main__ - INFO - 🚀 실전투자 자동매매 스케줄 설정 완료
+2025-07-02 23:10:24,976 - __main__ - INFO -    - 매도 전략: 30분 주기
+2025-07-02 23:10:24,976 - __main__ - INFO -    - 매수 전략: 60분 주기
+2025-07-02 23:10:24,976 - __main__ - INFO -    - 주문 정리: 20분 주기
+2025-07-02 23:10:24,982 - __main__ - INFO -    - 상태 출력: 5분 주기
+2025-07-02 23:10:24,982 - __main__ - INFO -    - 운영 시간: 11:30 ~ 17:00 (ET)
+2025-07-02 23:10:24,982 - __main__ - WARNING - ⚠️ 주의: 실제 돈으로 거래합니다!
+2025-07-02 23:10:24,982 - __main__ - INFO - 🟡 거래시간 외 - 다음 거래시간까지 1시간 19분 남음
+2025-07-02 23:10:24,982 - __main__ - INFO -    현재: 10:10:24 ET, 거래시간: 11:30~17:00 ET
+2025-07-02 23:30:24,995 - __main__ - INFO - 🧹 주문 정리 작업 시작
+2025-07-02 23:40:25,002 - __main__ - INFO - 🔴 운영 시간 외 - 매도 전략 스킵
+2025-07-02 23:50:25,009 - __main__ - INFO - 🧹 주문 정리 작업 시작
+2025-07-03 00:10:25,020 - __main__ - INFO - 🔴 운영 시간 외 - 매수 전략 스킵
+2025-07-03 00:10:25,020 - __main__ - INFO - 🔴 운영 시간 외 - 매도 전략 스킵
+2025-07-03 00:10:25,020 - __main__ - INFO - 🧹 주문 정리 작업 시작
+2025-07-03 00:10:25,020 - __main__ - INFO - 🟡 거래시간 외 - 다음 거래시간까지 0시간 19분 남음
+2025-07-03 00:10:25,020 - __main__ - INFO -    현재: 11:10:25 ET, 거래시간: 11:30~17:00 ET
+2025-07-03 00:30:25,036 - __main__ - INFO - 🧹 주문 정리 작업 시작
+2025-07-03 00:30:25,037 - __main__ - INFO - === 🚀 실전 매매 시스템 상태 (2025-07-02 11:30:25 ET) ===
+2025-07-03 00:30:25,037 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 00:30:25,037 - token_manager - INFO - 기존 토큰 사용 (남은시간: 22시간 39분)
+2025-07-03 00:30:25,037 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 00:30:25,706 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 00:30:25,722 - __main__ - INFO - 💰 계좌 현황: 예수금 $0.00, 보유종목 3개
+2025-07-03 00:30:25,722 - token_manager - INFO - 기존 토큰 사용 (남은시간: 22시간 39분)
+2025-07-03 00:30:25,722 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 00:30:26,272 - __main__ - INFO -    QSI: +72.4% ($+3.30) 🔥
+2025-07-03 00:30:26,272 - token_manager - INFO - 기존 토큰 사용 (남은시간: 22시간 39분)
+2025-07-03 00:30:26,272 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 00:30:26,940 - __main__ - INFO -    RR: -55.1% ($-2495.74) 📉
+2025-07-03 00:30:26,940 - token_manager - INFO - 기존 토큰 사용 (남은시간: 22시간 39분)
+2025-07-03 00:30:26,940 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 00:30:27,508 - kis_api_with_token_manager - WARNING - ⚠️ SES 현재가 데이터 없음 or 형식 오류: ''
+2025-07-03 00:30:27,508 - __main__ - INFO - 📈 총 평가손익: $-2492.44
+2025-07-03 00:35:27,517 - __main__ - INFO - === 🚀 실전 매매 시스템 상태 (2025-07-02 11:35:27 ET) ===
+2025-07-03 00:35:27,517 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 00:35:27,517 - token_manager - INFO - 기존 토큰 사용 (남은시간: 22시간 34분)
+2025-07-03 00:35:27,517 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 00:35:28,152 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 00:35:28,152 - __main__ - INFO - 💰 계좌 현황: 예수금 $0.00, 보유종목 3개
+2025-07-03 00:35:28,168 - token_manager - INFO - 기존 토큰 사용 (남은시간: 22시간 34분)
+2025-07-03 00:35:28,168 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 00:35:28,752 - __main__ - INFO -    QSI: +71.9% ($+3.28) 🔥
+2025-07-03 00:35:28,752 - token_manager - INFO - 기존 토큰 사용 (남은시간: 22시간 34분)
+2025-07-03 00:35:28,752 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 00:35:29,324 - __main__ - INFO -    RR: -55.1% ($-2493.80) 📉
+2025-07-03 00:35:29,324 - token_manager - INFO - 기존 토큰 사용 (남은시간: 22시간 34분)
+2025-07-03 00:35:29,324 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 00:35:29,974 - kis_api_with_token_manager - WARNING - ⚠️ SES 현재가 데이터 없음 or 형식 오류: ''
+2025-07-03 00:35:29,974 - __main__ - INFO - 📈 총 평가손익: $-2490.52
+2025-07-03 00:40:29,984 - token_manager - INFO - 기존 토큰 사용 (남은시간: 22시간 29분)
+2025-07-03 00:40:29,984 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 00:40:29,984 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 00:40:29,988 - token_manager - INFO - 기존 토큰 사용 (남은시간: 22시간 29분)
+2025-07-03 00:40:29,988 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 00:40:30,651 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 00:40:30,651 - __main__ - INFO - ✅ 안전 점검 통과 (예수금: $0.00, 주문수: 0)
+2025-07-03 00:40:30,651 - __main__ - INFO - === 🚀 실전 매도 전략 실행 시작 ===
+2025-07-03 00:40:30,651 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 00:40:30,659 - token_manager - INFO - 기존 토큰 사용 (남은시간: 22시간 29분)
+2025-07-03 00:40:30,659 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 00:40:31,320 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 00:40:31,320 - token_manager - INFO - 기존 토큰 사용 (남은시간: 22시간 29분)
+2025-07-03 00:40:31,320 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 00:40:31,927 - token_manager - INFO - 기존 토큰 사용 (남은시간: 22시간 29분)
+2025-07-03 00:40:31,927 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 00:40:32,501 - token_manager - INFO - 기존 토큰 사용 (남은시간: 22시간 29분)
+2025-07-03 00:40:32,501 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 00:40:33,076 - kis_api_with_token_manager - WARNING - ⚠️ SES 현재가 데이터 없음 or 형식 오류: ''
+2025-07-03 00:40:33,076 - __main__ - WARNING - ⚠️ SES 현재가 조회 실패 - 스킵
+2025-07-03 00:40:33,076 - __main__ - INFO - 🔥 고수익 매도 실행: QSI
+2025-07-03 00:40:33,076 - __main__ - INFO -    - 수익률: 73.18%
+2025-07-03 00:40:33,076 - __main__ - INFO -    - 현재가: $1.97
+2025-07-03 00:40:33,076 - KISAPIClient - INFO - ➡️ SELL 주문 요청: QSI 4주 @ $1.97 (TR_ID: JTTT1006U)
+2025-07-03 00:40:33,076 - KISAPIClient - INFO - 토큰이 만료되어 새로 발급합니다.
+2025-07-03 00:40:33,826 - KISAPIClient - INFO - ✅ 액세스 토큰 발급 성공
+2025-07-03 00:40:34,509 - KISAPIClient - ERROR - API 요청 실패: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 00:40:34,509 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00121","msg1":"유효하지 않은 token 입니다."}
+2025-07-03 00:40:34,509 - KISAPIClient - INFO - 잠시 후 재시도합니다... (1/3)
+2025-07-03 00:40:36,120 - KISAPIClient - ERROR - API 요청 실패: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 00:40:36,120 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00121","msg1":"유효하지 않은 token 입니다."}
+2025-07-03 00:40:36,120 - KISAPIClient - INFO - 잠시 후 재시도합니다... (2/3)
+2025-07-03 00:40:37,760 - KISAPIClient - ERROR - API 요청 실패: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 00:40:37,760 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00121","msg1":"유효하지 않은 token 입니다."}
+2025-07-03 00:40:37,760 - KISAPIClient - INFO - 잠시 후 재시도합니다... (3/3)
+2025-07-03 00:40:39,243 - KISAPIClient - ERROR - API 요청 실패: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 00:40:39,243 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00121","msg1":"유효하지 않은 token 입니다."}
+2025-07-03 00:40:39,243 - KISAPIClient - ERROR - 최대 재시도 횟수 초과. 요청을 최종 실패 처리합니다.
+2025-07-03 00:40:39,259 - __main__ - ERROR - ❌ 고수익 매도 실패: QSI
+2025-07-03 00:40:41,264 - __main__ - INFO - === ✅ 실전 매도 전략 실행 완료 ===
+2025-07-03 00:40:41,264 - __main__ - INFO - === 🚀 실전 매매 시스템 상태 (2025-07-02 11:40:41 ET) ===
+2025-07-03 00:40:41,264 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 00:40:41,264 - token_manager - INFO - 기존 토큰 사용 (남은시간: 22시간 29분)
+2025-07-03 00:40:41,264 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 00:40:41,894 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 00:40:41,894 - __main__ - INFO - 💰 계좌 현황: 예수금 $0.00, 보유종목 3개
+2025-07-03 00:40:41,894 - token_manager - INFO - 기존 토큰 사용 (남은시간: 22시간 29분)
+2025-07-03 00:40:41,894 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 00:40:42,467 - __main__ - INFO -    QSI: +73.2% ($+3.34) 🔥
+2025-07-03 00:40:42,467 - token_manager - INFO - 기존 토큰 사용 (남은시간: 22시간 29분)
+2025-07-03 00:40:42,467 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 00:40:43,074 - __main__ - INFO -    RR: -54.9% ($-2485.79) 📉
+2025-07-03 00:40:43,074 - token_manager - INFO - 기존 토큰 사용 (남은시간: 22시간 29분)
+2025-07-03 00:40:43,074 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 00:40:43,617 - kis_api_with_token_manager - WARNING - ⚠️ SES 현재가 데이터 없음 or 형식 오류: ''
+2025-07-03 00:40:43,617 - __main__ - INFO - 📈 총 평가손익: $-2482.46
+2025-07-03 00:45:43,620 - __main__ - INFO - === 🚀 실전 매매 시스템 상태 (2025-07-02 11:45:43 ET) ===
+2025-07-03 00:45:43,620 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 00:45:43,620 - token_manager - INFO - 기존 토큰 사용 (남은시간: 22시간 24분)
+2025-07-03 00:45:43,620 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 00:45:44,302 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 00:45:44,302 - __main__ - INFO - 💰 계좌 현황: 예수금 $0.00, 보유종목 3개
+2025-07-03 00:45:44,302 - token_manager - INFO - 기존 토큰 사용 (남은시간: 22시간 24분)
+2025-07-03 00:45:44,302 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 00:45:44,815 - __main__ - INFO -    QSI: +73.7% ($+3.36) 🔥
+2025-07-03 00:45:44,815 - token_manager - INFO - 기존 토큰 사용 (남은시간: 22시간 24분)
+2025-07-03 00:45:44,815 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 00:45:45,388 - __main__ - INFO -    RR: -54.8% ($-2480.46) 📉
+2025-07-03 00:45:45,388 - token_manager - INFO - 기존 토큰 사용 (남은시간: 22시간 24분)
+2025-07-03 00:45:45,388 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 00:45:46,058 - kis_api_with_token_manager - WARNING - ⚠️ SES 현재가 데이터 없음 or 형식 오류: ''
+2025-07-03 00:45:46,058 - __main__ - INFO - 📈 총 평가손익: $-2477.10
+2025-07-03 00:50:46,071 - __main__ - INFO - 🧹 주문 정리 작업 시작
+2025-07-03 00:50:46,071 - __main__ - INFO - === 🚀 실전 매매 시스템 상태 (2025-07-02 11:50:46 ET) ===
+2025-07-03 00:50:46,071 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 00:50:46,071 - token_manager - INFO - 기존 토큰 사용 (남은시간: 22시간 19분)
+2025-07-03 00:50:46,071 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 00:50:46,761 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 00:50:46,761 - __main__ - INFO - 💰 계좌 현황: 예수금 $0.00, 보유종목 3개
+2025-07-03 00:50:46,761 - token_manager - INFO - 기존 토큰 사용 (남은시간: 22시간 19분)
+2025-07-03 00:50:46,761 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 00:50:47,320 - __main__ - INFO -    QSI: +72.8% ($+3.32) 🔥
+2025-07-03 00:50:47,320 - token_manager - INFO - 기존 토큰 사용 (남은시간: 22시간 19분)
+2025-07-03 00:50:47,336 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 00:50:47,892 - __main__ - INFO -    RR: -54.9% ($-2485.49) 📉
+2025-07-03 00:50:47,892 - token_manager - INFO - 기존 토큰 사용 (남은시간: 22시간 19분)
+2025-07-03 00:50:47,892 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 00:50:48,578 - kis_api_with_token_manager - WARNING - ⚠️ SES 현재가 데이터 없음 or 형식 오류: ''
+2025-07-03 00:50:48,578 - __main__ - INFO - 📈 총 평가손익: $-2482.16
+2025-07-03 00:55:48,585 - __main__ - INFO - === 🚀 실전 매매 시스템 상태 (2025-07-02 11:55:48 ET) ===
+2025-07-03 00:55:48,585 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 00:55:48,586 - token_manager - INFO - 기존 토큰 사용 (남은시간: 22시간 14분)
+2025-07-03 00:55:48,586 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 00:55:49,204 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 00:55:49,204 - __main__ - INFO - 💰 계좌 현황: 예수금 $0.00, 보유종목 3개
+2025-07-03 00:55:49,204 - token_manager - INFO - 기존 토큰 사용 (남은시간: 22시간 14분)
+2025-07-03 00:55:49,204 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 00:55:49,793 - __main__ - INFO -    QSI: +72.3% ($+3.30) 🔥
+2025-07-03 00:55:49,793 - token_manager - INFO - 기존 토큰 사용 (남은시간: 22시간 14분)
+2025-07-03 00:55:49,793 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 00:55:50,428 - __main__ - INFO -    RR: -54.9% ($-2484.56) 📉
+2025-07-03 00:55:50,428 - token_manager - INFO - 기존 토큰 사용 (남은시간: 22시간 14분)
+2025-07-03 00:55:50,428 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 00:55:51,050 - kis_api_with_token_manager - WARNING - ⚠️ SES 현재가 데이터 없음 or 형식 오류: ''
+2025-07-03 00:55:51,050 - __main__ - INFO - 📈 총 평가손익: $-2481.26
+2025-07-03 01:00:51,056 - __main__ - INFO - === 🚀 실전 매매 시스템 상태 (2025-07-02 12:00:51 ET) ===
+2025-07-03 01:00:51,056 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 01:00:51,056 - token_manager - INFO - 기존 토큰 사용 (남은시간: 22시간 9분)
+2025-07-03 01:00:51,056 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:00:51,758 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 01:00:51,758 - __main__ - INFO - 💰 계좌 현황: 예수금 $0.00, 보유종목 3개
+2025-07-03 01:00:51,758 - token_manager - INFO - 기존 토큰 사용 (남은시간: 22시간 9분)
+2025-07-03 01:00:51,773 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:00:52,396 - __main__ - INFO -    QSI: +71.9% ($+3.28) 🔥
+2025-07-03 01:00:52,396 - token_manager - INFO - 기존 토큰 사용 (남은시간: 22시간 9분)
+2025-07-03 01:00:52,396 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:00:52,986 - __main__ - INFO -    RR: -55.4% ($-2506.11) 📉
+2025-07-03 01:00:52,986 - token_manager - INFO - 기존 토큰 사용 (남은시간: 22시간 9분)
+2025-07-03 01:00:52,986 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:00:53,685 - kis_api_with_token_manager - WARNING - ⚠️ SES 현재가 데이터 없음 or 형식 오류: ''
+2025-07-03 01:00:53,685 - __main__ - INFO - 📈 총 평가손익: $-2502.83
+2025-07-03 01:05:53,703 - __main__ - INFO - === 🚀 실전 매매 시스템 상태 (2025-07-02 12:05:53 ET) ===
+2025-07-03 01:05:53,703 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 01:05:53,703 - token_manager - INFO - 기존 토큰 사용 (남은시간: 22시간 4분)
+2025-07-03 01:05:53,703 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:05:54,274 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 01:05:54,274 - __main__ - INFO - 💰 계좌 현황: 예수금 $0.00, 보유종목 3개
+2025-07-03 01:05:54,274 - token_manager - INFO - 기존 토큰 사용 (남은시간: 22시간 4분)
+2025-07-03 01:05:54,274 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:05:54,913 - __main__ - INFO -    QSI: +71.5% ($+3.26) 🔥
+2025-07-03 01:05:54,913 - token_manager - INFO - 기존 토큰 사용 (남은시간: 22시간 4분)
+2025-07-03 01:05:54,913 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:05:55,535 - __main__ - INFO -    RR: -55.4% ($-2506.11) 📉
+2025-07-03 01:05:55,535 - token_manager - INFO - 기존 토큰 사용 (남은시간: 22시간 4분)
+2025-07-03 01:05:55,535 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:05:56,238 - kis_api_with_token_manager - WARNING - ⚠️ SES 현재가 데이터 없음 or 형식 오류: ''
+2025-07-03 01:05:56,238 - __main__ - INFO - 📈 총 평가손익: $-2502.85
+2025-07-03 01:10:56,249 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 59분)
+2025-07-03 01:10:56,249 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:10:56,249 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 01:10:56,249 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 59분)
+2025-07-03 01:10:56,249 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:10:56,918 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 01:10:56,918 - __main__ - INFO - ✅ 안전 점검 통과 (예수금: $0.00, 주문수: 0)
+2025-07-03 01:10:56,918 - __main__ - INFO - === 🚀 실전 매수 전략 실행 시작 ===
+2025-07-03 01:10:56,950 - strategy_pjt1 - INFO - 상승필터 종목 로드 완료: 3개 - ['NVDA', 'AMZN', 'MSFT']
+2025-07-03 01:10:56,950 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 59분)
+2025-07-03 01:10:56,950 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:10:57,523 - kis_api_with_token_manager - INFO - 전일 종가 조회 시작: NVDA
+2025-07-03 01:10:57,523 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 59분)
+2025-07-03 01:10:57,523 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:10:58,081 - kis_api_with_token_manager - INFO - ✅ NVDA 전일 종가 조회 성공: $153.30
+2025-07-03 01:10:58,081 - strategy_pjt1 - INFO - 필터 종목 NVDA 상승 중 (현재: $156.93, 전일: $153.30)
+2025-07-03 01:10:58,097 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 59분)
+2025-07-03 01:10:58,097 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:10:58,798 - kis_api_with_token_manager - INFO - 전일 종가 조회 시작: AMZN
+2025-07-03 01:10:58,798 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 59분)
+2025-07-03 01:10:58,798 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:10:59,388 - kis_api_with_token_manager - INFO - ✅ AMZN 전일 종가 조회 성공: $220.46
+2025-07-03 01:10:59,388 - strategy_pjt1 - INFO - 필터 종목 AMZN 상승 중 (현재: $221.29, 전일: $220.46)
+2025-07-03 01:10:59,388 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 59분)
+2025-07-03 01:10:59,388 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:10:59,961 - kis_api_with_token_manager - INFO - 전일 종가 조회 시작: MSFT
+2025-07-03 01:10:59,961 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 59분)
+2025-07-03 01:10:59,961 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:11:00,725 - kis_api_with_token_manager - INFO - ✅ MSFT 전일 종가 조회 성공: $492.05
+2025-07-03 01:11:00,725 - strategy_pjt1 - INFO - 필터 종목 MSFT 상승 중 (현재: $492.21, 전일: $492.05)
+2025-07-03 01:11:00,725 - strategy_pjt1 - INFO - 상승 필터 조건 충족: 매수 허용
+2025-07-03 01:11:00,725 - __main__ - INFO - ✅ 상승 필터 조건 충족
+2025-07-03 01:11:00,742 - strategy_pjt1 - INFO - 관심종목 로드 완료: 13개
+2025-07-03 01:11:00,742 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 59분)
+2025-07-03 01:11:00,742 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:11:01,553 - kis_api_with_token_manager - INFO - 전일 종가 조회 시작: SOUN
+2025-07-03 01:11:01,553 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 59분)
+2025-07-03 01:11:01,553 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:11:02,206 - kis_api_with_token_manager - INFO - ✅ SOUN 전일 종가 조회 성공: $10.48
+2025-07-03 01:11:02,206 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 59분)
+2025-07-03 01:11:02,206 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:11:02,858 - kis_api_with_token_manager - INFO - 전일 종가 조회 시작: RGTI
+2025-07-03 01:11:02,858 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 59분)
+2025-07-03 01:11:02,858 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:11:03,575 - kis_api_with_token_manager - INFO - ✅ RGTI 전일 종가 조회 성공: $11.33
+2025-07-03 01:11:03,575 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 59분)
+2025-07-03 01:11:03,575 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:11:04,101 - kis_api_with_token_manager - INFO - 전일 종가 조회 시작: SMCI
+2025-07-03 01:11:04,101 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 59분)
+2025-07-03 01:11:04,101 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:11:04,660 - kis_api_with_token_manager - INFO - ✅ SMCI 전일 종가 조회 성공: $47.20
+2025-07-03 01:11:04,660 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 59분)
+2025-07-03 01:11:04,660 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:11:05,186 - kis_api_with_token_manager - INFO - 전일 종가 조회 시작: QUBT
+2025-07-03 01:11:05,186 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 59분)
+2025-07-03 01:11:05,186 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:11:05,904 - kis_api_with_token_manager - INFO - ✅ QUBT 전일 종가 조회 성공: $18.64
+2025-07-03 01:11:05,904 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 59분)
+2025-07-03 01:11:05,904 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:11:06,558 - kis_api_with_token_manager - WARNING - ⚠️ SES 현재가 데이터 없음 or 형식 오류: ''
+2025-07-03 01:11:06,558 - kis_api_with_token_manager - INFO - 전일 종가 조회 시작: SES
+2025-07-03 01:11:06,558 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 59분)
+2025-07-03 01:11:06,558 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:11:07,117 - kis_api_with_token_manager - WARNING - ⚠️ SES 전일 데이터 부족 (output2 길이: 0)
+2025-07-03 01:11:07,117 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 59분)
+2025-07-03 01:11:07,117 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:11:07,707 - kis_api_with_token_manager - WARNING - ⚠️ SMR 현재가 데이터 없음 or 형식 오류: ''
+2025-07-03 01:11:07,722 - kis_api_with_token_manager - INFO - 전일 종가 조회 시작: SMR
+2025-07-03 01:11:07,722 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 59분)
+2025-07-03 01:11:07,722 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:11:08,343 - kis_api_with_token_manager - WARNING - ⚠️ SMR 전일 데이터 부족 (output2 길이: 0)
+2025-07-03 01:11:08,343 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 59분)
+2025-07-03 01:11:08,343 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:11:08,932 - kis_api_with_token_manager - INFO - 전일 종가 조회 시작: QSI
+2025-07-03 01:11:08,932 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 59분)
+2025-07-03 01:11:08,932 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:11:09,474 - kis_api_with_token_manager - INFO - ✅ QSI 전일 종가 조회 성공: $1.90
+2025-07-03 01:11:09,474 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 59분)
+2025-07-03 01:11:09,474 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:11:10,176 - kis_api_with_token_manager - INFO - 전일 종가 조회 시작: REKR
+2025-07-03 01:11:10,176 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 59분)
+2025-07-03 01:11:10,176 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:11:10,796 - kis_api_with_token_manager - INFO - ✅ REKR 전일 종가 조회 성공: $1.10
+2025-07-03 01:11:10,796 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 59분)
+2025-07-03 01:11:10,796 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:11:11,400 - kis_api_with_token_manager - WARNING - ⚠️ SNOW 현재가 데이터 없음 or 형식 오류: ''
+2025-07-03 01:11:11,400 - kis_api_with_token_manager - INFO - 전일 종가 조회 시작: SNOW
+2025-07-03 01:11:11,400 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 59분)
+2025-07-03 01:11:11,400 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:11:11,943 - kis_api_with_token_manager - WARNING - ⚠️ SNOW 전일 데이터 부족 (output2 길이: 0)
+2025-07-03 01:11:11,943 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 59분)
+2025-07-03 01:11:11,943 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:11:12,560 - kis_api_with_token_manager - INFO - 전일 종가 조회 시작: INOD
+2025-07-03 01:11:12,560 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 59분)
+2025-07-03 01:11:12,560 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:11:13,214 - kis_api_with_token_manager - INFO - ✅ INOD 전일 종가 조회 성공: $47.39
+2025-07-03 01:11:13,214 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 59분)
+2025-07-03 01:11:13,214 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:11:13,740 - kis_api_with_token_manager - INFO - 전일 종가 조회 시작: PDYN
+2025-07-03 01:11:13,740 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 59분)
+2025-07-03 01:11:13,740 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:11:14,284 - kis_api_with_token_manager - INFO - ✅ PDYN 전일 종가 조회 성공: $8.05
+2025-07-03 01:11:14,284 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 59분)
+2025-07-03 01:11:14,284 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:11:14,827 - kis_api_with_token_manager - INFO - 전일 종가 조회 시작: ARQQ
+2025-07-03 01:11:14,827 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 58분)
+2025-07-03 01:11:14,827 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:11:15,525 - kis_api_with_token_manager - INFO - ✅ ARQQ 전일 종가 조회 성공: $34.68
+2025-07-03 01:11:15,525 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 58분)
+2025-07-03 01:11:15,525 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:11:16,129 - kis_api_with_token_manager - INFO - 전일 종가 조회 시작: HOTH
+2025-07-03 01:11:16,129 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 58분)
+2025-07-03 01:11:16,129 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:11:16,656 - kis_api_with_token_manager - INFO - ✅ HOTH 전일 종가 조회 성공: $1.22
+2025-07-03 01:11:16,656 - strategy_pjt1 - INFO - 상위 하락 종목: [('ARQQ', 0.04930795847750868), ('HOTH', 0.03278688524590167), ('INOD', 0.012027853977632418)]
+2025-07-03 01:11:16,656 - __main__ - INFO - 📉 상위 하락 종목: ARQQ, HOTH, INOD
+2025-07-03 01:11:16,656 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 01:11:16,656 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 58분)
+2025-07-03 01:11:16,656 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:11:17,326 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 01:11:17,326 - __main__ - WARNING - ⚠️ 예수금 부족: $0.00
+2025-07-03 01:11:17,326 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 58분)
+2025-07-03 01:11:17,326 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:11:17,342 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 01:11:17,342 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 58분)
+2025-07-03 01:11:17,342 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:11:18,057 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 01:11:18,057 - __main__ - INFO - ✅ 안전 점검 통과 (예수금: $0.00, 주문수: 0)
+2025-07-03 01:11:18,057 - __main__ - INFO - === 🚀 실전 매도 전략 실행 시작 ===
+2025-07-03 01:11:18,057 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 01:11:18,057 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 58분)
+2025-07-03 01:11:18,057 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:11:18,645 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 01:11:18,645 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 58분)
+2025-07-03 01:11:18,645 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:11:19,234 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 58분)
+2025-07-03 01:11:19,234 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:11:19,919 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 58분)
+2025-07-03 01:11:19,919 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:11:20,557 - kis_api_with_token_manager - WARNING - ⚠️ SES 현재가 데이터 없음 or 형식 오류: ''
+2025-07-03 01:11:20,557 - __main__ - WARNING - ⚠️ SES 현재가 조회 실패 - 스킵
+2025-07-03 01:11:20,557 - __main__ - INFO - 🔥 고수익 매도 실행: QSI
+2025-07-03 01:11:20,557 - __main__ - INFO -    - 수익률: 72.37%
+2025-07-03 01:11:20,557 - __main__ - INFO -    - 현재가: $1.97
+2025-07-03 01:11:20,557 - KISAPIClient - INFO - ➡️ SELL 주문 요청: QSI 4주 @ $1.97 (TR_ID: JTTT1006U)
+2025-07-03 01:11:21,083 - KISAPIClient - ERROR - API 요청 실패: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 01:11:21,083 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00356","msg1":"타겟 서버가 올바르지 않습니다. API 문서를 확인하세요 (타겟 서버 : 입력한 TR ID의 제일 첫 문자)"}
+2025-07-03 01:11:21,083 - KISAPIClient - INFO - 잠시 후 재시도합니다... (1/3)
+2025-07-03 01:11:22,697 - KISAPIClient - ERROR - API 요청 실패: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 01:11:22,697 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00356","msg1":"타겟 서버가 올바르지 않습니다. API 문서를 확인하세요 (타겟 서버 : 입력한 TR ID의 제일 첫 문자)"}
+2025-07-03 01:11:22,697 - KISAPIClient - INFO - 잠시 후 재시도합니다... (2/3)
+2025-07-03 01:11:24,261 - KISAPIClient - ERROR - API 요청 실패: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 01:11:24,261 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00356","msg1":"타겟 서버가 올바르지 않습니다. API 문서를 확인하세요 (타겟 서버 : 입력한 TR ID의 제일 첫 문자)"}
+2025-07-03 01:11:24,261 - KISAPIClient - INFO - 잠시 후 재시도합니다... (3/3)
+2025-07-03 01:11:25,839 - KISAPIClient - ERROR - API 요청 실패: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 01:11:25,839 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00356","msg1":"타겟 서버가 올바르지 않습니다. API 문서를 확인하세요 (타겟 서버 : 입력한 TR ID의 제일 첫 문자)"}
+2025-07-03 01:11:25,839 - KISAPIClient - ERROR - 최대 재시도 횟수 초과. 요청을 최종 실패 처리합니다.
+2025-07-03 01:11:25,850 - __main__ - ERROR - ❌ 고수익 매도 실패: QSI
+2025-07-03 01:11:27,850 - __main__ - INFO - === ✅ 실전 매도 전략 실행 완료 ===
+2025-07-03 01:11:27,850 - __main__ - INFO - 🧹 주문 정리 작업 시작
+2025-07-03 01:11:27,850 - __main__ - INFO - 🟢 거래시간 중 - 2025-07-02 12:11:27 ET
+2025-07-03 01:11:27,850 - __main__ - INFO - === 🚀 실전 매매 시스템 상태 (2025-07-02 12:11:27 ET) ===
+2025-07-03 01:11:27,850 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 01:11:27,850 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 58분)
+2025-07-03 01:11:27,850 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:11:28,420 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 01:11:28,420 - __main__ - INFO - 💰 계좌 현황: 예수금 $0.00, 보유종목 3개
+2025-07-03 01:11:28,420 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 58분)
+2025-07-03 01:11:28,420 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:11:29,057 - __main__ - INFO -    QSI: +72.4% ($+3.30) 🔥
+2025-07-03 01:11:29,057 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 58분)
+2025-07-03 01:11:29,057 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:11:29,738 - __main__ - INFO -    RR: -55.2% ($-2500.98) 📉
+2025-07-03 01:11:29,740 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 58분)
+2025-07-03 01:11:29,740 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:11:30,288 - kis_api_with_token_manager - WARNING - ⚠️ SES 현재가 데이터 없음 or 형식 오류: ''
+2025-07-03 01:11:30,288 - __main__ - INFO - 📈 총 평가손익: $-2497.68
+2025-07-03 01:16:30,294 - __main__ - INFO - === 🚀 실전 매매 시스템 상태 (2025-07-02 12:16:30 ET) ===
+2025-07-03 01:16:30,294 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 01:16:30,294 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 53분)
+2025-07-03 01:16:30,294 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:16:30,963 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 01:16:30,969 - __main__ - INFO - 💰 계좌 현황: 예수금 $0.00, 보유종목 3개
+2025-07-03 01:16:30,969 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 53분)
+2025-07-03 01:16:30,971 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:16:31,568 - __main__ - INFO -    QSI: +72.4% ($+3.30) 🔥
+2025-07-03 01:16:31,568 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 53분)
+2025-07-03 01:16:31,568 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:16:32,142 - __main__ - INFO -    RR: -55.2% ($-2500.57) 📉
+2025-07-03 01:16:32,142 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 53분)
+2025-07-03 01:16:32,142 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:16:32,685 - kis_api_with_token_manager - WARNING - ⚠️ SES 현재가 데이터 없음 or 형식 오류: ''
+2025-07-03 01:16:32,685 - __main__ - INFO - 📈 총 평가손익: $-2497.27
+2025-07-03 01:21:32,692 - __main__ - INFO - === 🚀 실전 매매 시스템 상태 (2025-07-02 12:21:32 ET) ===
+2025-07-03 01:21:32,692 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 01:21:32,692 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 48분)
+2025-07-03 01:21:32,692 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:21:33,327 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 01:21:33,327 - __main__ - INFO - 💰 계좌 현황: 예수금 $0.00, 보유종목 3개
+2025-07-03 01:21:33,327 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 48분)
+2025-07-03 01:21:33,327 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:21:33,996 - __main__ - INFO -    QSI: +71.1% ($+3.24) 🔥
+2025-07-03 01:21:33,996 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 48분)
+2025-07-03 01:21:33,996 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:21:34,617 - __main__ - INFO -    RR: -55.1% ($-2495.85) 📉
+2025-07-03 01:21:34,617 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 48분)
+2025-07-03 01:21:34,617 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:21:35,298 - kis_api_with_token_manager - WARNING - ⚠️ SES 현재가 데이터 없음 or 형식 오류: ''
+2025-07-03 01:21:35,298 - __main__ - INFO - 📈 총 평가손익: $-2492.61
+2025-07-03 01:26:35,301 - __main__ - INFO - === 🚀 실전 매매 시스템 상태 (2025-07-02 12:26:35 ET) ===
+2025-07-03 01:26:35,301 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 01:26:35,301 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 43분)
+2025-07-03 01:26:35,301 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:26:35,906 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 01:26:35,906 - __main__ - INFO - 💰 계좌 현황: 예수금 $0.00, 보유종목 3개
+2025-07-03 01:26:35,906 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 43분)
+2025-07-03 01:26:35,906 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:26:36,606 - __main__ - INFO -    QSI: +71.9% ($+3.28) 🔥
+2025-07-03 01:26:36,606 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 43분)
+2025-07-03 01:26:36,606 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:26:37,181 - __main__ - INFO -    RR: -55.2% ($-2500.98) 📉
+2025-07-03 01:26:37,181 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 43분)
+2025-07-03 01:26:37,181 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:26:37,818 - kis_api_with_token_manager - WARNING - ⚠️ SES 현재가 데이터 없음 or 형식 오류: ''
+2025-07-03 01:26:37,818 - __main__ - INFO - 📈 총 평가손익: $-2497.70
+2025-07-03 01:31:37,837 - __main__ - INFO - 🧹 주문 정리 작업 시작
+2025-07-03 01:31:37,837 - __main__ - INFO - === 🚀 실전 매매 시스템 상태 (2025-07-02 12:31:37 ET) ===
+2025-07-03 01:31:37,837 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 01:31:37,837 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 38분)
+2025-07-03 01:31:37,837 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:31:38,533 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 01:31:38,533 - __main__ - INFO - 💰 계좌 현황: 예수금 $0.00, 보유종목 3개
+2025-07-03 01:31:38,533 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 38분)
+2025-07-03 01:31:38,533 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:31:39,156 - __main__ - INFO -    QSI: +72.8% ($+3.32) 🔥
+2025-07-03 01:31:39,156 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 38분)
+2025-07-03 01:31:39,156 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:31:39,709 - __main__ - INFO -    RR: -55.2% ($-2500.98) 📉
+2025-07-03 01:31:39,709 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 38분)
+2025-07-03 01:31:39,709 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:31:40,236 - kis_api_with_token_manager - WARNING - ⚠️ SES 현재가 데이터 없음 or 형식 오류: ''
+2025-07-03 01:31:40,236 - __main__ - INFO - 📈 총 평가손익: $-2497.66
+2025-07-03 01:36:40,255 - __main__ - INFO - === 🚀 실전 매매 시스템 상태 (2025-07-02 12:36:40 ET) ===
+2025-07-03 01:36:40,255 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 01:36:40,256 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 33분)
+2025-07-03 01:36:40,256 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:36:40,959 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 01:36:40,959 - __main__ - INFO - 💰 계좌 현황: 예수금 $0.00, 보유종목 3개
+2025-07-03 01:36:40,959 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 33분)
+2025-07-03 01:36:40,959 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:36:41,580 - __main__ - INFO -    QSI: +74.0% ($+3.38) 🔥
+2025-07-03 01:36:41,580 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 33분)
+2025-07-03 01:36:41,580 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:36:42,249 - __main__ - INFO -    RR: -54.9% ($-2485.90) 📉
+2025-07-03 01:36:42,249 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 33분)
+2025-07-03 01:36:42,249 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:36:42,934 - kis_api_with_token_manager - WARNING - ⚠️ SES 현재가 데이터 없음 or 형식 오류: ''
+2025-07-03 01:36:42,934 - __main__ - INFO - 📈 총 평가손익: $-2482.52
+2025-07-03 01:41:42,947 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 28분)
+2025-07-03 01:41:42,947 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:41:42,947 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 01:41:42,947 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 28분)
+2025-07-03 01:41:42,947 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:41:43,486 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 01:41:43,486 - __main__ - INFO - ✅ 안전 점검 통과 (예수금: $0.00, 주문수: 0)
+2025-07-03 01:41:43,486 - __main__ - INFO - === 🚀 실전 매도 전략 실행 시작 ===
+2025-07-03 01:41:43,486 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 01:41:43,486 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 28분)
+2025-07-03 01:41:43,502 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:41:44,045 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 01:41:44,045 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 28분)
+2025-07-03 01:41:44,045 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:41:44,681 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 28분)
+2025-07-03 01:41:44,681 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:41:45,240 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 28분)
+2025-07-03 01:41:45,240 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:41:45,782 - kis_api_with_token_manager - WARNING - ⚠️ SES 현재가 데이터 없음 or 형식 오류: ''
+2025-07-03 01:41:45,782 - __main__ - WARNING - ⚠️ SES 현재가 조회 실패 - 스킵
+2025-07-03 01:41:45,782 - __main__ - INFO - 🔥 고수익 매도 실행: QSI
+2025-07-03 01:41:45,798 - __main__ - INFO -    - 수익률: 73.87%
+2025-07-03 01:41:45,798 - __main__ - INFO -    - 현재가: $1.98
+2025-07-03 01:41:45,798 - KISAPIClient - INFO - ➡️ SELL 주문 요청: QSI 4주 @ $1.98 (TR_ID: JTTT1006U)
+2025-07-03 01:41:46,436 - KISAPIClient - ERROR - API 요청 실패: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 01:41:46,436 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00356","msg1":"타겟 서버가 올바르지 않습니다. API 문서를 확인하세요 (타겟 서버 : 입력한 TR ID의 제일 첫 문자)"}
+2025-07-03 01:41:46,436 - KISAPIClient - INFO - 잠시 후 재시도합니다... (1/3)
+2025-07-03 01:41:47,985 - KISAPIClient - ERROR - API 요청 실패: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 01:41:47,985 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00356","msg1":"타겟 서버가 올바르지 않습니다. API 문서를 확인하세요 (타겟 서버 : 입력한 TR ID의 제일 첫 문자)"}
+2025-07-03 01:41:47,985 - KISAPIClient - INFO - 잠시 후 재시도합니다... (2/3)
+2025-07-03 01:41:49,626 - KISAPIClient - ERROR - API 요청 실패: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 01:41:49,626 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00356","msg1":"타겟 서버가 올바르지 않습니다. API 문서를 확인하세요 (타겟 서버 : 입력한 TR ID의 제일 첫 문자)"}
+2025-07-03 01:41:49,626 - KISAPIClient - INFO - 잠시 후 재시도합니다... (3/3)
+2025-07-03 01:41:51,251 - KISAPIClient - ERROR - API 요청 실패: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 01:41:51,251 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00356","msg1":"타겟 서버가 올바르지 않습니다. API 문서를 확인하세요 (타겟 서버 : 입력한 TR ID의 제일 첫 문자)"}
+2025-07-03 01:41:51,251 - KISAPIClient - ERROR - 최대 재시도 횟수 초과. 요청을 최종 실패 처리합니다.
+2025-07-03 01:41:51,267 - __main__ - ERROR - ❌ 고수익 매도 실패: QSI
+2025-07-03 01:41:53,271 - __main__ - INFO - === ✅ 실전 매도 전략 실행 완료 ===
+2025-07-03 01:41:53,271 - __main__ - INFO - === 🚀 실전 매매 시스템 상태 (2025-07-02 12:41:53 ET) ===
+2025-07-03 01:41:53,271 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 01:41:53,271 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 28분)
+2025-07-03 01:41:53,271 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:41:53,906 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 01:41:53,906 - __main__ - INFO - 💰 계좌 현황: 예수금 $0.00, 보유종목 3개
+2025-07-03 01:41:53,920 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 28분)
+2025-07-03 01:41:53,920 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:41:54,526 - __main__ - INFO -    QSI: +74.6% ($+3.40) 🔥
+2025-07-03 01:41:54,526 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 28분)
+2025-07-03 01:41:54,526 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:41:55,119 - __main__ - INFO -    RR: -54.9% ($-2485.59) 📉
+2025-07-03 01:41:55,119 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 28분)
+2025-07-03 01:41:55,119 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:41:55,756 - kis_api_with_token_manager - WARNING - ⚠️ SES 현재가 데이터 없음 or 형식 오류: ''
+2025-07-03 01:41:55,756 - __main__ - INFO - 📈 총 평가손익: $-2482.19
+2025-07-03 01:46:55,762 - __main__ - INFO - === 🚀 실전 매매 시스템 상태 (2025-07-02 12:46:55 ET) ===
+2025-07-03 01:46:55,762 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 01:46:55,762 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 23분)
+2025-07-03 01:46:55,762 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:46:56,360 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 01:46:56,360 - __main__ - INFO - 💰 계좌 현황: 예수금 $0.00, 보유종목 3개
+2025-07-03 01:46:56,360 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 23분)
+2025-07-03 01:46:56,360 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:46:57,028 - __main__ - INFO -    QSI: +73.7% ($+3.36) 🔥
+2025-07-03 01:46:57,028 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 23분)
+2025-07-03 01:46:57,028 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:46:57,568 - __main__ - INFO -    RR: -54.9% ($-2485.59) 📉
+2025-07-03 01:46:57,568 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 23분)
+2025-07-03 01:46:57,568 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:46:58,110 - kis_api_with_token_manager - WARNING - ⚠️ SES 현재가 데이터 없음 or 형식 오류: ''
+2025-07-03 01:46:58,110 - __main__ - INFO - 📈 총 평가손익: $-2482.23
+2025-07-03 01:51:58,114 - __main__ - INFO - 🧹 주문 정리 작업 시작
+2025-07-03 01:51:58,114 - __main__ - INFO - === 🚀 실전 매매 시스템 상태 (2025-07-02 12:51:58 ET) ===
+2025-07-03 01:51:58,114 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 01:51:58,114 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 18분)
+2025-07-03 01:51:58,114 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:51:58,867 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 01:51:58,867 - __main__ - INFO - 💰 계좌 현황: 예수금 $0.00, 보유종목 3개
+2025-07-03 01:51:58,867 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 18분)
+2025-07-03 01:51:58,867 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:51:59,442 - __main__ - INFO -    QSI: +74.6% ($+3.40) 🔥
+2025-07-03 01:51:59,442 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 18분)
+2025-07-03 01:51:59,442 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:52:00,000 - __main__ - INFO -    RR: -54.8% ($-2480.46) 📉
+2025-07-03 01:52:00,006 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 18분)
+2025-07-03 01:52:00,006 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:52:00,528 - kis_api_with_token_manager - WARNING - ⚠️ SES 현재가 데이터 없음 or 형식 오류: ''
+2025-07-03 01:52:00,528 - __main__ - INFO - 📈 총 평가손익: $-2477.06
+2025-07-03 01:57:00,532 - __main__ - INFO - === 🚀 실전 매매 시스템 상태 (2025-07-02 12:57:00 ET) ===
+2025-07-03 01:57:00,532 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 01:57:00,532 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 13분)
+2025-07-03 01:57:00,532 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:57:01,163 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 01:57:01,163 - __main__ - INFO - 💰 계좌 현황: 예수금 $0.00, 보유종목 3개
+2025-07-03 01:57:01,163 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 13분)
+2025-07-03 01:57:01,163 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:57:01,737 - __main__ - INFO -    QSI: +73.7% ($+3.36) 🔥
+2025-07-03 01:57:01,737 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 13분)
+2025-07-03 01:57:01,737 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:57:02,344 - __main__ - INFO -    RR: -54.9% ($-2484.87) 📉
+2025-07-03 01:57:02,344 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 13분)
+2025-07-03 01:57:02,344 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 01:57:02,949 - kis_api_with_token_manager - WARNING - ⚠️ SES 현재가 데이터 없음 or 형식 오류: ''
+2025-07-03 01:57:02,949 - __main__ - INFO - 📈 총 평가손익: $-2481.51
+2025-07-03 02:02:02,959 - __main__ - INFO - === 🚀 실전 매매 시스템 상태 (2025-07-02 13:02:02 ET) ===
+2025-07-03 02:02:02,959 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 02:02:02,961 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 8분)
+2025-07-03 02:02:02,961 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 02:02:03,712 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 02:02:03,728 - __main__ - INFO - 💰 계좌 현황: 예수금 $0.00, 보유종목 3개
+2025-07-03 02:02:03,728 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 8분)
+2025-07-03 02:02:03,728 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 02:02:04,383 - __main__ - INFO -    QSI: +74.1% ($+3.38) 🔥
+2025-07-03 02:02:04,383 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 8분)
+2025-07-03 02:02:04,383 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 02:02:04,925 - __main__ - INFO -    RR: -54.8% ($-2479.53) 📉
+2025-07-03 02:02:04,925 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 8분)
+2025-07-03 02:02:04,925 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 02:02:05,484 - kis_api_with_token_manager - WARNING - ⚠️ SES 현재가 데이터 없음 or 형식 오류: ''
+2025-07-03 02:02:05,484 - __main__ - INFO - 📈 총 평가손익: $-2476.15
+2025-07-03 02:07:05,503 - __main__ - INFO - === 🚀 실전 매매 시스템 상태 (2025-07-02 13:07:05 ET) ===
+2025-07-03 02:07:05,503 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 02:07:05,503 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 3분)
+2025-07-03 02:07:05,503 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 02:07:06,240 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 02:07:06,240 - __main__ - INFO - 💰 계좌 현황: 예수금 $0.00, 보유종목 3개
+2025-07-03 02:07:06,240 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 3분)
+2025-07-03 02:07:06,240 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 02:07:06,893 - __main__ - INFO -    QSI: +74.3% ($+3.39) 🔥
+2025-07-03 02:07:06,893 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 3분)
+2025-07-03 02:07:06,893 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 02:07:07,515 - __main__ - INFO -    RR: -55.0% ($-2490.72) 📉
+2025-07-03 02:07:07,515 - token_manager - INFO - 기존 토큰 사용 (남은시간: 21시간 3분)
+2025-07-03 02:07:07,515 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 02:07:08,119 - kis_api_with_token_manager - WARNING - ⚠️ SES 현재가 데이터 없음 or 형식 오류: ''
+2025-07-03 02:07:08,119 - __main__ - INFO - 📈 총 평가손익: $-2487.33
+2025-07-03 02:12:08,133 - token_manager - INFO - 기존 토큰 사용 (남은시간: 20시간 58분)
+2025-07-03 02:12:08,133 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 02:12:08,133 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 02:12:08,133 - token_manager - INFO - 기존 토큰 사용 (남은시간: 20시간 58분)
+2025-07-03 02:12:08,133 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 02:12:08,925 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 02:12:08,925 - __main__ - INFO - ✅ 안전 점검 통과 (예수금: $0.00, 주문수: 0)
+2025-07-03 02:12:08,925 - __main__ - INFO - === 🚀 실전 매수 전략 실행 시작 ===
+2025-07-03 02:12:08,925 - strategy_pjt1 - INFO - 상승필터 종목 로드 완료: 3개 - ['NVDA', 'AMZN', 'MSFT']
+2025-07-03 02:12:08,925 - token_manager - INFO - 기존 토큰 사용 (남은시간: 20시간 58분)
+2025-07-03 02:12:08,925 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 02:12:09,485 - kis_api_with_token_manager - INFO - 전일 종가 조회 시작: NVDA
+2025-07-03 02:12:09,485 - token_manager - INFO - 기존 토큰 사용 (남은시간: 20시간 58분)
+2025-07-03 02:12:09,485 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 02:12:10,072 - kis_api_with_token_manager - INFO - ✅ NVDA 전일 종가 조회 성공: $153.30
+2025-07-03 02:12:10,072 - strategy_pjt1 - INFO - 필터 종목 NVDA 상승 중 (현재: $157.40, 전일: $153.30)
+2025-07-03 02:12:10,072 - token_manager - INFO - 기존 토큰 사용 (남은시간: 20시간 58분)
+2025-07-03 02:12:10,072 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 02:12:10,857 - kis_api_with_token_manager - INFO - 전일 종가 조회 시작: AMZN
+2025-07-03 02:12:10,871 - token_manager - INFO - 기존 토큰 사용 (남은시간: 20시간 58분)
+2025-07-03 02:12:10,871 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 02:12:11,574 - kis_api_with_token_manager - INFO - ✅ AMZN 전일 종가 조회 성공: $220.46
+2025-07-03 02:12:11,574 - strategy_pjt1 - INFO - 필터 종목 AMZN 상승 중 (현재: $220.86, 전일: $220.46)
+2025-07-03 02:12:11,574 - token_manager - INFO - 기존 토큰 사용 (남은시간: 20시간 58분)
+2025-07-03 02:12:11,574 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 02:12:12,146 - kis_api_with_token_manager - INFO - 전일 종가 조회 시작: MSFT
+2025-07-03 02:12:12,146 - token_manager - INFO - 기존 토큰 사용 (남은시간: 20시간 58분)
+2025-07-03 02:12:12,146 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 02:12:12,752 - kis_api_with_token_manager - INFO - ✅ MSFT 전일 종가 조회 성공: $492.05
+2025-07-03 02:12:12,752 - strategy_pjt1 - INFO - 필터 조건 미충족: MSFT 하락 중 (현재: $491.14, 전일: $492.05)
+2025-07-03 02:12:12,752 - __main__ - INFO - ❌ 상승 필터 조건 미충족 - 매수 신호 없음
+2025-07-03 02:12:12,752 - token_manager - INFO - 기존 토큰 사용 (남은시간: 20시간 58분)
+2025-07-03 02:12:12,752 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 02:12:12,752 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 02:12:12,752 - token_manager - INFO - 기존 토큰 사용 (남은시간: 20시간 58분)
+2025-07-03 02:12:12,752 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 02:12:13,451 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 02:12:13,451 - __main__ - INFO - ✅ 안전 점검 통과 (예수금: $0.00, 주문수: 0)
+2025-07-03 02:12:13,451 - __main__ - INFO - === 🚀 실전 매도 전략 실행 시작 ===
+2025-07-03 02:12:13,451 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 02:12:13,451 - token_manager - INFO - 기존 토큰 사용 (남은시간: 20시간 58분)
+2025-07-03 02:12:13,451 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 02:12:14,120 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 02:12:14,120 - token_manager - INFO - 기존 토큰 사용 (남은시간: 20시간 58분)
+2025-07-03 02:12:14,120 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 02:12:14,758 - token_manager - INFO - 기존 토큰 사용 (남은시간: 20시간 57분)
+2025-07-03 02:12:14,758 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 02:12:15,365 - token_manager - INFO - 기존 토큰 사용 (남은시간: 20시간 57분)
+2025-07-03 02:12:15,365 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 02:12:16,032 - kis_api_with_token_manager - WARNING - ⚠️ SES 현재가 데이터 없음 or 형식 오류: ''
+2025-07-03 02:12:16,048 - __main__ - WARNING - ⚠️ SES 현재가 조회 실패 - 스킵
+2025-07-03 02:12:16,048 - __main__ - INFO - 🔥 고수익 매도 실행: QSI
+2025-07-03 02:12:16,048 - __main__ - INFO -    - 수익률: 73.68%
+2025-07-03 02:12:16,048 - __main__ - INFO -    - 현재가: $1.98
+2025-07-03 02:12:16,048 - KISAPIClient - INFO - ➡️ SELL 주문 요청: QSI 4주 @ $1.98 (TR_ID: JTTT1006U)
+2025-07-03 02:12:16,607 - KISAPIClient - ERROR - API 요청 실패: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 02:12:16,607 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00356","msg1":"타겟 서버가 올바르지 않습니다. API 문서를 확인하세요 (타겟 서버 : 입력한 TR ID의 제일 첫 문자)"}
+2025-07-03 02:12:16,607 - KISAPIClient - INFO - 잠시 후 재시도합니다... (1/3)
+2025-07-03 02:12:18,235 - KISAPIClient - ERROR - API 요청 실패: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 02:12:18,235 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00356","msg1":"타겟 서버가 올바르지 않습니다. API 문서를 확인하세요 (타겟 서버 : 입력한 TR ID의 제일 첫 문자)"}
+2025-07-03 02:12:18,235 - KISAPIClient - INFO - 잠시 후 재시도합니다... (2/3)
+2025-07-03 02:12:19,781 - KISAPIClient - ERROR - API 요청 실패: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 02:12:19,781 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00356","msg1":"타겟 서버가 올바르지 않습니다. API 문서를 확인하세요 (타겟 서버 : 입력한 TR ID의 제일 첫 문자)"}
+2025-07-03 02:12:19,797 - KISAPIClient - INFO - 잠시 후 재시도합니다... (3/3)
+2025-07-03 02:12:21,456 - KISAPIClient - ERROR - API 요청 실패: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 02:12:21,456 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00356","msg1":"타겟 서버가 올바르지 않습니다. API 문서를 확인하세요 (타겟 서버 : 입력한 TR ID의 제일 첫 문자)"}
+2025-07-03 02:12:21,456 - KISAPIClient - ERROR - 최대 재시도 횟수 초과. 요청을 최종 실패 처리합니다.
+2025-07-03 02:12:21,472 - __main__ - ERROR - ❌ 고수익 매도 실패: QSI
+2025-07-03 02:12:23,480 - __main__ - INFO - === ✅ 실전 매도 전략 실행 완료 ===
+2025-07-03 02:12:23,480 - __main__ - INFO - 🧹 주문 정리 작업 시작
+2025-07-03 02:12:23,480 - __main__ - INFO - 🟢 거래시간 중 - 2025-07-02 13:12:23 ET
+2025-07-03 02:12:23,482 - __main__ - INFO - === 🚀 실전 매매 시스템 상태 (2025-07-02 13:12:23 ET) ===
+2025-07-03 02:12:23,482 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 02:12:23,482 - token_manager - INFO - 기존 토큰 사용 (남은시간: 20시간 57분)
+2025-07-03 02:12:23,482 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 02:12:24,150 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 02:12:24,150 - __main__ - INFO - 💰 계좌 현황: 예수금 $0.00, 보유종목 3개
+2025-07-03 02:12:24,150 - token_manager - INFO - 기존 토큰 사용 (남은시간: 20시간 57분)
+2025-07-03 02:12:24,150 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 02:12:24,740 - __main__ - INFO -    QSI: +73.5% ($+3.35) 🔥
+2025-07-03 02:12:24,756 - token_manager - INFO - 기존 토큰 사용 (남은시간: 20시간 57분)
+2025-07-03 02:12:24,756 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 02:12:25,298 - __main__ - INFO -    RR: -55.3% ($-2503.75) 📉
+2025-07-03 02:12:25,298 - token_manager - INFO - 기존 토큰 사용 (남은시간: 20시간 57분)
+2025-07-03 02:12:25,298 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 02:12:25,952 - kis_api_with_token_manager - WARNING - ⚠️ SES 현재가 데이터 없음 or 형식 오류: ''
+2025-07-03 02:12:25,952 - __main__ - INFO - 📈 총 평가손익: $-2500.39
+2025-07-03 02:17:25,970 - __main__ - INFO - === 🚀 실전 매매 시스템 상태 (2025-07-02 13:17:25 ET) ===
+2025-07-03 02:17:25,970 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 02:17:25,970 - token_manager - INFO - 기존 토큰 사용 (남은시간: 20시간 52분)
+2025-07-03 02:17:25,973 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 02:17:26,612 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 02:17:26,612 - __main__ - INFO - 💰 계좌 현황: 예수금 $0.00, 보유종목 3개
+2025-07-03 02:17:26,612 - token_manager - INFO - 기존 토큰 사용 (남은시간: 20시간 52분)
+2025-07-03 02:17:26,612 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 02:17:27,187 - __main__ - INFO -    QSI: +72.4% ($+3.30) 🔥
+2025-07-03 02:17:27,187 - token_manager - INFO - 기존 토큰 사용 (남은시간: 20시간 52분)
+2025-07-03 02:17:27,187 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 02:17:27,889 - __main__ - INFO -    RR: -55.1% ($-2495.85) 📉
+2025-07-03 02:17:27,889 - token_manager - INFO - 기존 토큰 사용 (남은시간: 20시간 52분)
+2025-07-03 02:17:27,889 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 02:17:28,496 - kis_api_with_token_manager - WARNING - ⚠️ SES 현재가 데이터 없음 or 형식 오류: ''
+2025-07-03 02:17:28,496 - __main__ - INFO - 📈 총 평가손익: $-2492.55
+2025-07-03 02:22:28,510 - __main__ - INFO - === 🚀 실전 매매 시스템 상태 (2025-07-02 13:22:28 ET) ===
+2025-07-03 02:22:28,510 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 02:22:28,510 - token_manager - INFO - 기존 토큰 사용 (남은시간: 20시간 47분)
+2025-07-03 02:22:28,510 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 02:22:29,126 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 02:22:29,126 - __main__ - INFO - 💰 계좌 현황: 예수금 $0.00, 보유종목 3개
+2025-07-03 02:22:29,126 - token_manager - INFO - 기존 토큰 사용 (남은시간: 20시간 47분)
+2025-07-03 02:22:29,126 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 02:22:29,798 - __main__ - INFO -    QSI: +71.9% ($+3.28) 🔥
+2025-07-03 02:22:29,798 - token_manager - INFO - 기존 토큰 사용 (남은시간: 20시간 47분)
+2025-07-03 02:22:29,798 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 02:22:30,451 - __main__ - INFO -    RR: -55.1% ($-2496.77) 📉
+2025-07-03 02:22:30,467 - token_manager - INFO - 기존 토큰 사용 (남은시간: 20시간 47분)
+2025-07-03 02:22:30,467 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 02:22:30,992 - kis_api_with_token_manager - WARNING - ⚠️ SES 현재가 데이터 없음 or 형식 오류: ''
+2025-07-03 02:22:30,992 - __main__ - INFO - 📈 총 평가손익: $-2493.49
+2025-07-03 02:27:30,999 - __main__ - INFO - === 🚀 실전 매매 시스템 상태 (2025-07-02 13:27:30 ET) ===
+2025-07-03 02:27:30,999 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 02:27:30,999 - token_manager - INFO - 기존 토큰 사용 (남은시간: 20시간 42분)
+2025-07-03 02:27:30,999 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 02:27:31,612 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 02:27:31,612 - __main__ - INFO - 💰 계좌 현황: 예수금 $0.00, 보유종목 3개
+2025-07-03 02:27:31,612 - token_manager - INFO - 기존 토큰 사용 (남은시간: 20시간 42분)
+2025-07-03 02:27:31,612 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 02:27:32,266 - __main__ - INFO -    QSI: +72.8% ($+3.32) 🔥
+2025-07-03 02:27:32,266 - token_manager - INFO - 기존 토큰 사용 (남은시간: 20시간 42분)
+2025-07-03 02:27:32,266 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 02:27:32,927 - __main__ - INFO -    RR: -55.1% ($-2492.77) 📉
+2025-07-03 02:27:32,927 - token_manager - INFO - 기존 토큰 사용 (남은시간: 20시간 42분)
+2025-07-03 02:27:32,934 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 02:27:33,637 - kis_api_with_token_manager - WARNING - ⚠️ SES 현재가 데이터 없음 or 형식 오류: ''
+2025-07-03 02:27:33,637 - __main__ - INFO - 📈 총 평가손익: $-2489.45
+2025-07-03 02:32:33,648 - __main__ - INFO - 🧹 주문 정리 작업 시작
+2025-07-03 02:32:33,648 - __main__ - INFO - === 🚀 실전 매매 시스템 상태 (2025-07-02 13:32:33 ET) ===
+2025-07-03 02:32:33,648 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 02:32:33,648 - token_manager - INFO - 기존 토큰 사용 (남은시간: 20시간 37분)
+2025-07-03 02:32:33,648 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 02:32:34,279 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 02:32:34,279 - __main__ - INFO - 💰 계좌 현황: 예수금 $0.00, 보유종목 3개
+2025-07-03 02:32:34,295 - token_manager - INFO - 기존 토큰 사용 (남은시간: 20시간 37분)
+2025-07-03 02:32:34,295 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 02:32:34,901 - __main__ - INFO -    QSI: +72.6% ($+3.31) 🔥
+2025-07-03 02:32:34,901 - token_manager - INFO - 기존 토큰 사용 (남은시간: 20시간 37분)
+2025-07-03 02:32:34,901 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 02:32:35,569 - __main__ - INFO -    RR: -54.9% ($-2485.59) 📉
+2025-07-03 02:32:35,569 - token_manager - INFO - 기존 토큰 사용 (남은시간: 20시간 37분)
+2025-07-03 02:32:35,569 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 02:32:36,239 - kis_api_with_token_manager - WARNING - ⚠️ SES 현재가 데이터 없음 or 형식 오류: ''
+2025-07-03 02:32:36,239 - __main__ - INFO - 📈 총 평가손익: $-2482.28
+2025-07-03 02:37:36,249 - __main__ - INFO - === 🚀 실전 매매 시스템 상태 (2025-07-02 13:37:36 ET) ===
+2025-07-03 02:37:36,249 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 02:37:36,251 - token_manager - INFO - 기존 토큰 사용 (남은시간: 20시간 32분)
+2025-07-03 02:37:36,251 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 02:37:36,826 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 02:37:36,826 - __main__ - INFO - 💰 계좌 현황: 예수금 $0.00, 보유종목 3개
+2025-07-03 02:37:36,826 - token_manager - INFO - 기존 토큰 사용 (남은시간: 20시간 32분)
+2025-07-03 02:37:36,826 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 02:37:37,384 - __main__ - INFO -    QSI: +72.4% ($+3.30) 🔥
+2025-07-03 02:37:37,384 - token_manager - INFO - 기존 토큰 사용 (남은시간: 20시간 32분)
+2025-07-03 02:37:37,384 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 02:37:37,926 - __main__ - INFO -    RR: -55.0% ($-2490.72) 📉
+2025-07-03 02:37:37,926 - token_manager - INFO - 기존 토큰 사용 (남은시간: 20시간 32분)
+2025-07-03 02:37:37,926 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 02:37:38,549 - kis_api_with_token_manager - WARNING - ⚠️ SES 현재가 데이터 없음 or 형식 오류: ''
+2025-07-03 02:37:38,549 - __main__ - INFO - 📈 총 평가손익: $-2487.42
+2025-07-03 02:42:38,557 - token_manager - INFO - 기존 토큰 사용 (남은시간: 20시간 27분)
+2025-07-03 02:42:38,557 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 02:42:38,557 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 02:42:38,559 - token_manager - INFO - 기존 토큰 사용 (남은시간: 20시간 27분)
+2025-07-03 02:42:38,559 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 02:42:39,228 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 02:42:39,228 - __main__ - INFO - ✅ 안전 점검 통과 (예수금: $0.00, 주문수: 0)
+2025-07-03 02:42:39,228 - __main__ - INFO - === 🚀 실전 매도 전략 실행 시작 ===
+2025-07-03 02:42:39,228 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 02:42:39,244 - token_manager - INFO - 기존 토큰 사용 (남은시간: 20시간 27분)
+2025-07-03 02:42:39,244 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 02:42:39,834 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 02:42:39,834 - token_manager - INFO - 기존 토큰 사용 (남은시간: 20시간 27분)
+2025-07-03 02:42:39,834 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 02:42:40,534 - token_manager - INFO - 기존 토큰 사용 (남은시간: 20시간 27분)
+2025-07-03 02:42:40,534 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 02:42:41,108 - token_manager - INFO - 기존 토큰 사용 (남은시간: 20시간 27분)
+2025-07-03 02:42:41,108 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 02:42:41,697 - kis_api_with_token_manager - WARNING - ⚠️ SES 현재가 데이터 없음 or 형식 오류: ''
+2025-07-03 02:42:41,697 - __main__ - WARNING - ⚠️ SES 현재가 조회 실패 - 스킵
+2025-07-03 02:42:41,697 - __main__ - INFO - 🔥 고수익 매도 실행: QSI
+2025-07-03 02:42:41,697 - __main__ - INFO -    - 수익률: 71.49%
+2025-07-03 02:42:41,697 - __main__ - INFO -    - 현재가: $1.96
+2025-07-03 02:42:41,697 - KISAPIClient - INFO - ➡️ SELL 주문 요청: QSI 4주 @ $1.96 (TR_ID: JTTT1006U)
+2025-07-03 02:42:42,265 - KISAPIClient - ERROR - API 요청 실패: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 02:42:42,265 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00356","msg1":"타겟 서버가 올바르지 않습니다. API 문서를 확인하세요 (타겟 서버 : 입력한 TR ID의 제일 첫 문자)"}
+2025-07-03 02:42:42,265 - KISAPIClient - INFO - 잠시 후 재시도합니다... (1/3)
+2025-07-03 02:42:43,867 - KISAPIClient - ERROR - API 요청 실패: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 02:42:43,867 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00356","msg1":"타겟 서버가 올바르지 않습니다. API 문서를 확인하세요 (타겟 서버 : 입력한 TR ID의 제일 첫 문자)"}
+2025-07-03 02:42:43,867 - KISAPIClient - INFO - 잠시 후 재시도합니다... (2/3)
+2025-07-03 02:42:45,449 - KISAPIClient - ERROR - API 요청 실패: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 02:42:45,449 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00356","msg1":"타겟 서버가 올바르지 않습니다. API 문서를 확인하세요 (타겟 서버 : 입력한 TR ID의 제일 첫 문자)"}
+2025-07-03 02:42:45,449 - KISAPIClient - INFO - 잠시 후 재시도합니다... (3/3)
+2025-07-03 02:42:47,127 - KISAPIClient - ERROR - API 요청 실패: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 02:42:47,127 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00356","msg1":"타겟 서버가 올바르지 않습니다. API 문서를 확인하세요 (타겟 서버 : 입력한 TR ID의 제일 첫 문자)"}
+2025-07-03 02:42:47,127 - KISAPIClient - ERROR - 최대 재시도 횟수 초과. 요청을 최종 실패 처리합니다.
+2025-07-03 02:42:47,143 - __main__ - ERROR - ❌ 고수익 매도 실패: QSI
+2025-07-03 02:42:49,150 - __main__ - INFO - === ✅ 실전 매도 전략 실행 완료 ===
+2025-07-03 02:42:49,150 - __main__ - INFO - === 🚀 실전 매매 시스템 상태 (2025-07-02 13:42:49 ET) ===
+2025-07-03 02:42:49,150 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 02:42:49,153 - token_manager - INFO - 기존 토큰 사용 (남은시간: 20시간 27분)
+2025-07-03 02:42:49,153 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 02:42:49,728 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 02:42:49,728 - __main__ - INFO - 💰 계좌 현황: 예수금 $0.00, 보유종목 3개
+2025-07-03 02:42:49,728 - token_manager - INFO - 기존 토큰 사용 (남은시간: 20시간 27분)
+2025-07-03 02:42:49,728 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 02:42:50,462 - __main__ - INFO -    QSI: +71.5% ($+3.26) 🔥
+2025-07-03 02:42:50,462 - token_manager - INFO - 기존 토큰 사용 (남은시간: 20시간 27분)
+2025-07-03 02:42:50,462 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 02:42:51,035 - __main__ - INFO -    RR: -54.7% ($-2475.33) 📉
+2025-07-03 02:42:51,035 - token_manager - INFO - 기존 토큰 사용 (남은시간: 20시간 27분)
+2025-07-03 02:42:51,035 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 02:42:51,736 - kis_api_with_token_manager - WARNING - ⚠️ SES 현재가 데이터 없음 or 형식 오류: ''
+2025-07-03 02:42:51,736 - __main__ - INFO - 📈 총 평가손익: $-2472.07
+2025-07-03 02:47:51,752 - __main__ - INFO - === 🚀 실전 매매 시스템 상태 (2025-07-02 13:47:51 ET) ===
+2025-07-03 02:47:51,752 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 02:47:51,752 - token_manager - INFO - 기존 토큰 사용 (남은시간: 20시간 22분)
+2025-07-03 02:47:51,752 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 02:47:52,394 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 02:47:52,394 - __main__ - INFO - 💰 계좌 현황: 예수금 $0.00, 보유종목 3개
+2025-07-03 02:47:52,394 - token_manager - INFO - 기존 토큰 사용 (남은시간: 20시간 22분)
+2025-07-03 02:47:52,394 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 02:47:52,931 - __main__ - INFO -    QSI: +71.7% ($+3.27) 🔥
+2025-07-03 02:47:52,931 - token_manager - INFO - 기존 토큰 사용 (남은시간: 20시간 22분)
+2025-07-03 02:47:52,931 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 02:47:53,522 - __main__ - INFO -    RR: -54.7% ($-2475.33) 📉
+2025-07-03 02:47:53,522 - token_manager - INFO - 기존 토큰 사용 (남은시간: 20시간 22분)
+2025-07-03 02:47:53,522 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 02:47:54,318 - kis_api_with_token_manager - WARNING - ⚠️ SES 현재가 데이터 없음 or 형식 오류: ''
+2025-07-03 02:47:54,318 - __main__ - INFO - 📈 총 평가손익: $-2472.06
+2025-07-03 02:52:54,324 - __main__ - INFO - 🧹 주문 정리 작업 시작
+2025-07-03 02:52:54,324 - __main__ - INFO - === 🚀 실전 매매 시스템 상태 (2025-07-02 13:52:54 ET) ===
+2025-07-03 02:52:54,324 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 02:52:54,324 - token_manager - INFO - 기존 토큰 사용 (남은시간: 20시간 17분)
+2025-07-03 02:52:54,324 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 02:52:54,920 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 02:52:54,920 - __main__ - INFO - 💰 계좌 현황: 예수금 $0.00, 보유종목 3개
+2025-07-03 02:52:54,920 - token_manager - INFO - 기존 토큰 사용 (남은시간: 20시간 17분)
+2025-07-03 02:52:54,920 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 02:52:55,447 - __main__ - INFO -    QSI: +71.1% ($+3.24) 🔥
+2025-07-03 02:52:55,447 - token_manager - INFO - 기존 토큰 사용 (남은시간: 20시간 17분)
+2025-07-03 02:52:55,447 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 02:52:56,102 - __main__ - INFO -    RR: -54.7% ($-2475.43) 📉
+2025-07-03 02:52:56,118 - token_manager - INFO - 기존 토큰 사용 (남은시간: 20시간 17분)
+2025-07-03 02:52:56,118 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 02:52:56,723 - kis_api_with_token_manager - WARNING - ⚠️ SES 현재가 데이터 없음 or 형식 오류: ''
+2025-07-03 02:52:56,723 - __main__ - INFO - 📈 총 평가손익: $-2472.19
+2025-07-03 02:57:56,731 - __main__ - INFO - === 🚀 실전 매매 시스템 상태 (2025-07-02 13:57:56 ET) ===
+2025-07-03 02:57:56,731 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 02:57:56,731 - token_manager - INFO - 기존 토큰 사용 (남은시간: 20시간 12분)
+2025-07-03 02:57:56,731 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 02:57:57,319 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 02:57:57,319 - __main__ - INFO - 💰 계좌 현황: 예수금 $0.00, 보유종목 3개
+2025-07-03 02:57:57,319 - token_manager - INFO - 기존 토큰 사용 (남은시간: 20시간 12분)
+2025-07-03 02:57:57,319 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 02:57:57,847 - __main__ - INFO -    QSI: +71.8% ($+3.27) 🔥
+2025-07-03 02:57:57,863 - token_manager - INFO - 기존 토큰 사용 (남은시간: 20시간 12분)
+2025-07-03 02:57:57,863 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 02:57:58,550 - __main__ - INFO -    RR: -55.0% ($-2490.72) 📉
+2025-07-03 02:57:58,550 - token_manager - INFO - 기존 토큰 사용 (남은시간: 20시간 12분)
+2025-07-03 02:57:58,550 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 02:57:59,188 - kis_api_with_token_manager - WARNING - ⚠️ SES 현재가 데이터 없음 or 형식 오류: ''
+2025-07-03 02:57:59,188 - __main__ - INFO - 📈 총 평가손익: $-2487.44
+2025-07-03 03:02:59,204 - __main__ - INFO - === 🚀 실전 매매 시스템 상태 (2025-07-02 14:02:59 ET) ===
+2025-07-03 03:02:59,204 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 03:02:59,206 - token_manager - INFO - 기존 토큰 사용 (남은시간: 20시간 7분)
+2025-07-03 03:02:59,206 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 03:03:00,058 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 03:03:00,058 - __main__ - INFO - 💰 계좌 현황: 예수금 $0.00, 보유종목 3개
+2025-07-03 03:03:00,058 - token_manager - INFO - 기존 토큰 사용 (남은시간: 20시간 7분)
+2025-07-03 03:03:00,058 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 03:03:00,775 - __main__ - INFO -    QSI: +71.9% ($+3.28) 🔥
+2025-07-03 03:03:00,777 - token_manager - INFO - 기존 토큰 사용 (남은시간: 20시간 7분)
+2025-07-03 03:03:00,777 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 03:03:01,350 - __main__ - INFO -    RR: -55.0% ($-2490.72) 📉
+2025-07-03 03:03:01,350 - token_manager - INFO - 기존 토큰 사용 (남은시간: 20시간 7분)
+2025-07-03 03:03:01,350 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 03:03:02,004 - kis_api_with_token_manager - WARNING - ⚠️ SES 현재가 데이터 없음 or 형식 오류: ''
+2025-07-03 03:03:02,004 - __main__ - INFO - 📈 총 평가손익: $-2487.44
+2025-07-03 03:08:02,017 - __main__ - INFO - === 🚀 실전 매매 시스템 상태 (2025-07-02 14:08:02 ET) ===
+2025-07-03 03:08:02,017 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 03:08:02,017 - token_manager - INFO - 기존 토큰 사용 (남은시간: 20시간 2분)
+2025-07-03 03:08:02,017 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 03:08:02,621 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 03:08:02,621 - __main__ - INFO - 💰 계좌 현황: 예수금 $0.00, 보유종목 3개
+2025-07-03 03:08:02,621 - token_manager - INFO - 기존 토큰 사용 (남은시간: 20시간 2분)
+2025-07-03 03:08:02,621 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 03:08:03,210 - __main__ - INFO -    QSI: +71.9% ($+3.28) 🔥
+2025-07-03 03:08:03,210 - token_manager - INFO - 기존 토큰 사용 (남은시간: 20시간 2분)
+2025-07-03 03:08:03,210 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 03:08:03,753 - __main__ - INFO -    RR: -54.9% ($-2485.59) 📉
+2025-07-03 03:08:03,753 - token_manager - INFO - 기존 토큰 사용 (남은시간: 20시간 2분)
+2025-07-03 03:08:03,753 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 03:08:04,330 - kis_api_with_token_manager - WARNING - ⚠️ SES 현재가 데이터 없음 or 형식 오류: ''
+2025-07-03 03:08:04,330 - __main__ - INFO - 📈 총 평가손익: $-2482.31
+2025-07-03 03:13:04,335 - token_manager - INFO - 기존 토큰 사용 (남은시간: 19시간 57분)
+2025-07-03 03:13:04,335 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 03:13:04,335 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 03:13:04,335 - token_manager - INFO - 기존 토큰 사용 (남은시간: 19시간 57분)
+2025-07-03 03:13:04,335 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 03:13:05,094 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 03:13:05,094 - __main__ - INFO - ✅ 안전 점검 통과 (예수금: $0.00, 주문수: 0)
+2025-07-03 03:13:05,094 - __main__ - INFO - === 🚀 실전 매수 전략 실행 시작 ===
+2025-07-03 03:13:05,094 - strategy_pjt1 - INFO - 상승필터 종목 로드 완료: 3개 - ['NVDA', 'AMZN', 'MSFT']
+2025-07-03 03:13:05,094 - token_manager - INFO - 기존 토큰 사용 (남은시간: 19시간 57분)
+2025-07-03 03:13:05,094 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 03:13:05,765 - kis_api_with_token_manager - INFO - 전일 종가 조회 시작: NVDA
+2025-07-03 03:13:05,765 - token_manager - INFO - 기존 토큰 사용 (남은시간: 19시간 57분)
+2025-07-03 03:13:05,765 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 03:13:06,463 - kis_api_with_token_manager - INFO - ✅ NVDA 전일 종가 조회 성공: $153.30
+2025-07-03 03:13:06,463 - strategy_pjt1 - INFO - 필터 종목 NVDA 상승 중 (현재: $156.87, 전일: $153.30)
+2025-07-03 03:13:06,463 - token_manager - INFO - 기존 토큰 사용 (남은시간: 19시간 57분)
+2025-07-03 03:13:06,465 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 03:13:07,091 - kis_api_with_token_manager - INFO - 전일 종가 조회 시작: AMZN
+2025-07-03 03:13:07,107 - token_manager - INFO - 기존 토큰 사용 (남은시간: 19시간 57분)
+2025-07-03 03:13:07,107 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 03:13:07,794 - kis_api_with_token_manager - INFO - ✅ AMZN 전일 종가 조회 성공: $220.46
+2025-07-03 03:13:07,794 - strategy_pjt1 - INFO - 필터 조건 미충족: AMZN 하락 중 (현재: $220.29, 전일: $220.46)
+2025-07-03 03:13:07,794 - __main__ - INFO - ❌ 상승 필터 조건 미충족 - 매수 신호 없음
+2025-07-03 03:13:07,794 - token_manager - INFO - 기존 토큰 사용 (남은시간: 19시간 57분)
+2025-07-03 03:13:07,794 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 03:13:07,794 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 03:13:07,794 - token_manager - INFO - 기존 토큰 사용 (남은시간: 19시간 57분)
+2025-07-03 03:13:07,794 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 03:13:08,322 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 03:13:08,322 - __main__ - INFO - ✅ 안전 점검 통과 (예수금: $0.00, 주문수: 0)
+2025-07-03 03:13:08,322 - __main__ - INFO - === 🚀 실전 매도 전략 실행 시작 ===
+2025-07-03 03:13:08,338 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 03:13:08,338 - token_manager - INFO - 기존 토큰 사용 (남은시간: 19시간 57분)
+2025-07-03 03:13:08,338 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 03:13:08,896 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 03:13:08,896 - token_manager - INFO - 기존 토큰 사용 (남은시간: 19시간 57분)
+2025-07-03 03:13:08,896 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 03:13:09,437 - token_manager - INFO - 기존 토큰 사용 (남은시간: 19시간 57분)
+2025-07-03 03:13:09,437 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 03:13:10,010 - token_manager - INFO - 기존 토큰 사용 (남은시간: 19시간 57분)
+2025-07-03 03:13:10,010 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 03:13:10,584 - kis_api_with_token_manager - WARNING - ⚠️ SES 현재가 데이터 없음 or 형식 오류: ''
+2025-07-03 03:13:10,584 - __main__ - WARNING - ⚠️ SES 현재가 조회 실패 - 스킵
+2025-07-03 03:13:10,584 - __main__ - INFO - 🔥 고수익 매도 실행: QSI
+2025-07-03 03:13:10,584 - __main__ - INFO -    - 수익률: 73.25%
+2025-07-03 03:13:10,584 - __main__ - INFO -    - 현재가: $1.98
+2025-07-03 03:13:10,584 - KISAPIClient - INFO - ➡️ SELL 주문 요청: QSI 4주 @ $1.98 (TR_ID: JTTT1006U)
+2025-07-03 03:13:11,111 - KISAPIClient - ERROR - API 요청 실패: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 03:13:11,111 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00356","msg1":"타겟 서버가 올바르지 않습니다. API 문서를 확인하세요 (타겟 서버 : 입력한 TR ID의 제일 첫 문자)"}
+2025-07-03 03:13:11,111 - KISAPIClient - INFO - 잠시 후 재시도합니다... (1/3)
+2025-07-03 03:13:12,784 - KISAPIClient - ERROR - API 요청 실패: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 03:13:12,784 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00356","msg1":"타겟 서버가 올바르지 않습니다. API 문서를 확인하세요 (타겟 서버 : 입력한 TR ID의 제일 첫 문자)"}
+2025-07-03 03:13:12,784 - KISAPIClient - INFO - 잠시 후 재시도합니다... (2/3)
+2025-07-03 03:13:14,443 - KISAPIClient - ERROR - API 요청 실패: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 03:13:14,443 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00356","msg1":"타겟 서버가 올바르지 않습니다. API 문서를 확인하세요 (타겟 서버 : 입력한 TR ID의 제일 첫 문자)"}
+2025-07-03 03:13:14,443 - KISAPIClient - INFO - 잠시 후 재시도합니다... (3/3)
+2025-07-03 03:13:16,039 - KISAPIClient - ERROR - API 요청 실패: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 03:13:16,039 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00356","msg1":"타겟 서버가 올바르지 않습니다. API 문서를 확인하세요 (타겟 서버 : 입력한 TR ID의 제일 첫 문자)"}
+2025-07-03 03:13:16,039 - KISAPIClient - ERROR - 최대 재시도 횟수 초과. 요청을 최종 실패 처리합니다.
+2025-07-03 03:13:16,055 - __main__ - ERROR - ❌ 고수익 매도 실패: QSI
+2025-07-03 03:13:18,060 - __main__ - INFO - === ✅ 실전 매도 전략 실행 완료 ===
+2025-07-03 03:13:18,060 - __main__ - INFO - 🧹 주문 정리 작업 시작
+2025-07-03 03:13:18,060 - __main__ - INFO - 🟢 거래시간 중 - 2025-07-02 14:13:18 ET
+2025-07-03 03:13:18,060 - __main__ - INFO - === 🚀 실전 매매 시스템 상태 (2025-07-02 14:13:18 ET) ===
+2025-07-03 03:13:18,060 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 03:13:18,060 - token_manager - INFO - 기존 토큰 사용 (남은시간: 19시간 56분)
+2025-07-03 03:13:18,060 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 03:13:18,711 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 03:13:18,713 - __main__ - INFO - 💰 계좌 현황: 예수금 $0.00, 보유종목 3개
+2025-07-03 03:13:18,713 - token_manager - INFO - 기존 토큰 사용 (남은시간: 19시간 56분)
+2025-07-03 03:13:18,713 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 03:13:19,434 - __main__ - INFO -    QSI: +73.2% ($+3.34) 🔥
+2025-07-03 03:13:19,434 - token_manager - INFO - 기존 토큰 사용 (남은시간: 19시간 56분)
+2025-07-03 03:13:19,434 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 03:13:20,009 - __main__ - INFO -    RR: -54.9% ($-2484.46) 📉
+2025-07-03 03:13:20,009 - token_manager - INFO - 기존 토큰 사용 (남은시간: 19시간 56분)
+2025-07-03 03:13:20,009 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 03:13:20,600 - kis_api_with_token_manager - WARNING - ⚠️ SES 현재가 데이터 없음 or 형식 오류: ''
+2025-07-03 03:13:20,616 - __main__ - INFO - 📈 총 평가손익: $-2481.12
+2025-07-03 03:18:20,619 - __main__ - INFO - === 🚀 실전 매매 시스템 상태 (2025-07-02 14:18:20 ET) ===
+2025-07-03 03:18:20,619 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 03:18:20,619 - token_manager - INFO - 기존 토큰 사용 (남은시간: 19시간 51분)
+2025-07-03 03:18:20,619 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 03:18:21,304 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 03:18:21,304 - __main__ - INFO - 💰 계좌 현황: 예수금 $0.00, 보유종목 3개
+2025-07-03 03:18:21,320 - token_manager - INFO - 기존 토큰 사용 (남은시간: 19시간 51분)
+2025-07-03 03:18:21,320 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 03:18:21,815 - __main__ - INFO -    QSI: +72.9% ($+3.32) 🔥
+2025-07-03 03:18:21,815 - token_manager - INFO - 기존 토큰 사용 (남은시간: 19시간 51분)
+2025-07-03 03:18:21,815 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 03:18:22,358 - __main__ - INFO -    RR: -54.8% ($-2480.05) 📉
+2025-07-03 03:18:22,358 - token_manager - INFO - 기존 토큰 사용 (남은시간: 19시간 51분)
+2025-07-03 03:18:22,358 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 03:18:22,949 - kis_api_with_token_manager - WARNING - ⚠️ SES 현재가 데이터 없음 or 형식 오류: ''
+2025-07-03 03:18:22,949 - __main__ - INFO - 📈 총 평가손익: $-2476.72
+2025-07-03 03:23:22,958 - __main__ - INFO - === 🚀 실전 매매 시스템 상태 (2025-07-02 14:23:22 ET) ===
+2025-07-03 03:23:22,958 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 03:23:22,958 - token_manager - INFO - 기존 토큰 사용 (남은시간: 19시간 46분)
+2025-07-03 03:23:22,958 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 03:23:23,530 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 03:23:23,530 - __main__ - INFO - 💰 계좌 현황: 예수금 $0.00, 보유종목 3개
+2025-07-03 03:23:23,530 - token_manager - INFO - 기존 토큰 사용 (남은시간: 19시간 46분)
+2025-07-03 03:23:23,530 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 03:23:24,152 - __main__ - INFO -    QSI: +73.1% ($+3.34) 🔥
+2025-07-03 03:23:24,152 - token_manager - INFO - 기존 토큰 사용 (남은시간: 19시간 46분)
+2025-07-03 03:23:24,152 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 03:23:24,821 - __main__ - INFO -    RR: -54.9% ($-2485.59) 📉
+2025-07-03 03:23:24,823 - token_manager - INFO - 기존 토큰 사용 (남은시간: 19시간 46분)
+2025-07-03 03:23:24,823 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 03:23:25,492 - kis_api_with_token_manager - WARNING - ⚠️ SES 현재가 데이터 없음 or 형식 오류: ''
+2025-07-03 03:23:25,492 - __main__ - INFO - 📈 총 평가손익: $-2482.25
+2025-07-03 03:28:25,497 - __main__ - INFO - === 🚀 실전 매매 시스템 상태 (2025-07-02 14:28:25 ET) ===
+2025-07-03 03:28:25,497 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 03:28:25,499 - token_manager - INFO - 기존 토큰 사용 (남은시간: 19시간 41분)
+2025-07-03 03:28:25,499 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 03:28:26,058 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 03:28:26,058 - __main__ - INFO - 💰 계좌 현황: 예수금 $0.00, 보유종목 3개
+2025-07-03 03:28:26,058 - token_manager - INFO - 기존 토큰 사용 (남은시간: 19시간 41분)
+2025-07-03 03:28:26,058 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 03:28:26,664 - __main__ - INFO -    QSI: +72.6% ($+3.31) 🔥
+2025-07-03 03:28:26,664 - token_manager - INFO - 기존 토큰 사용 (남은시간: 19시간 41분)
+2025-07-03 03:28:26,664 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 03:28:27,277 - __main__ - INFO -    RR: -54.8% ($-2480.46) 📉
+2025-07-03 03:28:27,278 - token_manager - INFO - 기존 토큰 사용 (남은시간: 19시간 41분)
+2025-07-03 03:28:27,279 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 03:28:27,830 - kis_api_with_token_manager - WARNING - ⚠️ SES 현재가 데이터 없음 or 형식 오류: ''
+2025-07-03 03:28:27,830 - __main__ - INFO - 📈 총 평가손익: $-2477.15
+2025-07-03 03:33:27,846 - __main__ - INFO - 🧹 주문 정리 작업 시작
+2025-07-03 03:33:27,846 - __main__ - INFO - === 🚀 실전 매매 시스템 상태 (2025-07-02 14:33:27 ET) ===
+2025-07-03 03:33:27,846 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 03:33:27,846 - token_manager - INFO - 기존 토큰 사용 (남은시간: 19시간 36분)
+2025-07-03 03:33:27,846 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 03:33:28,574 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 03:33:28,574 - __main__ - INFO - 💰 계좌 현황: 예수금 $0.00, 보유종목 3개
+2025-07-03 03:33:28,574 - token_manager - INFO - 기존 토큰 사용 (남은시간: 19시간 36분)
+2025-07-03 03:33:28,574 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 03:33:29,195 - __main__ - INFO -    QSI: +73.3% ($+3.34) 🔥
+2025-07-03 03:33:29,195 - token_manager - INFO - 기존 토큰 사용 (남은시간: 19시간 36분)
+2025-07-03 03:33:29,195 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 03:33:29,801 - __main__ - INFO -    RR: -54.7% ($-2475.43) 📉
+2025-07-03 03:33:29,801 - token_manager - INFO - 기존 토큰 사용 (남은시간: 19시간 36분)
+2025-07-03 03:33:29,801 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 03:33:30,503 - kis_api_with_token_manager - WARNING - ⚠️ SES 현재가 데이터 없음 or 형식 오류: ''
+2025-07-03 03:33:30,503 - __main__ - INFO - 📈 총 평가손익: $-2472.09
+2025-07-03 03:38:30,515 - __main__ - INFO - === 🚀 실전 매매 시스템 상태 (2025-07-02 14:38:30 ET) ===
+2025-07-03 03:38:30,515 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 03:38:30,515 - token_manager - INFO - 기존 토큰 사용 (남은시간: 19시간 31분)
+2025-07-03 03:38:30,515 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 03:38:31,202 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 03:38:31,202 - __main__ - INFO - 💰 계좌 현황: 예수금 $0.00, 보유종목 3개
+2025-07-03 03:38:31,202 - token_manager - INFO - 기존 토큰 사용 (남은시간: 19시간 31분)
+2025-07-03 03:38:31,202 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 03:38:31,778 - __main__ - INFO -    QSI: +73.4% ($+3.35) 🔥
+2025-07-03 03:38:31,778 - token_manager - INFO - 기존 토큰 사용 (남은시간: 19시간 31분)
+2025-07-03 03:38:31,778 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 03:38:32,368 - __main__ - INFO -    RR: -54.9% ($-2485.49) 📉
+2025-07-03 03:38:32,368 - token_manager - INFO - 기존 토큰 사용 (남은시간: 19시간 31분)
+2025-07-03 03:38:32,384 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 03:38:32,974 - kis_api_with_token_manager - WARNING - ⚠️ SES 현재가 데이터 없음 or 형식 오류: ''
+2025-07-03 03:38:32,974 - __main__ - INFO - 📈 총 평가손익: $-2482.14
+2025-07-03 03:43:32,986 - token_manager - INFO - 기존 토큰 사용 (남은시간: 19시간 26분)
+2025-07-03 03:43:32,986 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 03:43:32,986 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 03:43:32,991 - token_manager - INFO - 기존 토큰 사용 (남은시간: 19시간 26분)
+2025-07-03 03:43:32,991 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 03:43:33,614 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 03:43:33,614 - __main__ - INFO - ✅ 안전 점검 통과 (예수금: $0.00, 주문수: 0)
+2025-07-03 03:43:33,614 - __main__ - INFO - === 🚀 실전 매도 전략 실행 시작 ===
+2025-07-03 03:43:33,614 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 03:43:33,614 - token_manager - INFO - 기존 토큰 사용 (남은시간: 19시간 26분)
+2025-07-03 03:43:33,614 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 03:43:34,173 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 03:43:34,173 - token_manager - INFO - 기존 토큰 사용 (남은시간: 19시간 26분)
+2025-07-03 03:43:34,173 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 03:43:34,796 - token_manager - INFO - 기존 토큰 사용 (남은시간: 19시간 26분)
+2025-07-03 03:43:34,796 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 03:43:35,321 - token_manager - INFO - 기존 토큰 사용 (남은시간: 19시간 26분)
+2025-07-03 03:43:35,321 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 03:43:35,894 - kis_api_with_token_manager - WARNING - ⚠️ SES 현재가 데이터 없음 or 형식 오류: ''
+2025-07-03 03:43:35,894 - __main__ - WARNING - ⚠️ SES 현재가 조회 실패 - 스킵
+2025-07-03 03:43:35,894 - __main__ - INFO - 🔥 고수익 매도 실행: QSI
+2025-07-03 03:43:35,894 - __main__ - INFO -    - 수익률: 73.25%
+2025-07-03 03:43:35,894 - __main__ - INFO -    - 현재가: $1.98
+2025-07-03 03:43:35,894 - KISAPIClient - INFO - ➡️ SELL 주문 요청: QSI 4주 @ $1.98 (TR_ID: JTTT1006U)
+2025-07-03 03:43:36,482 - KISAPIClient - ERROR - API 요청 실패: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 03:43:36,482 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00356","msg1":"타겟 서버가 올바르지 않습니다. API 문서를 확인하세요 (타겟 서버 : 입력한 TR ID의 제일 첫 문자)"}
+2025-07-03 03:43:36,482 - KISAPIClient - INFO - 잠시 후 재시도합니다... (1/3)
+2025-07-03 03:43:38,014 - KISAPIClient - ERROR - API 요청 실패: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 03:43:38,014 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00356","msg1":"타겟 서버가 올바르지 않습니다. API 문서를 확인하세요 (타겟 서버 : 입력한 TR ID의 제일 첫 문자)"}
+2025-07-03 03:43:38,014 - KISAPIClient - INFO - 잠시 후 재시도합니다... (2/3)
+2025-07-03 03:43:39,689 - KISAPIClient - ERROR - API 요청 실패: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 03:43:39,689 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00356","msg1":"타겟 서버가 올바르지 않습니다. API 문서를 확인하세요 (타겟 서버 : 입력한 TR ID의 제일 첫 문자)"}
+2025-07-03 03:43:39,689 - KISAPIClient - INFO - 잠시 후 재시도합니다... (3/3)
+2025-07-03 03:43:41,300 - KISAPIClient - ERROR - API 요청 실패: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 03:43:41,300 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00356","msg1":"타겟 서버가 올바르지 않습니다. API 문서를 확인하세요 (타겟 서버 : 입력한 TR ID의 제일 첫 문자)"}
+2025-07-03 03:43:41,300 - KISAPIClient - ERROR - 최대 재시도 횟수 초과. 요청을 최종 실패 처리합니다.
+2025-07-03 03:43:41,315 - __main__ - ERROR - ❌ 고수익 매도 실패: QSI
+2025-07-03 03:43:43,327 - __main__ - INFO - === ✅ 실전 매도 전략 실행 완료 ===
+2025-07-03 03:43:43,327 - __main__ - INFO - === 🚀 실전 매매 시스템 상태 (2025-07-02 14:43:43 ET) ===
+2025-07-03 03:43:43,327 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 03:43:43,329 - token_manager - INFO - 기존 토큰 사용 (남은시간: 19시간 26분)
+2025-07-03 03:43:43,329 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 03:43:43,870 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 03:43:43,870 - __main__ - INFO - 💰 계좌 현황: 예수금 $0.00, 보유종목 3개
+2025-07-03 03:43:43,870 - token_manager - INFO - 기존 토큰 사용 (남은시간: 19시간 26분)
+2025-07-03 03:43:43,870 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 03:43:44,557 - __main__ - INFO -    QSI: +73.2% ($+3.34) 🔥
+2025-07-03 03:43:44,557 - token_manager - INFO - 기존 토큰 사용 (남은시간: 19시간 26분)
+2025-07-03 03:43:44,557 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 03:43:45,097 - __main__ - INFO -    RR: -54.9% ($-2485.49) 📉
+2025-07-03 03:43:45,097 - token_manager - INFO - 기존 토큰 사용 (남은시간: 19시간 26분)
+2025-07-03 03:43:45,097 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 03:43:45,640 - kis_api_with_token_manager - WARNING - ⚠️ SES 현재가 데이터 없음 or 형식 오류: ''
+2025-07-03 03:43:45,640 - __main__ - INFO - 📈 총 평가손익: $-2482.14
+2025-07-03 03:48:45,655 - __main__ - INFO - === 🚀 실전 매매 시스템 상태 (2025-07-02 14:48:45 ET) ===
+2025-07-03 03:48:45,655 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 03:48:45,655 - token_manager - INFO - 기존 토큰 사용 (남은시간: 19시간 21분)
+2025-07-03 03:48:45,655 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 03:48:46,384 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 03:48:46,384 - __main__ - INFO - 💰 계좌 현황: 예수금 $0.00, 보유종목 3개
+2025-07-03 03:48:46,384 - token_manager - INFO - 기존 토큰 사용 (남은시간: 19시간 21분)
+2025-07-03 03:48:46,384 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 03:48:47,054 - __main__ - INFO -    QSI: +73.5% ($+3.35) 🔥
+2025-07-03 03:48:47,054 - token_manager - INFO - 기존 토큰 사용 (남은시간: 19시간 21분)
+2025-07-03 03:48:47,054 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 03:48:47,580 - __main__ - INFO -    RR: -54.8% ($-2480.46) 📉
+2025-07-03 03:48:47,580 - token_manager - INFO - 기존 토큰 사용 (남은시간: 19시간 21분)
+2025-07-03 03:48:47,580 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 03:48:48,137 - kis_api_with_token_manager - WARNING - ⚠️ SES 현재가 데이터 없음 or 형식 오류: ''
+2025-07-03 03:48:48,137 - __main__ - INFO - 📈 총 평가손익: $-2477.11
+2025-07-03 03:53:48,143 - __main__ - INFO - 🧹 주문 정리 작업 시작
+2025-07-03 03:53:48,143 - __main__ - INFO - === 🚀 실전 매매 시스템 상태 (2025-07-02 14:53:48 ET) ===
+2025-07-03 03:53:48,143 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 03:53:48,143 - token_manager - INFO - 기존 토큰 사용 (남은시간: 19시간 16분)
+2025-07-03 03:53:48,143 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 03:53:48,738 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 03:53:48,738 - __main__ - INFO - 💰 계좌 현황: 예수금 $0.00, 보유종목 3개
+2025-07-03 03:53:48,738 - token_manager - INFO - 기존 토큰 사용 (남은시간: 19시간 16분)
+2025-07-03 03:53:48,738 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 03:53:49,344 - __main__ - INFO -    QSI: +72.4% ($+3.30) 🔥
+2025-07-03 03:53:49,344 - token_manager - INFO - 기존 토큰 사용 (남은시간: 19시간 16분)
+2025-07-03 03:53:49,360 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 03:53:49,967 - __main__ - INFO -    RR: -54.8% ($-2480.46) 📉
+2025-07-03 03:53:49,967 - token_manager - INFO - 기존 토큰 사용 (남은시간: 19시간 16분)
+2025-07-03 03:53:49,967 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 03:53:50,606 - kis_api_with_token_manager - WARNING - ⚠️ SES 현재가 데이터 없음 or 형식 오류: ''
+2025-07-03 03:53:50,606 - __main__ - INFO - 📈 총 평가손익: $-2477.16
+2025-07-03 03:58:50,616 - __main__ - INFO - === 🚀 실전 매매 시스템 상태 (2025-07-02 14:58:50 ET) ===
+2025-07-03 03:58:50,616 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 03:58:50,616 - token_manager - INFO - 기존 토큰 사용 (남은시간: 19시간 11분)
+2025-07-03 03:58:50,616 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 03:58:51,397 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 03:58:51,397 - __main__ - INFO - 💰 계좌 현황: 예수금 $0.00, 보유종목 3개
+2025-07-03 03:58:51,397 - token_manager - INFO - 기존 토큰 사용 (남은시간: 19시간 11분)
+2025-07-03 03:58:51,397 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 03:58:52,066 - __main__ - INFO -    QSI: +72.8% ($+3.32) 🔥
+2025-07-03 03:58:52,066 - token_manager - INFO - 기존 토큰 사용 (남은시간: 19시간 11분)
+2025-07-03 03:58:52,066 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 03:58:52,607 - __main__ - INFO -    RR: -54.8% ($-2480.46) 📉
+2025-07-03 03:58:52,607 - token_manager - INFO - 기존 토큰 사용 (남은시간: 19시간 11분)
+2025-07-03 03:58:52,607 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 03:58:53,339 - kis_api_with_token_manager - WARNING - ⚠️ SES 현재가 데이터 없음 or 형식 오류: ''
+2025-07-03 03:58:53,339 - __main__ - INFO - 📈 총 평가손익: $-2477.14
+2025-07-03 04:03:53,356 - __main__ - INFO - === 🚀 실전 매매 시스템 상태 (2025-07-02 15:03:53 ET) ===
+2025-07-03 04:03:53,356 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 04:03:53,356 - token_manager - INFO - 기존 토큰 사용 (남은시간: 19시간 6분)
+2025-07-03 04:03:53,356 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 04:03:53,957 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 04:03:53,957 - __main__ - INFO - 💰 계좌 현황: 예수금 $0.00, 보유종목 3개
+2025-07-03 04:03:53,957 - token_manager - INFO - 기존 토큰 사용 (남은시간: 19시간 6분)
+2025-07-03 04:03:53,973 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 04:03:54,704 - __main__ - INFO -    QSI: +74.1% ($+3.38) 🔥
+2025-07-03 04:03:54,704 - token_manager - INFO - 기존 토큰 사용 (남은시간: 19시간 6분)
+2025-07-03 04:03:54,704 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 04:03:55,357 - __main__ - INFO -    RR: -54.6% ($-2470.20) 📉
+2025-07-03 04:03:55,357 - token_manager - INFO - 기존 토큰 사용 (남은시간: 19시간 6분)
+2025-07-03 04:03:55,357 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 04:03:55,947 - kis_api_with_token_manager - WARNING - ⚠️ SES 현재가 데이터 없음 or 형식 오류: ''
+2025-07-03 04:03:55,947 - __main__ - INFO - 📈 총 평가손익: $-2466.82
+2025-07-03 04:08:55,964 - __main__ - INFO - === 🚀 실전 매매 시스템 상태 (2025-07-02 15:08:55 ET) ===
+2025-07-03 04:08:55,964 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 04:08:55,964 - token_manager - INFO - 기존 토큰 사용 (남은시간: 19시간 1분)
+2025-07-03 04:08:55,964 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 04:08:56,715 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 04:08:56,715 - __main__ - INFO - 💰 계좌 현황: 예수금 $0.00, 보유종목 3개
+2025-07-03 04:08:56,715 - token_manager - INFO - 기존 토큰 사용 (남은시간: 19시간 1분)
+2025-07-03 04:08:56,715 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 04:08:57,353 - __main__ - INFO -    QSI: +73.2% ($+3.34) 🔥
+2025-07-03 04:08:57,353 - token_manager - INFO - 기존 토큰 사용 (남은시간: 19시간 1분)
+2025-07-03 04:08:57,353 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 04:08:57,896 - __main__ - INFO -    RR: -54.2% ($-2454.81) 📉
+2025-07-03 04:08:57,896 - token_manager - INFO - 기존 토큰 사용 (남은시간: 19시간 1분)
+2025-07-03 04:08:57,896 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 04:08:58,468 - kis_api_with_token_manager - WARNING - ⚠️ SES 현재가 데이터 없음 or 형식 오류: ''
+2025-07-03 04:08:58,468 - __main__ - INFO - 📈 총 평가손익: $-2451.47
+2025-07-03 04:13:58,481 - token_manager - INFO - 기존 토큰 사용 (남은시간: 18시간 56분)
+2025-07-03 04:13:58,481 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 04:13:58,481 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 04:13:58,481 - token_manager - INFO - 기존 토큰 사용 (남은시간: 18시간 56분)
+2025-07-03 04:13:58,481 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 04:13:59,115 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 04:13:59,115 - __main__ - INFO - ✅ 안전 점검 통과 (예수금: $0.00, 주문수: 0)
+2025-07-03 04:13:59,115 - __main__ - INFO - === 🚀 실전 매수 전략 실행 시작 ===
+2025-07-03 04:13:59,115 - strategy_pjt1 - INFO - 상승필터 종목 로드 완료: 3개 - ['NVDA', 'AMZN', 'MSFT']
+2025-07-03 04:13:59,115 - token_manager - INFO - 기존 토큰 사용 (남은시간: 18시간 56분)
+2025-07-03 04:13:59,115 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 04:13:59,722 - kis_api_with_token_manager - INFO - 전일 종가 조회 시작: NVDA
+2025-07-03 04:13:59,722 - token_manager - INFO - 기존 토큰 사용 (남은시간: 18시간 56분)
+2025-07-03 04:13:59,722 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 04:14:00,312 - kis_api_with_token_manager - INFO - ✅ NVDA 전일 종가 조회 성공: $153.30
+2025-07-03 04:14:00,312 - strategy_pjt1 - INFO - 필터 종목 NVDA 상승 중 (현재: $156.80, 전일: $153.30)
+2025-07-03 04:14:00,312 - token_manager - INFO - 기존 토큰 사용 (남은시간: 18시간 56분)
+2025-07-03 04:14:00,312 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 04:14:01,013 - kis_api_with_token_manager - INFO - 전일 종가 조회 시작: AMZN
+2025-07-03 04:14:01,013 - token_manager - INFO - 기존 토큰 사용 (남은시간: 18시간 56분)
+2025-07-03 04:14:01,013 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 04:14:01,589 - kis_api_with_token_manager - INFO - ✅ AMZN 전일 종가 조회 성공: $220.46
+2025-07-03 04:14:01,589 - strategy_pjt1 - INFO - 필터 조건 미충족: AMZN 하락 중 (현재: $220.26, 전일: $220.46)
+2025-07-03 04:14:01,589 - __main__ - INFO - ❌ 상승 필터 조건 미충족 - 매수 신호 없음
+2025-07-03 04:14:01,589 - token_manager - INFO - 기존 토큰 사용 (남은시간: 18시간 56분)
+2025-07-03 04:14:01,589 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 04:14:01,589 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 04:14:01,589 - token_manager - INFO - 기존 토큰 사용 (남은시간: 18시간 56분)
+2025-07-03 04:14:01,589 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 04:14:02,131 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 04:14:02,131 - __main__ - INFO - ✅ 안전 점검 통과 (예수금: $0.00, 주문수: 0)
+2025-07-03 04:14:02,131 - __main__ - INFO - === 🚀 실전 매도 전략 실행 시작 ===
+2025-07-03 04:14:02,131 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 04:14:02,131 - token_manager - INFO - 기존 토큰 사용 (남은시간: 18시간 56분)
+2025-07-03 04:14:02,131 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 04:14:02,722 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 04:14:02,722 - token_manager - INFO - 기존 토큰 사용 (남은시간: 18시간 56분)
+2025-07-03 04:14:02,722 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 04:14:03,311 - token_manager - INFO - 기존 토큰 사용 (남은시간: 18시간 56분)
+2025-07-03 04:14:03,311 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 04:14:03,967 - token_manager - INFO - 기존 토큰 사용 (남은시간: 18시간 56분)
+2025-07-03 04:14:03,967 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 04:14:04,525 - kis_api_with_token_manager - WARNING - ⚠️ SES 현재가 데이터 없음 or 형식 오류: ''
+2025-07-03 04:14:04,525 - __main__ - WARNING - ⚠️ SES 현재가 조회 실패 - 스킵
+2025-07-03 04:14:04,525 - __main__ - INFO - 🔥 고수익 매도 실행: QSI
+2025-07-03 04:14:04,525 - __main__ - INFO -    - 수익률: 73.68%
+2025-07-03 04:14:04,525 - __main__ - INFO -    - 현재가: $1.98
+2025-07-03 04:14:04,525 - KISAPIClient - INFO - ➡️ SELL 주문 요청: QSI 4주 @ $1.98 (TR_ID: JTTT1006U)
+2025-07-03 04:14:05,068 - KISAPIClient - ERROR - API 요청 실패: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 04:14:05,068 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00356","msg1":"타겟 서버가 올바르지 않습니다. API 문서를 확인하세요 (타겟 서버 : 입력한 TR ID의 제일 첫 문자)"}
+2025-07-03 04:14:05,068 - KISAPIClient - INFO - 잠시 후 재시도합니다... (1/3)
+2025-07-03 04:14:06,662 - KISAPIClient - ERROR - API 요청 실패: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 04:14:06,662 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00356","msg1":"타겟 서버가 올바르지 않습니다. API 문서를 확인하세요 (타겟 서버 : 입력한 TR ID의 제일 첫 문자)"}
+2025-07-03 04:14:06,662 - KISAPIClient - INFO - 잠시 후 재시도합니다... (2/3)
+2025-07-03 04:14:08,278 - KISAPIClient - ERROR - API 요청 실패: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 04:14:08,279 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00356","msg1":"타겟 서버가 올바르지 않습니다. API 문서를 확인하세요 (타겟 서버 : 입력한 TR ID의 제일 첫 문자)"}
+2025-07-03 04:14:08,280 - KISAPIClient - INFO - 잠시 후 재시도합니다... (3/3)
+2025-07-03 04:14:09,836 - KISAPIClient - ERROR - API 요청 실패: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 04:14:09,836 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00356","msg1":"타겟 서버가 올바르지 않습니다. API 문서를 확인하세요 (타겟 서버 : 입력한 TR ID의 제일 첫 문자)"}
+2025-07-03 04:14:09,836 - KISAPIClient - ERROR - 최대 재시도 횟수 초과. 요청을 최종 실패 처리합니다.
+2025-07-03 04:14:09,851 - __main__ - ERROR - ❌ 고수익 매도 실패: QSI
+2025-07-03 04:14:11,852 - __main__ - INFO - === ✅ 실전 매도 전략 실행 완료 ===
+2025-07-03 04:14:11,852 - __main__ - INFO - 🧹 주문 정리 작업 시작
+2025-07-03 04:14:11,852 - __main__ - INFO - 🟢 거래시간 중 - 2025-07-02 15:14:11 ET
+2025-07-03 04:14:11,852 - __main__ - INFO - === 🚀 실전 매매 시스템 상태 (2025-07-02 15:14:11 ET) ===
+2025-07-03 04:14:11,852 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 04:14:11,852 - token_manager - INFO - 기존 토큰 사용 (남은시간: 18시간 56분)
+2025-07-03 04:14:11,852 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 04:14:12,490 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 04:14:12,490 - __main__ - INFO - 💰 계좌 현황: 예수금 $0.00, 보유종목 3개
+2025-07-03 04:14:12,490 - token_manager - INFO - 기존 토큰 사용 (남은시간: 18시간 56분)
+2025-07-03 04:14:12,490 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 04:14:13,208 - __main__ - INFO -    QSI: +73.1% ($+3.33) 🔥
+2025-07-03 04:14:13,208 - token_manager - INFO - 기존 토큰 사용 (남은시간: 18시간 56분)
+2025-07-03 04:14:13,208 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 04:14:13,813 - __main__ - INFO -    RR: -54.3% ($-2459.94) 📉
+2025-07-03 04:14:13,813 - token_manager - INFO - 기존 토큰 사용 (남은시간: 18시간 56분)
+2025-07-03 04:14:13,813 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 04:14:14,420 - kis_api_with_token_manager - WARNING - ⚠️ SES 현재가 데이터 없음 or 형식 오류: ''
+2025-07-03 04:14:14,420 - __main__ - INFO - 📈 총 평가손익: $-2456.60
+2025-07-03 04:19:14,435 - __main__ - INFO - === 🚀 실전 매매 시스템 상태 (2025-07-02 15:19:14 ET) ===
+2025-07-03 04:19:14,436 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 04:19:14,436 - token_manager - INFO - 기존 토큰 사용 (남은시간: 18시간 50분)
+2025-07-03 04:19:14,436 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 04:19:15,122 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 04:19:15,122 - __main__ - INFO - 💰 계좌 현황: 예수금 $0.00, 보유종목 3개
+2025-07-03 04:19:15,122 - token_manager - INFO - 기존 토큰 사용 (남은시간: 18시간 50분)
+2025-07-03 04:19:15,122 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 04:19:15,760 - __main__ - INFO -    QSI: +72.4% ($+3.30) 🔥
+2025-07-03 04:19:15,760 - token_manager - INFO - 기존 토큰 사용 (남은시간: 18시간 50분)
+2025-07-03 04:19:15,760 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 04:19:16,332 - __main__ - INFO -    RR: -54.0% ($-2444.75) 📉
+2025-07-03 04:19:16,332 - token_manager - INFO - 기존 토큰 사용 (남은시간: 18시간 50분)
+2025-07-03 04:19:16,332 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 04:19:16,891 - kis_api_with_token_manager - WARNING - ⚠️ SES 현재가 데이터 없음 or 형식 오류: ''
+2025-07-03 04:19:16,891 - __main__ - INFO - 📈 총 평가손익: $-2441.45
+2025-07-03 04:24:16,903 - __main__ - INFO - === 🚀 실전 매매 시스템 상태 (2025-07-02 15:24:16 ET) ===
+2025-07-03 04:24:16,903 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 04:24:16,903 - token_manager - INFO - 기존 토큰 사용 (남은시간: 18시간 45분)
+2025-07-03 04:24:16,903 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 04:24:17,522 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 04:24:17,522 - __main__ - INFO - 💰 계좌 현황: 예수금 $0.00, 보유종목 3개
+2025-07-03 04:24:17,522 - token_manager - INFO - 기존 토큰 사용 (남은시간: 18시간 45분)
+2025-07-03 04:24:17,522 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 04:24:18,074 - __main__ - INFO -    QSI: +73.5% ($+3.35) 🔥
+2025-07-03 04:24:18,074 - token_manager - INFO - 기존 토큰 사용 (남은시간: 18시간 45분)
+2025-07-03 04:24:18,074 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 04:24:18,809 - __main__ - INFO -    RR: -54.1% ($-2449.68) 📉
+2025-07-03 04:24:18,824 - token_manager - INFO - 기존 토큰 사용 (남은시간: 18시간 45분)
+2025-07-03 04:24:18,824 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 04:24:19,430 - kis_api_with_token_manager - WARNING - ⚠️ SES 현재가 데이터 없음 or 형식 오류: ''
+2025-07-03 04:24:19,430 - __main__ - INFO - 📈 총 평가손익: $-2446.33
+2025-07-03 04:29:19,444 - __main__ - INFO - === 🚀 실전 매매 시스템 상태 (2025-07-02 15:29:19 ET) ===
+2025-07-03 04:29:19,444 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 04:29:19,444 - token_manager - INFO - 기존 토큰 사용 (남은시간: 18시간 40분)
+2025-07-03 04:29:19,447 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 04:29:20,048 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 04:29:20,048 - __main__ - INFO - 💰 계좌 현황: 예수금 $0.00, 보유종목 3개
+2025-07-03 04:29:20,048 - token_manager - INFO - 기존 토큰 사용 (남은시간: 18시간 40분)
+2025-07-03 04:29:20,048 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 04:29:20,641 - __main__ - INFO -    QSI: +73.5% ($+3.35) 🔥
+2025-07-03 04:29:20,641 - token_manager - INFO - 기존 토큰 사용 (남은시간: 18시간 40분)
+2025-07-03 04:29:20,641 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 04:29:21,261 - __main__ - INFO -    RR: -54.1% ($-2449.68) 📉
+2025-07-03 04:29:21,261 - token_manager - INFO - 기존 토큰 사용 (남은시간: 18시간 40분)
+2025-07-03 04:29:21,261 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 04:29:21,788 - kis_api_with_token_manager - WARNING - ⚠️ SES 현재가 데이터 없음 or 형식 오류: ''
+2025-07-03 04:29:21,788 - __main__ - INFO - 📈 총 평가손익: $-2446.33
+2025-07-03 04:34:21,799 - __main__ - INFO - 🧹 주문 정리 작업 시작
+2025-07-03 04:34:21,799 - __main__ - INFO - === 🚀 실전 매매 시스템 상태 (2025-07-02 15:34:21 ET) ===
+2025-07-03 04:34:21,799 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 04:34:21,799 - token_manager - INFO - 기존 토큰 사용 (남은시간: 18시간 35분)
+2025-07-03 04:34:21,799 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 04:34:22,474 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 04:34:22,474 - __main__ - INFO - 💰 계좌 현황: 예수금 $0.00, 보유종목 3개
+2025-07-03 04:34:22,474 - token_manager - INFO - 기존 토큰 사용 (남은시간: 18시간 35분)
+2025-07-03 04:34:22,474 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 04:34:23,000 - __main__ - INFO -    QSI: +73.2% ($+3.34) 🔥
+2025-07-03 04:34:23,000 - token_manager - INFO - 기존 토큰 사용 (남은시간: 18시간 35분)
+2025-07-03 04:34:23,000 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 04:34:23,590 - __main__ - INFO -    RR: -54.1% ($-2449.68) 📉
+2025-07-03 04:34:23,590 - token_manager - INFO - 기존 토큰 사용 (남은시간: 18시간 35분)
+2025-07-03 04:34:23,590 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 04:34:24,258 - kis_api_with_token_manager - WARNING - ⚠️ SES 현재가 데이터 없음 or 형식 오류: ''
+2025-07-03 04:34:24,258 - __main__ - INFO - 📈 총 평가손익: $-2446.34
+2025-07-03 04:39:24,268 - __main__ - INFO - === 🚀 실전 매매 시스템 상태 (2025-07-02 15:39:24 ET) ===
+2025-07-03 04:39:24,268 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 04:39:24,268 - token_manager - INFO - 기존 토큰 사용 (남은시간: 18시간 30분)
+2025-07-03 04:39:24,268 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 04:39:24,866 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 04:39:24,866 - __main__ - INFO - 💰 계좌 현황: 예수금 $0.00, 보유종목 3개
+2025-07-03 04:39:24,866 - token_manager - INFO - 기존 토큰 사용 (남은시간: 18시간 30분)
+2025-07-03 04:39:24,866 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 04:39:25,520 - __main__ - INFO -    QSI: +72.8% ($+3.32) 🔥
+2025-07-03 04:39:25,536 - token_manager - INFO - 기존 토큰 사용 (남은시간: 18시간 30분)
+2025-07-03 04:39:25,536 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 04:39:26,070 - __main__ - INFO -    RR: -54.1% ($-2449.68) 📉
+2025-07-03 04:39:26,072 - token_manager - INFO - 기존 토큰 사용 (남은시간: 18시간 30분)
+2025-07-03 04:39:26,072 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 04:39:26,701 - kis_api_with_token_manager - WARNING - ⚠️ SES 현재가 데이터 없음 or 형식 오류: ''
+2025-07-03 04:39:26,701 - __main__ - INFO - 📈 총 평가손익: $-2446.36
+2025-07-03 04:44:26,715 - token_manager - INFO - 기존 토큰 사용 (남은시간: 18시간 25분)
+2025-07-03 04:44:26,715 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 04:44:26,715 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 04:44:26,715 - token_manager - INFO - 기존 토큰 사용 (남은시간: 18시간 25분)
+2025-07-03 04:44:26,715 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 04:44:27,379 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 04:44:27,379 - __main__ - INFO - ✅ 안전 점검 통과 (예수금: $0.00, 주문수: 0)
+2025-07-03 04:44:27,379 - __main__ - INFO - === 🚀 실전 매도 전략 실행 시작 ===
+2025-07-03 04:44:27,379 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 04:44:27,379 - token_manager - INFO - 기존 토큰 사용 (남은시간: 18시간 25분)
+2025-07-03 04:44:27,379 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 04:44:27,985 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 04:44:27,985 - token_manager - INFO - 기존 토큰 사용 (남은시간: 18시간 25분)
+2025-07-03 04:44:27,985 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 04:44:28,589 - token_manager - INFO - 기존 토큰 사용 (남은시간: 18시간 25분)
+2025-07-03 04:44:28,605 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 04:44:29,227 - token_manager - INFO - 기존 토큰 사용 (남은시간: 18시간 25분)
+2025-07-03 04:44:29,227 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 04:44:29,818 - kis_api_with_token_manager - WARNING - ⚠️ SES 현재가 데이터 없음 or 형식 오류: ''
+2025-07-03 04:44:29,818 - __main__ - WARNING - ⚠️ SES 현재가 조회 실패 - 스킵
+2025-07-03 04:44:29,818 - __main__ - INFO - 🔥 고수익 매도 실행: QSI
+2025-07-03 04:44:29,818 - __main__ - INFO -    - 수익률: 72.63%
+2025-07-03 04:44:29,818 - __main__ - INFO -    - 현재가: $1.97
+2025-07-03 04:44:29,818 - KISAPIClient - INFO - ➡️ SELL 주문 요청: QSI 4주 @ $1.97 (TR_ID: JTTT1006U)
+2025-07-03 04:44:30,377 - KISAPIClient - ERROR - API 요청 실패: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 04:44:30,377 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00356","msg1":"타겟 서버가 올바르지 않습니다. API 문서를 확인하세요 (타겟 서버 : 입력한 TR ID의 제일 첫 문자)"}
+2025-07-03 04:44:30,377 - KISAPIClient - INFO - 잠시 후 재시도합니다... (1/3)
+2025-07-03 04:44:32,032 - KISAPIClient - ERROR - API 요청 실패: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 04:44:32,032 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00356","msg1":"타겟 서버가 올바르지 않습니다. API 문서를 확인하세요 (타겟 서버 : 입력한 TR ID의 제일 첫 문자)"}
+2025-07-03 04:44:32,032 - KISAPIClient - INFO - 잠시 후 재시도합니다... (2/3)
+2025-07-03 04:44:33,739 - KISAPIClient - ERROR - API 요청 실패: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 04:44:33,739 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00356","msg1":"타겟 서버가 올바르지 않습니다. API 문서를 확인하세요 (타겟 서버 : 입력한 TR ID의 제일 첫 문자)"}
+2025-07-03 04:44:33,739 - KISAPIClient - INFO - 잠시 후 재시도합니다... (3/3)
+2025-07-03 04:44:35,334 - KISAPIClient - ERROR - API 요청 실패: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 04:44:35,334 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00356","msg1":"타겟 서버가 올바르지 않습니다. API 문서를 확인하세요 (타겟 서버 : 입력한 TR ID의 제일 첫 문자)"}
+2025-07-03 04:44:35,334 - KISAPIClient - ERROR - 최대 재시도 횟수 초과. 요청을 최종 실패 처리합니다.
+2025-07-03 04:44:35,350 - __main__ - ERROR - ❌ 고수익 매도 실패: QSI
+2025-07-03 04:44:37,353 - __main__ - INFO - === ✅ 실전 매도 전략 실행 완료 ===
+2025-07-03 04:44:37,353 - __main__ - INFO - === 🚀 실전 매매 시스템 상태 (2025-07-02 15:44:37 ET) ===
+2025-07-03 04:44:37,353 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 04:44:37,353 - token_manager - INFO - 기존 토큰 사용 (남은시간: 18시간 25분)
+2025-07-03 04:44:37,353 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 04:44:38,062 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 04:44:38,062 - __main__ - INFO - 💰 계좌 현황: 예수금 $0.00, 보유종목 3개
+2025-07-03 04:44:38,062 - token_manager - INFO - 기존 토큰 사용 (남은시간: 18시간 25분)
+2025-07-03 04:44:38,062 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 04:44:38,630 - __main__ - INFO -    QSI: +72.6% ($+3.31) 🔥
+2025-07-03 04:44:38,630 - token_manager - INFO - 기존 토큰 사용 (남은시간: 18시간 25분)
+2025-07-03 04:44:38,630 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 04:44:39,220 - __main__ - INFO -    RR: -54.1% ($-2449.68) 📉
+2025-07-03 04:44:39,236 - token_manager - INFO - 기존 토큰 사용 (남은시간: 18시간 25분)
+2025-07-03 04:44:39,236 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 04:44:39,762 - kis_api_with_token_manager - WARNING - ⚠️ SES 현재가 데이터 없음 or 형식 오류: ''
+2025-07-03 04:44:39,762 - __main__ - INFO - 📈 총 평가손익: $-2446.37
+2025-07-03 04:49:39,779 - __main__ - INFO - === 🚀 실전 매매 시스템 상태 (2025-07-02 15:49:39 ET) ===
+2025-07-03 04:49:39,779 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 04:49:39,779 - token_manager - INFO - 기존 토큰 사용 (남은시간: 18시간 20분)
+2025-07-03 04:49:39,782 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 04:49:40,452 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 04:49:40,452 - __main__ - INFO - 💰 계좌 현황: 예수금 $0.00, 보유종목 3개
+2025-07-03 04:49:40,452 - token_manager - INFO - 기존 토큰 사용 (남은시간: 18시간 20분)
+2025-07-03 04:49:40,452 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 04:49:40,994 - __main__ - INFO -    QSI: +72.4% ($+3.30) 🔥
+2025-07-03 04:49:40,994 - token_manager - INFO - 기존 토큰 사용 (남은시간: 18시간 20분)
+2025-07-03 04:49:40,994 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 04:49:41,553 - __main__ - INFO -    RR: -54.1% ($-2449.68) 📉
+2025-07-03 04:49:41,553 - token_manager - INFO - 기존 토큰 사용 (남은시간: 18시간 20분)
+2025-07-03 04:49:41,553 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 04:49:42,175 - kis_api_with_token_manager - WARNING - ⚠️ SES 현재가 데이터 없음 or 형식 오류: ''
+2025-07-03 04:49:42,175 - __main__ - INFO - 📈 총 평가손익: $-2446.38
+2025-07-03 04:54:42,189 - __main__ - INFO - 🧹 주문 정리 작업 시작
+2025-07-03 04:54:42,189 - __main__ - INFO - === 🚀 실전 매매 시스템 상태 (2025-07-02 15:54:42 ET) ===
+2025-07-03 04:54:42,189 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 04:54:42,189 - token_manager - INFO - 기존 토큰 사용 (남은시간: 18시간 15분)
+2025-07-03 04:54:42,189 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 04:54:42,816 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 04:54:42,816 - __main__ - INFO - 💰 계좌 현황: 예수금 $0.00, 보유종목 3개
+2025-07-03 04:54:42,816 - token_manager - INFO - 기존 토큰 사용 (남은시간: 18시간 15분)
+2025-07-03 04:54:42,816 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 04:54:43,327 - __main__ - INFO -    QSI: +72.8% ($+3.32) 🔥
+2025-07-03 04:54:43,327 - token_manager - INFO - 기존 토큰 사용 (남은시간: 18시간 15분)
+2025-07-03 04:54:43,327 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 04:54:43,885 - __main__ - INFO -    RR: -54.2% ($-2454.81) 📉
+2025-07-03 04:54:43,885 - token_manager - INFO - 기존 토큰 사용 (남은시간: 18시간 15분)
+2025-07-03 04:54:43,885 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 04:54:44,475 - kis_api_with_token_manager - WARNING - ⚠️ SES 현재가 데이터 없음 or 형식 오류: ''
+2025-07-03 04:54:44,475 - __main__ - INFO - 📈 총 평가손익: $-2451.49
+2025-07-03 04:59:44,491 - __main__ - INFO - === 🚀 실전 매매 시스템 상태 (2025-07-02 15:59:44 ET) ===
+2025-07-03 04:59:44,491 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 04:59:44,491 - token_manager - INFO - 기존 토큰 사용 (남은시간: 18시간 10분)
+2025-07-03 04:59:44,491 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 04:59:45,097 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 04:59:45,097 - __main__ - INFO - 💰 계좌 현황: 예수금 $0.00, 보유종목 3개
+2025-07-03 04:59:45,097 - token_manager - INFO - 기존 토큰 사용 (남은시간: 18시간 10분)
+2025-07-03 04:59:45,097 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 04:59:45,736 - __main__ - INFO -    QSI: +74.1% ($+3.38) 🔥
+2025-07-03 04:59:45,736 - token_manager - INFO - 기존 토큰 사용 (남은시간: 18시간 10분)
+2025-07-03 04:59:45,736 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 04:59:46,327 - __main__ - INFO -    RR: -54.3% ($-2459.94) 📉
+2025-07-03 04:59:46,327 - token_manager - INFO - 기존 토큰 사용 (남은시간: 18시간 10분)
+2025-07-03 04:59:46,327 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 04:59:46,912 - kis_api_with_token_manager - WARNING - ⚠️ SES 현재가 데이터 없음 or 형식 오류: ''
+2025-07-03 04:59:46,912 - __main__ - INFO - 📈 총 평가손익: $-2456.56
+2025-07-03 05:04:46,921 - __main__ - INFO - === 🚀 실전 매매 시스템 상태 (2025-07-02 16:04:46 ET) ===
+2025-07-03 05:04:46,921 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 05:04:46,921 - token_manager - INFO - 기존 토큰 사용 (남은시간: 18시간 5분)
+2025-07-03 05:04:46,921 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 05:04:47,581 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 05:04:47,581 - __main__ - INFO - 💰 계좌 현황: 예수금 $0.00, 보유종목 3개
+2025-07-03 05:04:47,581 - token_manager - INFO - 기존 토큰 사용 (남은시간: 18시간 5분)
+2025-07-03 05:04:47,581 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 05:04:48,170 - __main__ - INFO -    QSI: +73.7% ($+3.36) 🔥
+2025-07-03 05:04:48,186 - token_manager - INFO - 기존 토큰 사용 (남은시간: 18시간 5분)
+2025-07-03 05:04:48,186 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 05:04:48,872 - __main__ - INFO -    RR: -54.7% ($-2474.51) 📉
+2025-07-03 05:04:48,872 - token_manager - INFO - 기존 토큰 사용 (남은시간: 18시간 5분)
+2025-07-03 05:04:48,872 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 05:04:49,507 - kis_api_with_token_manager - WARNING - ⚠️ SES 현재가 데이터 없음 or 형식 오류: ''
+2025-07-03 05:04:49,507 - __main__ - INFO - 📈 총 평가손익: $-2471.15
+2025-07-03 05:09:49,513 - __main__ - INFO - === 🚀 실전 매매 시스템 상태 (2025-07-02 16:09:49 ET) ===
+2025-07-03 05:09:49,513 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 05:09:49,513 - token_manager - INFO - 기존 토큰 사용 (남은시간: 18시간 0분)
+2025-07-03 05:09:49,513 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 05:09:50,068 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 05:09:50,068 - __main__ - INFO - 💰 계좌 현황: 예수금 $0.00, 보유종목 3개
+2025-07-03 05:09:50,068 - token_manager - INFO - 기존 토큰 사용 (남은시간: 18시간 0분)
+2025-07-03 05:09:50,068 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 05:09:50,611 - __main__ - INFO -    QSI: +73.7% ($+3.36) 🔥
+2025-07-03 05:09:50,611 - token_manager - INFO - 기존 토큰 사용 (남은시간: 18시간 0분)
+2025-07-03 05:09:50,611 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 05:09:51,375 - __main__ - INFO -    RR: -54.4% ($-2464.86) 📉
+2025-07-03 05:09:51,375 - token_manager - INFO - 기존 토큰 사용 (남은시간: 18시간 0분)
+2025-07-03 05:09:51,375 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 05:09:51,994 - kis_api_with_token_manager - WARNING - ⚠️ SES 현재가 데이터 없음 or 형식 오류: ''
+2025-07-03 05:09:51,994 - __main__ - INFO - 📈 총 평가손익: $-2461.50
+2025-07-03 05:14:52,005 - token_manager - INFO - 기존 토큰 사용 (남은시간: 17시간 55분)
+2025-07-03 05:14:52,005 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 05:14:52,005 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 05:14:52,005 - token_manager - INFO - 기존 토큰 사용 (남은시간: 17시간 55분)
+2025-07-03 05:14:52,005 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 05:14:52,608 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 05:14:52,608 - __main__ - INFO - ✅ 안전 점검 통과 (예수금: $0.00, 주문수: 0)
+2025-07-03 05:14:52,608 - __main__ - INFO - === 🚀 실전 매수 전략 실행 시작 ===
+2025-07-03 05:14:52,608 - strategy_pjt1 - INFO - 상승필터 종목 로드 완료: 3개 - ['NVDA', 'AMZN', 'MSFT']
+2025-07-03 05:14:52,608 - token_manager - INFO - 기존 토큰 사용 (남은시간: 17시간 55분)
+2025-07-03 05:14:52,608 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 05:14:53,194 - kis_api_with_token_manager - INFO - 전일 종가 조회 시작: NVDA
+2025-07-03 05:14:53,194 - token_manager - INFO - 기존 토큰 사용 (남은시간: 17시간 55분)
+2025-07-03 05:14:53,194 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 05:14:53,833 - kis_api_with_token_manager - INFO - ✅ NVDA 전일 종가 조회 성공: $153.30
+2025-07-03 05:14:53,833 - strategy_pjt1 - INFO - 필터 종목 NVDA 상승 중 (현재: $157.15, 전일: $153.30)
+2025-07-03 05:14:53,833 - token_manager - INFO - 기존 토큰 사용 (남은시간: 17시간 55분)
+2025-07-03 05:14:53,833 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 05:14:54,408 - kis_api_with_token_manager - INFO - 전일 종가 조회 시작: AMZN
+2025-07-03 05:14:54,408 - token_manager - INFO - 기존 토큰 사용 (남은시간: 17시간 55분)
+2025-07-03 05:14:54,408 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 05:14:55,077 - kis_api_with_token_manager - INFO - ✅ AMZN 전일 종가 조회 성공: $220.46
+2025-07-03 05:14:55,077 - strategy_pjt1 - INFO - 필터 조건 미충족: AMZN 하락 중 (현재: $219.88, 전일: $220.46)
+2025-07-03 05:14:55,077 - __main__ - INFO - ❌ 상승 필터 조건 미충족 - 매수 신호 없음
+2025-07-03 05:14:55,077 - token_manager - INFO - 기존 토큰 사용 (남은시간: 17시간 55분)
+2025-07-03 05:14:55,077 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 05:14:55,077 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 05:14:55,093 - token_manager - INFO - 기존 토큰 사용 (남은시간: 17시간 55분)
+2025-07-03 05:14:55,093 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 05:14:55,709 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 05:14:55,709 - __main__ - INFO - ✅ 안전 점검 통과 (예수금: $0.00, 주문수: 0)
+2025-07-03 05:14:55,709 - __main__ - INFO - === 🚀 실전 매도 전략 실행 시작 ===
+2025-07-03 05:14:55,709 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 05:14:55,709 - token_manager - INFO - 기존 토큰 사용 (남은시간: 17시간 55분)
+2025-07-03 05:14:55,725 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 05:14:56,284 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 05:14:56,284 - token_manager - INFO - 기존 토큰 사용 (남은시간: 17시간 55분)
+2025-07-03 05:14:56,284 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 05:14:56,842 - token_manager - INFO - 기존 토큰 사용 (남은시간: 17시간 55분)
+2025-07-03 05:14:56,842 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 05:14:57,545 - token_manager - INFO - 기존 토큰 사용 (남은시간: 17시간 55분)
+2025-07-03 05:14:57,545 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 05:14:58,200 - kis_api_with_token_manager - WARNING - ⚠️ SES 현재가 데이터 없음 or 형식 오류: ''
+2025-07-03 05:14:58,200 - __main__ - WARNING - ⚠️ SES 현재가 조회 실패 - 스킵
+2025-07-03 05:14:58,216 - __main__ - INFO - 🔥 고수익 매도 실행: QSI
+2025-07-03 05:14:58,216 - __main__ - INFO -    - 수익률: 73.68%
+2025-07-03 05:14:58,216 - __main__ - INFO -    - 현재가: $1.98
+2025-07-03 05:14:58,216 - KISAPIClient - INFO - ➡️ SELL 주문 요청: QSI 4주 @ $1.98 (TR_ID: JTTT1006U)
+2025-07-03 05:14:58,822 - KISAPIClient - ERROR - API 요청 실패: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 05:14:58,822 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00356","msg1":"타겟 서버가 올바르지 않습니다. API 문서를 확인하세요 (타겟 서버 : 입력한 TR ID의 제일 첫 문자)"}
+2025-07-03 05:14:58,822 - KISAPIClient - INFO - 잠시 후 재시도합니다... (1/3)
+2025-07-03 05:15:00,499 - KISAPIClient - ERROR - API 요청 실패: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 05:15:00,499 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00356","msg1":"타겟 서버가 올바르지 않습니다. API 문서를 확인하세요 (타겟 서버 : 입력한 TR ID의 제일 첫 문자)"}
+2025-07-03 05:15:00,499 - KISAPIClient - INFO - 잠시 후 재시도합니다... (2/3)
+2025-07-03 05:15:02,079 - KISAPIClient - ERROR - API 요청 실패: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 05:15:02,079 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00356","msg1":"타겟 서버가 올바르지 않습니다. API 문서를 확인하세요 (타겟 서버 : 입력한 TR ID의 제일 첫 문자)"}
+2025-07-03 05:15:02,079 - KISAPIClient - INFO - 잠시 후 재시도합니다... (3/3)
+2025-07-03 05:15:03,675 - KISAPIClient - ERROR - API 요청 실패: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 05:15:03,675 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00356","msg1":"타겟 서버가 올바르지 않습니다. API 문서를 확인하세요 (타겟 서버 : 입력한 TR ID의 제일 첫 문자)"}
+2025-07-03 05:15:03,675 - KISAPIClient - ERROR - 최대 재시도 횟수 초과. 요청을 최종 실패 처리합니다.
+2025-07-03 05:15:03,690 - __main__ - ERROR - ❌ 고수익 매도 실패: QSI
+2025-07-03 05:15:05,694 - __main__ - INFO - === ✅ 실전 매도 전략 실행 완료 ===
+2025-07-03 05:15:05,694 - __main__ - INFO - 🧹 주문 정리 작업 시작
+2025-07-03 05:15:05,694 - __main__ - INFO - 🟢 거래시간 중 - 2025-07-02 16:15:05 ET
+2025-07-03 05:15:05,694 - __main__ - INFO - === 🚀 실전 매매 시스템 상태 (2025-07-02 16:15:05 ET) ===
+2025-07-03 05:15:05,694 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 05:15:05,694 - token_manager - INFO - 기존 토큰 사용 (남은시간: 17시간 55분)
+2025-07-03 05:15:05,694 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 05:15:06,244 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 05:15:06,244 - __main__ - INFO - 💰 계좌 현황: 예수금 $0.00, 보유종목 3개
+2025-07-03 05:15:06,244 - token_manager - INFO - 기존 토큰 사용 (남은시간: 17시간 55분)
+2025-07-03 05:15:06,244 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 05:15:06,916 - __main__ - INFO -    QSI: +73.7% ($+3.36) 🔥
+2025-07-03 05:15:06,916 - token_manager - INFO - 기존 토큰 사용 (남은시간: 17시간 55분)
+2025-07-03 05:15:06,916 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 05:15:07,649 - __main__ - INFO -    RR: -54.4% ($-2465.07) 📉
+2025-07-03 05:15:07,649 - token_manager - INFO - 기존 토큰 사용 (남은시간: 17시간 55분)
+2025-07-03 05:15:07,649 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 05:15:08,191 - kis_api_with_token_manager - WARNING - ⚠️ SES 현재가 데이터 없음 or 형식 오류: ''
+2025-07-03 05:15:08,191 - __main__ - INFO - 📈 총 평가손익: $-2461.71
+2025-07-03 05:20:08,206 - __main__ - INFO - === 🚀 실전 매매 시스템 상태 (2025-07-02 16:20:08 ET) ===
+2025-07-03 05:20:08,206 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 05:20:08,206 - token_manager - INFO - 기존 토큰 사용 (남은시간: 17시간 50분)
+2025-07-03 05:20:08,206 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 05:20:08,890 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 05:20:08,890 - __main__ - INFO - 💰 계좌 현황: 예수금 $0.00, 보유종목 3개
+2025-07-03 05:20:08,906 - token_manager - INFO - 기존 토큰 사용 (남은시간: 17시간 50분)
+2025-07-03 05:20:08,906 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 05:20:09,542 - __main__ - INFO -    QSI: +71.1% ($+3.24) 🔥
+2025-07-03 05:20:09,542 - token_manager - INFO - 기존 토큰 사용 (남은시간: 17시간 50분)
+2025-07-03 05:20:09,542 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 05:20:10,243 - __main__ - INFO -    RR: -54.2% ($-2454.81) 📉
+2025-07-03 05:20:10,243 - token_manager - INFO - 기존 토큰 사용 (남은시간: 17시간 50분)
+2025-07-03 05:20:10,243 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 05:20:10,770 - kis_api_with_token_manager - WARNING - ⚠️ SES 현재가 데이터 없음 or 형식 오류: ''
+2025-07-03 05:20:10,770 - __main__ - INFO - 📈 총 평가손익: $-2451.57
+2025-07-03 05:25:10,787 - __main__ - INFO - === 🚀 실전 매매 시스템 상태 (2025-07-02 16:25:10 ET) ===
+2025-07-03 05:25:10,787 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 05:25:10,787 - token_manager - INFO - 기존 토큰 사용 (남은시간: 17시간 45분)
+2025-07-03 05:25:10,787 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 05:25:11,342 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 05:25:11,342 - __main__ - INFO - 💰 계좌 현황: 예수금 $0.00, 보유종목 3개
+2025-07-03 05:25:11,349 - token_manager - INFO - 기존 토큰 사용 (남은시간: 17시간 45분)
+2025-07-03 05:25:11,349 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 05:25:11,890 - __main__ - INFO -    QSI: +73.7% ($+3.36) 🔥
+2025-07-03 05:25:11,906 - token_manager - INFO - 기존 토큰 사용 (남은시간: 17시간 45분)
+2025-07-03 05:25:11,906 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 05:25:12,512 - __main__ - INFO -    RR: -54.0% ($-2444.55) 📉
+2025-07-03 05:25:12,512 - token_manager - INFO - 기존 토큰 사용 (남은시간: 17시간 45분)
+2025-07-03 05:25:12,512 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 05:25:13,248 - kis_api_with_token_manager - WARNING - ⚠️ SES 현재가 데이터 없음 or 형식 오류: ''
+2025-07-03 05:25:13,248 - __main__ - INFO - 📈 총 평가손익: $-2441.19
+2025-07-03 05:30:13,263 - __main__ - INFO - === 🚀 실전 매매 시스템 상태 (2025-07-02 16:30:13 ET) ===
+2025-07-03 05:30:13,263 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 05:30:13,263 - token_manager - INFO - 기존 토큰 사용 (남은시간: 17시간 40분)
+2025-07-03 05:30:13,263 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 05:30:13,869 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 05:30:13,869 - __main__ - INFO - 💰 계좌 현황: 예수금 $0.00, 보유종목 3개
+2025-07-03 05:30:13,869 - token_manager - INFO - 기존 토큰 사용 (남은시간: 17시간 40분)
+2025-07-03 05:30:13,869 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 05:30:14,524 - __main__ - INFO -    QSI: +74.6% ($+3.40) 🔥
+2025-07-03 05:30:14,524 - token_manager - INFO - 기존 토큰 사용 (남은시간: 17시간 39분)
+2025-07-03 05:30:14,524 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 05:30:15,210 - __main__ - INFO -    RR: -54.2% ($-2455.63) 📉
+2025-07-03 05:30:15,210 - token_manager - INFO - 기존 토큰 사용 (남은시간: 17시간 39분)
+2025-07-03 05:30:15,210 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 05:30:15,769 - kis_api_with_token_manager - WARNING - ⚠️ SES 현재가 데이터 없음 or 형식 오류: ''
+2025-07-03 05:30:15,769 - __main__ - INFO - 📈 총 평가손익: $-2452.23
+2025-07-03 05:35:15,775 - __main__ - INFO - 🧹 주문 정리 작업 시작
+2025-07-03 05:35:15,775 - __main__ - INFO - === 🚀 실전 매매 시스템 상태 (2025-07-02 16:35:15 ET) ===
+2025-07-03 05:35:15,775 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 05:35:15,775 - token_manager - INFO - 기존 토큰 사용 (남은시간: 17시간 34분)
+2025-07-03 05:35:15,775 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 05:35:16,404 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 05:35:16,404 - __main__ - INFO - 💰 계좌 현황: 예수금 $0.00, 보유종목 3개
+2025-07-03 05:35:16,404 - token_manager - INFO - 기존 토큰 사용 (남은시간: 17시간 34분)
+2025-07-03 05:35:16,404 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 05:35:16,994 - __main__ - INFO -    QSI: +74.6% ($+3.40) 🔥
+2025-07-03 05:35:17,010 - token_manager - INFO - 기존 토큰 사용 (남은시간: 17시간 34분)
+2025-07-03 05:35:17,010 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 05:35:17,585 - __main__ - INFO -    RR: -54.7% ($-2475.33) 📉
+2025-07-03 05:35:17,585 - token_manager - INFO - 기존 토큰 사용 (남은시간: 17시간 34분)
+2025-07-03 05:35:17,585 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 05:35:18,208 - kis_api_with_token_manager - WARNING - ⚠️ SES 현재가 데이터 없음 or 형식 오류: ''
+2025-07-03 05:35:18,223 - __main__ - INFO - 📈 총 평가손익: $-2471.93
+2025-07-03 05:40:18,227 - __main__ - INFO - === 🚀 실전 매매 시스템 상태 (2025-07-02 16:40:18 ET) ===
+2025-07-03 05:40:18,227 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 05:40:18,227 - token_manager - INFO - 기존 토큰 사용 (남은시간: 17시간 29분)
+2025-07-03 05:40:18,227 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 05:40:18,774 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 05:40:18,774 - __main__ - INFO - 💰 계좌 현황: 예수금 $0.00, 보유종목 3개
+2025-07-03 05:40:18,774 - token_manager - INFO - 기존 토큰 사용 (남은시간: 17시간 29분)
+2025-07-03 05:40:18,774 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 05:40:19,429 - __main__ - INFO -    QSI: +74.5% ($+3.40) 🔥
+2025-07-03 05:40:19,429 - token_manager - INFO - 기존 토큰 사용 (남은시간: 17시간 29분)
+2025-07-03 05:40:19,429 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 05:40:20,037 - __main__ - INFO -    RR: -54.7% ($-2474.40) 📉
+2025-07-03 05:40:20,037 - token_manager - INFO - 기존 토큰 사용 (남은시간: 17시간 29분)
+2025-07-03 05:40:20,037 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 05:40:20,660 - kis_api_with_token_manager - WARNING - ⚠️ SES 현재가 데이터 없음 or 형식 오류: ''
+2025-07-03 05:40:20,660 - __main__ - INFO - 📈 총 평가손익: $-2471.01
+2025-07-03 05:45:20,678 - token_manager - INFO - 기존 토큰 사용 (남은시간: 17시간 24분)
+2025-07-03 05:45:20,678 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 05:45:20,678 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 05:45:20,678 - token_manager - INFO - 기존 토큰 사용 (남은시간: 17시간 24분)
+2025-07-03 05:45:20,682 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 05:45:21,384 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 05:45:21,384 - __main__ - INFO - ✅ 안전 점검 통과 (예수금: $0.00, 주문수: 0)
+2025-07-03 05:45:21,384 - __main__ - INFO - === 🚀 실전 매도 전략 실행 시작 ===
+2025-07-03 05:45:21,384 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 05:45:21,384 - token_manager - INFO - 기존 토큰 사용 (남은시간: 17시간 24분)
+2025-07-03 05:45:21,384 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 05:45:22,051 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 05:45:22,051 - token_manager - INFO - 기존 토큰 사용 (남은시간: 17시간 24분)
+2025-07-03 05:45:22,051 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 05:45:22,659 - token_manager - INFO - 기존 토큰 사용 (남은시간: 17시간 24분)
+2025-07-03 05:45:22,659 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 05:45:23,282 - token_manager - INFO - 기존 토큰 사용 (남은시간: 17시간 24분)
+2025-07-03 05:45:23,282 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 05:45:23,886 - kis_api_with_token_manager - WARNING - ⚠️ SES 현재가 데이터 없음 or 형식 오류: ''
+2025-07-03 05:45:23,886 - __main__ - WARNING - ⚠️ SES 현재가 조회 실패 - 스킵
+2025-07-03 05:45:23,886 - __main__ - INFO - 🔥 고수익 매도 실행: QSI
+2025-07-03 05:45:23,886 - __main__ - INFO -    - 수익률: 74.55%
+2025-07-03 05:45:23,886 - __main__ - INFO -    - 현재가: $1.99
+2025-07-03 05:45:23,886 - KISAPIClient - INFO - ➡️ SELL 주문 요청: QSI 4주 @ $1.99 (TR_ID: JTTT1006U)
+2025-07-03 05:45:24,487 - KISAPIClient - ERROR - API 요청 실패: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 05:45:24,487 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00356","msg1":"타겟 서버가 올바르지 않습니다. API 문서를 확인하세요 (타겟 서버 : 입력한 TR ID의 제일 첫 문자)"}
+2025-07-03 05:45:24,489 - KISAPIClient - INFO - 잠시 후 재시도합니다... (1/3)
+2025-07-03 05:45:26,294 - KISAPIClient - ERROR - API 요청 실패: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 05:45:26,294 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00356","msg1":"타겟 서버가 올바르지 않습니다. API 문서를 확인하세요 (타겟 서버 : 입력한 TR ID의 제일 첫 문자)"}
+2025-07-03 05:45:26,295 - KISAPIClient - INFO - 잠시 후 재시도합니다... (2/3)
+2025-07-03 05:45:27,949 - KISAPIClient - ERROR - API 요청 실패: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 05:45:27,949 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00356","msg1":"타겟 서버가 올바르지 않습니다. API 문서를 확인하세요 (타겟 서버 : 입력한 TR ID의 제일 첫 문자)"}
+2025-07-03 05:45:27,949 - KISAPIClient - INFO - 잠시 후 재시도합니다... (3/3)
+2025-07-03 05:45:29,547 - KISAPIClient - ERROR - API 요청 실패: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 05:45:29,548 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00356","msg1":"타겟 서버가 올바르지 않습니다. API 문서를 확인하세요 (타겟 서버 : 입력한 TR ID의 제일 첫 문자)"}
+2025-07-03 05:45:29,548 - KISAPIClient - ERROR - 최대 재시도 횟수 초과. 요청을 최종 실패 처리합니다.
+2025-07-03 05:45:29,555 - __main__ - ERROR - ❌ 고수익 매도 실패: QSI
+2025-07-03 05:45:31,556 - __main__ - INFO - === ✅ 실전 매도 전략 실행 완료 ===
+2025-07-03 05:45:31,556 - __main__ - INFO - === 🚀 실전 매매 시스템 상태 (2025-07-02 16:45:31 ET) ===
+2025-07-03 05:45:31,557 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 05:45:31,558 - token_manager - INFO - 기존 토큰 사용 (남은시간: 17시간 24분)
+2025-07-03 05:45:31,558 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 05:45:32,174 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 05:45:32,175 - __main__ - INFO - 💰 계좌 현황: 예수금 $0.00, 보유종목 3개
+2025-07-03 05:45:32,175 - token_manager - INFO - 기존 토큰 사용 (남은시간: 17시간 24분)
+2025-07-03 05:45:32,177 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 05:45:32,790 - __main__ - INFO -    QSI: +74.6% ($+3.40) 🔥
+2025-07-03 05:45:32,791 - token_manager - INFO - 기존 토큰 사용 (남은시간: 17시간 24분)
+2025-07-03 05:45:32,791 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 05:45:33,476 - __main__ - INFO -    RR: -54.7% ($-2474.40) 📉
+2025-07-03 05:45:33,478 - token_manager - INFO - 기존 토큰 사용 (남은시간: 17시간 24분)
+2025-07-03 05:45:33,478 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 05:45:34,108 - kis_api_with_token_manager - WARNING - ⚠️ SES 현재가 데이터 없음 or 형식 오류: ''
+2025-07-03 05:45:34,108 - __main__ - INFO - 📈 총 평가손익: $-2471.00
+2025-07-03 05:50:34,111 - __main__ - INFO - === 🚀 실전 매매 시스템 상태 (2025-07-02 16:50:34 ET) ===
+2025-07-03 05:50:34,112 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 05:50:34,113 - token_manager - INFO - 기존 토큰 사용 (남은시간: 17시간 19분)
+2025-07-03 05:50:34,114 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 05:50:34,868 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 05:50:34,868 - __main__ - INFO - 💰 계좌 현황: 예수금 $0.00, 보유종목 3개
+2025-07-03 05:50:34,869 - token_manager - INFO - 기존 토큰 사용 (남은시간: 17시간 19분)
+2025-07-03 05:50:34,869 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 05:50:35,518 - __main__ - INFO -    QSI: +74.6% ($+3.40) 🔥
+2025-07-03 05:50:35,519 - token_manager - INFO - 기존 토큰 사용 (남은시간: 17시간 19분)
+2025-07-03 05:50:35,519 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 05:50:36,154 - __main__ - INFO -    RR: -54.7% ($-2474.30) 📉
+2025-07-03 05:50:36,155 - token_manager - INFO - 기존 토큰 사용 (남은시간: 17시간 19분)
+2025-07-03 05:50:36,155 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 05:50:36,760 - kis_api_with_token_manager - WARNING - ⚠️ SES 현재가 데이터 없음 or 형식 오류: ''
+2025-07-03 05:50:36,760 - __main__ - INFO - 📈 총 평가손익: $-2470.90
+2025-07-03 05:55:36,762 - __main__ - INFO - 🧹 주문 정리 작업 시작
+2025-07-03 05:55:36,763 - __main__ - INFO - === 🚀 실전 매매 시스템 상태 (2025-07-02 16:55:36 ET) ===
+2025-07-03 05:55:36,763 - kis_api_with_token_manager - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-03 05:55:36,765 - token_manager - INFO - 기존 토큰 사용 (남은시간: 17시간 14분)
+2025-07-03 05:55:36,765 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 05:55:37,433 - kis_api_with_token_manager - INFO - ✅ 잔고 조회 성공: 예수금 $0.00, 보유종목 3개
+2025-07-03 05:55:37,434 - __main__ - INFO - 💰 계좌 현황: 예수금 $0.00, 보유종목 3개
+2025-07-03 05:55:37,435 - token_manager - INFO - 기존 토큰 사용 (남은시간: 17시간 14분)
+2025-07-03 05:55:37,435 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 05:55:38,119 - __main__ - INFO -    QSI: +74.6% ($+3.40) 🔥
+2025-07-03 05:55:38,121 - token_manager - INFO - 기존 토큰 사용 (남은시간: 17시간 14분)
+2025-07-03 05:55:38,121 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 05:55:38,745 - __main__ - INFO -    RR: -54.2% ($-2454.81) 📉
+2025-07-03 05:55:38,746 - token_manager - INFO - 기존 토큰 사용 (남은시간: 17시간 14분)
+2025-07-03 05:55:38,746 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-03 05:55:39,438 - kis_api_with_token_manager - WARNING - ⚠️ SES 현재가 데이터 없음 or 형식 오류: ''
+2025-07-03 05:55:39,438 - __main__ - INFO - 📈 총 평가손익: $-2451.41
+2025-07-03 06:15:39,447 - __main__ - INFO - 🔴 운영 시간 외 - 매수 전략 스킵
+2025-07-03 06:15:39,448 - __main__ - INFO - 🔴 운영 시간 외 - 매도 전략 스킵
+2025-07-03 06:15:39,449 - __main__ - INFO - 🧹 주문 정리 작업 시작
+2025-07-03 06:15:39,449 - __main__ - INFO - 🟡 거래시간 외 - 다음 거래시간까지 18시간 14분 남음
+2025-07-03 06:15:39,450 - __main__ - INFO -    현재: 17:15:39 ET, 거래시간: 11:30~17:00 ET
+2025-07-03 06:35:39,459 - __main__ - INFO - 🧹 주문 정리 작업 시작
+2025-07-03 06:45:39,464 - __main__ - INFO - 🔴 운영 시간 외 - 매도 전략 스킵
+2025-07-03 06:55:39,469 - __main__ - INFO - 🧹 주문 정리 작업 시작
+2025-07-03 07:15:39,477 - __main__ - INFO - 🔴 운영 시간 외 - 매수 전략 스킵
+2025-07-03 07:15:39,478 - __main__ - INFO - 🔴 운영 시간 외 - 매도 전략 스킵
+2025-07-03 07:15:39,478 - __main__ - INFO - 🧹 주문 정리 작업 시작
+2025-07-03 07:15:39,479 - __main__ - INFO - 🟡 거래시간 외 - 다음 거래시간까지 17시간 14분 남음
+2025-07-03 07:15:39,480 - __main__ - INFO -    현재: 18:15:39 ET, 거래시간: 11:30~17:00 ET
+2025-07-03 07:35:39,487 - __main__ - INFO - 🧹 주문 정리 작업 시작
+2025-07-03 07:45:39,492 - __main__ - INFO - 🔴 운영 시간 외 - 매도 전략 스킵
+2025-07-03 07:55:39,497 - __main__ - INFO - 🧹 주문 정리 작업 시작
+2025-07-03 08:15:39,505 - __main__ - INFO - 🔴 운영 시간 외 - 매수 전략 스킵
+2025-07-03 08:15:39,507 - __main__ - INFO - 🔴 운영 시간 외 - 매도 전략 스킵
+2025-07-03 08:15:39,507 - __main__ - INFO - 🧹 주문 정리 작업 시작
+2025-07-03 08:15:39,508 - __main__ - INFO - 🟡 거래시간 외 - 다음 거래시간까지 16시간 14분 남음
+2025-07-03 08:15:39,509 - __main__ - INFO -    현재: 19:15:39 ET, 거래시간: 11:30~17:00 ET
+2025-07-03 08:35:39,517 - __main__ - INFO - 🧹 주문 정리 작업 시작
+2025-07-03 08:45:39,522 - __main__ - INFO - 🔴 운영 시간 외 - 매도 전략 스킵
+2025-07-03 08:55:39,527 - __main__ - INFO - 🧹 주문 정리 작업 시작
+2025-07-03 09:15:39,535 - __main__ - INFO - 🔴 운영 시간 외 - 매수 전략 스킵
+2025-07-03 09:15:39,536 - __main__ - INFO - 🔴 운영 시간 외 - 매도 전략 스킵
+2025-07-03 09:15:39,536 - __main__ - INFO - 🧹 주문 정리 작업 시작
+2025-07-03 09:15:39,537 - __main__ - INFO - 🟡 거래시간 외 - 다음 거래시간까지 15시간 14분 남음
+2025-07-03 09:15:39,539 - __main__ - INFO -    현재: 20:15:39 ET, 거래시간: 11:30~17:00 ET
+2025-07-03 09:35:39,546 - __main__ - INFO - 🧹 주문 정리 작업 시작
+2025-07-03 09:45:39,550 - __main__ - INFO - 🔴 운영 시간 외 - 매도 전략 스킵
+2025-07-03 09:55:39,555 - __main__ - INFO - 🧹 주문 정리 작업 시작
+2025-07-03 10:15:39,563 - __main__ - INFO - 🔴 운영 시간 외 - 매수 전략 스킵
+2025-07-03 10:15:39,564 - __main__ - INFO - 🔴 운영 시간 외 - 매도 전략 스킵
+2025-07-03 10:15:39,564 - __main__ - INFO - 🧹 주문 정리 작업 시작
+2025-07-03 10:15:39,565 - __main__ - INFO - 🟡 거래시간 외 - 다음 거래시간까지 14시간 14분 남음
+2025-07-03 10:15:39,566 - __main__ - INFO -    현재: 21:15:39 ET, 거래시간: 11:30~17:00 ET
+2025-07-03 10:35:39,575 - __main__ - INFO - 🧹 주문 정리 작업 시작
+2025-07-03 10:45:39,580 - __main__ - INFO - 🔴 운영 시간 외 - 매도 전략 스킵
+2025-07-03 10:55:39,585 - __main__ - INFO - 🧹 주문 정리 작업 시작
+2025-07-03 11:15:39,593 - __main__ - INFO - 🔴 운영 시간 외 - 매수 전략 스킵
+2025-07-03 11:15:39,594 - __main__ - INFO - 🔴 운영 시간 외 - 매도 전략 스킵
+2025-07-03 11:15:39,594 - __main__ - INFO - 🧹 주문 정리 작업 시작
+2025-07-03 11:15:39,595 - __main__ - INFO - 🟡 거래시간 외 - 다음 거래시간까지 13시간 14분 남음
+2025-07-03 11:15:39,596 - __main__ - INFO -    현재: 22:15:39 ET, 거래시간: 11:30~17:00 ET
+2025-07-03 11:35:39,603 - __main__ - INFO - 🧹 주문 정리 작업 시작
+2025-07-03 11:45:39,607 - __main__ - INFO - 🔴 운영 시간 외 - 매도 전략 스킵
+2025-07-03 11:55:39,612 - __main__ - INFO - 🧹 주문 정리 작업 시작
+2025-07-03 12:15:39,621 - __main__ - INFO - 🔴 운영 시간 외 - 매수 전략 스킵
+2025-07-03 12:15:39,622 - __main__ - INFO - 🔴 운영 시간 외 - 매도 전략 스킵
+2025-07-03 12:15:39,622 - __main__ - INFO - 🧹 주문 정리 작업 시작
+2025-07-03 12:15:39,623 - __main__ - INFO - 🟡 거래시간 외 - 다음 거래시간까지 12시간 14분 남음
+2025-07-03 12:15:39,624 - __main__ - INFO -    현재: 23:15:39 ET, 거래시간: 11:30~17:00 ET
+2025-07-03 12:35:39,632 - __main__ - INFO - 🧹 주문 정리 작업 시작
+2025-07-03 12:45:39,636 - __main__ - INFO - 🔴 운영 시간 외 - 매도 전략 스킵
+2025-07-03 12:55:39,641 - __main__ - INFO - 🧹 주문 정리 작업 시작
+2025-07-03 13:15:39,649 - __main__ - INFO - 🔴 운영 시간 외 - 매수 전략 스킵
+2025-07-03 13:15:39,650 - __main__ - INFO - 🔴 운영 시간 외 - 매도 전략 스킵
+2025-07-03 13:15:39,650 - __main__ - INFO - 🧹 주문 정리 작업 시작
+2025-07-03 13:15:39,653 - __main__ - INFO - 🟡 거래시간 외 - 다음 거래시간까지 11시간 14분 남음
+2025-07-03 13:15:39,654 - __main__ - INFO -    현재: 00:15:39 ET, 거래시간: 11:30~17:00 ET
+2025-07-03 13:35:39,662 - __main__ - INFO - 🧹 주문 정리 작업 시작
+2025-07-03 13:45:39,667 - __main__ - INFO - 🔴 운영 시간 외 - 매도 전략 스킵
+2025-07-03 13:55:39,672 - __main__ - INFO - 🧹 주문 정리 작업 시작
+2025-07-03 14:15:39,681 - __main__ - INFO - 🔴 운영 시간 외 - 매수 전략 스킵
+2025-07-03 14:15:39,682 - __main__ - INFO - 🔴 운영 시간 외 - 매도 전략 스킵
+2025-07-03 14:15:39,682 - __main__ - INFO - 🧹 주문 정리 작업 시작
+2025-07-03 14:15:39,683 - __main__ - INFO - 🟡 거래시간 외 - 다음 거래시간까지 10시간 14분 남음
+2025-07-03 14:15:39,684 - __main__ - INFO -    현재: 01:15:39 ET, 거래시간: 11:30~17:00 ET
+2025-07-03 14:35:39,692 - __main__ - INFO - 🧹 주문 정리 작업 시작
+2025-07-03 14:45:39,696 - __main__ - INFO - 🔴 운영 시간 외 - 매도 전략 스킵
+2025-07-03 14:55:39,701 - __main__ - INFO - 🧹 주문 정리 작업 시작
+2025-07-03 15:15:39,710 - __main__ - INFO - 🔴 운영 시간 외 - 매수 전략 스킵
+2025-07-03 15:15:39,711 - __main__ - INFO - 🔴 운영 시간 외 - 매도 전략 스킵
+2025-07-03 15:15:39,711 - __main__ - INFO - 🧹 주문 정리 작업 시작
+2025-07-03 15:15:39,712 - __main__ - INFO - 🟡 거래시간 외 - 다음 거래시간까지 9시간 14분 남음
+2025-07-03 15:15:39,713 - __main__ - INFO -    현재: 02:15:39 ET, 거래시간: 11:30~17:00 ET
+2025-07-03 15:35:39,720 - __main__ - INFO - 🧹 주문 정리 작업 시작
+2025-07-03 15:45:39,725 - __main__ - INFO - 🔴 운영 시간 외 - 매도 전략 스킵
+2025-07-03 15:55:39,729 - __main__ - INFO - 🧹 주문 정리 작업 시작
+2025-07-03 16:15:39,737 - __main__ - INFO - 🔴 운영 시간 외 - 매수 전략 스킵
+2025-07-03 16:15:39,738 - __main__ - INFO - 🔴 운영 시간 외 - 매도 전략 스킵
+2025-07-03 16:15:39,738 - __main__ - INFO - 🧹 주문 정리 작업 시작
+2025-07-03 16:15:39,741 - __main__ - INFO - 🟡 거래시간 외 - 다음 거래시간까지 8시간 14분 남음
+2025-07-03 16:15:39,741 - __main__ - INFO -    현재: 03:15:39 ET, 거래시간: 11:30~17:00 ET
+2025-07-03 16:35:39,750 - __main__ - INFO - 🧹 주문 정리 작업 시작
+2025-07-03 16:45:39,755 - __main__ - INFO - 🔴 운영 시간 외 - 매도 전략 스킵
+2025-07-03 16:55:39,760 - __main__ - INFO - 🧹 주문 정리 작업 시작
+2025-07-03 17:15:39,767 - __main__ - INFO - 🔴 운영 시간 외 - 매수 전략 스킵
+2025-07-03 17:15:39,769 - __main__ - INFO - 🔴 운영 시간 외 - 매도 전략 스킵
+2025-07-03 17:15:39,769 - __main__ - INFO - 🧹 주문 정리 작업 시작
+2025-07-03 17:15:39,771 - __main__ - INFO - 🟡 거래시간 외 - 다음 거래시간까지 7시간 14분 남음
+2025-07-03 17:15:39,771 - __main__ - INFO -    현재: 04:15:39 ET, 거래시간: 11:30~17:00 ET
+2025-07-03 17:35:39,778 - __main__ - INFO - 🧹 주문 정리 작업 시작
+2025-07-03 17:45:39,783 - __main__ - INFO - 🔴 운영 시간 외 - 매도 전략 스킵
+2025-07-03 17:55:39,789 - __main__ - INFO - 🧹 주문 정리 작업 시작
+2025-07-03 18:15:39,796 - __main__ - INFO - 🔴 운영 시간 외 - 매수 전략 스킵
+2025-07-03 18:15:39,797 - __main__ - INFO - 🔴 운영 시간 외 - 매도 전략 스킵
+2025-07-03 18:15:39,799 - __main__ - INFO - 🧹 주문 정리 작업 시작
+2025-07-03 18:15:39,800 - __main__ - INFO - 🟡 거래시간 외 - 다음 거래시간까지 6시간 14분 남음
+2025-07-03 18:15:39,800 - __main__ - INFO -    현재: 05:15:39 ET, 거래시간: 11:30~17:00 ET
+2025-07-03 18:35:39,809 - __main__ - INFO - 🧹 주문 정리 작업 시작
+2025-07-03 18:45:39,813 - __main__ - INFO - 🔴 운영 시간 외 - 매도 전략 스킵
+2025-07-03 18:55:39,817 - __main__ - INFO - 🧹 주문 정리 작업 시작
+2025-07-03 19:15:39,825 - __main__ - INFO - 🔴 운영 시간 외 - 매수 전략 스킵
+2025-07-03 19:15:39,826 - __main__ - INFO - 🔴 운영 시간 외 - 매도 전략 스킵
+2025-07-03 19:15:39,826 - __main__ - INFO - 🧹 주문 정리 작업 시작
+2025-07-03 19:15:39,828 - __main__ - INFO - 🟡 거래시간 외 - 다음 거래시간까지 5시간 14분 남음
+2025-07-03 19:15:39,828 - __main__ - INFO -    현재: 06:15:39 ET, 거래시간: 11:30~17:00 ET
+2025-07-03 19:35:39,837 - __main__ - INFO - 🧹 주문 정리 작업 시작
+2025-07-03 19:45:39,841 - __main__ - INFO - 🔴 운영 시간 외 - 매도 전략 스킵
+2025-07-03 19:55:39,846 - __main__ - INFO - 🧹 주문 정리 작업 시작
+2025-07-03 20:15:39,854 - __main__ - INFO - 🔴 운영 시간 외 - 매수 전략 스킵
+2025-07-03 20:15:39,855 - __main__ - INFO - 🔴 운영 시간 외 - 매도 전략 스킵
+2025-07-03 20:15:39,855 - __main__ - INFO - 🧹 주문 정리 작업 시작
+2025-07-03 20:15:39,856 - __main__ - INFO - 🟡 거래시간 외 - 다음 거래시간까지 4시간 14분 남음
+2025-07-03 20:15:39,857 - __main__ - INFO -    현재: 07:15:39 ET, 거래시간: 11:30~17:00 ET
+2025-07-03 20:35:39,866 - __main__ - INFO - 🧹 주문 정리 작업 시작
+2025-07-03 20:45:39,870 - __main__ - INFO - 🔴 운영 시간 외 - 매도 전략 스킵
+2025-07-03 20:55:39,874 - __main__ - INFO - 🧹 주문 정리 작업 시작
+2025-07-03 21:15:39,883 - __main__ - INFO - 🔴 운영 시간 외 - 매수 전략 스킵
+2025-07-03 21:15:39,884 - __main__ - INFO - 🔴 운영 시간 외 - 매도 전략 스킵
+2025-07-03 21:15:39,884 - __main__ - INFO - 🧹 주문 정리 작업 시작
+2025-07-03 21:15:39,886 - __main__ - INFO - 🟡 거래시간 외 - 다음 거래시간까지 3시간 14분 남음
+2025-07-03 21:15:39,887 - __main__ - INFO -    현재: 08:15:39 ET, 거래시간: 11:30~17:00 ET
+2025-07-03 21:35:39,895 - __main__ - INFO - 🧹 주문 정리 작업 시작

@@ -1,0 +1,509 @@
+2025-06-18 16:28:27,137 - INFO - ¾×¼¼½º ÅäÅ« ¹ß±Ş ¼º°ø
+2025-06-18 16:32:17,545 - INFO - ¾×¼¼½º ÅäÅ« ¹ß±Ş ¼º°ø
+2025-06-18 17:56:12,764 - INFO - ¾×¼¼½º ÅäÅ« ¹ß±Ş ¼º°ø
+2025-06-18 17:56:12,877 - ERROR - API ¿äÃ» ½ÇÆĞ: 500 Server Error: Internal Server Error for url: https://openapivts.koreainvestment.com:29443/uapi/overseas-price/v1/quotations/price?AUTH=&EXCD=NAS&SYMB=TSLA
+2025-06-18 17:56:12,877 - INFO - Àç½Ãµµ 1/3
+2025-06-18 17:56:13,947 - ERROR - API ¿äÃ» ½ÇÆĞ: 500 Server Error: Internal Server Error for url: https://openapivts.koreainvestment.com:29443/uapi/overseas-stock/v1/trading/inquire-balance?CANO=50122891&ACNT_PRDT_CD=91&OVRS_EXCG_CD=NASD&TR_CRCY_CD=USD&CTX_AREA_FK200=&CTX_AREA_NK200=
+2025-06-18 17:56:13,947 - INFO - Àç½Ãµµ 1/3
+2025-06-18 17:56:14,989 - ERROR - API ¿äÃ» ½ÇÆĞ: 500 Server Error: Internal Server Error for url: https://openapivts.koreainvestment.com:29443/uapi/overseas-stock/v1/trading/inquire-balance?CANO=50122891&ACNT_PRDT_CD=91&OVRS_EXCG_CD=NASD&TR_CRCY_CD=USD&CTX_AREA_FK200=&CTX_AREA_NK200=
+2025-06-18 17:56:14,989 - INFO - Àç½Ãµµ 2/3
+2025-06-18 17:56:16,020 - ERROR - API ¿äÃ» ½ÇÆĞ: 500 Server Error: Internal Server Error for url: https://openapivts.koreainvestment.com:29443/uapi/overseas-stock/v1/trading/inquire-balance?CANO=50122891&ACNT_PRDT_CD=91&OVRS_EXCG_CD=NASD&TR_CRCY_CD=USD&CTX_AREA_FK200=&CTX_AREA_NK200=
+2025-06-18 17:56:16,020 - INFO - Àç½Ãµµ 3/3
+2025-06-18 17:56:17,061 - ERROR - API ¿äÃ» ½ÇÆĞ: 500 Server Error: Internal Server Error for url: https://openapivts.koreainvestment.com:29443/uapi/overseas-stock/v1/trading/inquire-balance?CANO=50122891&ACNT_PRDT_CD=91&OVRS_EXCG_CD=NASD&TR_CRCY_CD=USD&CTX_AREA_FK200=&CTX_AREA_NK200=
+2025-06-18 19:45:07,200 - INFO - ¾×¼¼½º ÅäÅ« ¹ß±Ş ¼º°ø
+2025-06-18 19:46:49,233 - INFO - ¾×¼¼½º ÅäÅ« ¹ß±Ş ¼º°ø
+2025-06-18 19:47:26,085 - ERROR - ¾×¼¼½º ÅäÅ« ¹ß±Ş ½ÇÆĞ: 403 Client Error: Forbidden for url: https://openapi.koreainvestment.com:9443/oauth2/tokenP
+2025-06-18 19:59:28,516 - INFO - ¾×¼¼½º ÅäÅ« ¹ß±Ş ¼º°ø
+2025-06-18 19:59:28,619 - INFO - ÀÜ°í Á¶È¸ URL: https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/inquire-balance
+2025-06-18 19:59:28,619 - INFO - °èÁÂ¹øÈ£: 64721801, »óÇ°ÄÚµå: 01
+2025-06-18 19:59:28,662 - INFO - API ÀÀ´ä ÄÚµå: 0
+2025-06-18 19:59:28,662 - INFO - API ÀÀ´ä ¸Ş½ÃÁö: Á¶È¸°¡ ¿Ï·áµÇ¾ú½À´Ï´Ù                                                           
+2025-06-18 23:18:41,161 - INFO - ¾×¼¼½º ÅäÅ« ¹ß±Ş ¼º°ø
+2025-06-18 23:18:41,378 - INFO - ÀÜ°í Á¶È¸ URL: https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/inquire-balance
+2025-06-18 23:18:41,378 - INFO - °èÁÂ¹øÈ£: 64721801, »óÇ°ÄÚµå: 01
+2025-06-18 23:18:41,378 - INFO - TR_ID: TTTS3012R
+2025-06-18 23:18:41,439 - INFO - Response Status: 200
+2025-06-18 23:18:41,440 - INFO - API ÀÀ´ä ÄÚµå: 0
+2025-06-18 23:18:41,440 - INFO - API ÀÀ´ä ¸Ş½ÃÁö: Á¶È¸°¡ ¿Ï·áµÇ¾ú½À´Ï´Ù                                                           
+2025-06-18 23:18:41,440 - INFO - ¿¹¼ö±İ: $0.00
+2025-06-18 23:18:41,440 - INFO - º¸À¯Á¾¸ñ ¼ö: 3°³
+2025-06-18 23:21:00,908 - INFO - ¾×¼¼½º ÅäÅ« ¹ß±Ş ¼º°ø
+2025-06-18 23:21:01,178 - INFO - ÀÜ°í Á¶È¸ URL: https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/inquire-balance
+2025-06-18 23:21:01,178 - INFO - °èÁÂ¹øÈ£: 64721801, »óÇ°ÄÚµå: 01
+2025-06-18 23:21:01,178 - INFO - TR_ID: TTTS3012R
+2025-06-18 23:21:01,302 - INFO - Response Status: 200
+2025-06-18 23:21:01,303 - INFO - API ÀÀ´ä ÄÚµå: 0
+2025-06-18 23:21:01,303 - INFO - API ÀÀ´ä ¸Ş½ÃÁö: Á¶È¸°¡ ¿Ï·áµÇ¾ú½À´Ï´Ù                                                           
+2025-06-18 23:21:01,303 - INFO - ¿¹¼ö±İ: $0.00
+2025-06-18 23:21:01,303 - INFO - º¸À¯Á¾¸ñ ¼ö: 3°³
+2025-06-18 23:21:01,306 - INFO - °ü½ÉÁ¾¸ñ ·Îµå ¿Ï·á: 10°³
+2025-06-18 23:21:01,346 - ERROR - ¾×¼¼½º ÅäÅ« ¹ß±Ş ½ÇÆĞ: 403 Client Error: Forbidden for url: https://openapi.koreainvestment.com:9443/oauth2/tokenP
+2025-06-18 23:21:01,384 - ERROR - ¾×¼¼½º ÅäÅ« ¹ß±Ş ½ÇÆĞ: 403 Client Error: Forbidden for url: https://openapi.koreainvestment.com:9443/oauth2/tokenP
+2025-06-18 23:21:01,384 - ERROR - ÇÊÅÍ Á¾¸ñ NVDA °¡°İ Á¶È¸ ½ÇÆĞ
+2025-06-18 23:21:01,422 - ERROR - ¾×¼¼½º ÅäÅ« ¹ß±Ş ½ÇÆĞ: 403 Client Error: Forbidden for url: https://openapi.koreainvestment.com:9443/oauth2/tokenP
+2025-06-18 23:21:01,468 - ERROR - ¾×¼¼½º ÅäÅ« ¹ß±Ş ½ÇÆĞ: 403 Client Error: Forbidden for url: https://openapi.koreainvestment.com:9443/oauth2/tokenP
+2025-06-18 23:21:01,714 - ERROR - ¾×¼¼½º ÅäÅ« ¹ß±Ş ½ÇÆĞ: 403 Client Error: Forbidden for url: https://openapi.koreainvestment.com:9443/oauth2/tokenP
+2025-06-18 23:21:01,759 - ERROR - ¾×¼¼½º ÅäÅ« ¹ß±Ş ½ÇÆĞ: 403 Client Error: Forbidden for url: https://openapi.koreainvestment.com:9443/oauth2/tokenP
+2025-06-18 23:21:01,814 - ERROR - ¾×¼¼½º ÅäÅ« ¹ß±Ş ½ÇÆĞ: 403 Client Error: Forbidden for url: https://openapi.koreainvestment.com:9443/oauth2/tokenP
+2025-06-18 23:21:01,867 - ERROR - ¾×¼¼½º ÅäÅ« ¹ß±Ş ½ÇÆĞ: 403 Client Error: Forbidden for url: https://openapi.koreainvestment.com:9443/oauth2/tokenP
+2025-06-18 23:21:01,867 - INFO - °ü½ÉÁ¾¸ñ ·Îµå ¿Ï·á: 10°³
+2025-06-18 23:21:01,919 - ERROR - ¾×¼¼½º ÅäÅ« ¹ß±Ş ½ÇÆĞ: 403 Client Error: Forbidden for url: https://openapi.koreainvestment.com:9443/oauth2/tokenP
+2025-06-18 23:21:01,960 - ERROR - ¾×¼¼½º ÅäÅ« ¹ß±Ş ½ÇÆĞ: 403 Client Error: Forbidden for url: https://openapi.koreainvestment.com:9443/oauth2/tokenP
+2025-06-18 23:21:01,997 - ERROR - ¾×¼¼½º ÅäÅ« ¹ß±Ş ½ÇÆĞ: 403 Client Error: Forbidden for url: https://openapi.koreainvestment.com:9443/oauth2/tokenP
+2025-06-18 23:21:02,034 - ERROR - ¾×¼¼½º ÅäÅ« ¹ß±Ş ½ÇÆĞ: 403 Client Error: Forbidden for url: https://openapi.koreainvestment.com:9443/oauth2/tokenP
+2025-06-18 23:21:02,083 - ERROR - ¾×¼¼½º ÅäÅ« ¹ß±Ş ½ÇÆĞ: 403 Client Error: Forbidden for url: https://openapi.koreainvestment.com:9443/oauth2/tokenP
+2025-06-18 23:21:02,134 - ERROR - ¾×¼¼½º ÅäÅ« ¹ß±Ş ½ÇÆĞ: 403 Client Error: Forbidden for url: https://openapi.koreainvestment.com:9443/oauth2/tokenP
+2025-06-18 23:21:02,185 - ERROR - ¾×¼¼½º ÅäÅ« ¹ß±Ş ½ÇÆĞ: 403 Client Error: Forbidden for url: https://openapi.koreainvestment.com:9443/oauth2/tokenP
+2025-06-18 23:21:02,232 - ERROR - ¾×¼¼½º ÅäÅ« ¹ß±Ş ½ÇÆĞ: 403 Client Error: Forbidden for url: https://openapi.koreainvestment.com:9443/oauth2/tokenP
+2025-06-18 23:21:02,310 - ERROR - ¾×¼¼½º ÅäÅ« ¹ß±Ş ½ÇÆĞ: 403 Client Error: Forbidden for url: https://openapi.koreainvestment.com:9443/oauth2/tokenP
+2025-06-18 23:21:02,360 - ERROR - ¾×¼¼½º ÅäÅ« ¹ß±Ş ½ÇÆĞ: 403 Client Error: Forbidden for url: https://openapi.koreainvestment.com:9443/oauth2/tokenP
+2025-06-18 23:21:02,443 - ERROR - ¾×¼¼½º ÅäÅ« ¹ß±Ş ½ÇÆĞ: 403 Client Error: Forbidden for url: https://openapi.koreainvestment.com:9443/oauth2/tokenP
+2025-06-18 23:21:02,503 - ERROR - ¾×¼¼½º ÅäÅ« ¹ß±Ş ½ÇÆĞ: 403 Client Error: Forbidden for url: https://openapi.koreainvestment.com:9443/oauth2/tokenP
+2025-06-18 23:21:02,609 - ERROR - ¾×¼¼½º ÅäÅ« ¹ß±Ş ½ÇÆĞ: 403 Client Error: Forbidden for url: https://openapi.koreainvestment.com:9443/oauth2/tokenP
+2025-06-18 23:21:02,691 - ERROR - ¾×¼¼½º ÅäÅ« ¹ß±Ş ½ÇÆĞ: 403 Client Error: Forbidden for url: https://openapi.koreainvestment.com:9443/oauth2/tokenP
+2025-06-18 23:21:02,741 - ERROR - ¾×¼¼½º ÅäÅ« ¹ß±Ş ½ÇÆĞ: 403 Client Error: Forbidden for url: https://openapi.koreainvestment.com:9443/oauth2/tokenP
+2025-06-18 23:21:02,817 - ERROR - ¾×¼¼½º ÅäÅ« ¹ß±Ş ½ÇÆĞ: 403 Client Error: Forbidden for url: https://openapi.koreainvestment.com:9443/oauth2/tokenP
+2025-06-18 23:21:02,874 - ERROR - ¾×¼¼½º ÅäÅ« ¹ß±Ş ½ÇÆĞ: 403 Client Error: Forbidden for url: https://openapi.koreainvestment.com:9443/oauth2/tokenP
+2025-06-18 23:21:02,945 - ERROR - ¾×¼¼½º ÅäÅ« ¹ß±Ş ½ÇÆĞ: 403 Client Error: Forbidden for url: https://openapi.koreainvestment.com:9443/oauth2/tokenP
+2025-06-18 23:21:02,998 - ERROR - ¾×¼¼½º ÅäÅ« ¹ß±Ş ½ÇÆĞ: 403 Client Error: Forbidden for url: https://openapi.koreainvestment.com:9443/oauth2/tokenP
+2025-06-18 23:21:03,072 - ERROR - ¾×¼¼½º ÅäÅ« ¹ß±Ş ½ÇÆĞ: 403 Client Error: Forbidden for url: https://openapi.koreainvestment.com:9443/oauth2/tokenP
+2025-06-18 23:21:03,073 - INFO - »óÀ§ ÇÏ¶ô Á¾¸ñ: []
+2025-06-18 23:33:16,323 - INFO - ¾×¼¼½º ÅäÅ« ¹ß±Ş ¼º°ø
+2025-06-18 23:33:16,324 - INFO - °ü½ÉÁ¾¸ñ ·Îµå ¿Ï·á: 10°³
+2025-06-18 23:33:17,540 - INFO - ÇÊÅÍ Á¶°Ç ¹ÌÃæÁ·: NVDA ÇÏ¶ô Áß (ÇöÀç: $145.27, ÀüÀÏ: $145.28)
+2025-06-18 23:33:20,661 - INFO - °ü½ÉÁ¾¸ñ ·Îµå ¿Ï·á: 10°³
+2025-06-18 23:33:22,801 - INFO - »óÀ§ ÇÏ¶ô Á¾¸ñ: [('TSLA', 6.994089066323548e-05), ('GOOGL', 1.7084477044239253e-05)]
+2025-06-19 10:49:47,687 - INFO - ¾×¼¼½º ÅäÅ« ¹ß±Ş ¼º°ø
+2025-06-19 10:49:47,694 - INFO - °ü½ÉÁ¾¸ñ ·Îµå ¿Ï·á: 10°³
+2025-06-19 10:49:48,792 - INFO - ÇÊÅÍ Á¶°Ç ¹ÌÃæÁ·: NVDA ÇÏ¶ô Áß (ÇöÀç: $145.48, ÀüÀÏ: $145.48)
+2025-06-19 10:49:51,618 - INFO - °ü½ÉÁ¾¸ñ ·Îµå ¿Ï·á: 10°³
+2025-06-19 10:49:52,540 - INFO - »óÀ§ ÇÏ¶ô Á¾¸ñ: []
+2025-06-24 22:49:34,299 - INFO - ¾×¼¼½º ÅäÅ« ¹ß±Ş ¼º°ø
+2025-06-24 22:49:34,302 - INFO - °ü½ÉÁ¾¸ñ ·Îµå ¿Ï·á: 3°³
+2025-06-24 22:49:35,357 - WARNING - SES ÇöÀç°¡ µ¥ÀÌÅÍ ¾øÀ½ or Çü½Ä ¿À·ù: ''
+2025-06-24 22:49:35,419 - ERROR - ÇÊÅÍ Á¾¸ñ SES °¡°İ Á¶È¸ ½ÇÆĞ
+2025-06-24 22:49:38,513 - INFO - °ü½ÉÁ¾¸ñ ·Îµå ¿Ï·á: 3°³
+2025-06-24 22:49:38,675 - WARNING - SES ÇöÀç°¡ µ¥ÀÌÅÍ ¾øÀ½ or Çü½Ä ¿À·ù: ''
+2025-06-24 22:49:39,230 - INFO - »óÀ§ ÇÏ¶ô Á¾¸ñ: []
+2025-06-24 22:53:33,512 - INFO - ¾×¼¼½º ÅäÅ« ¹ß±Ş ¼º°ø
+2025-06-24 22:53:33,513 - INFO - ÀüÀÏ Á¾°¡ Á¶È¸ ½ÃÀÛ: NVDA
+2025-06-24 22:53:33,579 - INFO - NVDA API ÀÀ´ä ÄÚµå: 0
+2025-06-24 22:53:33,579 - INFO - NVDA API ÀÀ´ä ¸Ş½ÃÁö: Á¤»óÃ³¸® µÇ¾ú½À´Ï´Ù.
+2025-06-24 22:53:33,579 - INFO - NVDA output2 µ¥ÀÌÅÍ: [{'xymd': '20250624', 'clos': '147.0299', 'sign': '2', 'diff': '2.8599', 'rate': '+1.98', 'open': '145.5600', 'high': '147.9100', 'low': '145.5000', 'tvol': '24323113', 'tamt': '3565650147', 'pbid': '147.0300', 'vbid': '1633', 'pask': '147.0400', 'vask': '250'}, {'xymd': '20250623', 'clos': '144.1700', 'sign': '2', 'diff': '0.3200', 'rate': '+0.22', 'open': '142.5000', 'high': '144.7800', 'low': '142.0300', 'tvol': '154308941', 'tamt': '22283283436', 'pbid': '145.4900', 'vbid': '7200', 'pask': '145.5000', 'vask': '11400'}]
+2025-06-24 22:53:33,579 - INFO - NVDA ÀüÀÏ Á¾°¡ Á¶È¸ ¼º°ø: $147.03 (ÇÊµå: clos)
+2025-06-24 22:53:33,643 - INFO - ÀüÀÏ Á¾°¡ Á¶È¸ ½ÃÀÛ: AAPL
+2025-06-24 22:53:33,712 - INFO - AAPL API ÀÀ´ä ÄÚµå: 0
+2025-06-24 22:53:33,713 - INFO - AAPL API ÀÀ´ä ¸Ş½ÃÁö: Á¤»óÃ³¸® µÇ¾ú½À´Ï´Ù.
+2025-06-24 22:53:33,713 - INFO - AAPL output2 µ¥ÀÌÅÍ: [{'xymd': '20250624', 'clos': '200.6900', 'sign': '5', 'diff': '0.8100', 'rate': '-0.40', 'open': '202.5900', 'high': '202.7800', 'low': '200.4300', 'tvol': '5082071', 'tamt': '1027025157', 'pbid': '200.6600', 'vbid': '550', 'pask': '200.6800', 'vask': '73'}, {'xymd': '20250623', 'clos': '201.5000', 'sign': '2', 'diff': '0.5000', 'rate': '+0.25', 'open': '201.6250', 'high': '202.3000', 'low': '198.9600', 'tvol': '55814272', 'tamt': '11328729629', 'pbid': '202.4000', 'vbid': '400', 'pask': '202.4300', 'vask': '500'}]
+2025-06-24 22:53:33,713 - INFO - AAPL ÀüÀÏ Á¾°¡ Á¶È¸ ¼º°ø: $200.69 (ÇÊµå: clos)
+2025-06-24 22:53:33,788 - INFO - ÀüÀÏ Á¾°¡ Á¶È¸ ½ÃÀÛ: TSLA
+2025-06-24 22:53:33,831 - INFO - TSLA API ÀÀ´ä ÄÚµå: 0
+2025-06-24 22:53:33,831 - INFO - TSLA API ÀÀ´ä ¸Ş½ÃÁö: Á¤»óÃ³¸® µÇ¾ú½À´Ï´Ù.
+2025-06-24 22:53:33,831 - INFO - TSLA output2 µ¥ÀÌÅÍ: [{'xymd': '20250624', 'clos': '348.2300', 'sign': '5', 'diff': '0.4500', 'rate': '-0.13', 'open': '356.1600', 'high': '356.2599', 'low': '345.0200', 'tvol': '18462516', 'tamt': '6464924797', 'pbid': '348.2700', 'vbid': '65', 'pask': '348.3200', 'vask': '112'}, {'xymd': '20250623', 'clos': '348.6800', 'sign': '2', 'diff': '26.5200', 'rate': '+8.23', 'open': '327.5400', 'high': '357.5400', 'low': '327.4800', 'tvol': '190716815', 'tamt': '66433248057', 'pbid': '353.8000', 'vbid': '1000', 'pask': '353.8900', 'vask': '300'}]
+2025-06-24 22:53:33,832 - INFO - TSLA ÀüÀÏ Á¾°¡ Á¶È¸ ¼º°ø: $348.23 (ÇÊµå: clos)
+2025-06-24 22:53:33,878 - INFO - ÀüÀÏ Á¾°¡ Á¶È¸ ½ÃÀÛ: SES
+2025-06-24 22:53:33,960 - INFO - SES API ÀÀ´ä ÄÚµå: 0
+2025-06-24 22:53:33,960 - INFO - SES API ÀÀ´ä ¸Ş½ÃÁö: Á¤»óÃ³¸® µÇ¾ú½À´Ï´Ù.
+2025-06-24 22:53:33,960 - WARNING - SES output2 µ¥ÀÌÅÍ°¡ ºñ¾îÀÖÀ½
+2025-06-24 22:53:34,049 - WARNING - SES ÇöÀç°¡ µ¥ÀÌÅÍ ¾øÀ½ or Çü½Ä ¿À·ù: ''
+2025-06-24 22:53:34,049 - INFO - ÀüÀÏ Á¾°¡ Á¶È¸ ½ÃÀÛ: RR
+2025-06-24 22:53:34,152 - INFO - RR API ÀÀ´ä ÄÚµå: 0
+2025-06-24 22:53:34,153 - INFO - RR API ÀÀ´ä ¸Ş½ÃÁö: Á¤»óÃ³¸® µÇ¾ú½À´Ï´Ù.
+2025-06-24 22:53:34,153 - INFO - RR output2 µ¥ÀÌÅÍ: [{'xymd': '20250624', 'clos': '1.8800', 'sign': '2', 'diff': '0.1000', 'rate': '+5.62', 'open': '1.8500', 'high': '1.8800', 'low': '1.8300', 'tvol': '912995', 'tamt': '1691927', 'pbid': '1.8700', 'vbid': '5645', 'pask': '1.8800', 'vask': '13682'}, {'xymd': '20250623', 'clos': '1.7800', 'sign': '5', 'diff': '0.0100', 'rate': '-0.56', 'open': '1.7600', 'high': '1.8100', 'low': '1.7100', 'tvol': '6920569', 'tamt': '12305926', 'pbid': '1.7900', 'vbid': '4100', 'pask': '1.8100', 'vask': '1900'}]
+2025-06-24 22:53:34,153 - INFO - RR ÀüÀÏ Á¾°¡ Á¶È¸ ¼º°ø: $1.88 (ÇÊµå: clos)
+2025-06-24 22:53:34,221 - INFO - ÀüÀÏ Á¾°¡ Á¶È¸ ½ÃÀÛ: REKR
+2025-06-24 22:53:34,377 - INFO - REKR API ÀÀ´ä ÄÚµå: 0
+2025-06-24 22:53:34,377 - INFO - REKR API ÀÀ´ä ¸Ş½ÃÁö: Á¤»óÃ³¸® µÇ¾ú½À´Ï´Ù.
+2025-06-24 22:53:34,377 - INFO - REKR output2 µ¥ÀÌÅÍ: [{'xymd': '20250624', 'clos': '1.1650', 'sign': '2', 'diff': '0.0450', 'rate': '+4.02', 'open': '1.1700', 'high': '1.1900', 'low': '1.1600', 'tvol': '501255', 'tamt': '587589', 'pbid': '1.1600', 'vbid': '4000', 'pask': '1.1700', 'vask': '5085'}, {'xymd': '20250623', 'clos': '1.1200', 'sign': '5', 'diff': '0.0400', 'rate': '-3.45', 'open': '1.1600', 'high': '1.1850', 'low': '1.0800', 'tvol': '3605244', 'tamt': '4052970', 'pbid': '1.1300', 'vbid': '2500', 'pask': '1.1700', 'vask': '9500'}]
+2025-06-24 22:53:34,378 - INFO - REKR ÀüÀÏ Á¾°¡ Á¶È¸ ¼º°ø: $1.17 (ÇÊµå: clos)
+2025-06-24 22:54:52,420 - INFO - ¾×¼¼½º ÅäÅ« ¹ß±Ş ¼º°ø
+2025-06-24 22:54:52,421 - INFO - ÀüÀÏ Á¾°¡ Á¶È¸ ½ÃÀÛ: NVDA
+2025-06-24 22:54:52,577 - INFO - NVDA API ÀÀ´ä ÄÚµå: 0
+2025-06-24 22:54:52,578 - INFO - NVDA API ÀÀ´ä ¸Ş½ÃÁö: Á¤»óÃ³¸® µÇ¾ú½À´Ï´Ù.
+2025-06-24 22:54:52,578 - INFO - NVDA output2 µ¥ÀÌÅÍ: [{'xymd': '20250624', 'clos': '147.2150', 'sign': '2', 'diff': '3.0450', 'rate': '+2.11', 'open': '145.5600', 'high': '147.9100', 'low': '145.5000', 'tvol': '24954129', 'tamt': '3658505045', 'pbid': '147.2100', 'vbid': '550', 'pask': '147.2200', 'vask': '174'}, {'xymd': '20250623', 'clos': '144.1700', 'sign': '2', 'diff': '0.3200', 'rate': '+0.22', 'open': '142.5000', 'high': '144.7800', 'low': '142.0300', 'tvol': '154308941', 'tamt': '22283283436', 'pbid': '145.4900', 'vbid': '7200', 'pask': '145.5000', 'vask': '11400'}]
+2025-06-24 22:54:52,578 - INFO - NVDA ÀüÀÏ Á¾°¡ Á¶È¸ ¼º°ø: $147.22 (ÇÊµå: clos)
+2025-06-24 22:54:52,689 - INFO - ÀüÀÏ Á¾°¡ Á¶È¸ ½ÃÀÛ: AAPL
+2025-06-24 22:54:52,797 - INFO - AAPL API ÀÀ´ä ÄÚµå: 0
+2025-06-24 22:54:52,798 - INFO - AAPL API ÀÀ´ä ¸Ş½ÃÁö: Á¤»óÃ³¸® µÇ¾ú½À´Ï´Ù.
+2025-06-24 22:54:52,798 - INFO - AAPL output2 µ¥ÀÌÅÍ: [{'xymd': '20250624', 'clos': '200.3599', 'sign': '5', 'diff': '1.1401', 'rate': '-0.57', 'open': '202.5900', 'high': '202.7800', 'low': '200.3000', 'tvol': '5268467', 'tamt': '1064401782', 'pbid': '200.3300', 'vbid': '274', 'pask': '200.3600', 'vask': '150'}, {'xymd': '20250623', 'clos': '201.5000', 'sign': '2', 'diff': '0.5000', 'rate': '+0.25', 'open': '201.6250', 'high': '202.3000', 'low': '198.9600', 'tvol': '55814272', 'tamt': '11328729629', 'pbid': '202.4000', 'vbid': '400', 'pask': '202.4300', 'vask': '500'}]
+2025-06-24 22:54:52,798 - INFO - AAPL ÀüÀÏ Á¾°¡ Á¶È¸ ¼º°ø: $200.36 (ÇÊµå: clos)
+2025-06-24 22:54:52,947 - INFO - ÀüÀÏ Á¾°¡ Á¶È¸ ½ÃÀÛ: TSLA
+2025-06-24 22:54:53,091 - INFO - TSLA API ÀÀ´ä ÄÚµå: 0
+2025-06-24 22:54:53,092 - INFO - TSLA API ÀÀ´ä ¸Ş½ÃÁö: Á¤»óÃ³¸® µÇ¾ú½À´Ï´Ù.
+2025-06-24 22:54:53,092 - INFO - TSLA output2 µ¥ÀÌÅÍ: [{'xymd': '20250624', 'clos': '349.0900', 'sign': '2', 'diff': '0.4100', 'rate': '+0.12', 'open': '356.1600', 'high': '356.2599', 'low': '345.0200', 'tvol': '18918566', 'tamt': '6624050402', 'pbid': '349.1000', 'vbid': '30', 'pask': '349.1300', 'vask': '55'}, {'xymd': '20250623', 'clos': '348.6800', 'sign': '2', 'diff': '26.5200', 'rate': '+8.23', 'open': '327.5400', 'high': '357.5400', 'low': '327.4800', 'tvol': '190716815', 'tamt': '66433248057', 'pbid': '353.8000', 'vbid': '1000', 'pask': '353.8900', 'vask': '300'}]
+2025-06-24 22:54:53,092 - INFO - TSLA ÀüÀÏ Á¾°¡ Á¶È¸ ¼º°ø: $349.09 (ÇÊµå: clos)
+2025-06-24 22:54:53,165 - INFO - ÀüÀÏ Á¾°¡ Á¶È¸ ½ÃÀÛ: SES
+2025-06-24 22:54:53,286 - INFO - SES API ÀÀ´ä ÄÚµå: 0
+2025-06-24 22:54:53,286 - INFO - SES API ÀÀ´ä ¸Ş½ÃÁö: Á¤»óÃ³¸® µÇ¾ú½À´Ï´Ù.
+2025-06-24 22:54:53,286 - WARNING - SES output2 µ¥ÀÌÅÍ°¡ ºñ¾îÀÖÀ½
+2025-06-24 22:54:53,426 - WARNING - SES ÇöÀç°¡ µ¥ÀÌÅÍ ¾øÀ½ or Çü½Ä ¿À·ù: ''
+2025-06-24 22:54:53,427 - INFO - ÀüÀÏ Á¾°¡ Á¶È¸ ½ÃÀÛ: RR
+2025-06-24 22:54:53,581 - INFO - RR API ÀÀ´ä ÄÚµå: 0
+2025-06-24 22:54:53,582 - INFO - RR API ÀÀ´ä ¸Ş½ÃÁö: Á¤»óÃ³¸® µÇ¾ú½À´Ï´Ù.
+2025-06-24 22:54:53,582 - INFO - RR output2 µ¥ÀÌÅÍ: [{'xymd': '20250624', 'clos': '1.8771', 'sign': '2', 'diff': '0.0971', 'rate': '+5.46', 'open': '1.8500', 'high': '1.8800', 'low': '1.8300', 'tvol': '930449', 'tamt': '1724681', 'pbid': '1.8700', 'vbid': '7418', 'pask': '1.8800', 'vask': '11293'}, {'xymd': '20250623', 'clos': '1.7800', 'sign': '5', 'diff': '0.0100', 'rate': '-0.56', 'open': '1.7600', 'high': '1.8100', 'low': '1.7100', 'tvol': '6920569', 'tamt': '12305926', 'pbid': '1.7900', 'vbid': '4100', 'pask': '1.8100', 'vask': '1900'}]
+2025-06-24 22:54:53,582 - INFO - RR ÀüÀÏ Á¾°¡ Á¶È¸ ¼º°ø: $1.88 (ÇÊµå: clos)
+2025-06-24 22:54:53,722 - INFO - ÀüÀÏ Á¾°¡ Á¶È¸ ½ÃÀÛ: REKR
+2025-06-24 22:54:53,827 - INFO - REKR API ÀÀ´ä ÄÚµå: 0
+2025-06-24 22:54:53,828 - INFO - REKR API ÀÀ´ä ¸Ş½ÃÁö: Á¤»óÃ³¸® µÇ¾ú½À´Ï´Ù.
+2025-06-24 22:54:53,828 - INFO - REKR output2 µ¥ÀÌÅÍ: [{'xymd': '20250624', 'clos': '1.1602', 'sign': '2', 'diff': '0.0402', 'rate': '+3.59', 'open': '1.1700', 'high': '1.1900', 'low': '1.1600', 'tvol': '503423', 'tamt': '590119', 'pbid': '1.1600', 'vbid': '2800', 'pask': '1.1700', 'vask': '5885'}, {'xymd': '20250623', 'clos': '1.1200', 'sign': '5', 'diff': '0.0400', 'rate': '-3.45', 'open': '1.1600', 'high': '1.1850', 'low': '1.0800', 'tvol': '3605244', 'tamt': '4052970', 'pbid': '1.1300', 'vbid': '2500', 'pask': '1.1700', 'vask': '9500'}]
+2025-06-24 22:54:53,828 - INFO - REKR ÀüÀÏ Á¾°¡ Á¶È¸ ¼º°ø: $1.16 (ÇÊµå: clos)
+2025-06-24 22:55:54,315 - INFO - ¾×¼¼½º ÅäÅ« ¹ß±Ş ¼º°ø
+2025-06-24 22:55:54,316 - INFO - ÀüÀÏ Á¾°¡ Á¶È¸ ½ÃÀÛ: NVDA
+2025-06-24 22:55:54,408 - INFO - NVDA API ÀÀ´ä ÄÚµå: 0
+2025-06-24 22:55:54,408 - INFO - NVDA API ÀÀ´ä ¸Ş½ÃÁö: Á¤»óÃ³¸® µÇ¾ú½À´Ï´Ù.
+2025-06-24 22:55:54,408 - INFO - NVDA output2 µ¥ÀÌÅÍ: [{'xymd': '20250624', 'clos': '147.2350', 'sign': '2', 'diff': '3.0650', 'rate': '+2.13', 'open': '145.5600', 'high': '147.9100', 'low': '145.5000', 'tvol': '25376375', 'tamt': '3720685282', 'pbid': '147.2300', 'vbid': '450', 'pask': '147.2400', 'vask': '363'}, {'xymd': '20250623', 'clos': '144.1700', 'sign': '2', 'diff': '0.3200', 'rate': '+0.22', 'open': '142.5000', 'high': '144.7800', 'low': '142.0300', 'tvol': '154308941', 'tamt': '22283283436', 'pbid': '145.4900', 'vbid': '7200', 'pask': '145.5000', 'vask': '11400'}]
+2025-06-24 22:55:54,409 - INFO - NVDA ÀüÀÏ Á¾°¡ Á¶È¸ ¼º°ø: $147.24 (ÇÊµå: clos)
+2025-06-24 22:55:54,484 - INFO - ÀüÀÏ Á¾°¡ Á¶È¸ ½ÃÀÛ: AAPL
+2025-06-24 22:55:54,631 - INFO - AAPL API ÀÀ´ä ÄÚµå: 0
+2025-06-24 22:55:54,631 - INFO - AAPL API ÀÀ´ä ¸Ş½ÃÁö: Á¤»óÃ³¸® µÇ¾ú½À´Ï´Ù.
+2025-06-24 22:55:54,631 - INFO - AAPL output2 µ¥ÀÌÅÍ: [{'xymd': '20250624', 'clos': '200.4314', 'sign': '5', 'diff': '1.0686', 'rate': '-0.53', 'open': '202.5900', 'high': '202.7800', 'low': '200.2600', 'tvol': '5436301', 'tamt': '1098030629', 'pbid': '200.4200', 'vbid': '350', 'pask': '200.4400', 'vask': '421'}, {'xymd': '20250623', 'clos': '201.5000', 'sign': '2', 'diff': '0.5000', 'rate': '+0.25', 'open': '201.6250', 'high': '202.3000', 'low': '198.9600', 'tvol': '55814272', 'tamt': '11328729629', 'pbid': '202.4000', 'vbid': '400', 'pask': '202.4300', 'vask': '500'}]
+2025-06-24 22:55:54,632 - INFO - AAPL ÀüÀÏ Á¾°¡ Á¶È¸ ¼º°ø: $200.43 (ÇÊµå: clos)
+2025-06-24 22:55:54,705 - INFO - ÀüÀÏ Á¾°¡ Á¶È¸ ½ÃÀÛ: TSLA
+2025-06-24 22:55:54,828 - INFO - TSLA API ÀÀ´ä ÄÚµå: 0
+2025-06-24 22:55:54,828 - INFO - TSLA API ÀÀ´ä ¸Ş½ÃÁö: Á¤»óÃ³¸® µÇ¾ú½À´Ï´Ù.
+2025-06-24 22:55:54,828 - INFO - TSLA output2 µ¥ÀÌÅÍ: [{'xymd': '20250624', 'clos': '348.7450', 'sign': '2', 'diff': '0.0650', 'rate': '+0.02', 'open': '356.1600', 'high': '356.2599', 'low': '345.0200', 'tvol': '19210918', 'tamt': '6726123157', 'pbid': '348.6800', 'vbid': '101', 'pask': '348.8100', 'vask': '551'}, {'xymd': '20250623', 'clos': '348.6800', 'sign': '2', 'diff': '26.5200', 'rate': '+8.23', 'open': '327.5400', 'high': '357.5400', 'low': '327.4800', 'tvol': '190716815', 'tamt': '66433248057', 'pbid': '353.8000', 'vbid': '1000', 'pask': '353.8900', 'vask': '300'}]
+2025-06-24 22:55:54,828 - INFO - TSLA ÀüÀÏ Á¾°¡ Á¶È¸ ¼º°ø: $348.75 (ÇÊµå: clos)
+2025-06-24 22:55:54,990 - INFO - ÀüÀÏ Á¾°¡ Á¶È¸ ½ÃÀÛ: SES
+2025-06-24 22:55:55,168 - INFO - SES API ÀÀ´ä ÄÚµå: 0
+2025-06-24 22:55:55,168 - INFO - SES API ÀÀ´ä ¸Ş½ÃÁö: Á¤»óÃ³¸® µÇ¾ú½À´Ï´Ù.
+2025-06-24 22:55:55,168 - WARNING - SES output2 µ¥ÀÌÅÍ°¡ ºñ¾îÀÖÀ½
+2025-06-24 22:55:55,350 - WARNING - SES ÇöÀç°¡ µ¥ÀÌÅÍ ¾øÀ½ or Çü½Ä ¿À·ù: ''
+2025-06-24 22:55:55,351 - INFO - ÀüÀÏ Á¾°¡ Á¶È¸ ½ÃÀÛ: RR
+2025-06-24 22:55:55,468 - INFO - RR API ÀÀ´ä ÄÚµå: 0
+2025-06-24 22:55:55,469 - INFO - RR API ÀÀ´ä ¸Ş½ÃÁö: Á¤»óÃ³¸® µÇ¾ú½À´Ï´Ù.
+2025-06-24 22:55:55,469 - INFO - RR output2 µ¥ÀÌÅÍ: [{'xymd': '20250624', 'clos': '1.8737', 'sign': '2', 'diff': '0.0937', 'rate': '+5.26', 'open': '1.8500', 'high': '1.8800', 'low': '1.8300', 'tvol': '942285', 'tamt': '1746840', 'pbid': '1.8700', 'vbid': '9630', 'pask': '1.8800', 'vask': '11593'}, {'xymd': '20250623', 'clos': '1.7800', 'sign': '5', 'diff': '0.0100', 'rate': '-0.56', 'open': '1.7600', 'high': '1.8100', 'low': '1.7100', 'tvol': '6920569', 'tamt': '12305926', 'pbid': '1.7900', 'vbid': '4100', 'pask': '1.8100', 'vask': '1900'}]
+2025-06-24 22:55:55,469 - INFO - RR ÀüÀÏ Á¾°¡ Á¶È¸ ¼º°ø: $1.87 (ÇÊµå: clos)
+2025-06-24 22:55:55,584 - INFO - ÀüÀÏ Á¾°¡ Á¶È¸ ½ÃÀÛ: REKR
+2025-06-24 22:55:55,669 - INFO - REKR API ÀÀ´ä ÄÚµå: 0
+2025-06-24 22:55:55,669 - INFO - REKR API ÀÀ´ä ¸Ş½ÃÁö: Á¤»óÃ³¸® µÇ¾ú½À´Ï´Ù.
+2025-06-24 22:55:55,669 - INFO - REKR output2 µ¥ÀÌÅÍ: [{'xymd': '20250624', 'clos': '1.1600', 'sign': '2', 'diff': '0.0400', 'rate': '+3.57', 'open': '1.1700', 'high': '1.1900', 'low': '1.1600', 'tvol': '504716', 'tamt': '591625', 'pbid': '1.1600', 'vbid': '2800', 'pask': '1.1700', 'vask': '6185'}, {'xymd': '20250623', 'clos': '1.1200', 'sign': '5', 'diff': '0.0400', 'rate': '-3.45', 'open': '1.1600', 'high': '1.1850', 'low': '1.0800', 'tvol': '3605244', 'tamt': '4052970', 'pbid': '1.1300', 'vbid': '2500', 'pask': '1.1700', 'vask': '9500'}]
+2025-06-24 22:55:55,669 - INFO - REKR ÀüÀÏ Á¾°¡ Á¶È¸ ¼º°ø: $1.16 (ÇÊµå: clos)
+2025-06-25 13:04:12,743 - ERROR - ¾×¼¼½º ÅäÅ« ¹ß±Ş ½ÇÆĞ: 403 Client Error: Forbidden for url: https://openapi.koreainvestment.com:9443/oauth2/tokenP
+2025-06-26 14:43:06,269 - INFO - °ü½ÉÁ¾¸ñ ·Îµå ¿Ï·á: 26°³
+2025-06-26 14:43:06,270 - INFO - »ó½ÂÇÊÅÍ Á¾¸ñ ·Îµå ¿Ï·á: 3°³ - ['NVDA', 'AMZN', 'MSFT']
+2025-07-01 22:48:58,615 - INFO - ±âÁ¸ ÅäÅ« ¸¸·áµÊ
+2025-07-01 22:48:58,616 - INFO - »õ ÅäÅ« ¹ß±Ş ½Ãµµ...
+2025-07-01 22:48:58,818 - INFO - ¾×¼¼½º ÅäÅ« ¹ß±Ş ¼º°ø
+2025-07-01 22:48:58,818 - INFO - ÅäÅ« ÀúÀå ¿Ï·á: api_token.json
+2025-07-01 22:48:58,818 - INFO - ¸¸·á ½Ã°£: 2025-07-02T22:48:58.818559
+2025-07-01 22:48:58,818 - INFO - »õ ÅäÅ« ¹ß±Ş ¹× ÀúÀå ¿Ï·á
+2025-07-03 00:40:33,076 - KISAPIClient - INFO - â¡ï¸ SELL ì£¼ë¬¸ ìš”ì²­: QSI 4ì£¼ @ $1.97 (TR_ID: JTTT1006U)
+2025-07-03 00:40:33,076 - KISAPIClient - INFO - í† í°ì´ ë§Œë£Œë˜ì–´ ìƒˆë¡œ ë°œê¸‰í•©ë‹ˆë‹¤.
+2025-07-03 00:40:33,826 - KISAPIClient - INFO - âœ… ì•¡ì„¸ìŠ¤ í† í° ë°œê¸‰ ì„±ê³µ
+2025-07-03 00:40:34,509 - KISAPIClient - ERROR - API ìš”ì²­ ì‹¤íŒ¨: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 00:40:34,509 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00121","msg1":"ìœ íš¨í•˜ì§€ ì•Šì€ token ì…ë‹ˆë‹¤."}
+2025-07-03 00:40:34,509 - KISAPIClient - INFO - ì ì‹œ í›„ ì¬ì‹œë„í•©ë‹ˆë‹¤... (1/3)
+2025-07-03 00:40:36,120 - KISAPIClient - ERROR - API ìš”ì²­ ì‹¤íŒ¨: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 00:40:36,120 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00121","msg1":"ìœ íš¨í•˜ì§€ ì•Šì€ token ì…ë‹ˆë‹¤."}
+2025-07-03 00:40:36,120 - KISAPIClient - INFO - ì ì‹œ í›„ ì¬ì‹œë„í•©ë‹ˆë‹¤... (2/3)
+2025-07-03 00:40:37,760 - KISAPIClient - ERROR - API ìš”ì²­ ì‹¤íŒ¨: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 00:40:37,760 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00121","msg1":"ìœ íš¨í•˜ì§€ ì•Šì€ token ì…ë‹ˆë‹¤."}
+2025-07-03 00:40:37,760 - KISAPIClient - INFO - ì ì‹œ í›„ ì¬ì‹œë„í•©ë‹ˆë‹¤... (3/3)
+2025-07-03 00:40:39,243 - KISAPIClient - ERROR - API ìš”ì²­ ì‹¤íŒ¨: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 00:40:39,243 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00121","msg1":"ìœ íš¨í•˜ì§€ ì•Šì€ token ì…ë‹ˆë‹¤."}
+2025-07-03 00:40:39,243 - KISAPIClient - ERROR - ìµœëŒ€ ì¬ì‹œë„ íšŸìˆ˜ ì´ˆê³¼. ìš”ì²­ì„ ìµœì¢… ì‹¤íŒ¨ ì²˜ë¦¬í•©ë‹ˆë‹¤.
+2025-07-03 01:11:20,557 - KISAPIClient - INFO - â¡ï¸ SELL ì£¼ë¬¸ ìš”ì²­: QSI 4ì£¼ @ $1.97 (TR_ID: JTTT1006U)
+2025-07-03 01:11:21,083 - KISAPIClient - ERROR - API ìš”ì²­ ì‹¤íŒ¨: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 01:11:21,083 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00356","msg1":"íƒ€ê²Ÿ ì„œë²„ê°€ ì˜¬ë°”ë¥´ì§€ ì•ŠìŠµë‹ˆë‹¤. API ë¬¸ì„œë¥¼ í™•ì¸í•˜ì„¸ìš” (íƒ€ê²Ÿ ì„œë²„ : ì…ë ¥í•œ TR IDì˜ ì œì¼ ì²« ë¬¸ì)"}
+2025-07-03 01:11:21,083 - KISAPIClient - INFO - ì ì‹œ í›„ ì¬ì‹œë„í•©ë‹ˆë‹¤... (1/3)
+2025-07-03 01:11:22,697 - KISAPIClient - ERROR - API ìš”ì²­ ì‹¤íŒ¨: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 01:11:22,697 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00356","msg1":"íƒ€ê²Ÿ ì„œë²„ê°€ ì˜¬ë°”ë¥´ì§€ ì•ŠìŠµë‹ˆë‹¤. API ë¬¸ì„œë¥¼ í™•ì¸í•˜ì„¸ìš” (íƒ€ê²Ÿ ì„œë²„ : ì…ë ¥í•œ TR IDì˜ ì œì¼ ì²« ë¬¸ì)"}
+2025-07-03 01:11:22,697 - KISAPIClient - INFO - ì ì‹œ í›„ ì¬ì‹œë„í•©ë‹ˆë‹¤... (2/3)
+2025-07-03 01:11:24,261 - KISAPIClient - ERROR - API ìš”ì²­ ì‹¤íŒ¨: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 01:11:24,261 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00356","msg1":"íƒ€ê²Ÿ ì„œë²„ê°€ ì˜¬ë°”ë¥´ì§€ ì•ŠìŠµë‹ˆë‹¤. API ë¬¸ì„œë¥¼ í™•ì¸í•˜ì„¸ìš” (íƒ€ê²Ÿ ì„œë²„ : ì…ë ¥í•œ TR IDì˜ ì œì¼ ì²« ë¬¸ì)"}
+2025-07-03 01:11:24,261 - KISAPIClient - INFO - ì ì‹œ í›„ ì¬ì‹œë„í•©ë‹ˆë‹¤... (3/3)
+2025-07-03 01:11:25,839 - KISAPIClient - ERROR - API ìš”ì²­ ì‹¤íŒ¨: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 01:11:25,839 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00356","msg1":"íƒ€ê²Ÿ ì„œë²„ê°€ ì˜¬ë°”ë¥´ì§€ ì•ŠìŠµë‹ˆë‹¤. API ë¬¸ì„œë¥¼ í™•ì¸í•˜ì„¸ìš” (íƒ€ê²Ÿ ì„œë²„ : ì…ë ¥í•œ TR IDì˜ ì œì¼ ì²« ë¬¸ì)"}
+2025-07-03 01:11:25,839 - KISAPIClient - ERROR - ìµœëŒ€ ì¬ì‹œë„ íšŸìˆ˜ ì´ˆê³¼. ìš”ì²­ì„ ìµœì¢… ì‹¤íŒ¨ ì²˜ë¦¬í•©ë‹ˆë‹¤.
+2025-07-03 01:41:45,798 - KISAPIClient - INFO - â¡ï¸ SELL ì£¼ë¬¸ ìš”ì²­: QSI 4ì£¼ @ $1.98 (TR_ID: JTTT1006U)
+2025-07-03 01:41:46,436 - KISAPIClient - ERROR - API ìš”ì²­ ì‹¤íŒ¨: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 01:41:46,436 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00356","msg1":"íƒ€ê²Ÿ ì„œë²„ê°€ ì˜¬ë°”ë¥´ì§€ ì•ŠìŠµë‹ˆë‹¤. API ë¬¸ì„œë¥¼ í™•ì¸í•˜ì„¸ìš” (íƒ€ê²Ÿ ì„œë²„ : ì…ë ¥í•œ TR IDì˜ ì œì¼ ì²« ë¬¸ì)"}
+2025-07-03 01:41:46,436 - KISAPIClient - INFO - ì ì‹œ í›„ ì¬ì‹œë„í•©ë‹ˆë‹¤... (1/3)
+2025-07-03 01:41:47,985 - KISAPIClient - ERROR - API ìš”ì²­ ì‹¤íŒ¨: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 01:41:47,985 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00356","msg1":"íƒ€ê²Ÿ ì„œë²„ê°€ ì˜¬ë°”ë¥´ì§€ ì•ŠìŠµë‹ˆë‹¤. API ë¬¸ì„œë¥¼ í™•ì¸í•˜ì„¸ìš” (íƒ€ê²Ÿ ì„œë²„ : ì…ë ¥í•œ TR IDì˜ ì œì¼ ì²« ë¬¸ì)"}
+2025-07-03 01:41:47,985 - KISAPIClient - INFO - ì ì‹œ í›„ ì¬ì‹œë„í•©ë‹ˆë‹¤... (2/3)
+2025-07-03 01:41:49,626 - KISAPIClient - ERROR - API ìš”ì²­ ì‹¤íŒ¨: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 01:41:49,626 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00356","msg1":"íƒ€ê²Ÿ ì„œë²„ê°€ ì˜¬ë°”ë¥´ì§€ ì•ŠìŠµë‹ˆë‹¤. API ë¬¸ì„œë¥¼ í™•ì¸í•˜ì„¸ìš” (íƒ€ê²Ÿ ì„œë²„ : ì…ë ¥í•œ TR IDì˜ ì œì¼ ì²« ë¬¸ì)"}
+2025-07-03 01:41:49,626 - KISAPIClient - INFO - ì ì‹œ í›„ ì¬ì‹œë„í•©ë‹ˆë‹¤... (3/3)
+2025-07-03 01:41:51,251 - KISAPIClient - ERROR - API ìš”ì²­ ì‹¤íŒ¨: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 01:41:51,251 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00356","msg1":"íƒ€ê²Ÿ ì„œë²„ê°€ ì˜¬ë°”ë¥´ì§€ ì•ŠìŠµë‹ˆë‹¤. API ë¬¸ì„œë¥¼ í™•ì¸í•˜ì„¸ìš” (íƒ€ê²Ÿ ì„œë²„ : ì…ë ¥í•œ TR IDì˜ ì œì¼ ì²« ë¬¸ì)"}
+2025-07-03 01:41:51,251 - KISAPIClient - ERROR - ìµœëŒ€ ì¬ì‹œë„ íšŸìˆ˜ ì´ˆê³¼. ìš”ì²­ì„ ìµœì¢… ì‹¤íŒ¨ ì²˜ë¦¬í•©ë‹ˆë‹¤.
+2025-07-03 02:12:16,048 - KISAPIClient - INFO - â¡ï¸ SELL ì£¼ë¬¸ ìš”ì²­: QSI 4ì£¼ @ $1.98 (TR_ID: JTTT1006U)
+2025-07-03 02:12:16,607 - KISAPIClient - ERROR - API ìš”ì²­ ì‹¤íŒ¨: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 02:12:16,607 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00356","msg1":"íƒ€ê²Ÿ ì„œë²„ê°€ ì˜¬ë°”ë¥´ì§€ ì•ŠìŠµë‹ˆë‹¤. API ë¬¸ì„œë¥¼ í™•ì¸í•˜ì„¸ìš” (íƒ€ê²Ÿ ì„œë²„ : ì…ë ¥í•œ TR IDì˜ ì œì¼ ì²« ë¬¸ì)"}
+2025-07-03 02:12:16,607 - KISAPIClient - INFO - ì ì‹œ í›„ ì¬ì‹œë„í•©ë‹ˆë‹¤... (1/3)
+2025-07-03 02:12:18,235 - KISAPIClient - ERROR - API ìš”ì²­ ì‹¤íŒ¨: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 02:12:18,235 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00356","msg1":"íƒ€ê²Ÿ ì„œë²„ê°€ ì˜¬ë°”ë¥´ì§€ ì•ŠìŠµë‹ˆë‹¤. API ë¬¸ì„œë¥¼ í™•ì¸í•˜ì„¸ìš” (íƒ€ê²Ÿ ì„œë²„ : ì…ë ¥í•œ TR IDì˜ ì œì¼ ì²« ë¬¸ì)"}
+2025-07-03 02:12:18,235 - KISAPIClient - INFO - ì ì‹œ í›„ ì¬ì‹œë„í•©ë‹ˆë‹¤... (2/3)
+2025-07-03 02:12:19,781 - KISAPIClient - ERROR - API ìš”ì²­ ì‹¤íŒ¨: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 02:12:19,781 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00356","msg1":"íƒ€ê²Ÿ ì„œë²„ê°€ ì˜¬ë°”ë¥´ì§€ ì•ŠìŠµë‹ˆë‹¤. API ë¬¸ì„œë¥¼ í™•ì¸í•˜ì„¸ìš” (íƒ€ê²Ÿ ì„œë²„ : ì…ë ¥í•œ TR IDì˜ ì œì¼ ì²« ë¬¸ì)"}
+2025-07-03 02:12:19,797 - KISAPIClient - INFO - ì ì‹œ í›„ ì¬ì‹œë„í•©ë‹ˆë‹¤... (3/3)
+2025-07-03 02:12:21,456 - KISAPIClient - ERROR - API ìš”ì²­ ì‹¤íŒ¨: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 02:12:21,456 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00356","msg1":"íƒ€ê²Ÿ ì„œë²„ê°€ ì˜¬ë°”ë¥´ì§€ ì•ŠìŠµë‹ˆë‹¤. API ë¬¸ì„œë¥¼ í™•ì¸í•˜ì„¸ìš” (íƒ€ê²Ÿ ì„œë²„ : ì…ë ¥í•œ TR IDì˜ ì œì¼ ì²« ë¬¸ì)"}
+2025-07-03 02:12:21,456 - KISAPIClient - ERROR - ìµœëŒ€ ì¬ì‹œë„ íšŸìˆ˜ ì´ˆê³¼. ìš”ì²­ì„ ìµœì¢… ì‹¤íŒ¨ ì²˜ë¦¬í•©ë‹ˆë‹¤.
+2025-07-03 02:42:41,697 - KISAPIClient - INFO - â¡ï¸ SELL ì£¼ë¬¸ ìš”ì²­: QSI 4ì£¼ @ $1.96 (TR_ID: JTTT1006U)
+2025-07-03 02:42:42,265 - KISAPIClient - ERROR - API ìš”ì²­ ì‹¤íŒ¨: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 02:42:42,265 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00356","msg1":"íƒ€ê²Ÿ ì„œë²„ê°€ ì˜¬ë°”ë¥´ì§€ ì•ŠìŠµë‹ˆë‹¤. API ë¬¸ì„œë¥¼ í™•ì¸í•˜ì„¸ìš” (íƒ€ê²Ÿ ì„œë²„ : ì…ë ¥í•œ TR IDì˜ ì œì¼ ì²« ë¬¸ì)"}
+2025-07-03 02:42:42,265 - KISAPIClient - INFO - ì ì‹œ í›„ ì¬ì‹œë„í•©ë‹ˆë‹¤... (1/3)
+2025-07-03 02:42:43,867 - KISAPIClient - ERROR - API ìš”ì²­ ì‹¤íŒ¨: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 02:42:43,867 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00356","msg1":"íƒ€ê²Ÿ ì„œë²„ê°€ ì˜¬ë°”ë¥´ì§€ ì•ŠìŠµë‹ˆë‹¤. API ë¬¸ì„œë¥¼ í™•ì¸í•˜ì„¸ìš” (íƒ€ê²Ÿ ì„œë²„ : ì…ë ¥í•œ TR IDì˜ ì œì¼ ì²« ë¬¸ì)"}
+2025-07-03 02:42:43,867 - KISAPIClient - INFO - ì ì‹œ í›„ ì¬ì‹œë„í•©ë‹ˆë‹¤... (2/3)
+2025-07-03 02:42:45,449 - KISAPIClient - ERROR - API ìš”ì²­ ì‹¤íŒ¨: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 02:42:45,449 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00356","msg1":"íƒ€ê²Ÿ ì„œë²„ê°€ ì˜¬ë°”ë¥´ì§€ ì•ŠìŠµë‹ˆë‹¤. API ë¬¸ì„œë¥¼ í™•ì¸í•˜ì„¸ìš” (íƒ€ê²Ÿ ì„œë²„ : ì…ë ¥í•œ TR IDì˜ ì œì¼ ì²« ë¬¸ì)"}
+2025-07-03 02:42:45,449 - KISAPIClient - INFO - ì ì‹œ í›„ ì¬ì‹œë„í•©ë‹ˆë‹¤... (3/3)
+2025-07-03 02:42:47,127 - KISAPIClient - ERROR - API ìš”ì²­ ì‹¤íŒ¨: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 02:42:47,127 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00356","msg1":"íƒ€ê²Ÿ ì„œë²„ê°€ ì˜¬ë°”ë¥´ì§€ ì•ŠìŠµë‹ˆë‹¤. API ë¬¸ì„œë¥¼ í™•ì¸í•˜ì„¸ìš” (íƒ€ê²Ÿ ì„œë²„ : ì…ë ¥í•œ TR IDì˜ ì œì¼ ì²« ë¬¸ì)"}
+2025-07-03 02:42:47,127 - KISAPIClient - ERROR - ìµœëŒ€ ì¬ì‹œë„ íšŸìˆ˜ ì´ˆê³¼. ìš”ì²­ì„ ìµœì¢… ì‹¤íŒ¨ ì²˜ë¦¬í•©ë‹ˆë‹¤.
+2025-07-03 03:13:10,584 - KISAPIClient - INFO - â¡ï¸ SELL ì£¼ë¬¸ ìš”ì²­: QSI 4ì£¼ @ $1.98 (TR_ID: JTTT1006U)
+2025-07-03 03:13:11,111 - KISAPIClient - ERROR - API ìš”ì²­ ì‹¤íŒ¨: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 03:13:11,111 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00356","msg1":"íƒ€ê²Ÿ ì„œë²„ê°€ ì˜¬ë°”ë¥´ì§€ ì•ŠìŠµë‹ˆë‹¤. API ë¬¸ì„œë¥¼ í™•ì¸í•˜ì„¸ìš” (íƒ€ê²Ÿ ì„œë²„ : ì…ë ¥í•œ TR IDì˜ ì œì¼ ì²« ë¬¸ì)"}
+2025-07-03 03:13:11,111 - KISAPIClient - INFO - ì ì‹œ í›„ ì¬ì‹œë„í•©ë‹ˆë‹¤... (1/3)
+2025-07-03 03:13:12,784 - KISAPIClient - ERROR - API ìš”ì²­ ì‹¤íŒ¨: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 03:13:12,784 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00356","msg1":"íƒ€ê²Ÿ ì„œë²„ê°€ ì˜¬ë°”ë¥´ì§€ ì•ŠìŠµë‹ˆë‹¤. API ë¬¸ì„œë¥¼ í™•ì¸í•˜ì„¸ìš” (íƒ€ê²Ÿ ì„œë²„ : ì…ë ¥í•œ TR IDì˜ ì œì¼ ì²« ë¬¸ì)"}
+2025-07-03 03:13:12,784 - KISAPIClient - INFO - ì ì‹œ í›„ ì¬ì‹œë„í•©ë‹ˆë‹¤... (2/3)
+2025-07-03 03:13:14,443 - KISAPIClient - ERROR - API ìš”ì²­ ì‹¤íŒ¨: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 03:13:14,443 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00356","msg1":"íƒ€ê²Ÿ ì„œë²„ê°€ ì˜¬ë°”ë¥´ì§€ ì•ŠìŠµë‹ˆë‹¤. API ë¬¸ì„œë¥¼ í™•ì¸í•˜ì„¸ìš” (íƒ€ê²Ÿ ì„œë²„ : ì…ë ¥í•œ TR IDì˜ ì œì¼ ì²« ë¬¸ì)"}
+2025-07-03 03:13:14,443 - KISAPIClient - INFO - ì ì‹œ í›„ ì¬ì‹œë„í•©ë‹ˆë‹¤... (3/3)
+2025-07-03 03:13:16,039 - KISAPIClient - ERROR - API ìš”ì²­ ì‹¤íŒ¨: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 03:13:16,039 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00356","msg1":"íƒ€ê²Ÿ ì„œë²„ê°€ ì˜¬ë°”ë¥´ì§€ ì•ŠìŠµë‹ˆë‹¤. API ë¬¸ì„œë¥¼ í™•ì¸í•˜ì„¸ìš” (íƒ€ê²Ÿ ì„œë²„ : ì…ë ¥í•œ TR IDì˜ ì œì¼ ì²« ë¬¸ì)"}
+2025-07-03 03:13:16,039 - KISAPIClient - ERROR - ìµœëŒ€ ì¬ì‹œë„ íšŸìˆ˜ ì´ˆê³¼. ìš”ì²­ì„ ìµœì¢… ì‹¤íŒ¨ ì²˜ë¦¬í•©ë‹ˆë‹¤.
+2025-07-03 03:43:35,894 - KISAPIClient - INFO - â¡ï¸ SELL ì£¼ë¬¸ ìš”ì²­: QSI 4ì£¼ @ $1.98 (TR_ID: JTTT1006U)
+2025-07-03 03:43:36,482 - KISAPIClient - ERROR - API ìš”ì²­ ì‹¤íŒ¨: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 03:43:36,482 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00356","msg1":"íƒ€ê²Ÿ ì„œë²„ê°€ ì˜¬ë°”ë¥´ì§€ ì•ŠìŠµë‹ˆë‹¤. API ë¬¸ì„œë¥¼ í™•ì¸í•˜ì„¸ìš” (íƒ€ê²Ÿ ì„œë²„ : ì…ë ¥í•œ TR IDì˜ ì œì¼ ì²« ë¬¸ì)"}
+2025-07-03 03:43:36,482 - KISAPIClient - INFO - ì ì‹œ í›„ ì¬ì‹œë„í•©ë‹ˆë‹¤... (1/3)
+2025-07-03 03:43:38,014 - KISAPIClient - ERROR - API ìš”ì²­ ì‹¤íŒ¨: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 03:43:38,014 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00356","msg1":"íƒ€ê²Ÿ ì„œë²„ê°€ ì˜¬ë°”ë¥´ì§€ ì•ŠìŠµë‹ˆë‹¤. API ë¬¸ì„œë¥¼ í™•ì¸í•˜ì„¸ìš” (íƒ€ê²Ÿ ì„œë²„ : ì…ë ¥í•œ TR IDì˜ ì œì¼ ì²« ë¬¸ì)"}
+2025-07-03 03:43:38,014 - KISAPIClient - INFO - ì ì‹œ í›„ ì¬ì‹œë„í•©ë‹ˆë‹¤... (2/3)
+2025-07-03 03:43:39,689 - KISAPIClient - ERROR - API ìš”ì²­ ì‹¤íŒ¨: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 03:43:39,689 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00356","msg1":"íƒ€ê²Ÿ ì„œë²„ê°€ ì˜¬ë°”ë¥´ì§€ ì•ŠìŠµë‹ˆë‹¤. API ë¬¸ì„œë¥¼ í™•ì¸í•˜ì„¸ìš” (íƒ€ê²Ÿ ì„œë²„ : ì…ë ¥í•œ TR IDì˜ ì œì¼ ì²« ë¬¸ì)"}
+2025-07-03 03:43:39,689 - KISAPIClient - INFO - ì ì‹œ í›„ ì¬ì‹œë„í•©ë‹ˆë‹¤... (3/3)
+2025-07-03 03:43:41,300 - KISAPIClient - ERROR - API ìš”ì²­ ì‹¤íŒ¨: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 03:43:41,300 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00356","msg1":"íƒ€ê²Ÿ ì„œë²„ê°€ ì˜¬ë°”ë¥´ì§€ ì•ŠìŠµë‹ˆë‹¤. API ë¬¸ì„œë¥¼ í™•ì¸í•˜ì„¸ìš” (íƒ€ê²Ÿ ì„œë²„ : ì…ë ¥í•œ TR IDì˜ ì œì¼ ì²« ë¬¸ì)"}
+2025-07-03 03:43:41,300 - KISAPIClient - ERROR - ìµœëŒ€ ì¬ì‹œë„ íšŸìˆ˜ ì´ˆê³¼. ìš”ì²­ì„ ìµœì¢… ì‹¤íŒ¨ ì²˜ë¦¬í•©ë‹ˆë‹¤.
+2025-07-03 04:14:04,525 - KISAPIClient - INFO - â¡ï¸ SELL ì£¼ë¬¸ ìš”ì²­: QSI 4ì£¼ @ $1.98 (TR_ID: JTTT1006U)
+2025-07-03 04:14:05,068 - KISAPIClient - ERROR - API ìš”ì²­ ì‹¤íŒ¨: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 04:14:05,068 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00356","msg1":"íƒ€ê²Ÿ ì„œë²„ê°€ ì˜¬ë°”ë¥´ì§€ ì•ŠìŠµë‹ˆë‹¤. API ë¬¸ì„œë¥¼ í™•ì¸í•˜ì„¸ìš” (íƒ€ê²Ÿ ì„œë²„ : ì…ë ¥í•œ TR IDì˜ ì œì¼ ì²« ë¬¸ì)"}
+2025-07-03 04:14:05,068 - KISAPIClient - INFO - ì ì‹œ í›„ ì¬ì‹œë„í•©ë‹ˆë‹¤... (1/3)
+2025-07-03 04:14:06,662 - KISAPIClient - ERROR - API ìš”ì²­ ì‹¤íŒ¨: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 04:14:06,662 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00356","msg1":"íƒ€ê²Ÿ ì„œë²„ê°€ ì˜¬ë°”ë¥´ì§€ ì•ŠìŠµë‹ˆë‹¤. API ë¬¸ì„œë¥¼ í™•ì¸í•˜ì„¸ìš” (íƒ€ê²Ÿ ì„œë²„ : ì…ë ¥í•œ TR IDì˜ ì œì¼ ì²« ë¬¸ì)"}
+2025-07-03 04:14:06,662 - KISAPIClient - INFO - ì ì‹œ í›„ ì¬ì‹œë„í•©ë‹ˆë‹¤... (2/3)
+2025-07-03 04:14:08,278 - KISAPIClient - ERROR - API ìš”ì²­ ì‹¤íŒ¨: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 04:14:08,279 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00356","msg1":"íƒ€ê²Ÿ ì„œë²„ê°€ ì˜¬ë°”ë¥´ì§€ ì•ŠìŠµë‹ˆë‹¤. API ë¬¸ì„œë¥¼ í™•ì¸í•˜ì„¸ìš” (íƒ€ê²Ÿ ì„œë²„ : ì…ë ¥í•œ TR IDì˜ ì œì¼ ì²« ë¬¸ì)"}
+2025-07-03 04:14:08,280 - KISAPIClient - INFO - ì ì‹œ í›„ ì¬ì‹œë„í•©ë‹ˆë‹¤... (3/3)
+2025-07-03 04:14:09,836 - KISAPIClient - ERROR - API ìš”ì²­ ì‹¤íŒ¨: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 04:14:09,836 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00356","msg1":"íƒ€ê²Ÿ ì„œë²„ê°€ ì˜¬ë°”ë¥´ì§€ ì•ŠìŠµë‹ˆë‹¤. API ë¬¸ì„œë¥¼ í™•ì¸í•˜ì„¸ìš” (íƒ€ê²Ÿ ì„œë²„ : ì…ë ¥í•œ TR IDì˜ ì œì¼ ì²« ë¬¸ì)"}
+2025-07-03 04:14:09,836 - KISAPIClient - ERROR - ìµœëŒ€ ì¬ì‹œë„ íšŸìˆ˜ ì´ˆê³¼. ìš”ì²­ì„ ìµœì¢… ì‹¤íŒ¨ ì²˜ë¦¬í•©ë‹ˆë‹¤.
+2025-07-03 04:44:29,818 - KISAPIClient - INFO - â¡ï¸ SELL ì£¼ë¬¸ ìš”ì²­: QSI 4ì£¼ @ $1.97 (TR_ID: JTTT1006U)
+2025-07-03 04:44:30,377 - KISAPIClient - ERROR - API ìš”ì²­ ì‹¤íŒ¨: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 04:44:30,377 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00356","msg1":"íƒ€ê²Ÿ ì„œë²„ê°€ ì˜¬ë°”ë¥´ì§€ ì•ŠìŠµë‹ˆë‹¤. API ë¬¸ì„œë¥¼ í™•ì¸í•˜ì„¸ìš” (íƒ€ê²Ÿ ì„œë²„ : ì…ë ¥í•œ TR IDì˜ ì œì¼ ì²« ë¬¸ì)"}
+2025-07-03 04:44:30,377 - KISAPIClient - INFO - ì ì‹œ í›„ ì¬ì‹œë„í•©ë‹ˆë‹¤... (1/3)
+2025-07-03 04:44:32,032 - KISAPIClient - ERROR - API ìš”ì²­ ì‹¤íŒ¨: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 04:44:32,032 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00356","msg1":"íƒ€ê²Ÿ ì„œë²„ê°€ ì˜¬ë°”ë¥´ì§€ ì•ŠìŠµë‹ˆë‹¤. API ë¬¸ì„œë¥¼ í™•ì¸í•˜ì„¸ìš” (íƒ€ê²Ÿ ì„œë²„ : ì…ë ¥í•œ TR IDì˜ ì œì¼ ì²« ë¬¸ì)"}
+2025-07-03 04:44:32,032 - KISAPIClient - INFO - ì ì‹œ í›„ ì¬ì‹œë„í•©ë‹ˆë‹¤... (2/3)
+2025-07-03 04:44:33,739 - KISAPIClient - ERROR - API ìš”ì²­ ì‹¤íŒ¨: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 04:44:33,739 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00356","msg1":"íƒ€ê²Ÿ ì„œë²„ê°€ ì˜¬ë°”ë¥´ì§€ ì•ŠìŠµë‹ˆë‹¤. API ë¬¸ì„œë¥¼ í™•ì¸í•˜ì„¸ìš” (íƒ€ê²Ÿ ì„œë²„ : ì…ë ¥í•œ TR IDì˜ ì œì¼ ì²« ë¬¸ì)"}
+2025-07-03 04:44:33,739 - KISAPIClient - INFO - ì ì‹œ í›„ ì¬ì‹œë„í•©ë‹ˆë‹¤... (3/3)
+2025-07-03 04:44:35,334 - KISAPIClient - ERROR - API ìš”ì²­ ì‹¤íŒ¨: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 04:44:35,334 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00356","msg1":"íƒ€ê²Ÿ ì„œë²„ê°€ ì˜¬ë°”ë¥´ì§€ ì•ŠìŠµë‹ˆë‹¤. API ë¬¸ì„œë¥¼ í™•ì¸í•˜ì„¸ìš” (íƒ€ê²Ÿ ì„œë²„ : ì…ë ¥í•œ TR IDì˜ ì œì¼ ì²« ë¬¸ì)"}
+2025-07-03 04:44:35,334 - KISAPIClient - ERROR - ìµœëŒ€ ì¬ì‹œë„ íšŸìˆ˜ ì´ˆê³¼. ìš”ì²­ì„ ìµœì¢… ì‹¤íŒ¨ ì²˜ë¦¬í•©ë‹ˆë‹¤.
+2025-07-03 05:14:58,216 - KISAPIClient - INFO - â¡ï¸ SELL ì£¼ë¬¸ ìš”ì²­: QSI 4ì£¼ @ $1.98 (TR_ID: JTTT1006U)
+2025-07-03 05:14:58,822 - KISAPIClient - ERROR - API ìš”ì²­ ì‹¤íŒ¨: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 05:14:58,822 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00356","msg1":"íƒ€ê²Ÿ ì„œë²„ê°€ ì˜¬ë°”ë¥´ì§€ ì•ŠìŠµë‹ˆë‹¤. API ë¬¸ì„œë¥¼ í™•ì¸í•˜ì„¸ìš” (íƒ€ê²Ÿ ì„œë²„ : ì…ë ¥í•œ TR IDì˜ ì œì¼ ì²« ë¬¸ì)"}
+2025-07-03 05:14:58,822 - KISAPIClient - INFO - ì ì‹œ í›„ ì¬ì‹œë„í•©ë‹ˆë‹¤... (1/3)
+2025-07-03 05:15:00,499 - KISAPIClient - ERROR - API ìš”ì²­ ì‹¤íŒ¨: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 05:15:00,499 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00356","msg1":"íƒ€ê²Ÿ ì„œë²„ê°€ ì˜¬ë°”ë¥´ì§€ ì•ŠìŠµë‹ˆë‹¤. API ë¬¸ì„œë¥¼ í™•ì¸í•˜ì„¸ìš” (íƒ€ê²Ÿ ì„œë²„ : ì…ë ¥í•œ TR IDì˜ ì œì¼ ì²« ë¬¸ì)"}
+2025-07-03 05:15:00,499 - KISAPIClient - INFO - ì ì‹œ í›„ ì¬ì‹œë„í•©ë‹ˆë‹¤... (2/3)
+2025-07-03 05:15:02,079 - KISAPIClient - ERROR - API ìš”ì²­ ì‹¤íŒ¨: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 05:15:02,079 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00356","msg1":"íƒ€ê²Ÿ ì„œë²„ê°€ ì˜¬ë°”ë¥´ì§€ ì•ŠìŠµë‹ˆë‹¤. API ë¬¸ì„œë¥¼ í™•ì¸í•˜ì„¸ìš” (íƒ€ê²Ÿ ì„œë²„ : ì…ë ¥í•œ TR IDì˜ ì œì¼ ì²« ë¬¸ì)"}
+2025-07-03 05:15:02,079 - KISAPIClient - INFO - ì ì‹œ í›„ ì¬ì‹œë„í•©ë‹ˆë‹¤... (3/3)
+2025-07-03 05:15:03,675 - KISAPIClient - ERROR - API ìš”ì²­ ì‹¤íŒ¨: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 05:15:03,675 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00356","msg1":"íƒ€ê²Ÿ ì„œë²„ê°€ ì˜¬ë°”ë¥´ì§€ ì•ŠìŠµë‹ˆë‹¤. API ë¬¸ì„œë¥¼ í™•ì¸í•˜ì„¸ìš” (íƒ€ê²Ÿ ì„œë²„ : ì…ë ¥í•œ TR IDì˜ ì œì¼ ì²« ë¬¸ì)"}
+2025-07-03 05:15:03,675 - KISAPIClient - ERROR - ìµœëŒ€ ì¬ì‹œë„ íšŸìˆ˜ ì´ˆê³¼. ìš”ì²­ì„ ìµœì¢… ì‹¤íŒ¨ ì²˜ë¦¬í•©ë‹ˆë‹¤.
+2025-07-03 05:45:23,886 - KISAPIClient - INFO - â¡ï¸ SELL ì£¼ë¬¸ ìš”ì²­: QSI 4ì£¼ @ $1.99 (TR_ID: JTTT1006U)
+2025-07-03 05:45:24,487 - KISAPIClient - ERROR - API ìš”ì²­ ì‹¤íŒ¨: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 05:45:24,487 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00356","msg1":"íƒ€ê²Ÿ ì„œë²„ê°€ ì˜¬ë°”ë¥´ì§€ ì•ŠìŠµë‹ˆë‹¤. API ë¬¸ì„œë¥¼ í™•ì¸í•˜ì„¸ìš” (íƒ€ê²Ÿ ì„œë²„ : ì…ë ¥í•œ TR IDì˜ ì œì¼ ì²« ë¬¸ì)"}
+2025-07-03 05:45:24,489 - KISAPIClient - INFO - ì ì‹œ í›„ ì¬ì‹œë„í•©ë‹ˆë‹¤... (1/3)
+2025-07-03 05:45:26,294 - KISAPIClient - ERROR - API ìš”ì²­ ì‹¤íŒ¨: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 05:45:26,294 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00356","msg1":"íƒ€ê²Ÿ ì„œë²„ê°€ ì˜¬ë°”ë¥´ì§€ ì•ŠìŠµë‹ˆë‹¤. API ë¬¸ì„œë¥¼ í™•ì¸í•˜ì„¸ìš” (íƒ€ê²Ÿ ì„œë²„ : ì…ë ¥í•œ TR IDì˜ ì œì¼ ì²« ë¬¸ì)"}
+2025-07-03 05:45:26,295 - KISAPIClient - INFO - ì ì‹œ í›„ ì¬ì‹œë„í•©ë‹ˆë‹¤... (2/3)
+2025-07-03 05:45:27,949 - KISAPIClient - ERROR - API ìš”ì²­ ì‹¤íŒ¨: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 05:45:27,949 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00356","msg1":"íƒ€ê²Ÿ ì„œë²„ê°€ ì˜¬ë°”ë¥´ì§€ ì•ŠìŠµë‹ˆë‹¤. API ë¬¸ì„œë¥¼ í™•ì¸í•˜ì„¸ìš” (íƒ€ê²Ÿ ì„œë²„ : ì…ë ¥í•œ TR IDì˜ ì œì¼ ì²« ë¬¸ì)"}
+2025-07-03 05:45:27,949 - KISAPIClient - INFO - ì ì‹œ í›„ ì¬ì‹œë„í•©ë‹ˆë‹¤... (3/3)
+2025-07-03 05:45:29,547 - KISAPIClient - ERROR - API ìš”ì²­ ì‹¤íŒ¨: POST https://openapi.koreainvestment.com:9443/uapi/overseas-stock/v1/trading/order
+2025-07-03 05:45:29,548 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00356","msg1":"íƒ€ê²Ÿ ì„œë²„ê°€ ì˜¬ë°”ë¥´ì§€ ì•ŠìŠµë‹ˆë‹¤. API ë¬¸ì„œë¥¼ í™•ì¸í•˜ì„¸ìš” (íƒ€ê²Ÿ ì„œë²„ : ì…ë ¥í•œ TR IDì˜ ì œì¼ ì²« ë¬¸ì)"}
+2025-07-03 05:45:29,548 - KISAPIClient - ERROR - ìµœëŒ€ ì¬ì‹œë„ íšŸìˆ˜ ì´ˆê³¼. ìš”ì²­ì„ ìµœì¢… ì‹¤íŒ¨ ì²˜ë¦¬í•©ë‹ˆë‹¤.
+2025-07-04 19:31:25,741 - KISAPIClient - INFO - ì”ê³  ì¡°íšŒ ìš”ì²­ (TR_ID: TTTS3012R)
+2025-07-04 19:31:25,801 - KISAPIClient - INFO - ë”•ì…”ë„ˆë¦¬ í˜•íƒœ output2 (í‚¤ ê°œìˆ˜: 9)
+2025-07-04 19:31:25,801 - KISAPIClient - INFO -   - frcr_pchs_amt1: 5484.08596 ($5484.09)
+2025-07-04 19:31:25,801 - KISAPIClient - INFO -   âœ… frcr_pchs_amt1ë¥¼ ì˜ˆìˆ˜ê¸ˆìœ¼ë¡œ ì‚¬ìš©: $5484.09
+2025-07-04 19:31:25,802 - KISAPIClient - INFO -   - tot_evlu_pfls_amt: 2881.33170000 ($2881.33)
+2025-07-04 19:31:25,802 - KISAPIClient - INFO -   - frcr_buy_amt_smtl1: 0.000000 ($0.00)
+2025-07-04 19:31:25,802 - KISAPIClient - INFO -   - frcr_buy_amt_smtl2: 0.000000 ($0.00)
+2025-07-04 19:31:25,802 - KISAPIClient - INFO - âœ… ì”ê³  ì¡°íšŒ ì„±ê³µ: ì˜ˆìˆ˜ê¸ˆ $5484.09, ë³´ìœ ì¢…ëª© 3ê°œ
+2025-07-04 20:03:05,824 - KISAPIClient - INFO - ğŸ” ì¢…ëª© ê²€ìƒ‰: QSI
+2025-07-04 20:03:05,824 - KISAPIClient - INFO - í† í°ì´ ë§Œë£Œë˜ì–´ ìƒˆë¡œ ë°œê¸‰í•©ë‹ˆë‹¤.
+2025-07-04 20:03:06,005 - KISAPIClient - INFO - âœ… ì•¡ì„¸ìŠ¤ í† í° ë°œê¸‰ ì„±ê³µ
+2025-07-04 20:03:06,039 - KISAPIClient - ERROR - API ìš”ì²­ ì‹¤íŒ¨: 404 Client Error: Not Found for url: https://openapi.koreainvestment.com:9443/uapi/overseas-price/v1/quotations/search?PRDT_TYPE_CD=512&PDNO=QSI&OVRS_EXCG_CD=NASD
+2025-07-04 20:03:06,039 - KISAPIClient - ERROR -   -> Status: 404, Response: 
+2025-07-04 20:03:06,040 - KISAPIClient - INFO - ì ì‹œ í›„ ì¬ì‹œë„í•©ë‹ˆë‹¤... (1/3)
+2025-07-04 20:03:07,069 - KISAPIClient - ERROR - API ìš”ì²­ ì‹¤íŒ¨: 404 Client Error: Not Found for url: https://openapi.koreainvestment.com:9443/uapi/overseas-price/v1/quotations/search?PRDT_TYPE_CD=512&PDNO=QSI&OVRS_EXCG_CD=NASD
+2025-07-04 20:03:07,069 - KISAPIClient - ERROR -   -> Status: 404, Response: 
+2025-07-04 20:03:07,070 - KISAPIClient - INFO - ì ì‹œ í›„ ì¬ì‹œë„í•©ë‹ˆë‹¤... (2/3)
+2025-07-04 20:03:08,098 - KISAPIClient - ERROR - API ìš”ì²­ ì‹¤íŒ¨: 404 Client Error: Not Found for url: https://openapi.koreainvestment.com:9443/uapi/overseas-price/v1/quotations/search?PRDT_TYPE_CD=512&PDNO=QSI&OVRS_EXCG_CD=NASD
+2025-07-04 20:03:08,100 - KISAPIClient - ERROR -   -> Status: 404, Response: 
+2025-07-04 20:03:08,100 - KISAPIClient - INFO - ì ì‹œ í›„ ì¬ì‹œë„í•©ë‹ˆë‹¤... (3/3)
+2025-07-04 20:03:09,136 - KISAPIClient - ERROR - API ìš”ì²­ ì‹¤íŒ¨: 404 Client Error: Not Found for url: https://openapi.koreainvestment.com:9443/uapi/overseas-price/v1/quotations/search?PRDT_TYPE_CD=512&PDNO=QSI&OVRS_EXCG_CD=NASD
+2025-07-04 20:03:09,136 - KISAPIClient - ERROR -   -> Status: 404, Response: 
+2025-07-04 20:03:09,137 - KISAPIClient - ERROR - âŒ ì¢…ëª© ê²€ìƒ‰ ì‹¤íŒ¨: QSI, ì˜¤ë¥˜: API request failed
+2025-07-04 20:03:09,137 - KISAPIClient - INFO - ğŸ” ì¢…ëª© ê²€ìƒ‰: QUBT
+2025-07-04 20:03:09,166 - KISAPIClient - ERROR - API ìš”ì²­ ì‹¤íŒ¨: 404 Client Error: Not Found for url: https://openapi.koreainvestment.com:9443/uapi/overseas-price/v1/quotations/search?PRDT_TYPE_CD=512&PDNO=QUBT&OVRS_EXCG_CD=NASD
+2025-07-04 20:03:09,166 - KISAPIClient - ERROR -   -> Status: 404, Response: 
+2025-07-04 20:03:09,167 - KISAPIClient - INFO - ì ì‹œ í›„ ì¬ì‹œë„í•©ë‹ˆë‹¤... (1/3)
+2025-07-04 20:03:10,221 - KISAPIClient - ERROR - API ìš”ì²­ ì‹¤íŒ¨: 404 Client Error: Not Found for url: https://openapi.koreainvestment.com:9443/uapi/overseas-price/v1/quotations/search?PRDT_TYPE_CD=512&PDNO=QUBT&OVRS_EXCG_CD=NASD
+2025-07-04 20:03:10,222 - KISAPIClient - ERROR -   -> Status: 404, Response: 
+2025-07-04 20:03:10,222 - KISAPIClient - INFO - ì ì‹œ í›„ ì¬ì‹œë„í•©ë‹ˆë‹¤... (2/3)
+2025-07-04 20:03:11,258 - KISAPIClient - ERROR - API ìš”ì²­ ì‹¤íŒ¨: 404 Client Error: Not Found for url: https://openapi.koreainvestment.com:9443/uapi/overseas-price/v1/quotations/search?PRDT_TYPE_CD=512&PDNO=QUBT&OVRS_EXCG_CD=NASD
+2025-07-04 20:03:11,259 - KISAPIClient - ERROR -   -> Status: 404, Response: 
+2025-07-04 20:03:11,259 - KISAPIClient - INFO - ì ì‹œ í›„ ì¬ì‹œë„í•©ë‹ˆë‹¤... (3/3)
+2025-07-04 20:03:12,290 - KISAPIClient - ERROR - API ìš”ì²­ ì‹¤íŒ¨: 404 Client Error: Not Found for url: https://openapi.koreainvestment.com:9443/uapi/overseas-price/v1/quotations/search?PRDT_TYPE_CD=512&PDNO=QUBT&OVRS_EXCG_CD=NASD
+2025-07-04 20:03:12,291 - KISAPIClient - ERROR -   -> Status: 404, Response: 
+2025-07-04 20:03:12,291 - KISAPIClient - ERROR - âŒ ì¢…ëª© ê²€ìƒ‰ ì‹¤íŒ¨: QUBT, ì˜¤ë¥˜: API request failed
+2025-07-04 20:03:12,291 - KISAPIClient - INFO - ğŸ” ì¢…ëª© ê²€ìƒ‰: SES
+2025-07-04 20:03:12,319 - KISAPIClient - ERROR - API ìš”ì²­ ì‹¤íŒ¨: 404 Client Error: Not Found for url: https://openapi.koreainvestment.com:9443/uapi/overseas-price/v1/quotations/search?PRDT_TYPE_CD=512&PDNO=SES&OVRS_EXCG_CD=NASD
+2025-07-04 20:03:12,320 - KISAPIClient - ERROR -   -> Status: 404, Response: 
+2025-07-04 20:03:12,321 - KISAPIClient - INFO - ì ì‹œ í›„ ì¬ì‹œë„í•©ë‹ˆë‹¤... (1/3)
+2025-07-04 20:09:05,906 - KISAPIClient - INFO - ğŸ” ì¢…ëª© ìœ íš¨ì„± ê²€ì¦ ì‹œì‘ (í˜„ì¬ê°€ ì¡°íšŒ ë°©ì‹)...
+2025-07-04 20:09:05,907 - KISAPIClient - INFO - í† í°ì´ ë§Œë£Œë˜ì–´ ìƒˆë¡œ ë°œê¸‰í•©ë‹ˆë‹¤.
+2025-07-04 20:09:06,118 - KISAPIClient - INFO - âœ… ì•¡ì„¸ìŠ¤ í† í° ë°œê¸‰ ì„±ê³µ
+2025-07-04 20:09:06,159 - KISAPIClient - ERROR - API ìš”ì²­ ì‹¤íŒ¨: 500 Server Error: Internal Server Error for url: https://openapi.koreainvestment.com:9443/uapi/overseas-price/v1/quotations/price?AUTH=&EXCD=NAS&SYMB=NVDA
+2025-07-04 20:09:06,161 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00121","msg1":"ìœ íš¨í•˜ì§€ ì•Šì€ token ì…ë‹ˆë‹¤."}
+2025-07-04 20:09:06,161 - KISAPIClient - INFO - ì ì‹œ í›„ ì¬ì‹œë„í•©ë‹ˆë‹¤... (1/3)
+2025-07-04 20:09:07,191 - KISAPIClient - ERROR - API ìš”ì²­ ì‹¤íŒ¨: 500 Server Error: Internal Server Error for url: https://openapi.koreainvestment.com:9443/uapi/overseas-price/v1/quotations/price?AUTH=&EXCD=NAS&SYMB=NVDA
+2025-07-04 20:09:07,191 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00121","msg1":"ìœ íš¨í•˜ì§€ ì•Šì€ token ì…ë‹ˆë‹¤."}
+2025-07-04 20:09:07,192 - KISAPIClient - INFO - ì ì‹œ í›„ ì¬ì‹œë„í•©ë‹ˆë‹¤... (2/3)
+2025-07-04 20:09:08,225 - KISAPIClient - ERROR - API ìš”ì²­ ì‹¤íŒ¨: 500 Server Error: Internal Server Error for url: https://openapi.koreainvestment.com:9443/uapi/overseas-price/v1/quotations/price?AUTH=&EXCD=NAS&SYMB=NVDA
+2025-07-04 20:09:08,225 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00121","msg1":"ìœ íš¨í•˜ì§€ ì•Šì€ token ì…ë‹ˆë‹¤."}
+2025-07-04 20:09:08,226 - KISAPIClient - INFO - ì ì‹œ í›„ ì¬ì‹œë„í•©ë‹ˆë‹¤... (3/3)
+2025-07-04 20:09:09,261 - KISAPIClient - ERROR - API ìš”ì²­ ì‹¤íŒ¨: 500 Server Error: Internal Server Error for url: https://openapi.koreainvestment.com:9443/uapi/overseas-price/v1/quotations/price?AUTH=&EXCD=NAS&SYMB=NVDA
+2025-07-04 20:09:09,262 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00121","msg1":"ìœ íš¨í•˜ì§€ ì•Šì€ token ì…ë‹ˆë‹¤."}
+2025-07-04 20:09:09,262 - KISAPIClient - WARNING - âš ï¸ NVDA: í˜„ì¬ê°€ ì¡°íšŒ ì‹¤íŒ¨
+2025-07-04 20:09:09,393 - KISAPIClient - INFO - âœ… HOTH: ìœ íš¨ (í˜„ì¬ê°€: $1.21)
+2025-07-04 20:09:09,540 - KISAPIClient - INFO - âœ… QSI: ìœ íš¨ (í˜„ì¬ê°€: $2.14)
+2025-07-04 20:09:09,694 - KISAPIClient - INFO - âœ… ARQQ: ìœ íš¨ (í˜„ì¬ê°€: $35.08)
+2025-07-04 20:09:09,838 - KISAPIClient - INFO - âœ… PDYN: ìœ íš¨ (í˜„ì¬ê°€: $8.22)
+2025-07-04 20:09:09,982 - KISAPIClient - INFO - âœ… SMCI: ìœ íš¨ (í˜„ì¬ê°€: $48.56)
+2025-07-04 20:09:10,113 - KISAPIClient - INFO - âœ… INOD: ìœ íš¨ (í˜„ì¬ê°€: $50.13)
+2025-07-04 20:09:10,248 - KISAPIClient - INFO - âœ… SOUN: ìœ íš¨ (í˜„ì¬ê°€: $11.09)
+2025-07-04 20:09:10,388 - KISAPIClient - WARNING - âš ï¸ SNOW í˜„ì¬ê°€ ë°ì´í„° ì˜¤ë¥˜: ''
+2025-07-04 20:09:10,389 - KISAPIClient - WARNING - âš ï¸ SNOW: í˜„ì¬ê°€ ì¡°íšŒ ì‹¤íŒ¨
+2025-07-04 20:09:10,530 - KISAPIClient - INFO - âœ… RGTI: ìœ íš¨ (í˜„ì¬ê°€: $13.45)
+2025-07-04 20:09:10,669 - KISAPIClient - INFO - âœ… AMZN: ìœ íš¨ (í˜„ì¬ê°€: $223.41)
+2025-07-04 20:09:10,810 - KISAPIClient - INFO - âœ… QUBT: ìœ íš¨ (í˜„ì¬ê°€: $21.13)
+2025-07-04 20:09:10,954 - KISAPIClient - INFO - âœ… REKR: ìœ íš¨ (í˜„ì¬ê°€: $1.23)
+2025-07-04 20:09:11,089 - KISAPIClient - INFO - âœ… MSFT: ìœ íš¨ (í˜„ì¬ê°€: $498.84)
+2025-07-04 20:09:11,225 - KISAPIClient - WARNING - âš ï¸ SMR í˜„ì¬ê°€ ë°ì´í„° ì˜¤ë¥˜: ''
+2025-07-04 20:09:11,226 - KISAPIClient - WARNING - âš ï¸ SMR: í˜„ì¬ê°€ ì¡°íšŒ ì‹¤íŒ¨
+2025-07-04 20:09:11,359 - KISAPIClient - WARNING - âš ï¸ SES í˜„ì¬ê°€ ë°ì´í„° ì˜¤ë¥˜: ''
+2025-07-04 20:09:11,359 - KISAPIClient - WARNING - âš ï¸ SES: í˜„ì¬ê°€ ì¡°íšŒ ì‹¤íŒ¨
+2025-07-04 20:09:11,461 - KISAPIClient - INFO - ğŸ“Š ì¢…ëª© ê²€ì¦ ì™„ë£Œ: ìœ íš¨ 12ê°œ, ë¬´íš¨ 4ê°œ
+2025-07-04 20:09:11,461 - KISAPIClient - INFO - âœ… ìœ íš¨í•œ ì¢…ëª©ë“¤: HOTH, QSI, ARQQ, PDYN, SMCI, INOD, SOUN, RGTI, AMZN, QUBT, REKR, MSFT
+2025-07-04 20:09:11,461 - KISAPIClient - WARNING - âš ï¸ ë¬´íš¨í•œ ì¢…ëª©ë“¤:
+2025-07-04 20:09:11,462 - KISAPIClient - WARNING -   - NVDA: Price not available
+2025-07-04 20:09:11,462 - KISAPIClient - WARNING -   - SNOW: Price not available
+2025-07-04 20:09:11,462 - KISAPIClient - WARNING -   - SMR: Price not available
+2025-07-04 20:09:11,463 - KISAPIClient - WARNING -   - SES: Price not available
+2025-07-04 20:11:54,274 - KISAPIClient - INFO - ğŸ” ì¢…ëª© ìœ íš¨ì„± ê²€ì¦ ì‹œì‘ (í˜„ì¬ê°€ ì¡°íšŒ ë°©ì‹)...
+2025-07-04 20:11:54,274 - KISAPIClient - INFO - í† í°ì´ ë§Œë£Œë˜ì–´ ìƒˆë¡œ ë°œê¸‰í•©ë‹ˆë‹¤.
+2025-07-04 20:11:54,439 - KISAPIClient - INFO - âœ… ì•¡ì„¸ìŠ¤ í† í° ë°œê¸‰ ì„±ê³µ
+2025-07-04 20:11:54,471 - KISAPIClient - ERROR - API ìš”ì²­ ì‹¤íŒ¨: 500 Server Error: Internal Server Error for url: https://openapi.koreainvestment.com:9443/uapi/overseas-price/v1/quotations/price?AUTH=&EXCD=NAS&SYMB=RGTI
+2025-07-04 20:11:54,471 - KISAPIClient - ERROR -   -> Status: 500, Response: {"rt_cd":"1","msg_cd":"EGW00121","msg1":"ìœ íš¨í•˜ì§€ ì•Šì€ token ì…ë‹ˆë‹¤."}
+2025-07-04 20:11:54,472 - KISAPIClient - WARNING - í† í° ì˜¤ë¥˜ ê°ì§€. í† í°ì„ ê°•ì œ ì¬ë°œê¸‰í•˜ê³  ì¬ì‹œë„í•©ë‹ˆë‹¤.
+2025-07-04 20:11:54,472 - KISAPIClient - INFO - í† í°ì´ ë§Œë£Œë˜ì–´ ìƒˆë¡œ ë°œê¸‰í•©ë‹ˆë‹¤.
+2025-07-04 20:11:54,511 - KISAPIClient - ERROR - âŒ ì•¡ì„¸ìŠ¤ í† í° ë°œê¸‰ ìš”ì²­ ì‹¤íŒ¨: 403 Client Error: Forbidden for url: https://openapi.koreainvestment.com:9443/oauth2/tokenP
+2025-07-04 20:11:54,511 - KISAPIClient - ERROR - API ìš”ì²­ ì „ í† í° í™•ë³´ ì‹¤íŒ¨
+2025-07-04 20:11:54,512 - KISAPIClient - WARNING - âš ï¸ RGTI: í˜„ì¬ê°€ ì¡°íšŒ ì‹¤íŒ¨
+2025-07-04 20:11:54,613 - KISAPIClient - INFO - í† í°ì´ ë§Œë£Œë˜ì–´ ìƒˆë¡œ ë°œê¸‰í•©ë‹ˆë‹¤.
+2025-07-04 20:11:54,649 - KISAPIClient - ERROR - âŒ ì•¡ì„¸ìŠ¤ í† í° ë°œê¸‰ ìš”ì²­ ì‹¤íŒ¨: 403 Client Error: Forbidden for url: https://openapi.koreainvestment.com:9443/oauth2/tokenP
+2025-07-04 20:11:54,649 - KISAPIClient - ERROR - API ìš”ì²­ ì „ í† í° í™•ë³´ ì‹¤íŒ¨
+2025-07-04 20:11:54,650 - KISAPIClient - WARNING - âš ï¸ SNOW: í˜„ì¬ê°€ ì¡°íšŒ ì‹¤íŒ¨
+2025-07-04 20:11:54,751 - KISAPIClient - INFO - í† í°ì´ ë§Œë£Œë˜ì–´ ìƒˆë¡œ ë°œê¸‰í•©ë‹ˆë‹¤.
+2025-07-04 20:11:54,787 - KISAPIClient - ERROR - âŒ ì•¡ì„¸ìŠ¤ í† í° ë°œê¸‰ ìš”ì²­ ì‹¤íŒ¨: 403 Client Error: Forbidden for url: https://openapi.koreainvestment.com:9443/oauth2/tokenP
+2025-07-04 20:11:54,788 - KISAPIClient - ERROR - API ìš”ì²­ ì „ í† í° í™•ë³´ ì‹¤íŒ¨
+2025-07-04 20:11:54,788 - KISAPIClient - INFO - âœ… SES: ìœ íš¨ (ë³´ìœ ì¢…ëª© - í˜„ì¬ê°€ ì¡°íšŒ ì‹¤íŒ¨í•˜ì§€ë§Œ í¬í•¨)
+2025-07-04 20:11:54,889 - KISAPIClient - INFO - í† í°ì´ ë§Œë£Œë˜ì–´ ìƒˆë¡œ ë°œê¸‰í•©ë‹ˆë‹¤.
+2025-07-04 20:11:54,955 - KISAPIClient - ERROR - âŒ ì•¡ì„¸ìŠ¤ í† í° ë°œê¸‰ ìš”ì²­ ì‹¤íŒ¨: 403 Client Error: Forbidden for url: https://openapi.koreainvestment.com:9443/oauth2/tokenP
+2025-07-04 20:11:54,956 - KISAPIClient - ERROR - API ìš”ì²­ ì „ í† í° í™•ë³´ ì‹¤íŒ¨
+2025-07-04 20:11:54,956 - KISAPIClient - WARNING - âš ï¸ QUBT: í˜„ì¬ê°€ ì¡°íšŒ ì‹¤íŒ¨
+2025-07-04 20:11:55,057 - KISAPIClient - INFO - í† í°ì´ ë§Œë£Œë˜ì–´ ìƒˆë¡œ ë°œê¸‰í•©ë‹ˆë‹¤.
+2025-07-04 20:11:55,085 - KISAPIClient - ERROR - âŒ ì•¡ì„¸ìŠ¤ í† í° ë°œê¸‰ ìš”ì²­ ì‹¤íŒ¨: 403 Client Error: Forbidden for url: https://openapi.koreainvestment.com:9443/oauth2/tokenP
+2025-07-04 20:11:55,087 - KISAPIClient - ERROR - API ìš”ì²­ ì „ í† í° í™•ë³´ ì‹¤íŒ¨
+2025-07-04 20:11:55,087 - KISAPIClient - WARNING - âš ï¸ PDYN: í˜„ì¬ê°€ ì¡°íšŒ ì‹¤íŒ¨
+2025-07-04 20:11:55,188 - KISAPIClient - INFO - í† í°ì´ ë§Œë£Œë˜ì–´ ìƒˆë¡œ ë°œê¸‰í•©ë‹ˆë‹¤.
+2025-07-04 20:11:55,222 - KISAPIClient - ERROR - âŒ ì•¡ì„¸ìŠ¤ í† í° ë°œê¸‰ ìš”ì²­ ì‹¤íŒ¨: 403 Client Error: Forbidden for url: https://openapi.koreainvestment.com:9443/oauth2/tokenP
+2025-07-04 20:11:55,222 - KISAPIClient - ERROR - API ìš”ì²­ ì „ í† í° í™•ë³´ ì‹¤íŒ¨
+2025-07-04 20:11:55,223 - KISAPIClient - INFO - âœ… QSI: ìœ íš¨ (ë³´ìœ ì¢…ëª© - í˜„ì¬ê°€ ì¡°íšŒ ì‹¤íŒ¨í•˜ì§€ë§Œ í¬í•¨)
+2025-07-04 20:11:55,324 - KISAPIClient - INFO - í† í°ì´ ë§Œë£Œë˜ì–´ ìƒˆë¡œ ë°œê¸‰í•©ë‹ˆë‹¤.
+2025-07-04 20:11:55,357 - KISAPIClient - ERROR - âŒ ì•¡ì„¸ìŠ¤ í† í° ë°œê¸‰ ìš”ì²­ ì‹¤íŒ¨: 403 Client Error: Forbidden for url: https://openapi.koreainvestment.com:9443/oauth2/tokenP
+2025-07-04 20:11:55,357 - KISAPIClient - ERROR - API ìš”ì²­ ì „ í† í° í™•ë³´ ì‹¤íŒ¨
+2025-07-04 20:11:55,358 - KISAPIClient - WARNING - âš ï¸ MSFT: í˜„ì¬ê°€ ì¡°íšŒ ì‹¤íŒ¨
+2025-07-04 20:11:55,458 - KISAPIClient - INFO - í† í°ì´ ë§Œë£Œë˜ì–´ ìƒˆë¡œ ë°œê¸‰í•©ë‹ˆë‹¤.
+2025-07-04 20:11:55,488 - KISAPIClient - ERROR - âŒ ì•¡ì„¸ìŠ¤ í† í° ë°œê¸‰ ìš”ì²­ ì‹¤íŒ¨: 403 Client Error: Forbidden for url: https://openapi.koreainvestment.com:9443/oauth2/tokenP
+2025-07-04 20:11:55,489 - KISAPIClient - ERROR - API ìš”ì²­ ì „ í† í° í™•ë³´ ì‹¤íŒ¨
+2025-07-04 20:11:55,489 - KISAPIClient - WARNING - âš ï¸ HOTH: í˜„ì¬ê°€ ì¡°íšŒ ì‹¤íŒ¨
+2025-07-04 20:11:55,590 - KISAPIClient - INFO - í† í°ì´ ë§Œë£Œë˜ì–´ ìƒˆë¡œ ë°œê¸‰í•©ë‹ˆë‹¤.
+2025-07-04 20:11:55,620 - KISAPIClient - ERROR - âŒ ì•¡ì„¸ìŠ¤ í† í° ë°œê¸‰ ìš”ì²­ ì‹¤íŒ¨: 403 Client Error: Forbidden for url: https://openapi.koreainvestment.com:9443/oauth2/tokenP
+2025-07-04 20:11:55,622 - KISAPIClient - ERROR - API ìš”ì²­ ì „ í† í° í™•ë³´ ì‹¤íŒ¨
+2025-07-04 20:11:55,622 - KISAPIClient - WARNING - âš ï¸ SMCI: í˜„ì¬ê°€ ì¡°íšŒ ì‹¤íŒ¨
+2025-07-04 20:11:55,723 - KISAPIClient - INFO - í† í°ì´ ë§Œë£Œë˜ì–´ ìƒˆë¡œ ë°œê¸‰í•©ë‹ˆë‹¤.
+2025-07-04 20:11:55,758 - KISAPIClient - ERROR - âŒ ì•¡ì„¸ìŠ¤ í† í° ë°œê¸‰ ìš”ì²­ ì‹¤íŒ¨: 403 Client Error: Forbidden for url: https://openapi.koreainvestment.com:9443/oauth2/tokenP
+2025-07-04 20:11:55,759 - KISAPIClient - ERROR - API ìš”ì²­ ì „ í† í° í™•ë³´ ì‹¤íŒ¨
+2025-07-04 20:11:55,759 - KISAPIClient - WARNING - âš ï¸ ARQQ: í˜„ì¬ê°€ ì¡°íšŒ ì‹¤íŒ¨
+2025-07-04 20:11:55,861 - KISAPIClient - INFO - í† í°ì´ ë§Œë£Œë˜ì–´ ìƒˆë¡œ ë°œê¸‰í•©ë‹ˆë‹¤.
+2025-07-04 20:11:55,899 - KISAPIClient - ERROR - âŒ ì•¡ì„¸ìŠ¤ í† í° ë°œê¸‰ ìš”ì²­ ì‹¤íŒ¨: 403 Client Error: Forbidden for url: https://openapi.koreainvestment.com:9443/oauth2/tokenP
+2025-07-04 20:11:55,899 - KISAPIClient - ERROR - API ìš”ì²­ ì „ í† í° í™•ë³´ ì‹¤íŒ¨
+2025-07-04 20:11:55,900 - KISAPIClient - WARNING - âš ï¸ SOUN: í˜„ì¬ê°€ ì¡°íšŒ ì‹¤íŒ¨
+2025-07-04 20:11:56,000 - KISAPIClient - INFO - í† í°ì´ ë§Œë£Œë˜ì–´ ìƒˆë¡œ ë°œê¸‰í•©ë‹ˆë‹¤.
+2025-07-04 20:11:56,029 - KISAPIClient - ERROR - âŒ ì•¡ì„¸ìŠ¤ í† í° ë°œê¸‰ ìš”ì²­ ì‹¤íŒ¨: 403 Client Error: Forbidden for url: https://openapi.koreainvestment.com:9443/oauth2/tokenP
+2025-07-04 20:11:56,030 - KISAPIClient - ERROR - API ìš”ì²­ ì „ í† í° í™•ë³´ ì‹¤íŒ¨
+2025-07-04 20:11:56,031 - KISAPIClient - WARNING - âš ï¸ INOD: í˜„ì¬ê°€ ì¡°íšŒ ì‹¤íŒ¨
+2025-07-04 20:11:56,131 - KISAPIClient - INFO - í† í°ì´ ë§Œë£Œë˜ì–´ ìƒˆë¡œ ë°œê¸‰í•©ë‹ˆë‹¤.
+2025-07-04 20:11:56,162 - KISAPIClient - ERROR - âŒ ì•¡ì„¸ìŠ¤ í† í° ë°œê¸‰ ìš”ì²­ ì‹¤íŒ¨: 403 Client Error: Forbidden for url: https://openapi.koreainvestment.com:9443/oauth2/tokenP
+2025-07-04 20:11:56,163 - KISAPIClient - ERROR - API ìš”ì²­ ì „ í† í° í™•ë³´ ì‹¤íŒ¨
+2025-07-04 20:11:56,164 - KISAPIClient - WARNING - âš ï¸ NVDA: í˜„ì¬ê°€ ì¡°íšŒ ì‹¤íŒ¨
+2025-07-04 20:11:56,265 - KISAPIClient - INFO - í† í°ì´ ë§Œë£Œë˜ì–´ ìƒˆë¡œ ë°œê¸‰í•©ë‹ˆë‹¤.
+2025-07-04 20:11:56,300 - KISAPIClient - ERROR - âŒ ì•¡ì„¸ìŠ¤ í† í° ë°œê¸‰ ìš”ì²­ ì‹¤íŒ¨: 403 Client Error: Forbidden for url: https://openapi.koreainvestment.com:9443/oauth2/tokenP
+2025-07-04 20:11:56,301 - KISAPIClient - ERROR - API ìš”ì²­ ì „ í† í° í™•ë³´ ì‹¤íŒ¨
+2025-07-04 20:11:56,301 - KISAPIClient - WARNING - âš ï¸ AMZN: í˜„ì¬ê°€ ì¡°íšŒ ì‹¤íŒ¨
+2025-07-04 20:11:56,402 - KISAPIClient - INFO - í† í°ì´ ë§Œë£Œë˜ì–´ ìƒˆë¡œ ë°œê¸‰í•©ë‹ˆë‹¤.
+2025-07-04 20:11:56,432 - KISAPIClient - ERROR - âŒ ì•¡ì„¸ìŠ¤ í† í° ë°œê¸‰ ìš”ì²­ ì‹¤íŒ¨: 403 Client Error: Forbidden for url: https://openapi.koreainvestment.com:9443/oauth2/tokenP
+2025-07-04 20:11:56,433 - KISAPIClient - ERROR - API ìš”ì²­ ì „ í† í° í™•ë³´ ì‹¤íŒ¨
+2025-07-04 20:11:56,433 - KISAPIClient - WARNING - âš ï¸ SMR: í˜„ì¬ê°€ ì¡°íšŒ ì‹¤íŒ¨
+2025-07-04 20:11:56,535 - KISAPIClient - INFO - í† í°ì´ ë§Œë£Œë˜ì–´ ìƒˆë¡œ ë°œê¸‰í•©ë‹ˆë‹¤.
+2025-07-04 20:11:56,567 - KISAPIClient - ERROR - âŒ ì•¡ì„¸ìŠ¤ í† í° ë°œê¸‰ ìš”ì²­ ì‹¤íŒ¨: 403 Client Error: Forbidden for url: https://openapi.koreainvestment.com:9443/oauth2/tokenP
+2025-07-04 20:11:56,568 - KISAPIClient - ERROR - API ìš”ì²­ ì „ í† í° í™•ë³´ ì‹¤íŒ¨
+2025-07-04 20:11:56,568 - KISAPIClient - WARNING - âš ï¸ REKR: í˜„ì¬ê°€ ì¡°íšŒ ì‹¤íŒ¨
+2025-07-04 20:11:56,669 - KISAPIClient - INFO - ğŸ“Š ì¢…ëª© ê²€ì¦ ì™„ë£Œ: ìœ íš¨ 2ê°œ, ë¬´íš¨ 14ê°œ
+2025-07-04 20:11:56,669 - KISAPIClient - INFO - âœ… ìœ íš¨í•œ ì¢…ëª©ë“¤: SES, QSI
+2025-07-04 20:11:56,669 - KISAPIClient - WARNING - âš ï¸ ë¬´íš¨í•œ ì¢…ëª©ë“¤:
+2025-07-04 20:11:56,669 - KISAPIClient - WARNING -   - RGTI: Price not available
+2025-07-04 20:11:56,670 - KISAPIClient - WARNING -   - SNOW: Price not available
+2025-07-04 20:11:56,670 - KISAPIClient - WARNING -   - QUBT: Price not available
+2025-07-04 20:11:56,670 - KISAPIClient - WARNING -   - PDYN: Price not available
+2025-07-04 20:11:56,671 - KISAPIClient - WARNING -   - MSFT: Price not available
+2025-07-04 20:11:56,671 - KISAPIClient - WARNING -   - HOTH: Price not available
+2025-07-04 20:11:56,671 - KISAPIClient - WARNING -   - SMCI: Price not available
+2025-07-04 20:11:56,672 - KISAPIClient - WARNING -   - ARQQ: Price not available
+2025-07-04 20:11:56,672 - KISAPIClient - WARNING -   - SOUN: Price not available
+2025-07-04 20:11:56,672 - KISAPIClient - WARNING -   - INOD: Price not available
+2025-07-04 20:11:56,672 - KISAPIClient - WARNING -   - NVDA: Price not available
+2025-07-04 20:11:56,673 - KISAPIClient - WARNING -   - AMZN: Price not available
+2025-07-04 20:11:56,673 - KISAPIClient - WARNING -   - SMR: Price not available
+2025-07-04 20:11:56,673 - KISAPIClient - WARNING -   - REKR: Price not available
+2025-07-04 20:16:56,512 - KISAPIClient - INFO - ì”ê³  ì¡°íšŒ ìš”ì²­ (TR_ID: TTTS3012R)
+2025-07-04 20:16:56,586 - KISAPIClient - INFO - ë”•ì…”ë„ˆë¦¬ í˜•íƒœ output2 (í‚¤ ê°œìˆ˜: 9)
+2025-07-04 20:16:56,586 - KISAPIClient - INFO -   - frcr_pchs_amt1: 5484.08596 ($5484.09)
+2025-07-04 20:16:56,586 - KISAPIClient - INFO -   âœ… frcr_pchs_amt1ë¥¼ ì˜ˆìˆ˜ê¸ˆìœ¼ë¡œ ì‚¬ìš©: $5484.09
+2025-07-04 20:16:56,586 - KISAPIClient - INFO -   - tot_evlu_pfls_amt: 2881.33170000 ($2881.33)
+2025-07-04 20:16:56,586 - KISAPIClient - INFO -   - frcr_buy_amt_smtl1: 0.000000 ($0.00)
+2025-07-04 20:16:56,586 - KISAPIClient - INFO -   - frcr_buy_amt_smtl2: 0.000000 ($0.00)
+2025-07-04 20:16:56,588 - KISAPIClient - INFO - âœ… ì”ê³  ì¡°íšŒ ì„±ê³µ: ì˜ˆìˆ˜ê¸ˆ $5484.09, ë³´ìœ ì¢…ëª© 3ê°œ

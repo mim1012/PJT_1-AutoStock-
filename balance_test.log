@@ -1,0 +1,28 @@
+2025-07-04 19:18:18,401 - token_manager - INFO - 기존 토큰 사용 (남은시간: 3시간 25분)
+2025-07-04 19:18:18,401 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-04 19:18:18,402 - token_manager - INFO - 기존 토큰 사용 (남은시간: 3시간 25분)
+2025-07-04 19:18:18,402 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-04 19:18:18,406 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): openapi.koreainvestment.com:9443
+2025-07-04 19:18:18,488 - urllib3.connectionpool - DEBUG - https://openapi.koreainvestment.com:9443 "GET /uapi/overseas-stock/v1/trading/inquire-balance?CANO=64721801&ACNT_PRDT_CD=01&OVRS_EXCG_CD=NASD&TR_CRCY_CD=USD&CTX_AREA_FK200=&CTX_AREA_NK200= HTTP/1.1" 200 2108
+2025-07-04 19:18:18,490 - token_manager - INFO - 기존 토큰 사용 (남은시간: 3시간 25분)
+2025-07-04 19:18:18,490 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-04 19:18:18,491 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): openapi.koreainvestment.com:9443
+2025-07-04 19:18:18,564 - urllib3.connectionpool - DEBUG - https://openapi.koreainvestment.com:9443 "GET /uapi/overseas-stock/v1/trading/inquire-balance?CANO=64721801&ACNT_PRDT_CD=01&OVRS_EXCG_CD=NASD&TR_CRCY_CD=USD&CTX_AREA_FK200=&CTX_AREA_NK200= HTTP/1.1" 200 86
+2025-07-04 19:18:18,565 - token_manager - INFO - 기존 토큰 사용 (남은시간: 3시간 25분)
+2025-07-04 19:18:18,565 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-04 19:18:18,566 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): openapi.koreainvestment.com:9443
+2025-07-04 19:18:18,605 - urllib3.connectionpool - DEBUG - https://openapi.koreainvestment.com:9443 "GET /uapi/overseas-stock/v1/trading/inquire-balance?CANO=64721801&ACNT_PRDT_CD=01&OVRS_EXCG_CD=NASD&TR_CRCY_CD=USD&CTX_AREA_FK200=&CTX_AREA_NK200= HTTP/1.1" 200 2108
+2025-07-04 19:21:14,139 - token_manager - INFO - 기존 토큰 사용 (남은시간: 3시간 22분)
+2025-07-04 19:21:14,140 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-04 19:21:14,141 - token_manager - INFO - 기존 토큰 사용 (남은시간: 3시간 22분)
+2025-07-04 19:21:14,141 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-04 19:21:14,143 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): openapi.koreainvestment.com:9443
+2025-07-04 19:21:14,193 - urllib3.connectionpool - DEBUG - https://openapi.koreainvestment.com:9443 "GET /uapi/overseas-stock/v1/trading/inquire-balance?CANO=64721801&ACNT_PRDT_CD=01&OVRS_EXCG_CD=NASD&TR_CRCY_CD=USD&CTX_AREA_FK200=&CTX_AREA_NK200= HTTP/1.1" 200 2108
+2025-07-04 19:21:14,197 - token_manager - INFO - 기존 토큰 사용 (남은시간: 3시간 22분)
+2025-07-04 19:21:14,199 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-04 19:21:14,202 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): openapi.koreainvestment.com:9443
+2025-07-04 19:21:14,242 - urllib3.connectionpool - DEBUG - https://openapi.koreainvestment.com:9443 "GET /uapi/overseas-stock/v1/trading/inquire-balance?CANO=64721801&ACNT_PRDT_CD=01&OVRS_EXCG_CD=NASD&TR_CRCY_CD=USD&CTX_AREA_FK200=&CTX_AREA_NK200= HTTP/1.1" 200 86
+2025-07-04 19:21:14,243 - token_manager - INFO - 기존 토큰 사용 (남은시간: 3시간 22분)
+2025-07-04 19:21:14,243 - kis_api_with_token_manager - INFO - 저장된 토큰 사용
+2025-07-04 19:21:14,244 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): openapi.koreainvestment.com:9443
+2025-07-04 19:21:14,293 - urllib3.connectionpool - DEBUG - https://openapi.koreainvestment.com:9443 "GET /uapi/overseas-stock/v1/trading/inquire-balance?CANO=64721801&ACNT_PRDT_CD=01&OVRS_EXCG_CD=NASD&TR_CRCY_CD=USD&CTX_AREA_FK200=&CTX_AREA_NK200= HTTP/1.1" 200 2108
