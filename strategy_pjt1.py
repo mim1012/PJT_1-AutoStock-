@@ -5,13 +5,14 @@ import logging
 import json
 from datetime import datetime, timedelta
 from kis_api import KISAPIClient
-from kis_api_with_token_manager import KISAPIClientWithTokenManager
+from token_manager import TokenManager
 from config import STOCKS_CONFIG_FILE, PROFIT_THRESHOLD
 
 class TradingStrategy:
     def __init__(self):
         # 토큰 매니저 클라이언트 사용 (403 에러 방지)
-        self.api_client = KISAPIClientWithTokenManager()
+        self.api_client = KISAPIClient()
+        self.token_manager = TokenManager()
         self.logger = logging.getLogger(__name__)
         self.last_sell_prices = {}
         self.last_buy_prices = {}
@@ -223,7 +224,14 @@ class TradingStrategy:
             self.logger.error(f"매수 전략 실패: {e}")
 
     def calculate_profit_rate(self, symbol, current, avg_buy):
+        try:
+            current = float(current)
+            avg_buy = float(avg_buy)
+            if avg_buy == 0:
+                return 'N/A'
         return (current - avg_buy) / avg_buy
+        except Exception:
+            return 'N/A'
 
     def should_sell(self, symbol, current_price):
         if symbol not in self.last_buy_prices:
@@ -281,3 +289,25 @@ class TradingStrategy:
                         self.logger.info(f"🟠 소폭 수익 매도: {symbol} {qty}주 @ ${price} ({rate:.2%})")
         except Exception as e:
             self.logger.error(f"매도 전략 실패: {e}")
+
+    def check_and_refresh_token(self):
+        """토큰 유효성 점검 및 필요시 재발급, 결과를 로그와 콘솔에 출력"""
+        try:
+            print("🔑 [토큰] 유효성 점검 중...")
+            self.logger.info("[토큰] 유효성 점검 시작")
+            if not self.token_manager.is_token_valid():
+                print("🔄 [토큰] 만료됨 → 재발급 시도")
+                self.logger.warning("[토큰] 만료됨 → 재발급 시도")
+                self.token_manager.force_token_refresh()
+                if self.token_manager.is_token_valid():
+                    print("✅ [토큰] 재발급 성공")
+                    self.logger.info("[토큰] 재발급 성공")
+                else:
+                    print("❌ [토큰] 재발급 실패")
+                    self.logger.error("[토큰] 재발급 실패")
+            else:
+                print("✅ [토큰] 유효함")
+                self.logger.info("[토큰] 유효함")
+        except Exception as e:
+            print(f"❌ [토큰] 점검 중 오류: {e}")
+            self.logger.error(f"[토큰] 점검 중 오류: {e}")

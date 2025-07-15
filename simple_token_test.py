@@ -11,7 +11,7 @@ def test_token_simple():
     print("=== 간단한 토큰 발급 테스트 ===")
     print(f"테스트 시간: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     
-    url = "https://openapi.koreainvestment.com:9443/oauth2/tokenP"
+    url = "https://openapi.koreainvestment.com:9443/oauth2/token"
     
     data = {
         "grant_type": "client_credentials",

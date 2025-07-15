@@ -7,7 +7,12 @@ import time
 import logging
 import traceback
 from datetime import datetime
-from config import *
+from config import KIS_BASE_URL, KIS_PAPER_BASE_URL, USE_PAPER_TRADING, KIS_ACCOUNT_NUMBER, MAX_RETRY_COUNT, LOG_LEVEL, LOG_FILE
+from token_manager import TokenManager
+
+# blance02.py의 API키 설정
+KIS_APP_KEY = "PS9Yr8VDczEhRt6kbhrAExgLO9mno70zMJvp"
+KIS_APP_SECRET = "2mfGKemkM4CTyvkQ1oquImEb+uUKwrflzTn23wjWJ5/PoFu5dwIW1OoyKYCoY2lPxl7L7ukzQqZD8PylBkYA1/SLFQ4r110XH6YCajAcMCzQnQekj1xBNGAaZo8zltZgX7YkomUzoBKV+8kopKGm3c9+juaQU+NJfM4vwMuyk8wkGFiK4v8="
 
 class KISAPIClient:
     def __init__(self):
@@ -16,7 +21,9 @@ class KISAPIClient:
         self.app_secret = KIS_APP_SECRET
         self.account_number = KIS_ACCOUNT_NUMBER
         self.access_token = None
-        self.token_expires_at = 0
+        
+        # TokenManager 사용
+        self.token_manager = TokenManager()
 
         # 로거 설정
         self.logger = logging.getLogger(self.__class__.__name__)
@@ -35,41 +42,34 @@ class KISAPIClient:
             self.logger.addHandler(sh)
 
     def get_access_token(self):
-        """액세스 토큰 발급"""
-        url = f"{self.base_url}/oauth2/tokenP"
-        headers = {"content-type": "application/json"}
-        data = {
-            "grant_type": "client_credentials",
-            "appkey": self.app_key,
-            "appsecret": self.app_secret
-        }
-        
+        """TokenManager를 통한 액세스 토큰 발급"""
         try:
-            response = requests.post(url, headers=headers, data=json.dumps(data), timeout=5)
-            response.raise_for_status()
-            
-            result = response.json()
-            self.access_token = result["access_token"]
-            self.token_expires_at = time.time() + result["expires_in"] - 60
-            
-            self.logger.info("✅ 액세스 토큰 발급 성공")
+            token = self.token_manager.get_valid_token()
+            if token:
+                self.access_token = token
+                self.logger.info("✅ TokenManager를 통한 토큰 발급 성공")
             return True
-            
-        except requests.exceptions.RequestException as e:
-            self.logger.error(f"❌ 액세스 토큰 발급 요청 실패: {e}")
-            if e.response:
-                self.logger.error(f"    - Status: {e.response.status_code}, Response: {e.response.text}")
+            else:
+                self.logger.error("❌ TokenManager를 통한 토큰 발급 실패")
             return False
         except Exception as e:
-            self.logger.error(f"❌ 액세스 토큰 발급 중 알 수 없는 오류: {e}", exc_info=True)
+            self.logger.error(f"❌ 토큰 발급 중 오류: {e}")
             return False
 
     def ensure_token_valid(self):
         """토큰 유효성 확인 및 만료 시 갱신"""
-        if time.time() >= self.token_expires_at:
-            self.logger.info("토큰이 만료되어 새로 발급합니다.")
-            return self.get_access_token()
+        try:
+            # TokenManager를 통해 유효한 토큰 가져오기
+            token = self.token_manager.get_valid_token()
+            if token:
+                self.access_token = token
         return True
+            else:
+                self.logger.error("유효한 토큰을 가져올 수 없습니다")
+                return False
+        except Exception as e:
+            self.logger.error(f"토큰 유효성 확인 중 오류: {e}")
+            return False
 
     def get_headers(self, tr_id):
         """API 요청 헤더 생성"""
@@ -106,7 +106,7 @@ class KISAPIClient:
                 if ((e.response.status_code == 401) or 
                     (e.response.status_code == 500 and "token" in e.response.text.lower())) and retry_count < 1:
                     self.logger.warning("토큰 오류 감지. 토큰을 강제 재발급하고 재시도합니다.")
-                    self.token_expires_at = 0  # 토큰 강제 만료
+                    self.token_manager.invalidate_token() # TokenManager에 의해 재발급됨
                     # 헤더를 새로 생성해야 함
                     if headers and 'tr_id' in headers:
                         new_headers = self.get_headers(headers['tr_id'])
@@ -224,13 +224,13 @@ class KISAPIClient:
         return None
 
     def place_order(self, symbol, quantity, price, order_type="buy"):
-        """주문 실행"""
+        """주문 실행 (로그 표준화 및 실패 사유 기록)"""
         url = f"{self.base_url}/uapi/overseas-stock/v1/trading/order"
         
         if USE_PAPER_TRADING:
-            tr_id = "VTTT1002U" if order_type.lower() == "buy" else "VTTT1006U"
+            tr_id = "VTTS1002U" if order_type.lower() == "buy" else "VTTS1001U"
         else:
-            tr_id = "TTTT1002U" if order_type.lower() == "buy" else "TTTT1006U"
+            tr_id = "TTTS1002U" if order_type.lower() == "buy" else "TTTS1001U"
 
         headers = self.get_headers(tr_id)
         data = {
@@ -242,20 +242,24 @@ class KISAPIClient:
             "OVRS_ORD_UNPR": f"{price:.2f}",
             "ORD_DVSN": "00"
         }
-        
         if USE_PAPER_TRADING:
             data["ORD_SVR_DVSN_CD"] = "0"
 
-        self.logger.info(f"➡️ {order_type.upper()} 주문: {symbol} {quantity}주 @ ${price:.2f}")
+        # 표준화된 로그
+        action = "매수" if order_type.lower() == "buy" else "매도"
+        self.logger.info(f"[{action}][시도] 종목: {symbol}, 수량: {quantity}, 가격: {price:.2f}")
         result = self._request("POST", url, headers, data=data)
         
         if result and result.get("rt_cd") == "0":
             order_id = result.get("output", {}).get("ODNO")
-            self.logger.info(f"✅ {order_type.upper()} 주문 성공: {symbol} (주문번호: {order_id})")
+            self.logger.info(f"[{action}][성공] 종목: {symbol}, 주문번호: {order_id}, 수량: {quantity}, 가격: {price:.2f}")
             return order_id
         
         if result:
-            self.logger.error(f"❌ {order_type.upper()} 주문 실패: {symbol} - {result.get('msg1')}")
+            reason = result.get("msg1", "알 수 없음")
+            self.logger.error(f"[{action}][실패] 종목: {symbol}, 수량: {quantity}, 가격: {price:.2f}, 사유: {reason}")
+        else:
+            self.logger.error(f"[{action}][실패] 종목: {symbol}, 수량: {quantity}, 가격: {price:.2f}, 사유: API 응답 없음")
         return None
 
     def cancel_order(self, order_id, symbol):

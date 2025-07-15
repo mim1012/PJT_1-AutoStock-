@@ -28,7 +28,7 @@ class APIValidator:
             "balance_data": False,
             "positions_data": False,
             "order_functions": False
-        }
+        } 
     
     def test_api_connection(self):
         """API 연결 및 토큰 발급 테스트"""
