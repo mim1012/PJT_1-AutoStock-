@@ -46,10 +46,13 @@ class TokenManager:
         except Exception:
             pass
 
-    def can_issue_token(self):
-        """마지막 발급시각 + 24시간 이후에만 True (토큰 파일 없어도 적용)"""
+    def can_issue_token(self, force_if_expired=False):
+        """마지막 발급시각 + 24시간 이후에만 True (단, 토큰이 만료된 경우에는 1회 재발급 허용)"""
         try:
             last_issued = self.get_last_issued_time()
+            if force_if_expired:
+                # 만료된 경우에는 24시간 이내라도 1회 재발급 허용
+                return True
             return (time.time() - last_issued) > 86400  # 24시간(60*60*24)
         except Exception:
             return True
@@ -245,16 +248,13 @@ class TokenManager:
             return False
 
     def get_valid_token(self, force_refresh=False):
-        """유효한 토큰 반환 (24시간 이내면 재발급 금지, 토큰 파일 없어도 적용)"""
-        if not force_refresh:
-            existing_token = self.load_token()
-            if existing_token:
-                return existing_token
-            # 토큰 파일이 없거나 만료여도 24시간 이내면 재발급 금지
-            if not self.can_issue_token():
-                self.logger.warning("토큰 만료 또는 파일 없음, 24시간 이내이므로 재발급 시도 금지")
-                return None
-        if self.can_issue_token():
+        """유효한 토큰 반환 (만료 시 1회 재발급, 이후 24시간 추가 재발급 금지)"""
+        existing_token = self.load_token()
+        if existing_token:
+            return existing_token
+        # 토큰이 없거나 만료된 경우
+        # 만료된 경우에는 24시간 이내라도 1회 재발급 허용
+        if self.can_issue_token(force_if_expired=True):
             return self.issue_new_token()
         else:
             self.logger.warning("24시간 이내이므로 토큰 재발급 금지")

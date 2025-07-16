@@ -229,7 +229,7 @@ class TradingStrategy:
             avg_buy = float(avg_buy)
             if avg_buy == 0:
                 return 'N/A'
-        return (current - avg_buy) / avg_buy
+            return (current - avg_buy) / avg_buy
         except Exception:
             return 'N/A'
 

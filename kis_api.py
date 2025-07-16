@@ -48,10 +48,10 @@ class KISAPIClient:
             if token:
                 self.access_token = token
                 self.logger.info("✅ TokenManager를 통한 토큰 발급 성공")
-            return True
+                return True
             else:
                 self.logger.error("❌ TokenManager를 통한 토큰 발급 실패")
-            return False
+                return False
         except Exception as e:
             self.logger.error(f"❌ 토큰 발급 중 오류: {e}")
             return False
@@ -63,7 +63,7 @@ class KISAPIClient:
             token = self.token_manager.get_valid_token()
             if token:
                 self.access_token = token
-        return True
+                return True
             else:
                 self.logger.error("유효한 토큰을 가져올 수 없습니다")
                 return False
