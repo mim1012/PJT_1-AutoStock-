@@ -2758,3 +2758,473 @@
 2025-07-15 18:08:54,893 - KISAPIClient - INFO -   - frcr_buy_amt_smtl1: 0.000000 ($0.00)
 2025-07-15 18:08:54,893 - KISAPIClient - INFO -   - frcr_buy_amt_smtl2: 0.000000 ($0.00)
 2025-07-15 18:08:54,894 - KISAPIClient - INFO - ✅ 잔고 조회 성공: 예수금 $5484.09, 보유종목 3개
+2025-07-16 19:34:22,691 - KISAPIClient - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-16 19:34:22,745 - KISAPIClient - INFO - 딕셔너리 형태 output2 (키 개수: 9)
+2025-07-16 19:34:22,746 - KISAPIClient - INFO -   - frcr_pchs_amt1: 5484.08596 ($5484.09)
+2025-07-16 19:34:22,746 - KISAPIClient - INFO -   ✅ frcr_pchs_amt1를 예수금으로 사용: $5484.09
+2025-07-16 19:34:22,746 - KISAPIClient - INFO -   - tot_evlu_pfls_amt: 2810.20000000 ($2810.20)
+2025-07-16 19:34:22,747 - KISAPIClient - INFO -   - frcr_buy_amt_smtl1: 0.000000 ($0.00)
+2025-07-16 19:34:22,747 - KISAPIClient - INFO -   - frcr_buy_amt_smtl2: 0.000000 ($0.00)
+2025-07-16 19:34:22,748 - KISAPIClient - INFO - ✅ 잔고 조회 성공: 예수금 $5484.09, 보유종목 3개
+2025-07-16 19:34:22,749 - KISAPIClient - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-16 19:34:22,825 - KISAPIClient - INFO - 딕셔너리 형태 output2 (키 개수: 9)
+2025-07-16 19:34:22,826 - KISAPIClient - INFO -   - frcr_pchs_amt1: 5484.08596 ($5484.09)
+2025-07-16 19:34:22,826 - KISAPIClient - INFO -   ✅ frcr_pchs_amt1를 예수금으로 사용: $5484.09
+2025-07-16 19:34:22,827 - KISAPIClient - INFO -   - tot_evlu_pfls_amt: 2810.20000000 ($2810.20)
+2025-07-16 19:34:22,827 - KISAPIClient - INFO -   - frcr_buy_amt_smtl1: 0.000000 ($0.00)
+2025-07-16 19:34:22,827 - KISAPIClient - INFO -   - frcr_buy_amt_smtl2: 0.000000 ($0.00)
+2025-07-16 19:34:22,828 - KISAPIClient - INFO - ✅ 잔고 조회 성공: 예수금 $5484.09, 보유종목 3개
+2025-07-16 19:34:22,829 - KISAPIClient - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-16 19:34:22,869 - KISAPIClient - INFO - 딕셔너리 형태 output2 (키 개수: 9)
+2025-07-16 19:34:22,869 - KISAPIClient - INFO -   - frcr_pchs_amt1: 5484.08596 ($5484.09)
+2025-07-16 19:34:22,870 - KISAPIClient - INFO -   ✅ frcr_pchs_amt1를 예수금으로 사용: $5484.09
+2025-07-16 19:34:22,870 - KISAPIClient - INFO -   - tot_evlu_pfls_amt: 2810.20000000 ($2810.20)
+2025-07-16 19:34:22,870 - KISAPIClient - INFO -   - frcr_buy_amt_smtl1: 0.000000 ($0.00)
+2025-07-16 19:34:22,871 - KISAPIClient - INFO -   - frcr_buy_amt_smtl2: 0.000000 ($0.00)
+2025-07-16 19:34:22,871 - KISAPIClient - INFO - ✅ 잔고 조회 성공: 예수금 $5484.09, 보유종목 3개
+2025-07-16 19:34:22,982 - KISAPIClient - WARNING - ⚠️ SES 현재가 데이터 오류: ''
+2025-07-16 19:39:23,654 - KISAPIClient - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-16 19:39:23,716 - KISAPIClient - INFO - 딕셔너리 형태 output2 (키 개수: 9)
+2025-07-16 19:39:23,717 - KISAPIClient - INFO -   - frcr_pchs_amt1: 5484.08596 ($5484.09)
+2025-07-16 19:39:23,717 - KISAPIClient - INFO -   ✅ frcr_pchs_amt1를 예수금으로 사용: $5484.09
+2025-07-16 19:39:23,717 - KISAPIClient - INFO -   - tot_evlu_pfls_amt: 2810.20000000 ($2810.20)
+2025-07-16 19:39:23,718 - KISAPIClient - INFO -   - frcr_buy_amt_smtl1: 0.000000 ($0.00)
+2025-07-16 19:39:23,718 - KISAPIClient - INFO -   - frcr_buy_amt_smtl2: 0.000000 ($0.00)
+2025-07-16 19:39:23,718 - KISAPIClient - INFO - ✅ 잔고 조회 성공: 예수금 $5484.09, 보유종목 3개
+2025-07-16 19:39:23,866 - KISAPIClient - WARNING - ⚠️ SES 현재가 데이터 오류: ''
+2025-07-16 19:44:24,099 - KISAPIClient - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-16 19:44:24,149 - KISAPIClient - INFO - 딕셔너리 형태 output2 (키 개수: 9)
+2025-07-16 19:44:24,149 - KISAPIClient - INFO -   - frcr_pchs_amt1: 5484.08596 ($5484.09)
+2025-07-16 19:44:24,150 - KISAPIClient - INFO -   ✅ frcr_pchs_amt1를 예수금으로 사용: $5484.09
+2025-07-16 19:44:24,150 - KISAPIClient - INFO -   - tot_evlu_pfls_amt: 2799.86230000 ($2799.86)
+2025-07-16 19:44:24,150 - KISAPIClient - INFO -   - frcr_buy_amt_smtl1: 0.000000 ($0.00)
+2025-07-16 19:44:24,150 - KISAPIClient - INFO -   - frcr_buy_amt_smtl2: 0.000000 ($0.00)
+2025-07-16 19:44:24,151 - KISAPIClient - INFO - ✅ 잔고 조회 성공: 예수금 $5484.09, 보유종목 3개
+2025-07-16 19:44:24,268 - KISAPIClient - WARNING - ⚠️ SES 현재가 데이터 오류: ''
+2025-07-16 19:49:24,541 - KISAPIClient - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-16 19:49:24,592 - KISAPIClient - INFO - 딕셔너리 형태 output2 (키 개수: 9)
+2025-07-16 19:49:24,593 - KISAPIClient - INFO -   - frcr_pchs_amt1: 5484.08596 ($5484.09)
+2025-07-16 19:49:24,593 - KISAPIClient - INFO -   ✅ frcr_pchs_amt1를 예수금으로 사용: $5484.09
+2025-07-16 19:49:24,594 - KISAPIClient - INFO -   - tot_evlu_pfls_amt: 2805.92120000 ($2805.92)
+2025-07-16 19:49:24,594 - KISAPIClient - INFO -   - frcr_buy_amt_smtl1: 0.000000 ($0.00)
+2025-07-16 19:49:24,594 - KISAPIClient - INFO -   - frcr_buy_amt_smtl2: 0.000000 ($0.00)
+2025-07-16 19:49:24,595 - KISAPIClient - INFO - ✅ 잔고 조회 성공: 예수금 $5484.09, 보유종목 3개
+2025-07-16 19:49:24,742 - KISAPIClient - WARNING - ⚠️ SES 현재가 데이터 오류: ''
+2025-07-16 19:54:25,016 - KISAPIClient - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-16 19:54:25,070 - KISAPIClient - INFO - 딕셔너리 형태 output2 (키 개수: 9)
+2025-07-16 19:54:25,071 - KISAPIClient - INFO -   - frcr_pchs_amt1: 5484.08596 ($5484.09)
+2025-07-16 19:54:25,071 - KISAPIClient - INFO -   ✅ frcr_pchs_amt1를 예수금으로 사용: $5484.09
+2025-07-16 19:54:25,072 - KISAPIClient - INFO -   - tot_evlu_pfls_amt: 2799.78460000 ($2799.78)
+2025-07-16 19:54:25,072 - KISAPIClient - INFO -   - frcr_buy_amt_smtl1: 0.000000 ($0.00)
+2025-07-16 19:54:25,072 - KISAPIClient - INFO -   - frcr_buy_amt_smtl2: 0.000000 ($0.00)
+2025-07-16 19:54:25,073 - KISAPIClient - INFO - ✅ 잔고 조회 성공: 예수금 $5484.09, 보유종목 3개
+2025-07-16 19:54:25,209 - KISAPIClient - WARNING - ⚠️ SES 현재가 데이터 오류: ''
+2025-07-16 19:59:25,482 - KISAPIClient - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-16 19:59:25,544 - KISAPIClient - INFO - 딕셔너리 형태 output2 (키 개수: 9)
+2025-07-16 19:59:25,545 - KISAPIClient - INFO -   - frcr_pchs_amt1: 5484.08596 ($5484.09)
+2025-07-16 19:59:25,545 - KISAPIClient - INFO -   ✅ frcr_pchs_amt1를 예수금으로 사용: $5484.09
+2025-07-16 19:59:25,546 - KISAPIClient - INFO -   - tot_evlu_pfls_amt: 2791.08930000 ($2791.09)
+2025-07-16 19:59:25,546 - KISAPIClient - INFO -   - frcr_buy_amt_smtl1: 0.000000 ($0.00)
+2025-07-16 19:59:25,546 - KISAPIClient - INFO -   - frcr_buy_amt_smtl2: 0.000000 ($0.00)
+2025-07-16 19:59:25,547 - KISAPIClient - INFO - ✅ 잔고 조회 성공: 예수금 $5484.09, 보유종목 3개
+2025-07-16 19:59:25,703 - KISAPIClient - WARNING - ⚠️ SES 현재가 데이터 오류: ''
+2025-07-16 20:04:25,952 - KISAPIClient - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-16 20:04:26,003 - KISAPIClient - INFO - 딕셔너리 형태 output2 (키 개수: 9)
+2025-07-16 20:04:26,003 - KISAPIClient - INFO -   - frcr_pchs_amt1: 5484.08596 ($5484.09)
+2025-07-16 20:04:26,004 - KISAPIClient - INFO -   ✅ frcr_pchs_amt1를 예수금으로 사용: $5484.09
+2025-07-16 20:04:26,004 - KISAPIClient - INFO -   - tot_evlu_pfls_amt: 2790.17000000 ($2790.17)
+2025-07-16 20:04:26,004 - KISAPIClient - INFO -   - frcr_buy_amt_smtl1: 0.000000 ($0.00)
+2025-07-16 20:04:26,005 - KISAPIClient - INFO -   - frcr_buy_amt_smtl2: 0.000000 ($0.00)
+2025-07-16 20:04:26,005 - KISAPIClient - INFO - ✅ 잔고 조회 성공: 예수금 $5484.09, 보유종목 3개
+2025-07-16 20:04:26,123 - KISAPIClient - WARNING - ⚠️ SES 현재가 데이터 오류: ''
+2025-07-16 20:09:26,346 - KISAPIClient - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-16 20:09:26,398 - KISAPIClient - INFO - 딕셔너리 형태 output2 (키 개수: 9)
+2025-07-16 20:09:26,398 - KISAPIClient - INFO -   - frcr_pchs_amt1: 5484.08596 ($5484.09)
+2025-07-16 20:09:26,399 - KISAPIClient - INFO -   ✅ frcr_pchs_amt1를 예수금으로 사용: $5484.09
+2025-07-16 20:09:26,399 - KISAPIClient - INFO -   - tot_evlu_pfls_amt: 2785.77350000 ($2785.77)
+2025-07-16 20:09:26,399 - KISAPIClient - INFO -   - frcr_buy_amt_smtl1: 0.000000 ($0.00)
+2025-07-16 20:09:26,400 - KISAPIClient - INFO -   - frcr_buy_amt_smtl2: 0.000000 ($0.00)
+2025-07-16 20:09:26,400 - KISAPIClient - INFO - ✅ 잔고 조회 성공: 예수금 $5484.09, 보유종목 3개
+2025-07-16 20:09:26,519 - KISAPIClient - WARNING - ⚠️ SES 현재가 데이터 오류: ''
+2025-07-16 20:14:26,798 - KISAPIClient - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-16 20:14:26,848 - KISAPIClient - INFO - 딕셔너리 형태 output2 (키 개수: 9)
+2025-07-16 20:14:26,848 - KISAPIClient - INFO -   - frcr_pchs_amt1: 5484.08596 ($5484.09)
+2025-07-16 20:14:26,849 - KISAPIClient - INFO -   ✅ frcr_pchs_amt1를 예수금으로 사용: $5484.09
+2025-07-16 20:14:26,849 - KISAPIClient - INFO -   - tot_evlu_pfls_amt: 2783.87720000 ($2783.88)
+2025-07-16 20:14:26,849 - KISAPIClient - INFO -   - frcr_buy_amt_smtl1: 0.000000 ($0.00)
+2025-07-16 20:14:26,850 - KISAPIClient - INFO -   - frcr_buy_amt_smtl2: 0.000000 ($0.00)
+2025-07-16 20:14:26,850 - KISAPIClient - INFO - ✅ 잔고 조회 성공: 예수금 $5484.09, 보유종목 3개
+2025-07-16 20:14:26,972 - KISAPIClient - WARNING - ⚠️ SES 현재가 데이터 오류: ''
+2025-07-16 20:19:27,248 - KISAPIClient - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-16 20:19:27,299 - KISAPIClient - INFO - 딕셔너리 형태 output2 (키 개수: 9)
+2025-07-16 20:19:27,299 - KISAPIClient - INFO -   - frcr_pchs_amt1: 5484.08596 ($5484.09)
+2025-07-16 20:19:27,300 - KISAPIClient - INFO -   ✅ frcr_pchs_amt1를 예수금으로 사용: $5484.09
+2025-07-16 20:19:27,300 - KISAPIClient - INFO -   - tot_evlu_pfls_amt: 2780.43770000 ($2780.44)
+2025-07-16 20:19:27,300 - KISAPIClient - INFO -   - frcr_buy_amt_smtl1: 0.000000 ($0.00)
+2025-07-16 20:19:27,301 - KISAPIClient - INFO -   - frcr_buy_amt_smtl2: 0.000000 ($0.00)
+2025-07-16 20:19:27,301 - KISAPIClient - INFO - ✅ 잔고 조회 성공: 예수금 $5484.09, 보유종목 3개
+2025-07-16 20:19:27,423 - KISAPIClient - WARNING - ⚠️ SES 현재가 데이터 오류: ''
+2025-07-16 20:24:27,727 - KISAPIClient - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-16 20:24:27,774 - KISAPIClient - INFO - 딕셔너리 형태 output2 (키 개수: 9)
+2025-07-16 20:24:27,774 - KISAPIClient - INFO -   - frcr_pchs_amt1: 5484.08596 ($5484.09)
+2025-07-16 20:24:27,775 - KISAPIClient - INFO -   ✅ frcr_pchs_amt1를 예수금으로 사용: $5484.09
+2025-07-16 20:24:27,775 - KISAPIClient - INFO -   - tot_evlu_pfls_amt: 2791.45930000 ($2791.46)
+2025-07-16 20:24:27,775 - KISAPIClient - INFO -   - frcr_buy_amt_smtl1: 0.000000 ($0.00)
+2025-07-16 20:24:27,776 - KISAPIClient - INFO -   - frcr_buy_amt_smtl2: 0.000000 ($0.00)
+2025-07-16 20:24:27,776 - KISAPIClient - INFO - ✅ 잔고 조회 성공: 예수금 $5484.09, 보유종목 3개
+2025-07-16 20:24:27,937 - KISAPIClient - WARNING - ⚠️ SES 현재가 데이터 오류: ''
+2025-07-16 20:29:28,176 - KISAPIClient - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-16 20:29:28,227 - KISAPIClient - INFO - 딕셔너리 형태 output2 (키 개수: 9)
+2025-07-16 20:29:28,227 - KISAPIClient - INFO -   - frcr_pchs_amt1: 5484.08596 ($5484.09)
+2025-07-16 20:29:28,228 - KISAPIClient - INFO -   ✅ frcr_pchs_amt1를 예수금으로 사용: $5484.09
+2025-07-16 20:29:28,228 - KISAPIClient - INFO -   - tot_evlu_pfls_amt: 2781.14160000 ($2781.14)
+2025-07-16 20:29:28,229 - KISAPIClient - INFO -   - frcr_buy_amt_smtl1: 0.000000 ($0.00)
+2025-07-16 20:29:28,229 - KISAPIClient - INFO -   - frcr_buy_amt_smtl2: 0.000000 ($0.00)
+2025-07-16 20:29:28,229 - KISAPIClient - INFO - ✅ 잔고 조회 성공: 예수금 $5484.09, 보유종목 3개
+2025-07-16 20:29:28,359 - KISAPIClient - WARNING - ⚠️ SES 현재가 데이터 오류: ''
+2025-07-16 20:34:28,640 - KISAPIClient - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-16 20:34:28,718 - KISAPIClient - INFO - 딕셔너리 형태 output2 (키 개수: 9)
+2025-07-16 20:34:28,718 - KISAPIClient - INFO -   - frcr_pchs_amt1: 5484.08596 ($5484.09)
+2025-07-16 20:34:28,719 - KISAPIClient - INFO -   ✅ frcr_pchs_amt1를 예수금으로 사용: $5484.09
+2025-07-16 20:34:28,719 - KISAPIClient - INFO -   - tot_evlu_pfls_amt: 2781.04390000 ($2781.04)
+2025-07-16 20:34:28,719 - KISAPIClient - INFO -   - frcr_buy_amt_smtl1: 0.000000 ($0.00)
+2025-07-16 20:34:28,720 - KISAPIClient - INFO -   - frcr_buy_amt_smtl2: 0.000000 ($0.00)
+2025-07-16 20:34:28,720 - KISAPIClient - INFO - ✅ 잔고 조회 성공: 예수금 $5484.09, 보유종목 3개
+2025-07-16 20:34:28,875 - KISAPIClient - WARNING - ⚠️ SES 현재가 데이터 오류: ''
+2025-07-16 20:39:29,102 - KISAPIClient - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-16 20:39:29,160 - KISAPIClient - INFO - 딕셔너리 형태 output2 (키 개수: 9)
+2025-07-16 20:39:29,160 - KISAPIClient - INFO -   - frcr_pchs_amt1: 5484.08596 ($5484.09)
+2025-07-16 20:39:29,161 - KISAPIClient - INFO -   ✅ frcr_pchs_amt1를 예수금으로 사용: $5484.09
+2025-07-16 20:39:29,161 - KISAPIClient - INFO -   - tot_evlu_pfls_amt: 2781.08390000 ($2781.08)
+2025-07-16 20:39:29,162 - KISAPIClient - INFO -   - frcr_buy_amt_smtl1: 0.000000 ($0.00)
+2025-07-16 20:39:29,162 - KISAPIClient - INFO -   - frcr_buy_amt_smtl2: 0.000000 ($0.00)
+2025-07-16 20:39:29,162 - KISAPIClient - INFO - ✅ 잔고 조회 성공: 예수금 $5484.09, 보유종목 3개
+2025-07-16 20:39:29,323 - KISAPIClient - WARNING - ⚠️ SES 현재가 데이터 오류: ''
+2025-07-16 20:44:29,547 - KISAPIClient - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-16 20:44:29,591 - KISAPIClient - INFO - 딕셔너리 형태 output2 (키 개수: 9)
+2025-07-16 20:44:29,591 - KISAPIClient - INFO -   - frcr_pchs_amt1: 5484.08596 ($5484.09)
+2025-07-16 20:44:29,592 - KISAPIClient - INFO -   ✅ frcr_pchs_amt1를 예수금으로 사용: $5484.09
+2025-07-16 20:44:29,592 - KISAPIClient - INFO -   - tot_evlu_pfls_amt: 2773.45370000 ($2773.45)
+2025-07-16 20:44:29,593 - KISAPIClient - INFO -   - frcr_buy_amt_smtl1: 0.000000 ($0.00)
+2025-07-16 20:44:29,593 - KISAPIClient - INFO -   - frcr_buy_amt_smtl2: 0.000000 ($0.00)
+2025-07-16 20:44:29,593 - KISAPIClient - INFO - ✅ 잔고 조회 성공: 예수금 $5484.09, 보유종목 3개
+2025-07-16 20:44:29,721 - KISAPIClient - WARNING - ⚠️ SES 현재가 데이터 오류: ''
+2025-07-16 20:49:29,945 - KISAPIClient - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-16 20:49:29,990 - KISAPIClient - INFO - 딕셔너리 형태 output2 (키 개수: 9)
+2025-07-16 20:49:29,990 - KISAPIClient - INFO -   - frcr_pchs_amt1: 5484.08596 ($5484.09)
+2025-07-16 20:49:29,991 - KISAPIClient - INFO -   ✅ frcr_pchs_amt1를 예수금으로 사용: $5484.09
+2025-07-16 20:49:29,991 - KISAPIClient - INFO -   - tot_evlu_pfls_amt: 2779.95150000 ($2779.95)
+2025-07-16 20:49:29,991 - KISAPIClient - INFO -   - frcr_buy_amt_smtl1: 0.000000 ($0.00)
+2025-07-16 20:49:29,992 - KISAPIClient - INFO -   - frcr_buy_amt_smtl2: 0.000000 ($0.00)
+2025-07-16 20:49:29,992 - KISAPIClient - INFO - ✅ 잔고 조회 성공: 예수금 $5484.09, 보유종목 3개
+2025-07-16 20:49:30,158 - KISAPIClient - WARNING - ⚠️ SES 현재가 데이터 오류: ''
+2025-07-16 20:54:30,408 - KISAPIClient - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-16 20:54:30,453 - KISAPIClient - INFO - 딕셔너리 형태 output2 (키 개수: 9)
+2025-07-16 20:54:30,453 - KISAPIClient - INFO -   - frcr_pchs_amt1: 5484.08596 ($5484.09)
+2025-07-16 20:54:30,453 - KISAPIClient - INFO -   ✅ frcr_pchs_amt1를 예수금으로 사용: $5484.09
+2025-07-16 20:54:30,454 - KISAPIClient - INFO -   - tot_evlu_pfls_amt: 2761.58240000 ($2761.58)
+2025-07-16 20:54:30,454 - KISAPIClient - INFO -   - frcr_buy_amt_smtl1: 0.000000 ($0.00)
+2025-07-16 20:54:30,454 - KISAPIClient - INFO -   - frcr_buy_amt_smtl2: 0.000000 ($0.00)
+2025-07-16 20:54:30,455 - KISAPIClient - INFO - ✅ 잔고 조회 성공: 예수금 $5484.09, 보유종목 3개
+2025-07-16 20:54:30,598 - KISAPIClient - WARNING - ⚠️ SES 현재가 데이터 오류: ''
+2025-07-16 20:59:30,913 - KISAPIClient - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-16 20:59:30,990 - KISAPIClient - INFO - 딕셔너리 형태 output2 (키 개수: 9)
+2025-07-16 20:59:30,991 - KISAPIClient - INFO -   - frcr_pchs_amt1: 5484.08596 ($5484.09)
+2025-07-16 20:59:30,991 - KISAPIClient - INFO -   ✅ frcr_pchs_amt1를 예수금으로 사용: $5484.09
+2025-07-16 20:59:30,991 - KISAPIClient - INFO -   - tot_evlu_pfls_amt: 2772.17550000 ($2772.18)
+2025-07-16 20:59:30,992 - KISAPIClient - INFO -   - frcr_buy_amt_smtl1: 0.000000 ($0.00)
+2025-07-16 20:59:30,992 - KISAPIClient - INFO -   - frcr_buy_amt_smtl2: 0.000000 ($0.00)
+2025-07-16 20:59:30,992 - KISAPIClient - INFO - ✅ 잔고 조회 성공: 예수금 $5484.09, 보유종목 3개
+2025-07-16 20:59:31,125 - KISAPIClient - WARNING - ⚠️ SES 현재가 데이터 오류: ''
+2025-07-16 21:04:31,440 - KISAPIClient - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-16 21:04:31,519 - KISAPIClient - INFO - 딕셔너리 형태 output2 (키 개수: 9)
+2025-07-16 21:04:31,519 - KISAPIClient - INFO -   - frcr_pchs_amt1: 5484.08596 ($5484.09)
+2025-07-16 21:04:31,521 - KISAPIClient - INFO -   ✅ frcr_pchs_amt1를 예수금으로 사용: $5484.09
+2025-07-16 21:04:31,521 - KISAPIClient - INFO -   - tot_evlu_pfls_amt: 2774.08950000 ($2774.09)
+2025-07-16 21:04:31,521 - KISAPIClient - INFO -   - frcr_buy_amt_smtl1: 0.000000 ($0.00)
+2025-07-16 21:04:31,522 - KISAPIClient - INFO -   - frcr_buy_amt_smtl2: 0.000000 ($0.00)
+2025-07-16 21:04:31,522 - KISAPIClient - INFO - ✅ 잔고 조회 성공: 예수금 $5484.09, 보유종목 3개
+2025-07-16 21:04:31,659 - KISAPIClient - WARNING - ⚠️ SES 현재가 데이터 오류: ''
+2025-07-16 21:09:31,895 - KISAPIClient - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-16 21:09:31,948 - KISAPIClient - INFO - 딕셔너리 형태 output2 (키 개수: 9)
+2025-07-16 21:09:31,949 - KISAPIClient - INFO -   - frcr_pchs_amt1: 5484.08596 ($5484.09)
+2025-07-16 21:09:31,950 - KISAPIClient - INFO -   ✅ frcr_pchs_amt1를 예수금으로 사용: $5484.09
+2025-07-16 21:09:31,950 - KISAPIClient - INFO -   - tot_evlu_pfls_amt: 2762.59940000 ($2762.60)
+2025-07-16 21:09:31,950 - KISAPIClient - INFO -   - frcr_buy_amt_smtl1: 0.000000 ($0.00)
+2025-07-16 21:09:31,951 - KISAPIClient - INFO -   - frcr_buy_amt_smtl2: 0.000000 ($0.00)
+2025-07-16 21:09:31,951 - KISAPIClient - INFO - ✅ 잔고 조회 성공: 예수금 $5484.09, 보유종목 3개
+2025-07-16 21:09:32,076 - KISAPIClient - WARNING - ⚠️ SES 현재가 데이터 오류: ''
+2025-07-16 21:14:32,350 - KISAPIClient - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-16 21:14:32,428 - KISAPIClient - INFO - 딕셔너리 형태 output2 (키 개수: 9)
+2025-07-16 21:14:32,428 - KISAPIClient - INFO -   - frcr_pchs_amt1: 5484.08596 ($5484.09)
+2025-07-16 21:14:32,428 - KISAPIClient - INFO -   ✅ frcr_pchs_amt1를 예수금으로 사용: $5484.09
+2025-07-16 21:14:32,429 - KISAPIClient - INFO -   - tot_evlu_pfls_amt: 2779.69840000 ($2779.70)
+2025-07-16 21:14:32,429 - KISAPIClient - INFO -   - frcr_buy_amt_smtl1: 0.000000 ($0.00)
+2025-07-16 21:14:32,429 - KISAPIClient - INFO -   - frcr_buy_amt_smtl2: 0.000000 ($0.00)
+2025-07-16 21:14:32,430 - KISAPIClient - INFO - ✅ 잔고 조회 성공: 예수금 $5484.09, 보유종목 3개
+2025-07-16 21:14:32,620 - KISAPIClient - WARNING - ⚠️ SES 현재가 데이터 오류: ''
+2025-07-16 21:19:32,898 - KISAPIClient - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-16 21:19:32,981 - KISAPIClient - INFO - 딕셔너리 형태 output2 (키 개수: 9)
+2025-07-16 21:19:32,981 - KISAPIClient - INFO -   - frcr_pchs_amt1: 5484.08596 ($5484.09)
+2025-07-16 21:19:32,982 - KISAPIClient - INFO -   ✅ frcr_pchs_amt1를 예수금으로 사용: $5484.09
+2025-07-16 21:19:32,982 - KISAPIClient - INFO -   - tot_evlu_pfls_amt: 2769.40080000 ($2769.40)
+2025-07-16 21:19:32,982 - KISAPIClient - INFO -   - frcr_buy_amt_smtl1: 0.000000 ($0.00)
+2025-07-16 21:19:32,983 - KISAPIClient - INFO -   - frcr_buy_amt_smtl2: 0.000000 ($0.00)
+2025-07-16 21:19:32,983 - KISAPIClient - INFO - ✅ 잔고 조회 성공: 예수금 $5484.09, 보유종목 3개
+2025-07-16 21:19:33,182 - KISAPIClient - WARNING - ⚠️ SES 현재가 데이터 오류: ''
+2025-07-16 21:24:33,427 - KISAPIClient - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-16 21:24:33,491 - KISAPIClient - INFO - 딕셔너리 형태 output2 (키 개수: 9)
+2025-07-16 21:24:33,492 - KISAPIClient - INFO -   - frcr_pchs_amt1: 5484.08596 ($5484.09)
+2025-07-16 21:24:33,492 - KISAPIClient - INFO -   ✅ frcr_pchs_amt1를 예수금으로 사용: $5484.09
+2025-07-16 21:24:33,493 - KISAPIClient - INFO -   - tot_evlu_pfls_amt: 2764.35800000 ($2764.36)
+2025-07-16 21:24:33,493 - KISAPIClient - INFO -   - frcr_buy_amt_smtl1: 0.000000 ($0.00)
+2025-07-16 21:24:33,493 - KISAPIClient - INFO -   - frcr_buy_amt_smtl2: 0.000000 ($0.00)
+2025-07-16 21:24:33,494 - KISAPIClient - INFO - ✅ 잔고 조회 성공: 예수금 $5484.09, 보유종목 3개
+2025-07-16 21:24:33,726 - KISAPIClient - WARNING - ⚠️ SES 현재가 데이터 오류: ''
+2025-07-16 21:29:33,953 - KISAPIClient - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-16 21:29:34,067 - KISAPIClient - INFO - 딕셔너리 형태 output2 (키 개수: 9)
+2025-07-16 21:29:34,067 - KISAPIClient - INFO -   - frcr_pchs_amt1: 5484.08596 ($5484.09)
+2025-07-16 21:29:34,067 - KISAPIClient - INFO -   ✅ frcr_pchs_amt1를 예수금으로 사용: $5484.09
+2025-07-16 21:29:34,068 - KISAPIClient - INFO -   - tot_evlu_pfls_amt: 2764.58170000 ($2764.58)
+2025-07-16 21:29:34,068 - KISAPIClient - INFO -   - frcr_buy_amt_smtl1: 0.000000 ($0.00)
+2025-07-16 21:29:34,068 - KISAPIClient - INFO -   - frcr_buy_amt_smtl2: 0.000000 ($0.00)
+2025-07-16 21:29:34,069 - KISAPIClient - INFO - ✅ 잔고 조회 성공: 예수금 $5484.09, 보유종목 3개
+2025-07-16 21:29:34,276 - KISAPIClient - WARNING - ⚠️ SES 현재가 데이터 오류: ''
+2025-07-16 21:34:34,603 - KISAPIClient - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-16 21:34:34,688 - KISAPIClient - INFO - 딕셔너리 형태 output2 (키 개수: 9)
+2025-07-16 21:34:34,689 - KISAPIClient - INFO -   - frcr_pchs_amt1: 5484.08596 ($5484.09)
+2025-07-16 21:34:34,689 - KISAPIClient - INFO -   ✅ frcr_pchs_amt1를 예수금으로 사용: $5484.09
+2025-07-16 21:34:34,690 - KISAPIClient - INFO -   - tot_evlu_pfls_amt: 2829.78600000 ($2829.79)
+2025-07-16 21:34:34,690 - KISAPIClient - INFO -   - frcr_buy_amt_smtl1: 0.000000 ($0.00)
+2025-07-16 21:34:34,690 - KISAPIClient - INFO -   - frcr_buy_amt_smtl2: 0.000000 ($0.00)
+2025-07-16 21:34:34,691 - KISAPIClient - INFO - ✅ 잔고 조회 성공: 예수금 $5484.09, 보유종목 3개
+2025-07-16 21:34:34,692 - KISAPIClient - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-16 21:34:34,807 - KISAPIClient - INFO - 딕셔너리 형태 output2 (키 개수: 9)
+2025-07-16 21:34:34,807 - KISAPIClient - INFO -   - frcr_pchs_amt1: 5484.08596 ($5484.09)
+2025-07-16 21:34:34,808 - KISAPIClient - INFO -   ✅ frcr_pchs_amt1를 예수금으로 사용: $5484.09
+2025-07-16 21:34:34,808 - KISAPIClient - INFO -   - tot_evlu_pfls_amt: 2829.78600000 ($2829.79)
+2025-07-16 21:34:34,808 - KISAPIClient - INFO -   - frcr_buy_amt_smtl1: 0.000000 ($0.00)
+2025-07-16 21:34:34,808 - KISAPIClient - INFO -   - frcr_buy_amt_smtl2: 0.000000 ($0.00)
+2025-07-16 21:34:34,809 - KISAPIClient - INFO - ✅ 잔고 조회 성공: 예수금 $5484.09, 보유종목 3개
+2025-07-16 21:34:35,000 - KISAPIClient - WARNING - ⚠️ SES 현재가 데이터 오류: ''
+2025-07-16 21:39:35,277 - KISAPIClient - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-16 21:39:35,388 - KISAPIClient - INFO - 딕셔너리 형태 output2 (키 개수: 9)
+2025-07-16 21:39:35,388 - KISAPIClient - INFO -   - frcr_pchs_amt1: 5484.08596 ($5484.09)
+2025-07-16 21:39:35,389 - KISAPIClient - INFO -   ✅ frcr_pchs_amt1를 예수금으로 사용: $5484.09
+2025-07-16 21:39:35,389 - KISAPIClient - INFO -   - tot_evlu_pfls_amt: 2833.87660000 ($2833.88)
+2025-07-16 21:39:35,389 - KISAPIClient - INFO -   - frcr_buy_amt_smtl1: 0.000000 ($0.00)
+2025-07-16 21:39:35,390 - KISAPIClient - INFO -   - frcr_buy_amt_smtl2: 0.000000 ($0.00)
+2025-07-16 21:39:35,390 - KISAPIClient - INFO - ✅ 잔고 조회 성공: 예수금 $5484.09, 보유종목 3개
+2025-07-16 21:39:35,603 - KISAPIClient - WARNING - ⚠️ SES 현재가 데이터 오류: ''
+2025-07-16 21:44:35,879 - KISAPIClient - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-16 21:44:35,990 - KISAPIClient - INFO - 딕셔너리 형태 output2 (키 개수: 9)
+2025-07-16 21:44:35,991 - KISAPIClient - INFO -   - frcr_pchs_amt1: 5484.08596 ($5484.09)
+2025-07-16 21:44:35,991 - KISAPIClient - INFO -   ✅ frcr_pchs_amt1를 예수금으로 사용: $5484.09
+2025-07-16 21:44:35,992 - KISAPIClient - INFO -   - tot_evlu_pfls_amt: 2820.76710000 ($2820.77)
+2025-07-16 21:44:35,992 - KISAPIClient - INFO -   - frcr_buy_amt_smtl1: 0.000000 ($0.00)
+2025-07-16 21:44:35,992 - KISAPIClient - INFO -   - frcr_buy_amt_smtl2: 0.000000 ($0.00)
+2025-07-16 21:44:35,992 - KISAPIClient - INFO - ✅ 잔고 조회 성공: 예수금 $5484.09, 보유종목 3개
+2025-07-16 21:44:36,175 - KISAPIClient - WARNING - ⚠️ SES 현재가 데이터 오류: ''
+2025-07-16 21:49:36,408 - KISAPIClient - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-16 21:49:36,540 - KISAPIClient - INFO - 딕셔너리 형태 output2 (키 개수: 9)
+2025-07-16 21:49:36,541 - KISAPIClient - INFO -   - frcr_pchs_amt1: 5484.08596 ($5484.09)
+2025-07-16 21:49:36,541 - KISAPIClient - INFO -   ✅ frcr_pchs_amt1를 예수금으로 사용: $5484.09
+2025-07-16 21:49:36,542 - KISAPIClient - INFO -   - tot_evlu_pfls_amt: 2810.70990000 ($2810.71)
+2025-07-16 21:49:36,542 - KISAPIClient - INFO -   - frcr_buy_amt_smtl1: 0.000000 ($0.00)
+2025-07-16 21:49:36,542 - KISAPIClient - INFO -   - frcr_buy_amt_smtl2: 0.000000 ($0.00)
+2025-07-16 21:49:36,542 - KISAPIClient - INFO - ✅ 잔고 조회 성공: 예수금 $5484.09, 보유종목 3개
+2025-07-16 21:49:36,739 - KISAPIClient - WARNING - ⚠️ SES 현재가 데이터 오류: ''
+2025-07-16 21:54:37,032 - KISAPIClient - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-16 21:54:37,108 - KISAPIClient - INFO - 딕셔너리 형태 output2 (키 개수: 9)
+2025-07-16 21:54:37,109 - KISAPIClient - INFO -   - frcr_pchs_amt1: 5484.08596 ($5484.09)
+2025-07-16 21:54:37,109 - KISAPIClient - INFO -   ✅ frcr_pchs_amt1를 예수금으로 사용: $5484.09
+2025-07-16 21:54:37,110 - KISAPIClient - INFO -   - tot_evlu_pfls_amt: 2840.67640000 ($2840.68)
+2025-07-16 21:54:37,110 - KISAPIClient - INFO -   - frcr_buy_amt_smtl1: 0.000000 ($0.00)
+2025-07-16 21:54:37,110 - KISAPIClient - INFO -   - frcr_buy_amt_smtl2: 0.000000 ($0.00)
+2025-07-16 21:54:37,111 - KISAPIClient - INFO - ✅ 잔고 조회 성공: 예수금 $5484.09, 보유종목 3개
+2025-07-16 21:54:37,304 - KISAPIClient - WARNING - ⚠️ SES 현재가 데이터 오류: ''
+2025-07-16 21:59:37,532 - KISAPIClient - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-16 21:59:37,603 - KISAPIClient - INFO - 딕셔너리 형태 output2 (키 개수: 9)
+2025-07-16 21:59:37,604 - KISAPIClient - INFO -   - frcr_pchs_amt1: 5484.08596 ($5484.09)
+2025-07-16 21:59:37,604 - KISAPIClient - INFO -   ✅ frcr_pchs_amt1를 예수금으로 사용: $5484.09
+2025-07-16 21:59:37,604 - KISAPIClient - INFO -   - tot_evlu_pfls_amt: 2841.43460000 ($2841.43)
+2025-07-16 21:59:37,605 - KISAPIClient - INFO -   - frcr_buy_amt_smtl1: 0.000000 ($0.00)
+2025-07-16 21:59:37,605 - KISAPIClient - INFO -   - frcr_buy_amt_smtl2: 0.000000 ($0.00)
+2025-07-16 21:59:37,605 - KISAPIClient - INFO - ✅ 잔고 조회 성공: 예수금 $5484.09, 보유종목 3개
+2025-07-16 21:59:37,851 - KISAPIClient - WARNING - ⚠️ SES 현재가 데이터 오류: ''
+2025-07-16 22:04:38,082 - KISAPIClient - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-16 22:04:38,170 - KISAPIClient - INFO - 딕셔너리 형태 output2 (키 개수: 9)
+2025-07-16 22:04:38,171 - KISAPIClient - INFO -   - frcr_pchs_amt1: 5484.08596 ($5484.09)
+2025-07-16 22:04:38,171 - KISAPIClient - INFO -   ✅ frcr_pchs_amt1를 예수금으로 사용: $5484.09
+2025-07-16 22:04:38,172 - KISAPIClient - INFO -   - tot_evlu_pfls_amt: 2841.39220000 ($2841.39)
+2025-07-16 22:04:38,172 - KISAPIClient - INFO -   - frcr_buy_amt_smtl1: 0.000000 ($0.00)
+2025-07-16 22:04:38,172 - KISAPIClient - INFO -   - frcr_buy_amt_smtl2: 0.000000 ($0.00)
+2025-07-16 22:04:38,173 - KISAPIClient - INFO - ✅ 잔고 조회 성공: 예수금 $5484.09, 보유종목 3개
+2025-07-16 22:04:38,501 - KISAPIClient - WARNING - ⚠️ SES 현재가 데이터 오류: ''
+2025-07-16 22:09:38,734 - KISAPIClient - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-16 22:09:38,904 - KISAPIClient - INFO - 딕셔너리 형태 output2 (키 개수: 9)
+2025-07-16 22:09:38,904 - KISAPIClient - INFO -   - frcr_pchs_amt1: 5484.08596 ($5484.09)
+2025-07-16 22:09:38,905 - KISAPIClient - INFO -   ✅ frcr_pchs_amt1를 예수금으로 사용: $5484.09
+2025-07-16 22:09:38,905 - KISAPIClient - INFO -   - tot_evlu_pfls_amt: 2851.51200000 ($2851.51)
+2025-07-16 22:09:38,905 - KISAPIClient - INFO -   - frcr_buy_amt_smtl1: 0.000000 ($0.00)
+2025-07-16 22:09:38,906 - KISAPIClient - INFO -   - frcr_buy_amt_smtl2: 0.000000 ($0.00)
+2025-07-16 22:09:38,906 - KISAPIClient - INFO - ✅ 잔고 조회 성공: 예수금 $5484.09, 보유종목 3개
+2025-07-16 22:09:39,153 - KISAPIClient - WARNING - ⚠️ SES 현재가 데이터 오류: ''
+2025-07-16 22:14:39,375 - KISAPIClient - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-16 22:14:39,491 - KISAPIClient - INFO - 딕셔너리 형태 output2 (키 개수: 9)
+2025-07-16 22:14:39,492 - KISAPIClient - INFO -   - frcr_pchs_amt1: 5484.08596 ($5484.09)
+2025-07-16 22:14:39,492 - KISAPIClient - INFO -   ✅ frcr_pchs_amt1를 예수금으로 사용: $5484.09
+2025-07-16 22:14:39,492 - KISAPIClient - INFO -   - tot_evlu_pfls_amt: 2860.02150000 ($2860.02)
+2025-07-16 22:14:39,493 - KISAPIClient - INFO -   - frcr_buy_amt_smtl1: 0.000000 ($0.00)
+2025-07-16 22:14:39,493 - KISAPIClient - INFO -   - frcr_buy_amt_smtl2: 0.000000 ($0.00)
+2025-07-16 22:14:39,493 - KISAPIClient - INFO - ✅ 잔고 조회 성공: 예수금 $5484.09, 보유종목 3개
+2025-07-16 22:14:39,994 - KISAPIClient - WARNING - ⚠️ SES 현재가 데이터 오류: ''
+2025-07-16 22:19:40,224 - KISAPIClient - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-16 22:19:40,305 - KISAPIClient - INFO - 딕셔너리 형태 output2 (키 개수: 9)
+2025-07-16 22:19:40,305 - KISAPIClient - INFO -   - frcr_pchs_amt1: 5484.08596 ($5484.09)
+2025-07-16 22:19:40,305 - KISAPIClient - INFO -   ✅ frcr_pchs_amt1를 예수금으로 사용: $5484.09
+2025-07-16 22:19:40,306 - KISAPIClient - INFO -   - tot_evlu_pfls_amt: 2861.53210000 ($2861.53)
+2025-07-16 22:19:40,306 - KISAPIClient - INFO -   - frcr_buy_amt_smtl1: 0.000000 ($0.00)
+2025-07-16 22:19:40,307 - KISAPIClient - INFO -   - frcr_buy_amt_smtl2: 0.000000 ($0.00)
+2025-07-16 22:19:40,307 - KISAPIClient - INFO - ✅ 잔고 조회 성공: 예수금 $5484.09, 보유종목 3개
+2025-07-16 22:19:40,548 - KISAPIClient - WARNING - ⚠️ SES 현재가 데이터 오류: ''
+2025-07-16 22:24:40,822 - KISAPIClient - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-16 22:24:40,906 - KISAPIClient - INFO - 딕셔너리 형태 output2 (키 개수: 9)
+2025-07-16 22:24:40,906 - KISAPIClient - INFO -   - frcr_pchs_amt1: 5484.08596 ($5484.09)
+2025-07-16 22:24:40,907 - KISAPIClient - INFO -   ✅ frcr_pchs_amt1를 예수금으로 사용: $5484.09
+2025-07-16 22:24:40,907 - KISAPIClient - INFO -   - tot_evlu_pfls_amt: 2841.46210000 ($2841.46)
+2025-07-16 22:24:40,907 - KISAPIClient - INFO -   - frcr_buy_amt_smtl1: 0.000000 ($0.00)
+2025-07-16 22:24:40,908 - KISAPIClient - INFO -   - frcr_buy_amt_smtl2: 0.000000 ($0.00)
+2025-07-16 22:24:40,908 - KISAPIClient - INFO - ✅ 잔고 조회 성공: 예수금 $5484.09, 보유종목 3개
+2025-07-16 22:24:41,475 - KISAPIClient - WARNING - ⚠️ SES 현재가 데이터 오류: ''
+2025-07-16 22:29:41,708 - KISAPIClient - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-16 22:29:41,884 - KISAPIClient - INFO - 딕셔너리 형태 output2 (키 개수: 9)
+2025-07-16 22:29:41,884 - KISAPIClient - INFO -   - frcr_pchs_amt1: 5484.08596 ($5484.09)
+2025-07-16 22:29:41,884 - KISAPIClient - INFO -   ✅ frcr_pchs_amt1를 예수금으로 사용: $5484.09
+2025-07-16 22:29:41,884 - KISAPIClient - INFO -   - tot_evlu_pfls_amt: 2831.32920000 ($2831.33)
+2025-07-16 22:29:41,885 - KISAPIClient - INFO -   - frcr_buy_amt_smtl1: 0.000000 ($0.00)
+2025-07-16 22:29:41,885 - KISAPIClient - INFO -   - frcr_buy_amt_smtl2: 0.000000 ($0.00)
+2025-07-16 22:29:41,885 - KISAPIClient - INFO - ✅ 잔고 조회 성공: 예수금 $5484.09, 보유종목 3개
+2025-07-16 22:29:42,146 - KISAPIClient - WARNING - ⚠️ SES 현재가 데이터 오류: ''
+2025-07-17 01:03:38,334 - KISAPIClient - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-17 01:03:38,417 - KISAPIClient - INFO - 딕셔너리 형태 output2 (키 개수: 9)
+2025-07-17 01:03:38,418 - KISAPIClient - INFO -   - frcr_pchs_amt1: 5484.08596 ($5484.09)
+2025-07-17 01:03:38,418 - KISAPIClient - INFO -   ✅ frcr_pchs_amt1를 예수금으로 사용: $5484.09
+2025-07-17 01:03:38,418 - KISAPIClient - INFO -   - tot_evlu_pfls_amt: 2815.23700000 ($2815.24)
+2025-07-17 01:03:38,419 - KISAPIClient - INFO -   - frcr_buy_amt_smtl1: 0.000000 ($0.00)
+2025-07-17 01:03:38,419 - KISAPIClient - INFO -   - frcr_buy_amt_smtl2: 0.000000 ($0.00)
+2025-07-17 01:03:38,419 - KISAPIClient - INFO - ✅ 잔고 조회 성공: 예수금 $5484.09, 보유종목 3개
+2025-07-17 01:03:38,421 - KISAPIClient - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-17 01:03:38,525 - KISAPIClient - INFO - 딕셔너리 형태 output2 (키 개수: 9)
+2025-07-17 01:03:38,526 - KISAPIClient - INFO -   - frcr_pchs_amt1: 5484.08596 ($5484.09)
+2025-07-17 01:03:38,526 - KISAPIClient - INFO -   ✅ frcr_pchs_amt1를 예수금으로 사용: $5484.09
+2025-07-17 01:03:38,526 - KISAPIClient - INFO -   - tot_evlu_pfls_amt: 2815.23700000 ($2815.24)
+2025-07-17 01:03:38,527 - KISAPIClient - INFO -   - frcr_buy_amt_smtl1: 0.000000 ($0.00)
+2025-07-17 01:03:38,527 - KISAPIClient - INFO -   - frcr_buy_amt_smtl2: 0.000000 ($0.00)
+2025-07-17 01:03:38,527 - KISAPIClient - INFO - ✅ 잔고 조회 성공: 예수금 $5484.09, 보유종목 3개
+2025-07-17 01:03:38,529 - KISAPIClient - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-17 01:03:38,613 - KISAPIClient - INFO - 딕셔너리 형태 output2 (키 개수: 9)
+2025-07-17 01:03:38,613 - KISAPIClient - INFO -   - frcr_pchs_amt1: 5484.08596 ($5484.09)
+2025-07-17 01:03:38,614 - KISAPIClient - INFO -   ✅ frcr_pchs_amt1를 예수금으로 사용: $5484.09
+2025-07-17 01:03:38,614 - KISAPIClient - INFO -   - tot_evlu_pfls_amt: 2815.23700000 ($2815.24)
+2025-07-17 01:03:38,615 - KISAPIClient - INFO -   - frcr_buy_amt_smtl1: 0.000000 ($0.00)
+2025-07-17 01:03:38,615 - KISAPIClient - INFO -   - frcr_buy_amt_smtl2: 0.000000 ($0.00)
+2025-07-17 01:03:38,615 - KISAPIClient - INFO - ✅ 잔고 조회 성공: 예수금 $5484.09, 보유종목 3개
+2025-07-17 01:03:38,861 - KISAPIClient - WARNING - ⚠️ SES 현재가 데이터 오류: ''
+2025-07-17 01:08:39,459 - KISAPIClient - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-17 01:08:39,539 - KISAPIClient - INFO - 딕셔너리 형태 output2 (키 개수: 9)
+2025-07-17 01:08:39,539 - KISAPIClient - INFO -   - frcr_pchs_amt1: 5484.08596 ($5484.09)
+2025-07-17 01:08:39,540 - KISAPIClient - INFO -   ✅ frcr_pchs_amt1를 예수금으로 사용: $5484.09
+2025-07-17 01:08:39,540 - KISAPIClient - INFO -   - tot_evlu_pfls_amt: 2821.44190000 ($2821.44)
+2025-07-17 01:08:39,540 - KISAPIClient - INFO -   - frcr_buy_amt_smtl1: 0.000000 ($0.00)
+2025-07-17 01:08:39,541 - KISAPIClient - INFO -   - frcr_buy_amt_smtl2: 0.000000 ($0.00)
+2025-07-17 01:08:39,541 - KISAPIClient - INFO - ✅ 잔고 조회 성공: 예수금 $5484.09, 보유종목 3개
+2025-07-17 01:08:40,113 - KISAPIClient - WARNING - ⚠️ SES 현재가 데이터 오류: ''
+2025-07-17 01:13:40,385 - KISAPIClient - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-17 01:13:40,622 - KISAPIClient - INFO - 딕셔너리 형태 output2 (키 개수: 9)
+2025-07-17 01:13:40,622 - KISAPIClient - INFO -   - frcr_pchs_amt1: 5484.08596 ($5484.09)
+2025-07-17 01:13:40,623 - KISAPIClient - INFO -   ✅ frcr_pchs_amt1를 예수금으로 사용: $5484.09
+2025-07-17 01:13:40,623 - KISAPIClient - INFO -   - tot_evlu_pfls_amt: 2817.15510000 ($2817.16)
+2025-07-17 01:13:40,623 - KISAPIClient - INFO -   - frcr_buy_amt_smtl1: 0.000000 ($0.00)
+2025-07-17 01:13:40,624 - KISAPIClient - INFO -   - frcr_buy_amt_smtl2: 0.000000 ($0.00)
+2025-07-17 01:13:40,624 - KISAPIClient - INFO - ✅ 잔고 조회 성공: 예수금 $5484.09, 보유종목 3개
+2025-07-17 01:13:40,900 - KISAPIClient - WARNING - ⚠️ SES 현재가 데이터 오류: ''
+2025-07-17 01:18:41,143 - KISAPIClient - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-17 01:18:41,636 - KISAPIClient - INFO - 딕셔너리 형태 output2 (키 개수: 9)
+2025-07-17 01:18:41,637 - KISAPIClient - INFO -   - frcr_pchs_amt1: 5484.08596 ($5484.09)
+2025-07-17 01:18:41,637 - KISAPIClient - INFO -   ✅ frcr_pchs_amt1를 예수금으로 사용: $5484.09
+2025-07-17 01:18:41,638 - KISAPIClient - INFO -   - tot_evlu_pfls_amt: 2822.19500000 ($2822.20)
+2025-07-17 01:18:41,638 - KISAPIClient - INFO -   - frcr_buy_amt_smtl1: 0.000000 ($0.00)
+2025-07-17 01:18:41,638 - KISAPIClient - INFO -   - frcr_buy_amt_smtl2: 0.000000 ($0.00)
+2025-07-17 01:18:41,639 - KISAPIClient - INFO - ✅ 잔고 조회 성공: 예수금 $5484.09, 보유종목 3개
+2025-07-17 01:18:42,118 - KISAPIClient - WARNING - ⚠️ SES 현재가 데이터 오류: ''
+2025-07-17 01:23:42,392 - KISAPIClient - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-17 01:23:42,441 - KISAPIClient - INFO - 딕셔너리 형태 output2 (키 개수: 9)
+2025-07-17 01:23:42,442 - KISAPIClient - INFO -   - frcr_pchs_amt1: 5484.08596 ($5484.09)
+2025-07-17 01:23:42,442 - KISAPIClient - INFO -   ✅ frcr_pchs_amt1를 예수금으로 사용: $5484.09
+2025-07-17 01:23:42,443 - KISAPIClient - INFO -   - tot_evlu_pfls_amt: 2829.14140000 ($2829.14)
+2025-07-17 01:23:42,443 - KISAPIClient - INFO -   - frcr_buy_amt_smtl1: 0.000000 ($0.00)
+2025-07-17 01:23:42,443 - KISAPIClient - INFO -   - frcr_buy_amt_smtl2: 0.000000 ($0.00)
+2025-07-17 01:23:42,444 - KISAPIClient - INFO - ✅ 잔고 조회 성공: 예수금 $5484.09, 보유종목 3개
+2025-07-17 01:23:42,801 - KISAPIClient - WARNING - ⚠️ SES 현재가 데이터 오류: ''
+2025-07-17 01:28:43,052 - KISAPIClient - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-17 01:28:43,178 - KISAPIClient - INFO - 딕셔너리 형태 output2 (키 개수: 9)
+2025-07-17 01:28:43,178 - KISAPIClient - INFO -   - frcr_pchs_amt1: 5484.08596 ($5484.09)
+2025-07-17 01:28:43,179 - KISAPIClient - INFO -   ✅ frcr_pchs_amt1를 예수금으로 사용: $5484.09
+2025-07-17 01:28:43,179 - KISAPIClient - INFO -   - tot_evlu_pfls_amt: 2824.14900000 ($2824.15)
+2025-07-17 01:28:43,179 - KISAPIClient - INFO -   - frcr_buy_amt_smtl1: 0.000000 ($0.00)
+2025-07-17 01:28:43,180 - KISAPIClient - INFO -   - frcr_buy_amt_smtl2: 0.000000 ($0.00)
+2025-07-17 01:28:43,180 - KISAPIClient - INFO - ✅ 잔고 조회 성공: 예수금 $5484.09, 보유종목 3개
+2025-07-17 01:28:43,474 - KISAPIClient - WARNING - ⚠️ SES 현재가 데이터 오류: ''
+2025-07-17 01:33:43,748 - KISAPIClient - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-17 01:33:43,817 - KISAPIClient - INFO - 딕셔너리 형태 output2 (키 개수: 9)
+2025-07-17 01:33:43,818 - KISAPIClient - INFO -   - frcr_pchs_amt1: 5484.08596 ($5484.09)
+2025-07-17 01:33:43,818 - KISAPIClient - INFO -   ✅ frcr_pchs_amt1를 예수금으로 사용: $5484.09
+2025-07-17 01:33:43,819 - KISAPIClient - INFO -   - tot_evlu_pfls_amt: 2839.44130000 ($2839.44)
+2025-07-17 01:33:43,819 - KISAPIClient - INFO -   - frcr_buy_amt_smtl1: 0.000000 ($0.00)
+2025-07-17 01:33:43,819 - KISAPIClient - INFO -   - frcr_buy_amt_smtl2: 0.000000 ($0.00)
+2025-07-17 01:33:43,820 - KISAPIClient - INFO - ✅ 잔고 조회 성공: 예수금 $5484.09, 보유종목 3개
+2025-07-17 01:33:43,820 - KISAPIClient - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-17 01:33:44,135 - KISAPIClient - INFO - 딕셔너리 형태 output2 (키 개수: 9)
+2025-07-17 01:33:44,135 - KISAPIClient - INFO -   - frcr_pchs_amt1: 5484.08596 ($5484.09)
+2025-07-17 01:33:44,136 - KISAPIClient - INFO -   ✅ frcr_pchs_amt1를 예수금으로 사용: $5484.09
+2025-07-17 01:33:44,136 - KISAPIClient - INFO -   - tot_evlu_pfls_amt: 2839.44130000 ($2839.44)
+2025-07-17 01:33:44,137 - KISAPIClient - INFO -   - frcr_buy_amt_smtl1: 0.000000 ($0.00)
+2025-07-17 01:33:44,137 - KISAPIClient - INFO -   - frcr_buy_amt_smtl2: 0.000000 ($0.00)
+2025-07-17 01:33:44,137 - KISAPIClient - INFO - ✅ 잔고 조회 성공: 예수금 $5484.09, 보유종목 3개
+2025-07-17 01:33:44,138 - KISAPIClient - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-17 01:33:44,187 - KISAPIClient - INFO - 딕셔너리 형태 output2 (키 개수: 9)
+2025-07-17 01:33:44,188 - KISAPIClient - INFO -   - frcr_pchs_amt1: 5484.08596 ($5484.09)
+2025-07-17 01:33:44,188 - KISAPIClient - INFO -   ✅ frcr_pchs_amt1를 예수금으로 사용: $5484.09
+2025-07-17 01:33:44,189 - KISAPIClient - INFO -   - tot_evlu_pfls_amt: 2839.44130000 ($2839.44)
+2025-07-17 01:33:44,189 - KISAPIClient - INFO -   - frcr_buy_amt_smtl1: 0.000000 ($0.00)
+2025-07-17 01:33:44,189 - KISAPIClient - INFO -   - frcr_buy_amt_smtl2: 0.000000 ($0.00)
+2025-07-17 01:33:44,190 - KISAPIClient - INFO - ✅ 잔고 조회 성공: 예수금 $5484.09, 보유종목 3개
+2025-07-17 01:33:44,350 - KISAPIClient - WARNING - ⚠️ SES 현재가 데이터 오류: ''
+2025-07-17 01:38:44,620 - KISAPIClient - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-17 01:38:44,910 - KISAPIClient - INFO - 딕셔너리 형태 output2 (키 개수: 9)
+2025-07-17 01:38:44,910 - KISAPIClient - INFO -   - frcr_pchs_amt1: 5484.08596 ($5484.09)
+2025-07-17 01:38:44,911 - KISAPIClient - INFO -   ✅ frcr_pchs_amt1를 예수금으로 사용: $5484.09
+2025-07-17 01:38:44,911 - KISAPIClient - INFO -   - tot_evlu_pfls_amt: 2854.29320000 ($2854.29)
+2025-07-17 01:38:44,911 - KISAPIClient - INFO -   - frcr_buy_amt_smtl1: 0.000000 ($0.00)
+2025-07-17 01:38:44,912 - KISAPIClient - INFO -   - frcr_buy_amt_smtl2: 0.000000 ($0.00)
+2025-07-17 01:38:44,912 - KISAPIClient - INFO - ✅ 잔고 조회 성공: 예수금 $5484.09, 보유종목 3개
+2025-07-17 01:38:45,164 - KISAPIClient - WARNING - ⚠️ SES 현재가 데이터 오류: ''
+2025-07-17 01:43:45,441 - KISAPIClient - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-17 01:43:45,535 - KISAPIClient - INFO - 딕셔너리 형태 output2 (키 개수: 9)
+2025-07-17 01:43:45,536 - KISAPIClient - INFO -   - frcr_pchs_amt1: 5484.08596 ($5484.09)
+2025-07-17 01:43:45,536 - KISAPIClient - INFO -   ✅ frcr_pchs_amt1를 예수금으로 사용: $5484.09
+2025-07-17 01:43:45,536 - KISAPIClient - INFO -   - tot_evlu_pfls_amt: 2863.95110000 ($2863.95)
+2025-07-17 01:43:45,537 - KISAPIClient - INFO -   - frcr_buy_amt_smtl1: 0.000000 ($0.00)
+2025-07-17 01:43:45,537 - KISAPIClient - INFO -   - frcr_buy_amt_smtl2: 0.000000 ($0.00)
+2025-07-17 01:43:45,538 - KISAPIClient - INFO - ✅ 잔고 조회 성공: 예수금 $5484.09, 보유종목 3개
+2025-07-17 01:43:46,094 - KISAPIClient - WARNING - ⚠️ SES 현재가 데이터 오류: ''
+2025-07-17 01:48:46,370 - KISAPIClient - INFO - 잔고 조회 요청 (TR_ID: TTTS3012R)
+2025-07-17 01:48:46,558 - KISAPIClient - INFO - 딕셔너리 형태 output2 (키 개수: 9)
+2025-07-17 01:48:46,559 - KISAPIClient - INFO -   - frcr_pchs_amt1: 5484.08596 ($5484.09)
+2025-07-17 01:48:46,559 - KISAPIClient - INFO -   ✅ frcr_pchs_amt1를 예수금으로 사용: $5484.09
+2025-07-17 01:48:46,560 - KISAPIClient - INFO -   - tot_evlu_pfls_amt: 2868.48080000 ($2868.48)
+2025-07-17 01:48:46,560 - KISAPIClient - INFO -   - frcr_buy_amt_smtl1: 0.000000 ($0.00)
+2025-07-17 01:48:46,560 - KISAPIClient - INFO -   - frcr_buy_amt_smtl2: 0.000000 ($0.00)
+2025-07-17 01:48:46,560 - KISAPIClient - INFO - ✅ 잔고 조회 성공: 예수금 $5484.09, 보유종목 3개
+2025-07-17 01:48:47,511 - KISAPIClient - WARNING - ⚠️ SES 현재가 데이터 오류: ''
