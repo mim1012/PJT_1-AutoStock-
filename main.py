@@ -8,12 +8,14 @@ from datetime import datetime, time as dt_time
 import pytz
 from strategy_pjt1 import TradingStrategy
 from order_manager import OrderManager
+from transaction_logger import TransactionLogger
 from config import *
 
 class TradingScheduler:
     def __init__(self):
         self.strategy = TradingStrategy()
         self.order_manager = OrderManager()
+        self.transaction_logger = TransactionLogger()
         self.logger = logging.getLogger(__name__)
         
         # 동부시간 타임존 설정
@@ -47,29 +49,41 @@ class TradingScheduler:
         """매도 전략 실행 (30분 주기)"""
         if not self.is_trading_hours():
             self.logger.info("운영 시간 외 - 매도 전략 스킵")
+            self.transaction_logger.log_strategy_execution("sell", "skipped", "운영 시간 외")
             return
         
         try:
             self.logger.info("=== 매도 전략 실행 시작 ===")
+            self.transaction_logger.log_strategy_execution("sell", "started", "매도 전략 실행 시작")
+            
             self.strategy.execute_sell_strategy()
+            
             self.logger.info("=== 매도 전략 실행 완료 ===")
+            self.transaction_logger.log_strategy_execution("sell", "completed", "매도 전략 실행 완료")
             
         except Exception as e:
             self.logger.error(f"매도 전략 실행 오류: {e}")
+            self.transaction_logger.log_strategy_execution("sell", "error", f"오류: {e}")
     
     def execute_buy_strategy(self):
         """매수 전략 실행 (1시간 주기)"""
         if not self.is_trading_hours():
             self.logger.info("운영 시간 외 - 매수 전략 스킵")
+            self.transaction_logger.log_strategy_execution("buy", "skipped", "운영 시간 외")
             return
         
         try:
             self.logger.info("=== 매수 전략 실행 시작 ===")
+            self.transaction_logger.log_strategy_execution("buy", "started", "매수 전략 실행 시작")
+            
             self.strategy.execute_buy_strategy()
+            
             self.logger.info("=== 매수 전략 실행 완료 ===")
+            self.transaction_logger.log_strategy_execution("buy", "completed", "매수 전략 실행 완료")
             
         except Exception as e:
             self.logger.error(f"매수 전략 실행 오류: {e}")
+            self.transaction_logger.log_strategy_execution("buy", "error", f"오류: {e}")
     
     def cleanup_orders(self):
         """주문 정리 작업"""
@@ -97,10 +111,15 @@ class TradingScheduler:
             trading_status = "운영중" if self.is_trading_hours() else "운영 시간 외"
             
             order_summary = self.order_manager.get_order_summary()
+            transaction_summary = self.transaction_logger.get_summary()
             
             self.logger.info(f"=== 시스템 상태 ({et_now.strftime('%Y-%m-%d %H:%M:%S ET')}) ===")
             self.logger.info(f"거래 상태: {trading_status}")
             self.logger.info(f"미체결 주문: {order_summary['total_pending']}개 (매수: {order_summary['buy_orders']}, 매도: {order_summary['sell_orders']})")
+            self.logger.info(f"오늘 거래 기록: 총 {transaction_summary['total_transactions']}건 (매수: {transaction_summary['buy_orders']}, 매도: {transaction_summary['sell_orders']})")
+            
+            if transaction_summary['total_profit_loss'] != 0:
+                self.logger.info(f"오늘 총 손익: ${transaction_summary['total_profit_loss']:.2f}")
             
         except Exception as e:
             self.logger.error(f"상태 출력 오류: {e}")
@@ -161,6 +180,16 @@ class TradingScheduler:
             self.logger.info(f"중지 시점 미체결 주문: {order_summary['total_pending']}개")
             for order in order_summary['orders']:
                 self.logger.info(f"  - {order['symbol']} {order['type']} {order['quantity']}주 @ ${order['price']} ({order['time']})")
+        
+        # 오늘 거래 기록 요약 출력
+        transaction_summary = self.transaction_logger.get_summary()
+        self.logger.info(f"=== 오늘 거래 기록 요약 ===")
+        self.logger.info(f"총 거래 건수: {transaction_summary['total_transactions']}건")
+        self.logger.info(f"매수 주문: {transaction_summary['buy_orders']}건")
+        self.logger.info(f"매도 주문: {transaction_summary['sell_orders']}건")
+        self.logger.info(f"성공한 거래: {transaction_summary['successful_trades']}건")
+        self.logger.info(f"총 손익: ${transaction_summary['total_profit_loss']:.2f}")
+        self.logger.info(f"CSV 파일: {self.transaction_logger.csv_path}")
 
 def main():
     """메인 실행 함수"""
@@ -181,6 +210,16 @@ def main():
         if KIS_APP_KEY == "your_app_key_here":
             logger.error("API 키가 설정되지 않았습니다. config.py를 확인해주세요.")
             return
+        
+        # 실전거래 모드 확인 및 표시
+        if USE_PAPER_TRADING:
+            logger.warning("Paper Trading Mode Active")
+            print("Paper Trading Mode Active")
+        else:
+            logger.critical("REAL TRADING MODE ACTIVE!")
+            print("REAL TRADING MODE ACTIVE!")
+            print("WARNING: Real money trading in progress!")
+            print("=" * 50)
         
         # 스케줄러 시작
         scheduler = TradingScheduler()

@@ -50,10 +50,23 @@ class TokenManager:
         """마지막 발급시각 + 24시간 이후에만 True (단, 토큰이 만료된 경우에는 1회 재발급 허용)"""
         try:
             last_issued = self.get_last_issued_time()
-            if force_if_expired:
-                # 만료된 경우에는 24시간 이내라도 1회 재발급 허용
+            # 24시간이 지났거나, 발급 기록이 없으면 True
+            time_since_issued = time.time() - last_issued
+            if time_since_issued > 86400:  # 24시간(60*60*24)
                 return True
-            return (time.time() - last_issued) > 86400  # 24시간(60*60*24)
+
+            # 5시간 이하로 남았으면 강제로 True (긴급 재발급)
+            # 토큰 파일이 있는 경우 남은 시간 확인
+            if os.path.exists(self.token_file):
+                with open(self.token_file, 'r') as f:
+                    token_data = json.load(f)
+                    expires_at = token_data.get('expires_at', 0)
+                    remaining = int(expires_at - time.time())
+                    if remaining <= 18000:  # 5시간 이하
+                        self.logger.warning(f"[WARNING] 긴급 토큰 재발급 허용 (남은시간: {remaining//3600}시간)")
+                        return True
+
+            return False
         except Exception:
             return True
 
@@ -88,23 +101,23 @@ class TokenManager:
                     # 토큰 저장 (만료 일시도 함께)
                     if self.save_token(access_token, expires_in):
                         self.set_last_issued_time(time.time())
-                        self.logger.info(f"✅ 새 토큰 발급 및 저장 성공 (만료: {token_expired_at})")
+                        self.logger.info(f"새 토큰 발급 및 저장 성공 (만료: {token_expired_at})")
                         return access_token
                     else:
-                        self.logger.error("❌ 토큰 저장 실패")
+                        self.logger.error("[ERROR] 토큰 저장 실패")
                         return None
                 else:
-                    self.logger.error(f"❌ 토큰 발급 응답에 access_token 없음: {result}")
+                    self.logger.error(f"[ERROR] 토큰 발급 응답에 access_token 없음: {result}")
                     return None
             else:
-                self.logger.error(f"❌ 토큰 발급 실패 (HTTP {response.status_code}): {response.text}")
+                self.logger.error(f"[ERROR] 토큰 발급 실패 (HTTP {response.status_code}): {response.text}")
                 return None
-                
+
         except requests.exceptions.RequestException as e:
-            self.logger.error(f"❌ 토큰 발급 요청 실패: {e}")
+            self.logger.error(f"[ERROR] 토큰 발급 요청 실패: {e}")
             return None
         except Exception as e:
-            self.logger.error(f"❌ 토큰 발급 중 알 수 없는 오류: {e}")
+            self.logger.error(f"[ERROR] 토큰 발급 중 알 수 없는 오류: {e}")
             return None
     
     def save_token(self, access_token, expires_in_seconds=86400):
@@ -135,17 +148,27 @@ class TokenManager:
             if not os.path.exists(self.token_file):
                 self.logger.info("저장된 토큰 파일 없음")
                 return None
-            
+
             with open(self.token_file, 'r') as f:
                 token_data = json.load(f)
-            
+
             current_time = time.time()
             expires_at = token_data.get('expires_at', 0)
-            
-            # 만료 30분 전까지 사용
-            if current_time < (expires_at - 1800):  # 30분 여유
-                remaining = int(expires_at - current_time)
-                self.logger.info(f"기존 토큰 사용 (남은시간: {remaining//3600}시간 {(remaining%3600)//60}분)")
+
+            # 남은 시간 계산
+            remaining = int(expires_at - current_time)
+            remaining_hours = remaining // 3600
+            remaining_minutes = (remaining % 3600) // 60
+
+            # 5시간(18000초) 이하로 떨어지면 None 반환하여 재발급 유도 (파일은 삭제하지 않음)
+            if remaining <= 18000:  # 5시간 = 5 * 3600
+                self.logger.warning(f"[WARNING] 토큰 남은시간 5시간 이하 ({remaining_hours}시간 {remaining_minutes}분) - 재발급 필요")
+                # 파일은 유지 (can_issue_token에서 5시간 체크용)
+                return None
+
+            # 토큰이 아직 유효한 경우
+            if current_time < expires_at:
+                self.logger.info(f"기존 토큰 사용 (남은시간: {remaining_hours}시간 {remaining_minutes}분)")
                 return token_data['access_token']
             else:
                 self.logger.info("기존 토큰 만료됨")
@@ -269,17 +292,17 @@ def check_token_status():
     # 토큰 유효성 확인
     token = manager.load_token()
     if token:
-        print("✅ 사용 가능한 토큰 있음")
+        print("사용 가능한 토큰 있음")
         return True
     else:
-        print("❌ 사용 가능한 토큰 없음, 재발급 시도...")
+        print("사용 가능한 토큰 없음, 재발급 시도...")
         new_token = manager.get_valid_token(force_refresh=True)
         if new_token:
-            print("✅ 새 토큰 발급 성공")
+            print("새 토큰 발급 성공")
             print(manager.get_token_info())
             return True
         else:
-            print("❌ 토큰 재발급 실패")
+            print("토큰 재발급 실패")
             return False
 
 def refresh_token():
@@ -294,11 +317,11 @@ def refresh_token():
     new_token = manager.get_valid_token(force_refresh=True)
     
     if new_token:
-        print("✅ 토큰 재발급 성공")
+        print("토큰 재발급 성공")
         print(manager.get_token_info())
         return True
     else:
-        print("❌ 토큰 재발급 실패")
+        print("토큰 재발급 실패")
         return False
 
 if __name__ == "__main__":
@@ -317,9 +340,9 @@ if __name__ == "__main__":
             manager = TokenManager()
             token = manager.get_valid_token()
             if token:
-                print(f"✅ 유효한 토큰 획득: {token[:20]}...")
+                print(f"유효한 토큰 획득: {token[:20]}...")
             else:
-                print("❌ 토큰 획득 실패")
+                print("토큰 획득 실패")
         else:
             print("사용법:")
             print("  python token_manager.py check    # 토큰 상태 확인")
