@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 스케줄러 및 메인 실행 로직
 """
@@ -85,18 +86,60 @@ class TradingScheduler:
             self.logger.error(f"매수 전략 실행 오류: {e}")
             self.transaction_logger.log_strategy_execution("buy", "error", f"오류: {e}")
     
+    def check_and_refresh_token(self):
+        """
+        토큰 상태 확인 및 필요시 재발급
+        재발급 시 KISAPIClient의 브로커도 재초기화
+
+        주의: 토큰 체크는 시장 폐장 시에도 실행 (다음 개장 대비)
+        """
+        try:
+            # TokenManager를 통해 토큰 상태 확인
+            if not hasattr(self.strategy.api_client, 'token_manager') or self.strategy.api_client.token_manager is None:
+                return
+
+            token_manager = self.strategy.api_client.token_manager
+
+            # 현재 토큰 유효성 확인
+            current_token = token_manager.load_token()
+
+            if current_token is None:
+                self.logger.warning("[TOKEN_CHECK] 토큰이 만료되었거나 없음 - 재발급 시도")
+
+                # 새 토큰 발급 시도
+                new_token = token_manager.get_valid_token(force_refresh=True)
+
+                if new_token:
+                    self.logger.info("[TOKEN_CHECK] 새 토큰 발급 성공 - 브로커 재초기화")
+
+                    # KISAPIClient의 브로커 재초기화
+                    if hasattr(self.strategy.api_client, 'reinitialize_brokers'):
+                        if self.strategy.api_client.reinitialize_brokers():
+                            self.logger.info("[TOKEN_CHECK] 브로커 재초기화 성공")
+                        else:
+                            self.logger.error("[TOKEN_CHECK] 브로커 재초기화 실패")
+                    else:
+                        self.logger.warning("[TOKEN_CHECK] reinitialize_brokers 메서드 없음")
+                else:
+                    self.logger.error("[TOKEN_CHECK] 토큰 재발급 실패 (24시간 제한 가능)")
+            else:
+                # 폐장 시에는 토큰 유효성만 확인하고 상세 로그 생략
+                if not self.is_trading_hours():
+                    self.logger.debug("[TOKEN_CHECK] 토큰 유효 (폐장 중)")
+
+        except Exception as e:
+            self.logger.error(f"토큰 체크 오류: {e}")
+
     def cleanup_orders(self):
         """주문 정리 작업"""
+        # 폐장 시에는 주문 정리 스킵 (불필요한 API 호출 방지)
+        if not self.is_trading_hours():
+            return
+
         try:
             self.logger.info("주문 정리 작업 시작")
             self.order_manager.cleanup_old_orders()
-            
-            # 운영 시간 종료 후 미체결 주문 정리
-            if not self.is_trading_hours():
-                pending_count = self.order_manager.get_pending_orders_count()
-                if pending_count > 0:
-                    self.logger.info(f"운영 시간 종료 - 미체결 주문 {pending_count}개 유지")
-            
+
         except Exception as e:
             self.logger.error(f"주문 정리 오류: {e}")
     
@@ -128,40 +171,64 @@ class TradingScheduler:
         """스케줄 설정"""
         # 매도 전략 (30분 주기)
         schedule.every(SELL_INTERVAL_MINUTES).minutes.do(self.execute_sell_strategy)
-        
+
         # 매수 전략 (1시간 주기)
         schedule.every(BUY_INTERVAL_MINUTES).minutes.do(self.execute_buy_strategy)
-        
+
         # 주문 정리 (10분 주기)
         schedule.every(10).minutes.do(self.cleanup_orders)
-        
+
         # 상태 출력 (5분 주기)
         schedule.every(5).minutes.do(self.print_status)
-        
+
+        # 토큰 상태 체크 (30분 주기) - 만료 감지 및 브로커 재초기화
+        schedule.every(30).minutes.do(self.check_and_refresh_token)
+
         self.logger.info("스케줄 설정 완료")
         self.logger.info(f"- 매도 전략: {SELL_INTERVAL_MINUTES}분 주기")
         self.logger.info(f"- 매수 전략: {BUY_INTERVAL_MINUTES}분 주기")
+        self.logger.info(f"- 토큰 체크: 30분 주기 (자동 재발급 및 브로커 재초기화)")
         self.logger.info(f"- 운영 시간: {TRADING_START_TIME} ~ {TRADING_END_TIME} (ET)")
     
     def start(self):
         """스케줄러 시작"""
         self.logger.info("=== 자동매매 시스템 시작 ===")
-        
+
+        # 시작 시 토큰 상태 확인 및 필요시 재발급
+        self.logger.info("시작 전 토큰 상태 확인 중...")
+        self.check_and_refresh_token()
+
         # 초기 상태 확인
         if not self.is_trading_hours():
-            self.logger.warning("현재 운영 시간이 아닙니다. 대기 모드로 실행됩니다.")
-        
+            et_now = datetime.now(self.et_tz)
+            self.logger.warning(f"[폐장 중] 현재 {et_now.strftime('%Y-%m-%d %H:%M:%S ET')} - 대기 모드")
+            self.logger.info(f"[폐장 중] 다음 개장: 월-금 {TRADING_START_TIME} ET (한국시간 22:30 또는 23:30)")
+
         self.setup_schedule()
         self.is_running = True
-        
+
         # 초기 상태 출력
         self.print_status()
-        
+
+        # 폐장 중 로그 출력 주기 (1시간마다)
+        last_closed_log_time = time.time()
+
         try:
             while self.is_running:
                 schedule.run_pending()
-                time.sleep(30)  # 30초마다 스케줄 체크
-                
+
+                # 폐장 중에는 로그를 1시간마다만 출력
+                if not self.is_trading_hours():
+                    current_time = time.time()
+                    if current_time - last_closed_log_time >= 3600:  # 1시간 = 3600초
+                        et_now = datetime.now(self.et_tz)
+                        self.logger.info(f"[폐장 중] 대기 중... ({et_now.strftime('%Y-%m-%d %H:%M:%S ET')})")
+                        last_closed_log_time = current_time
+
+                    time.sleep(300)  # 폐장 시 5분마다 체크 (절전)
+                else:
+                    time.sleep(30)   # 개장 시 30초마다 체크 (적극)
+
         except KeyboardInterrupt:
             self.logger.info("사용자에 의한 중단 요청")
         except Exception as e:
