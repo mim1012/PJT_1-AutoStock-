@@ -47,64 +47,85 @@ class TokenManager:
             pass
 
     def can_issue_token(self, force_if_expired=False):
-        """마지막 발급시각 + 24시간 이후에만 True (단, 토큰이 만료된 경우에는 1회 재발급 허용)"""
+        """
+        마지막 발급시각 + 24시간 이후에만 True (단, 토큰이 만료된 경우에는 재발급 허용)
+
+        재발급 허용 조건:
+        1. 마지막 발급 후 24시간 이상 경과
+        2. 토큰이 완전 만료됨 (expires_at < 현재시각)
+        3. 토큰 남은시간 5시간 이하
+        """
         try:
             last_issued = self.get_last_issued_time()
+            current_time = time.time()
+
             # 24시간이 지났거나, 발급 기록이 없으면 True
-            time_since_issued = time.time() - last_issued
-            if time_since_issued > 86400:  # 24시간(60*60*24)
+            time_since_issued = current_time - last_issued
+            if time_since_issued >= 86400:  # >= 로 변경 (정확히 24시간도 허용)
+                self.logger.info(f"[TOKEN] 24시간 경과 ({time_since_issued/3600:.1f}시간) - 재발급 허용")
                 return True
 
-            # 5시간 이하로 남았으면 강제로 True (긴급 재발급)
-            # 토큰 파일이 있는 경우 남은 시간 확인
+            # 토큰 파일이 있는 경우 만료 여부 확인
             if os.path.exists(self.token_file):
                 with open(self.token_file, 'r') as f:
                     token_data = json.load(f)
                     expires_at = token_data.get('expires_at', 0)
-                    remaining = int(expires_at - time.time())
-                    if remaining <= 18000:  # 5시간 이하
-                        self.logger.warning(f"[WARNING] 긴급 토큰 재발급 허용 (남은시간: {remaining//3600}시간)")
+                    remaining = int(expires_at - current_time)
+
+                    # 완전 만료된 경우 무조건 재발급 허용 (24시간 제한 무시)
+                    if remaining <= 0:
+                        self.logger.warning(f"[TOKEN] 토큰 완전 만료 - 24시간 미경과({time_since_issued/3600:.1f}h)지만 재발급 허용")
                         return True
 
+                    # 5시간 이하로 남았으면 긴급 재발급
+                    if remaining <= 18000:  # 5시간 이하
+                        self.logger.warning(f"[TOKEN] 긴급 토큰 재발급 허용 (남은시간: {remaining//3600}시간 {(remaining%3600)//60}분)")
+                        return True
+
+            self.logger.debug(f"[TOKEN] 재발급 불가 - 24시간 미경과 ({time_since_issued/3600:.1f}시간)")
             return False
-        except Exception:
+        except Exception as e:
+            self.logger.error(f"[TOKEN] can_issue_token 오류: {e} - 안전을 위해 재발급 허용")
             return True
 
     def issue_new_token(self):
         """새 토큰 발급 (공식 문서 기준)"""
         if not self.can_issue_token():
-            self.logger.warning("24시간 이내이므로 토큰 재발급 금지 (강제 차단)")
+            last_issued = self.get_last_issued_time()
+            elapsed_hours = (time.time() - last_issued) / 3600
+            self.logger.error(f"[TOKEN] 재발급 차단 - 24시간 미경과 ({elapsed_hours:.1f}시간)")
             return None
         try:
             # API 엔드포인트 설정
             base_url = KIS_PAPER_BASE_URL if USE_PAPER_TRADING else KIS_BASE_URL
             url = f"{base_url}/oauth2/tokenP"  # 공식 문서 기준 tokenP 사용
-            
+
             headers = {"content-type": "application/json; charset=UTF-8"}
             data = {
                 "grant_type": "client_credentials",
                 "appkey": KIS_APP_KEY,
                 "appsecret": KIS_APP_SECRET
             }
-            
-            self.logger.info("새 토큰 발급 요청 중... (tokenP)")
+
+            self.logger.info("[TOKEN] 새 토큰 발급 API 호출 중... (tokenP)")
             response = requests.post(url, headers=headers, json=data, timeout=10)
-            
+
             if response.status_code == 200:
                 result = response.json()
                 access_token = result.get("access_token")
                 expires_in = result.get("expires_in", 86400)
                 token_expired_at = result.get("access_token_token_expired", "")
                 token_type = result.get("token_type", "Bearer")
-                
+
                 if access_token:
                     # 토큰 저장 (만료 일시도 함께)
                     if self.save_token(access_token, expires_in):
+                        # 발급 시각 기록 (24시간 정책 추적용)
                         self.set_last_issued_time(time.time())
-                        self.logger.info(f"새 토큰 발급 및 저장 성공 (만료: {token_expired_at})")
+                        self.logger.info(f"[TOKEN] 새 토큰 발급 성공 (만료: {token_expired_at}, 유효기간: {expires_in//3600}시간)")
                         return access_token
                     else:
-                        self.logger.error("[ERROR] 토큰 저장 실패")
+                        self.logger.error("[TOKEN][ERROR] 토큰 저장 실패")
                         return None
                 else:
                     self.logger.error(f"[ERROR] 토큰 발급 응답에 access_token 없음: {result}")
@@ -146,7 +167,7 @@ class TokenManager:
         """저장된 토큰 로드 및 유효성 확인"""
         try:
             if not os.path.exists(self.token_file):
-                self.logger.info("저장된 토큰 파일 없음")
+                self.logger.info("[TOKEN] 저장된 토큰 파일 없음")
                 return None
 
             with open(self.token_file, 'r') as f:
@@ -160,22 +181,22 @@ class TokenManager:
             remaining_hours = remaining // 3600
             remaining_minutes = (remaining % 3600) // 60
 
-            # 5시간(18000초) 이하로 떨어지면 None 반환하여 재발급 유도 (파일은 삭제하지 않음)
+            # 완전 만료된 경우 (0초 이하)
+            if remaining <= 0:
+                self.logger.warning(f"[TOKEN] 토큰 완전 만료 (만료 {abs(remaining)//60}분 전) - 재발급 필요")
+                return None
+
+            # 5시간(18000초) 이하로 떨어지면 None 반환하여 재발급 유도
             if remaining <= 18000:  # 5시간 = 5 * 3600
-                self.logger.warning(f"[WARNING] 토큰 남은시간 5시간 이하 ({remaining_hours}시간 {remaining_minutes}분) - 재발급 필요")
-                # 파일은 유지 (can_issue_token에서 5시간 체크용)
+                self.logger.warning(f"[TOKEN] 토큰 남은시간 5시간 이하 ({remaining_hours}시간 {remaining_minutes}분) - 재발급 필요")
                 return None
 
             # 토큰이 아직 유효한 경우
-            if current_time < expires_at:
-                self.logger.info(f"기존 토큰 사용 (남은시간: {remaining_hours}시간 {remaining_minutes}분)")
-                return token_data['access_token']
-            else:
-                self.logger.info("기존 토큰 만료됨")
-                return None
-                
+            self.logger.info(f"[TOKEN] 기존 토큰 사용 (남은시간: {remaining_hours}시간 {remaining_minutes}분)")
+            return token_data['access_token']
+
         except Exception as e:
-            self.logger.error(f"토큰 로드 실패: {e}")
+            self.logger.error(f"[TOKEN] 토큰 로드 실패: {e}")
             return None
     
     def get_token_info(self):

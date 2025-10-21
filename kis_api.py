@@ -4,6 +4,7 @@
 """
 import logging
 import time
+import requests
 from datetime import datetime, time as dt_time
 import pytz
 from config import USE_PAPER_TRADING, KIS_ACCOUNT_NUMBER, LOG_LEVEL, LOG_FILE, KIS_BASE_URL, KIS_PAPER_BASE_URL, KIS_APP_KEY, KIS_APP_SECRET, TRADING_START_TIME, TRADING_END_TIME
@@ -37,6 +38,11 @@ class KISAPIClient:
         self.start_time = dt_time.fromisoformat(TRADING_START_TIME)
         self.end_time = dt_time.fromisoformat(TRADING_END_TIME)
 
+        # 캐시 시스템 추가 (거래소 자동 감지 및 성능 최적화)
+        self.exchange_cache = {}  # {symbol: "NAS" or "NYS" or "AMS"}
+        self.price_cache = {}     # {symbol: (price, timestamp)}
+        self.cache_timeout = 60   # 60초
+
         # mojito2 클라이언트 초기화
         if MOJITO_AVAILABLE:
             self._init_mojito_client()
@@ -65,10 +71,10 @@ class KISAPIClient:
         """mojito2 클라이언트 초기화 (이중 거래소 지원)"""
         try:
             from config import KIS_APP_KEY, KIS_APP_SECRET
-            
+
             # 계좌번호 형식 확인 (하이픈 포함)
             acc_no = KIS_ACCOUNT_NUMBER
-            
+
             # 이중 거래소 브로커 초기화
             self.nasdaq_broker = mojito.KoreaInvestment(
                 api_key=KIS_APP_KEY,
@@ -77,7 +83,7 @@ class KISAPIClient:
                 exchange="나스닥",
                 mock=USE_PAPER_TRADING
             )
-            
+
             self.nyse_broker = mojito.KoreaInvestment(
                 api_key=KIS_APP_KEY,
                 api_secret=KIS_APP_SECRET,
@@ -85,16 +91,16 @@ class KISAPIClient:
                 exchange="뉴욕",
                 mock=USE_PAPER_TRADING
             )
-            
+
             # 기본 브로커는 나스닥 (호환성)
             self.broker = self.nasdaq_broker
-            
+
             # mojito2 토큰 상태 확인
             if hasattr(self.broker, '_token') or hasattr(self.broker, 'token'):
                 self.logger.info("mojito2 자체 토큰 관리 시스템 활성화됨")
             else:
                 self.logger.warning("mojito2 토큰 상태를 확인할 수 없음")
-            
+
             # 기본 API 테스트 (토큰 유효성 간접 확인)
             try:
                 test_result = self.broker.fetch_present_balance()
@@ -104,10 +110,10 @@ class KISAPIClient:
                     self.logger.warning("mojito2 클라이언트 초기화됨, 토큰 상태 불확실")
             except Exception as token_test_e:
                 self.logger.warning(f"토큰 테스트 실패 (계속 진행): {token_test_e}")
-            
+
             self.logger.info(f"이중 거래소 브로커 초기화 완료 (나스닥 + 뉴욕)")
             self.logger.info(f"모의투자 모드: {USE_PAPER_TRADING}")
-            
+
         except KeyError as ke:
             self.logger.error(f"mojito2 클라이언트 초기화 실패 - 키 오류: {ke}")
             self.logger.info("Fallback: TokenManager를 사용한 수동 토큰 관리로 전환")
@@ -116,34 +122,186 @@ class KISAPIClient:
             self.logger.error(f"mojito2 클라이언트 초기화 실패: {e}")
             self.logger.info("Fallback: TokenManager를 사용한 수동 토큰 관리로 전환")
             self._init_fallback_mode()
-    
+
+    def reinitialize_brokers(self):
+        """
+        브로커를 재초기화하여 새 토큰 적용
+        토큰 재발급 후 호출해야 함
+        """
+        self.logger.info("[TOKEN_REFRESH] mojito2 브로커 재초기화 시작...")
+
+        try:
+            # 기존 브로커 정리
+            if hasattr(self, 'nasdaq_broker'):
+                del self.nasdaq_broker
+            if hasattr(self, 'nyse_broker'):
+                del self.nyse_broker
+            if hasattr(self, 'broker'):
+                del self.broker
+
+            # 브로커 재생성
+            self._init_mojito_client()
+
+            self.logger.info("[TOKEN_REFRESH] mojito2 브로커 재초기화 완료")
+            return True
+
+        except Exception as e:
+            self.logger.error(f"[TOKEN_REFRESH] 브로커 재초기화 실패: {e}")
+            return False
+
+    def _safe_float(self, value, default=0.0):
+        """
+        안전한 float 변환 (빈 문자열/None 처리)
+
+        Args:
+            value: 변환할 값 (str, int, float, None 등)
+            default: 변환 실패 시 기본값 (기본: 0.0)
+
+        Returns:
+            float: 변환된 값 또는 기본값
+        """
+        if value is None or value == '' or value == 'N/A':
+            return default
+        try:
+            return float(value)
+        except (ValueError, TypeError):
+            return default
+
+    def _detect_exchange_yfinance(self, symbol):
+        """
+        yfinance로 거래소 감지
+
+        Args:
+            symbol (str): 종목 코드
+
+        Returns:
+            str: "NAS", "NYS", "AMS" 또는 None
+        """
+        try:
+            import yfinance as yf
+
+            ticker = yf.Ticker(symbol)
+            info = ticker.info
+            exchange = info.get('exchange', '')
+
+            # yfinance 거래소 코드 → KIS EXCD 매핑
+            exchange_map = {
+                'NMS': 'NAS',  # NasdaqGS (Global Select Market)
+                'NGM': 'NAS',  # NasdaqGM (Global Market)
+                'NCM': 'NAS',  # NasdaqCM (Capital Market)
+                'NYQ': 'NYS',  # NYSE
+                'ASE': 'AMS',  # AMEX
+            }
+
+            mapped_excd = exchange_map.get(exchange)
+            if mapped_excd:
+                self.logger.debug(f"[DETECT] {symbol} yfinance 감지: {exchange} -> {mapped_excd}")
+                return mapped_excd
+
+            return None
+
+        except ImportError:
+            self.logger.debug("yfinance 모듈이 설치되지 않았습니다")
+            return None
+        except Exception:
+            self.logger.exception(f"yfinance 거래소 감지 실패")
+            return None
+
+    def _fetch_price_from_yfinance(self, symbol):
+        """
+        yfinance로 현재가 직접 조회 (최종 대체 수단)
+
+        Args:
+            symbol (str): 종목 코드
+
+        Returns:
+            float: 현재가 (실패 시 None)
+        """
+        try:
+            import yfinance as yf
+
+            ticker = yf.Ticker(symbol)
+            hist = ticker.history(period="1d")
+
+            if not hist.empty:
+                price = hist['Close'].iloc[-1]
+                if price > 0:
+                    self.logger.info(f"[OK] {symbol} 현재가: ${price:.2f} (yfinance)")
+                    return float(price)
+                else:
+                    self.logger.warning(f"[WARN] {symbol} yfinance 가격이 0 이하: {price}")
+                    return None
+            else:
+                self.logger.warning(f"[WARN] {symbol} yfinance 히스토리 데이터 없음 (빈 DataFrame)")
+                return None
+
+        except ImportError:
+            self.logger.error("yfinance 모듈이 설치되지 않았습니다 - pip install yfinance 실행 필요")
+            return None
+        except Exception as e:
+            self.logger.error(f"[ERROR] {symbol} yfinance 조회 실패: {type(e).__name__}: {str(e)}")
+            return None
+
     def _get_broker_for_symbol(self, symbol):
-        """종목에 맞는 브로커 자동 선택"""
-        # 1차: 나스닥 시도
+        """
+        종목에 맞는 브로커 자동 선택 (캐시 우선 + yfinance 감지)
+
+        Returns:
+            tuple: (broker, exchange_name) 또는 (None, None)
+        """
+        # 1단계: 캐시된 거래소 코드 확인
+        if symbol in self.exchange_cache:
+            excd = self.exchange_cache[symbol]
+            broker = self.nasdaq_broker if excd == "NAS" else self.nyse_broker
+            exchange_name = "나스닥" if excd == "NAS" else "뉴욕"
+            self.logger.debug(f"[CACHE] {symbol} 캐시된 거래소 사용: {exchange_name}")
+            return broker, exchange_name
+
+        # 2단계: yfinance로 거래소 감지
+        excd = self._detect_exchange_yfinance(symbol)
+        if excd:
+            if excd == "NAS":
+                broker = self.nasdaq_broker
+                exchange_name = "나스닥"
+            elif excd == "NYS":
+                broker = self.nyse_broker
+                exchange_name = "뉴욕"
+            else:
+                broker = None
+                exchange_name = None
+
+            if broker:
+                # 감지 성공 시 캐시 저장
+                self.exchange_cache[symbol] = excd
+                self.logger.info(f"[DETECT] {symbol} yfinance 거래소 감지: {exchange_name}")
+                return broker, exchange_name
+
+        # 3단계: 순차 시도 (나스닥 → NYSE)
+        # 나스닥 시도
         try:
             price_data = self.nasdaq_broker.fetch_price(symbol)
             if price_data and price_data.get('rt_cd') == '0':
                 output = price_data.get('output', {})
                 last_price = output.get('last', '').strip()
 
-                # 가격이 있으면 반환 (ordy 체크 제거)
                 if last_price:
+                    self.exchange_cache[symbol] = "NAS"
                     return self.nasdaq_broker, "나스닥"
-        except Exception as e:
-            self.logger.debug(f"{symbol} (나스닥) 조회 실패: {e}")
+        except Exception:
+            self.logger.exception(f"{symbol} (나스닥) 조회 실패")
 
-        # 2차: NYSE 시도
+        # NYSE 시도
         try:
             price_data = self.nyse_broker.fetch_price(symbol)
             if price_data and price_data.get('rt_cd') == '0':
                 output = price_data.get('output', {})
                 last_price = output.get('last', '').strip()
 
-                # 가격이 있으면 반환
                 if last_price:
+                    self.exchange_cache[symbol] = "NYS"
                     return self.nyse_broker, "뉴욕"
-        except Exception as e:
-            self.logger.debug(f"{symbol} (NYSE) 조회 실패: {e}")
+        except Exception:
+            self.logger.exception(f"{symbol} (NYSE) 조회 실패")
 
         return None, None
     
@@ -233,6 +391,7 @@ class KISAPIClient:
 
             # API 호출
             response = requests.get(url, headers=headers, params=params, timeout=10)
+            response.raise_for_status()  # HTTP 에러 발생 시 예외 발생
             balance = response.json()
 
             if balance and balance.get('rt_cd') == '0':
@@ -254,25 +413,27 @@ class KISAPIClient:
                             if mojito_output2 and isinstance(mojito_output2, list) and len(mojito_output2) > 0:
                                 # 첫 번째 요소에서 예수금 정보 추출
                                 if isinstance(mojito_output2[0], dict):
-                                    # frcr_drwg_psbl_amt_1: 인출 가능 금액
-                                    cash = float(mojito_output2[0].get('frcr_drwg_psbl_amt_1', 0))
+                                    # 통화 코드 확인 (USD인지 확인)
+                                    currency = mojito_output2[0].get('crcy_cd', '')
 
-                                    # frcr_sll_amt_smtl: 매도 대금 (T+2 결제 전)
-                                    sell_amt = float(mojito_output2[0].get('frcr_sll_amt_smtl', 0))
+                                    # frcr_drwg_psbl_amt_1: 인출 가능 금액 (실제 사용 가능한 예수금)
+                                    cash = self._safe_float(mojito_output2[0].get('frcr_drwg_psbl_amt_1'))
 
-                                    # 매도 대금과 인출 가능 금액 합산
-                                    total_cash = cash + sell_amt
+                                    if cash > 0:
+                                        self.logger.info(f"예수금 ({currency}): ${cash:.2f}")
 
-                                    if total_cash > 0:
-                                        self.logger.info(f"예수금: 인출가능 ${cash:.2f} + 매도대금 ${sell_amt:.2f} = ${total_cash:.2f}")
-                                        cash = total_cash
+                                    # 통화 확인 경고
+                                    if currency and currency != 'USD':
+                                        self.logger.warning(f"[WARNING] 예수금 통화가 USD가 아닙니다: {currency}")
+
+                                    self.logger.debug(f"DEBUG: output2 예수금 필드들 = {mojito_output2[0]}")
                 except Exception as e:
                     self.logger.warning(f"mojito2 예수금 조회 실패, 기본값 사용: {e}")
                     # output2에서 예수금 시도
                     if output2:
                         if isinstance(output2, list) and len(output2) > 0:
                             if isinstance(output2[0], dict):
-                                cash = float(output2[0].get('frcr_drwg_psbl_amt_1', 0))
+                                cash = self._safe_float(output2[0].get('frcr_drwg_psbl_amt_1'))
                 
                 # 총 평가/매입 금액 - output1에서 직접 계산 (정확한 USD 값)
                 eval_amt = 0.0
@@ -284,7 +445,7 @@ class KISAPIClient:
                     for idx, item in enumerate(output1):
                         # 각 항목의 주요 필드들 확인
                         symbol = item.get('ovrs_pdno', '') or item.get('pdno', '')
-                        qty = float(item.get('ovrs_cblc_qty', 0))
+                        qty = self._safe_float(item.get('ovrs_cblc_qty'))
 
                         # 다양한 평가금액 필드 시도 (실제 API 응답에서 확인된 필드)
                         eval_fields = ['ovrs_stck_evlu_amt', 'frcr_evlu_amt2', 'frcr_evlu_amt', 'evlu_amt']
@@ -294,14 +455,14 @@ class KISAPIClient:
                         item_purchase_amt = 0.0
 
                         for field in eval_fields:
-                            val = float(item.get(field, 0))
+                            val = self._safe_float(item.get(field))
                             if val > 0:
                                 item_eval_amt = val
                                 self.logger.debug(f"DEBUG [{idx}] {symbol}: 평가금액 필드 '{field}' = ${val:.2f}")
                                 break
 
                         for field in purchase_fields:
-                            val = float(item.get(field, 0))
+                            val = self._safe_float(item.get(field))
                             if val > 0:
                                 item_purchase_amt = val
                                 self.logger.debug(f"DEBUG [{idx}] {symbol}: 매입금액 필드 '{field}' = ${val:.2f}")
@@ -350,17 +511,17 @@ class KISAPIClient:
                         quantity = 0
                         qty_fields = ['ord_psbl_qty', 'ord_psbl_qty1', 'ovrs_cblc_qty', 'ccld_qty_smtl1', 'cblc_qty13']
                         for qty_field in qty_fields:
-                            qty_val = float(item.get(qty_field, 0))
+                            qty_val = self._safe_float(item.get(qty_field))
                             if qty_val > 0:
                                 quantity = int(qty_val)
                                 self.logger.debug(f"보유종목 {symbol}: {qty_field}={qty_val} 사용")
                                 break
 
                         # 가격 정보
-                        current_price = float(item.get('now_pric2', 0)) or float(item.get('ovrs_now_pric1', 0))  # 현재가
-                        avg_price = float(item.get('pchs_avg_pric', 0))  # 매입평균가격
-                        pchs_amt = float(item.get('frcr_pchs_amt1', 0)) or float(item.get('frcr_pchs_amt', 0))  # 외화매입금액
-                        evlu_amt = float(item.get('ovrs_stck_evlu_amt', 0)) or float(item.get('frcr_evlu_amt2', 0))  # 외화평가금액
+                        current_price = self._safe_float(item.get('now_pric2')) or self._safe_float(item.get('ovrs_now_pric1'))  # 현재가
+                        avg_price = self._safe_float(item.get('pchs_avg_pric'))  # 매입평균가격
+                        pchs_amt = self._safe_float(item.get('frcr_pchs_amt1')) or self._safe_float(item.get('frcr_pchs_amt'))  # 외화매입금액
+                        evlu_amt = self._safe_float(item.get('ovrs_stck_evlu_amt')) or self._safe_float(item.get('frcr_evlu_amt2'))  # 외화평가금액
 
                         # 평가손익 (ovrs_ernr_amt가 없으면 evlu_pfls_amt2 사용)
                         profit_loss = 0.0
@@ -371,10 +532,9 @@ class KISAPIClient:
                         # 디버깅 로그
                         self.logger.debug(f"{symbol} - ovrs_ernr_amt: {ovrs_ernr_amt_val}, evlu_pfls_amt2: {evlu_pfls_amt2_val}")
 
-                        if ovrs_ernr_amt_val and ovrs_ernr_amt_val != 'N/A':
-                            profit_loss = float(ovrs_ernr_amt_val)
-                        elif evlu_pfls_amt2_val:
-                            profit_loss = float(evlu_pfls_amt2_val)
+                        profit_loss = self._safe_float(ovrs_ernr_amt_val)
+                        if profit_loss == 0.0:
+                            profit_loss = self._safe_float(evlu_pfls_amt2_val)
 
                         # profit_loss가 0이고 평가금액과 매입금액이 있으면 직접 계산
                         if profit_loss == 0 and evlu_amt > 0 and pchs_amt > 0:
@@ -385,10 +545,9 @@ class KISAPIClient:
                         ovrs_ernr_rt_val = item.get('ovrs_ernr_rt')
                         evlu_pfls_rt1_val = item.get('evlu_pfls_rt1')
 
-                        if ovrs_ernr_rt_val and ovrs_ernr_rt_val != 'N/A':
-                            profit_rate = float(ovrs_ernr_rt_val)
-                        elif evlu_pfls_rt1_val:
-                            profit_rate = float(evlu_pfls_rt1_val)
+                        profit_rate = self._safe_float(ovrs_ernr_rt_val)
+                        if profit_rate == 0.0:
+                            profit_rate = self._safe_float(evlu_pfls_rt1_val)
 
                         # profit_rate가 0이고 profit_loss가 있으면 직접 계산
                         if profit_rate == 0 and profit_loss != 0 and pchs_amt > 0:
@@ -450,39 +609,66 @@ class KISAPIClient:
     
     def get_current_price(self, symbol):
         """
-        현재가 조회 (자동 거래소 감지)
-        나스닥 실패시 → NYSE 자동 시도
+        현재가 조회 (4단계 폴백 전략)
+        1단계: 캐시 확인 (60초 이내)
+        2단계: KIS API 조회 (자동 거래소 감지)
+        3단계: yfinance 직접 조회 (최종 대체)
+        4단계: None 반환
         """
-        # 시장이 열려있지 않으면 CRITICAL 에러 로깅
+        # 시장 시간 체크를 경고로만 변경 (yfinance fallback 허용)
         if not self.is_market_open():
-            self.logger.critical(f"{symbol} 현재가 조회 실패: 시장이 닫혀있습니다 (미국 장 시간 외)")
-            return None
+            self.logger.warning(f"{symbol} 현재가 조회: 시장 폐장 중, yfinance로 최신 종가 조회 시도")
+            # 시장 폐장 시 KIS API는 스킵하고 yfinance로 직접 이동
+            yfinance_price = self._fetch_price_from_yfinance(symbol)
+            if yfinance_price:
+                self.price_cache[symbol] = (yfinance_price, time.time())
+                return yfinance_price
+            else:
+                self.logger.critical(f"{symbol} 현재가 조회 완전 실패 (시장 폐장 + yfinance 실패)")
+                return None
 
         if not hasattr(self, 'nasdaq_broker') or not hasattr(self, 'nyse_broker'):
             return None
 
-        # 자동 거래소 감지
+        # 1단계: 캐시 확인 (60초 이내)
+        if symbol in self.price_cache:
+            price, timestamp = self.price_cache[symbol]
+            age = time.time() - timestamp
+            if age < self.cache_timeout:
+                self.logger.debug(f"💾 {symbol} 캐시된 현재가: ${price:.2f} (캐시 수명: {age:.1f}초)")
+                return price
+
+        # 2단계: KIS API 조회 (자동 거래소 감지)
         broker, exchange = self._get_broker_for_symbol(symbol)
 
-        if not broker:
-            self.logger.critical(f"{symbol} 현재가 데이터 없음 (나스닥/NYSE 모두 실패)")
-            return None
+        if broker:
+            try:
+                price_data = broker.fetch_price(symbol)
 
-        try:
-            price_data = broker.fetch_price(symbol)
+                if price_data and price_data.get('rt_cd') == '0':
+                    output = price_data.get('output', {})
+                    current_price = output.get('last', '').strip()
 
-            if price_data and price_data.get('rt_cd') == '0':
-                output = price_data.get('output', {})
-                current_price = output.get('last', '').strip()
+                    if current_price and current_price != '':
+                        price_float = float(current_price)
+                        # 캐시에 저장
+                        self.price_cache[symbol] = (price_float, time.time())
+                        self.logger.info(f"[OK] {symbol} 현재가: ${price_float:.2f} ({exchange})")
+                        return price_float
 
-                if current_price and current_price != '':
-                    price_float = float(current_price)
-                    self.logger.debug(f"{symbol} 현재가: ${price_float:.4f} ({exchange})")
-                    return price_float
+            except Exception:
+                self.logger.exception(f"{symbol} KIS API 조회 중 오류")
 
-        except Exception as e:
-            self.logger.error(f"{symbol} 현재가 조회 중 오류: {e}")
+        # 3단계: yfinance 직접 조회 (최종 대체)
+        self.logger.warning(f"[FALLBACK] {symbol} KIS API 실패, yfinance 대체 시도")
+        yfinance_price = self._fetch_price_from_yfinance(symbol)
+        if yfinance_price:
+            # 캐시에 저장
+            self.price_cache[symbol] = (yfinance_price, time.time())
+            return yfinance_price
 
+        # 4단계: 실패
+        self.logger.critical(f"[FAIL] {symbol} 현재가 조회 완전 실패 (KIS API + yfinance 모두 실패)")
         return None
     
     def place_order(self, symbol, quantity, price, order_type="buy"):
@@ -633,10 +819,11 @@ class KISAPIClient:
         }
         
         try:
-            response = requests.post(url, headers=headers, json=data)
+            response = requests.post(url, headers=headers, json=data, timeout=10)
+            response.raise_for_status()  # HTTP 에러 발생 시 예외 발생
             return response.json()
-        except Exception as e:
-            self.logger.error(f"직접 API 호출 실패: {e}")
+        except Exception:
+            self.logger.exception("직접 API 호출 실패")
             return None
     
     def _direct_api_call_sell(self, symbol, quantity, price):
@@ -693,20 +880,20 @@ class KISAPIClient:
         }
         
         try:
-            response = requests.post(url, headers=headers, json=data)
+            response = requests.post(url, headers=headers, json=data, timeout=10)
+            response.raise_for_status()  # HTTP 에러 발생 시 예외 발생
             return response.json()
-        except Exception as e:
-            self.logger.error(f"직접 API 호출 실패: {e}")
+        except Exception:
+            self.logger.exception("직접 API 호출 실패")
             return None
     
     def get_previous_close(self, symbol):
         """
         전일 종가 조회 (자동 거래소 감지)
         """
-        # 시장이 열려있지 않으면 CRITICAL 에러 로깅
+        # 시장 시간 체크를 경고로만 변경 (장 시작 전에도 전일 종가는 조회 가능)
         if not self.is_market_open():
-            self.logger.critical(f"{symbol} 전일 종가 조회 실패: 시장이 닫혀있습니다 (미국 장 시간 외)")
-            return None
+            self.logger.warning(f"{symbol} 전일 종가 조회: 시장 폐장 중이나 API 조회 시도")
 
         if not hasattr(self, 'nasdaq_broker') or not hasattr(self, 'nyse_broker'):
             return None
@@ -799,7 +986,8 @@ class KISAPIClient:
 
             self.logger.info(f"[실현손익][조회] 기간: {today} ~ {today}")
 
-            response = requests.get(url, headers=headers, params=params)
+            response = requests.get(url, headers=headers, params=params, timeout=10)
+            response.raise_for_status()  # HTTP 에러 발생 시 예외 발생
             result = response.json()
 
             if result.get('rt_cd') == '0':
@@ -813,7 +1001,7 @@ class KISAPIClient:
                 for item in output1:
                     symbol = item.get('ovrs_pdno', '')  # 해외상품번호
                     symbol_name = item.get('ovrs_item_name', '')  # 해외종목명
-                    realized_profit = float(item.get('ovrs_rlzt_pfls_amt', 0))  # 해외실현손익금액
+                    realized_profit = self._safe_float(item.get('ovrs_rlzt_pfls_amt'))  # 해외실현손익금액
 
                     if realized_profit != 0:  # 실현손익이 있는 종목만
                         realized_trades.append({
@@ -825,7 +1013,7 @@ class KISAPIClient:
 
                 # 합계 정보에서 총 실현손익 확인
                 if output2:
-                    api_total = float(output2.get('ovrs_rlzt_pfls_smtl_amt', 0))  # 해외실현손익합계금액
+                    api_total = self._safe_float(output2.get('ovrs_rlzt_pfls_smtl_amt'))  # 해외실현손익합계금액
                     if api_total != 0:
                         total_realized_profit = api_total
 
