@@ -90,45 +90,79 @@ class TradingScheduler:
         """
         토큰 상태 확인 및 필요시 재발급
         재발급 시 KISAPIClient의 브로커도 재초기화
+        
+        개선사항:
+        - 토큰 변경 감지 시 자동 브로커 재초기화
+        - 주기적 브로커 재초기화 (24시간 토큰 만료 대비)
+        - 상세한 로깅
 
         주의: 토큰 체크는 시장 폐장 시에도 실행 (다음 개장 대비)
         """
         try:
             # TokenManager를 통해 토큰 상태 확인
             if not hasattr(self.strategy.api_client, 'token_manager') or self.strategy.api_client.token_manager is None:
+                self.logger.warning("[TOKEN_CHECK] TokenManager가 없습니다")
                 return
 
             token_manager = self.strategy.api_client.token_manager
+            
+            # 토큰 정보 로깅
+            token_info = token_manager.get_token_info()
+            self.logger.info(f"[TOKEN_CHECK] {token_info}")
 
-            # 현재 토큰 유효성 확인
-            current_token = token_manager.load_token()
+            # 현재 토큰 저장 (변경 감지용)
+            old_token = token_manager.load_token()
+            
+            # 토큰 유효성 확인 및 필요 시 재발급
+            new_token = token_manager.get_valid_token()
+            
+            # 토큰 변경 감지
+            token_changed = (old_token != new_token)
 
-            if current_token is None:
-                self.logger.warning("[TOKEN_CHECK] 토큰이 만료되었거나 없음 - 재발급 시도")
-
-                # 새 토큰 발급 시도
-                new_token = token_manager.get_valid_token(force_refresh=True)
-
-                if new_token:
-                    self.logger.info("[TOKEN_CHECK] 새 토큰 발급 성공 - 브로커 재초기화")
-
-                    # KISAPIClient의 브로커 재초기화
+            if old_token is None:
+                self.logger.warning("[TOKEN_CHECK] 토큰이 만료되었거나 없음 - 재발급 완료")
+                token_changed = True
+            elif token_changed:
+                self.logger.info("[TOKEN_CHECK] 토큰 변경 감지 (자동 재발급됨)")
+            
+            # 토큰이 변경되었거나 브로커 재초기화가 필요한 경우
+            if token_changed or not hasattr(self, '_last_broker_reinit_time'):
+                self.logger.info("[TOKEN_CHECK] 브로커 재초기화 시작...")
+                
+                # KISAPIClient의 브로커 재초기화
+                if hasattr(self.strategy.api_client, 'reinitialize_brokers'):
+                    if self.strategy.api_client.reinitialize_brokers():
+                        self.logger.info("[TOKEN_CHECK] ✅ 브로커 재초기화 성공")
+                        self._last_broker_reinit_time = time.time()
+                    else:
+                        self.logger.error("[TOKEN_CHECK] ❌ 브로커 재초기화 실패")
+                else:
+                    self.logger.warning("[TOKEN_CHECK] reinitialize_brokers 메서드 없음")
+            else:
+                # 토큰 변경 없어도 주기적으로 브로커 재초기화 (24시간 대비)
+                time_since_last_reinit = time.time() - getattr(self, '_last_broker_reinit_time', 0)
+                
+                # 6시간마다 주기적 재초기화 (24시간 토큰 만료 대비)
+                if time_since_last_reinit > 6 * 3600:
+                    self.logger.info("[TOKEN_CHECK] 주기적 브로커 재초기화 (24시간 토큰 만료 대비)")
+                    
                     if hasattr(self.strategy.api_client, 'reinitialize_brokers'):
                         if self.strategy.api_client.reinitialize_brokers():
-                            self.logger.info("[TOKEN_CHECK] 브로커 재초기화 성공")
+                            self.logger.info("[TOKEN_CHECK] ✅ 주기적 재초기화 성공")
+                            self._last_broker_reinit_time = time.time()
                         else:
-                            self.logger.error("[TOKEN_CHECK] 브로커 재초기화 실패")
-                    else:
-                        self.logger.warning("[TOKEN_CHECK] reinitialize_brokers 메서드 없음")
+                            self.logger.error("[TOKEN_CHECK] ❌ 주기적 재초기화 실패")
                 else:
-                    self.logger.error("[TOKEN_CHECK] 토큰 재발급 실패 (24시간 제한 가능)")
-            else:
-                # 폐장 시에는 토큰 유효성만 확인하고 상세 로그 생략
-                if not self.is_trading_hours():
-                    self.logger.debug("[TOKEN_CHECK] 토큰 유효 (폐장 중)")
+                    # 폐장 시에는 상세 로그 생략
+                    if not self.is_trading_hours():
+                        self.logger.debug("[TOKEN_CHECK] 토큰 유효, 브로커 정상 (폐장 중)")
+                    else:
+                        self.logger.info(f"[TOKEN_CHECK] 토큰 유효, 브로커 정상 (다음 재초기화: {(6 * 3600 - time_since_last_reinit) / 3600:.1f}시간 후)")
 
         except Exception as e:
-            self.logger.error(f"토큰 체크 오류: {e}")
+            self.logger.error(f"[TOKEN_CHECK] 토큰 체크 오류: {e}")
+            import traceback
+            self.logger.error(traceback.format_exc())
 
     def cleanup_orders(self):
         """주문 정리 작업"""
@@ -260,14 +294,30 @@ class TradingScheduler:
 
 def main():
     """메인 실행 함수"""
-    # 로깅 설정
+    # 로깅 설정 (로그 로테이션 적용)
+    from logging.handlers import RotatingFileHandler
+    
+    # 로테이션 파일 핸들러
+    file_handler = RotatingFileHandler(
+        LOG_FILE,
+        maxBytes=LOG_MAX_BYTES,
+        backupCount=LOG_BACKUP_COUNT,
+        encoding='utf-8'
+    )
+    file_handler.setFormatter(
+        logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+    )
+    
+    # 콘솔 핸들러
+    console_handler = logging.StreamHandler()
+    console_handler.setFormatter(
+        logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+    )
+    
+    # 루트 로거 설정
     logging.basicConfig(
         level=getattr(logging, LOG_LEVEL),
-        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-        handlers=[
-            logging.FileHandler(LOG_FILE),
-            logging.StreamHandler()
-        ]
+        handlers=[file_handler, console_handler]
     )
     
     logger = logging.getLogger(__name__)

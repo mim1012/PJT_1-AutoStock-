@@ -607,13 +607,17 @@ class KISAPIClient:
             self.logger.error(f"잔고 조회 중 오류: {e}")
             return None
     
-    def get_current_price(self, symbol):
+    def get_current_price(self, symbol, retry_count=0):
         """
-        현재가 조회 (4단계 폴백 전략)
-        1단계: 캐시 확인 (60초 이내)
+        현재가 조회 (4단계 폴백 전략 + 자동 복구)
+        1단계: 캠시 확인 (60초 이내)
         2단계: KIS API 조회 (자동 거래소 감지)
         3단계: yfinance 직접 조회 (최종 대체)
         4단계: None 반환
+        
+        Args:
+            symbol (str): 종목 코드
+            retry_count (int): 재시도 횟수 (내부용, 최대 1회)
         """
         # 시장 시간 체크를 경고로만 변경 (yfinance fallback 허용)
         if not self.is_market_open():
@@ -651,13 +655,64 @@ class KISAPIClient:
 
                     if current_price and current_price != '':
                         price_float = float(current_price)
-                        # 캐시에 저장
+                        # 캠시에 저장
                         self.price_cache[symbol] = (price_float, time.time())
                         self.logger.info(f"[OK] {symbol} 현재가: ${price_float:.2f} ({exchange})")
                         return price_float
+                
+                # rt_cd != '0' 시 토큰 오류 체크
+                elif price_data and price_data.get('rt_cd') != '0':
+                    msg = price_data.get('msg1', '')
+                    self.logger.warning(f"{symbol} KIS API 오류: rt_cd={price_data.get('rt_cd')}, msg={msg}")
+                    
+                    # 토큰 오류 감지
+                    if ('token' in msg.lower() or 
+                        'auth' in msg.lower() or 
+                        '접근토큰' in msg or
+                        '인증' in msg):
+                        
+                        if retry_count < 1:
+                            self.logger.warning(f"[AUTO_RECOVER] {symbol} 토큰 오류 감지, 자동 복구 시도...")
+                            
+                            # 1. TokenManager 토큰 재발급
+                            if self.token_manager:
+                                self.logger.info("[AUTO_RECOVER] TokenManager 토큰 재발급...")
+                                self.token_manager.delete_token()
+                                new_token = self.token_manager.get_valid_token(force_refresh=True)
+                                
+                                if new_token:
+                                    self.logger.info("[AUTO_RECOVER] 토큰 재발급 성공")
+                                else:
+                                    self.logger.error("[AUTO_RECOVER] 토큰 재발급 실패")
+                            
+                            # 2. mojito2 브로커 재초기화
+                            self.logger.info("[AUTO_RECOVER] mojito2 브로커 재초기화...")
+                            if self.reinitialize_brokers():
+                                self.logger.info("[AUTO_RECOVER] ✅ 자동 복구 성공, 재시도...")
+                                return self.get_current_price(symbol, retry_count + 1)
+                            else:
+                                self.logger.error("[AUTO_RECOVER] ❌ 자동 복구 실패")
 
-            except Exception:
+            except Exception as e:
                 self.logger.exception(f"{symbol} KIS API 조회 중 오류")
+                
+                # 예외에서도 토큰 오류 체크
+                error_msg = str(e).lower()
+                if ('token' in error_msg or 
+                    'auth' in error_msg or 
+                    '접근토큰' in error_msg or
+                    '인증' in error_msg):
+                    
+                    if retry_count < 1:
+                        self.logger.warning(f"[AUTO_RECOVER] {symbol} 예외에서 토큰 오류 감지, 자동 복구 시도...")
+                        
+                        if self.token_manager:
+                            self.token_manager.delete_token()
+                            self.token_manager.get_valid_token(force_refresh=True)
+                        
+                        if self.reinitialize_brokers():
+                            self.logger.info("[AUTO_RECOVER] ✅ 자동 복구 성공, 재시도...")
+                            return self.get_current_price(symbol, retry_count + 1)
 
         # 3단계: yfinance 직접 조회 (최종 대체)
         self.logger.warning(f"[FALLBACK] {symbol} KIS API 실패, yfinance 대체 시도")
