@@ -30,6 +30,8 @@ BUY_INTERVAL_MINUTES = 60   # 매수 체크 주기 (분)
 # 로그 설정
 LOG_LEVEL = "INFO"
 LOG_FILE = "trading.log"
+LOG_MAX_BYTES = 10 * 1024 * 1024  # 10MB
+LOG_BACKUP_COUNT = 5  # 최대 5개 백업
 
 # 전일 종가 조회 시 시도할 필드명들 (KIS API 응답 구조 대응)
 possible_fields = ["clos", "last", "prvs_clpr", "stck_clpr", "base_pric"]
