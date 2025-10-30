@@ -323,7 +323,7 @@ class ProductionTradingSystem:
                     symbol = position.get("ovrs_pdno", "N/A")  # symbol → ovrs_pdno로 변경
                     try:
                         quantity = self.safe_float(position.get("ovrs_cblc_qty", 0))  # quantity → ovrs_cblc_qty
-                        avg_price = self.safe_float(position.get("pchs_avg_pric", 0))  # avg_buy_price → pchs_avg_pric
+                        avg_price = self.safe_float(position.get("avg_unpr3", 0)) or self.safe_float(position.get("pchs_avg_pric", 0))  # avg_unpr3 우선
                     except Exception:
                         self.logger.warning(f"[간단잔고][보유] {symbol} 수량/평균단가 변환 실패 - 스킵")
                         continue
@@ -542,7 +542,7 @@ class ProductionTradingSystem:
                     symbol = position.get("ovrs_pdno", "N/A")  # symbol → ovrs_pdno로 변경
                     try:
                         quantity = self.safe_float(position.get("ovrs_cblc_qty", 0))  # quantity → ovrs_cblc_qty
-                        avg_price = self.safe_float(position.get("pchs_avg_pric", 0))  # avg_buy_price → pchs_avg_pric
+                        avg_price = self.safe_float(position.get("avg_unpr3", 0)) or self.safe_float(position.get("pchs_avg_pric", 0))  # avg_unpr3 우선
                     except Exception:
                         self.logger.warning(f"[상태][보유] {symbol} 수량/평균단가 변환 실패 - 스킵")
                         continue

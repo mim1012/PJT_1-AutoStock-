@@ -20,8 +20,8 @@ STOCKS_CONFIG_FILE = "stocks_config.json"
 PROFIT_THRESHOLD = 0.05  # 매도 수익률 임계값 (5%)
 
 # 운영 시간 설정 (미국 동부시간 EST/EDT 기준)
-TRADING_START_TIME = "11:30"
-TRADING_END_TIME = "17:00"
+TRADING_START_TIME = "09:30"  # 미국 주식 시장 개장 시간 (ET)
+TRADING_END_TIME = "16:00"    # 미국 주식 시장 폐장 시간 (ET)
 
 # 스케줄 설정
 SELL_INTERVAL_MINUTES = 30  # 매도 체크 주기 (분)
@@ -30,6 +30,8 @@ BUY_INTERVAL_MINUTES = 60   # 매수 체크 주기 (분)
 # 로그 설정
 LOG_LEVEL = "INFO"
 LOG_FILE = "trading.log"
+LOG_MAX_BYTES = 10 * 1024 * 1024  # 10MB
+LOG_BACKUP_COUNT = 5  # 최대 5개 백업
 
 # 전일 종가 조회 시 시도할 필드명들 (KIS API 응답 구조 대응)
 possible_fields = ["clos", "last", "prvs_clpr", "stck_clpr", "base_pric"]
