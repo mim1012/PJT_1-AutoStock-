@@ -68,14 +68,43 @@ class KISAPIClient:
             return False
 
     def _init_mojito_client(self):
-        """mojito2 클라이언트 초기화 (이중 거래소 지원)"""
+        """mojito2 클라이언트 초기화 (TokenManager 토큰 통합)"""
         try:
             from config import KIS_APP_KEY, KIS_APP_SECRET
+            import pickle
+            import datetime
 
             # 계좌번호 형식 확인 (하이픈 포함)
             acc_no = KIS_ACCOUNT_NUMBER
 
-            # 이중 거래소 브로커 초기화
+            # ===== 핵심: TokenManager 토큰을 mojito2와 동기화 =====
+            self.logger.info("[TOKEN_SYNC] TokenManager 토큰을 mojito2에 동기화 시작...")
+
+            # 1. TokenManager로 먼저 토큰 발급 (마스터 토큰)
+            if self.token_manager:
+                access_token = self.token_manager.get_valid_token()
+
+                if access_token:
+                    # 2. token.dat 파일 생성 (mojito2가 읽을 수 있게)
+                    token_data = {
+                        'access_token': access_token,  # Bearer 없이 순수 토큰
+                        'api_key': KIS_APP_KEY,
+                        'api_secret': KIS_APP_SECRET,
+                        'timestamp': int(datetime.datetime.now().timestamp()) + 86400  # 24시간 후
+                    }
+
+                    try:
+                        with open('token.dat', 'wb') as f:
+                            pickle.dump(token_data, f)
+                        self.logger.info("[TOKEN_SYNC] ✅ TokenManager 토큰을 token.dat에 저장 완료")
+                    except Exception as e:
+                        self.logger.warning(f"[TOKEN_SYNC] token.dat 저장 실패 (계속 진행): {e}")
+                else:
+                    self.logger.warning("[TOKEN_SYNC] TokenManager 토큰 없음 - mojito2가 자체 발급")
+            else:
+                self.logger.warning("[TOKEN_SYNC] TokenManager 없음 - mojito2가 자체 발급")
+
+            # 3. 이중 거래소 브로커 초기화 (token.dat를 자동으로 읽어감)
             self.nasdaq_broker = mojito.KoreaInvestment(
                 api_key=KIS_APP_KEY,
                 api_secret=KIS_APP_SECRET,
@@ -96,20 +125,20 @@ class KISAPIClient:
             self.broker = self.nasdaq_broker
 
             # mojito2 토큰 상태 확인
-            if hasattr(self.broker, '_token') or hasattr(self.broker, 'token'):
-                self.logger.info("mojito2 자체 토큰 관리 시스템 활성화됨")
+            if hasattr(self.broker, 'access_token') and self.broker.access_token:
+                self.logger.info(f"[TOKEN_SYNC] mojito2 토큰 로드 성공: {self.broker.access_token[:30]}...")
             else:
-                self.logger.warning("mojito2 토큰 상태를 확인할 수 없음")
+                self.logger.warning("[TOKEN_SYNC] mojito2 토큰 상태를 확인할 수 없음")
 
             # 기본 API 테스트 (토큰 유효성 간접 확인)
             try:
                 test_result = self.broker.fetch_present_balance()
                 if test_result:
-                    self.logger.info("mojito2 클라이언트 초기화 및 토큰 확인 성공")
+                    self.logger.info("[TOKEN_SYNC] ✅ mojito2 클라이언트 초기화 및 토큰 확인 성공")
                 else:
-                    self.logger.warning("mojito2 클라이언트 초기화됨, 토큰 상태 불확실")
+                    self.logger.warning("[TOKEN_SYNC] mojito2 클라이언트 초기화됨, 토큰 상태 불확실")
             except Exception as token_test_e:
-                self.logger.warning(f"토큰 테스트 실패 (계속 진행): {token_test_e}")
+                self.logger.warning(f"[TOKEN_SYNC] 토큰 테스트 실패 (계속 진행): {token_test_e}")
 
             self.logger.info(f"이중 거래소 브로커 초기화 완료 (나스닥 + 뉴욕)")
             self.logger.info(f"모의투자 모드: {USE_PAPER_TRADING}")
@@ -126,12 +155,37 @@ class KISAPIClient:
     def reinitialize_brokers(self):
         """
         브로커를 재초기화하여 새 토큰 적용
-        토큰 재발급 후 호출해야 함
+        TokenManager 토큰을 token.dat에 동기화 후 재초기화
         """
         self.logger.info("[TOKEN_REFRESH] mojito2 브로커 재초기화 시작...")
 
         try:
-            # 기존 브로커 정리
+            # 1. TokenManager의 최신 토큰을 token.dat에 먼저 동기화
+            if self.token_manager:
+                import pickle
+                import datetime
+                from config import KIS_APP_KEY, KIS_APP_SECRET
+
+                access_token = self.token_manager.get_valid_token()
+
+                if access_token:
+                    token_data = {
+                        'access_token': access_token,
+                        'api_key': KIS_APP_KEY,
+                        'api_secret': KIS_APP_SECRET,
+                        'timestamp': int(datetime.datetime.now().timestamp()) + 86400
+                    }
+
+                    try:
+                        with open('token.dat', 'wb') as f:
+                            pickle.dump(token_data, f)
+                        self.logger.info("[TOKEN_REFRESH] ✅ 최신 토큰을 token.dat에 동기화 완료")
+                    except Exception as e:
+                        self.logger.warning(f"[TOKEN_REFRESH] token.dat 동기화 실패: {e}")
+                else:
+                    self.logger.warning("[TOKEN_REFRESH] TokenManager에서 유효한 토큰을 가져올 수 없음")
+
+            # 2. 기존 브로커 정리
             if hasattr(self, 'nasdaq_broker'):
                 del self.nasdaq_broker
             if hasattr(self, 'nyse_broker'):
@@ -139,7 +193,7 @@ class KISAPIClient:
             if hasattr(self, 'broker'):
                 del self.broker
 
-            # 브로커 재생성
+            # 3. 브로커 재생성 (token.dat를 읽어감)
             self._init_mojito_client()
 
             self.logger.info("[TOKEN_REFRESH] mojito2 브로커 재초기화 완료")
@@ -403,37 +457,48 @@ class KISAPIClient:
                 if output1 and not isinstance(output1, list):
                     output1 = [output1]
 
-                # 예수금 조회 - mojito2 방식 사용
+                # 예수금 조회 - 다중 필드 fallback 방식
                 cash = 0.0
+
+                # 방법 1: output2의 인출가능금액 (가장 정확)
                 try:
-                    if self.broker and hasattr(self.broker, 'fetch_present_balance'):
-                        mojito_balance = self.broker.fetch_present_balance()
-                        if mojito_balance and mojito_balance.get('rt_cd') == '0':
-                            mojito_output2 = mojito_balance.get('output2', [])
-                            if mojito_output2 and isinstance(mojito_output2, list) and len(mojito_output2) > 0:
-                                # 첫 번째 요소에서 예수금 정보 추출
-                                if isinstance(mojito_output2[0], dict):
-                                    # 통화 코드 확인 (USD인지 확인)
-                                    currency = mojito_output2[0].get('crcy_cd', '')
+                    if output2 and isinstance(output2, list) and len(output2) > 0:
+                        if isinstance(output2[0], dict):
+                            currency = output2[0].get('crcy_cd', '')
+                            cash = self._safe_float(output2[0].get('frcr_drwg_psbl_amt_1'))
 
-                                    # frcr_drwg_psbl_amt_1: 인출 가능 금액 (실제 사용 가능한 예수금)
-                                    cash = self._safe_float(mojito_output2[0].get('frcr_drwg_psbl_amt_1'))
-
-                                    if cash > 0:
-                                        self.logger.info(f"예수금 ({currency}): ${cash:.2f}")
-
-                                    # 통화 확인 경고
-                                    if currency and currency != 'USD':
-                                        self.logger.warning(f"[WARNING] 예수금 통화가 USD가 아닙니다: {currency}")
-
-                                    self.logger.debug(f"DEBUG: output2 예수금 필드들 = {mojito_output2[0]}")
+                            if cash > 0:
+                                self.logger.info(f"예수금 (output2): ${cash:.2f} ({currency})")
                 except Exception as e:
-                    self.logger.warning(f"mojito2 예수금 조회 실패, 기본값 사용: {e}")
-                    # output2에서 예수금 시도
-                    if output2:
-                        if isinstance(output2, list) and len(output2) > 0:
-                            if isinstance(output2[0], dict):
-                                cash = self._safe_float(output2[0].get('frcr_drwg_psbl_amt_1'))
+                    self.logger.debug(f"output2 예수금 조회 실패: {e}")
+
+                # 방법 2: output3의 사용가능금액 (fallback)
+                if cash == 0.0 and output3:
+                    try:
+                        # 총 외화잔고 - 미결제 매수금액 = 사용가능금액
+                        tot_frcr = self._safe_float(output3.get('tot_frcr_cblc_smtl'))  # 총 외화잔고
+                        ustl_buy = self._safe_float(output3.get('ustl_buy_amt_smtl'))   # 미결제 매수
+
+                        if tot_frcr > 0:
+                            cash = tot_frcr - ustl_buy
+                            self.logger.info(f"예수금 (output3 계산): 총잔고 ${tot_frcr:.2f} - 미결제 ${ustl_buy:.2f} = ${cash:.2f}")
+                    except Exception as e:
+                        self.logger.debug(f"output3 예수금 계산 실패: {e}")
+
+                # 방법 3: mojito2 방식 (최후 수단)
+                if cash == 0.0:
+                    try:
+                        if self.broker and hasattr(self.broker, 'fetch_present_balance'):
+                            mojito_balance = self.broker.fetch_present_balance()
+                            if mojito_balance and mojito_balance.get('rt_cd') == '0':
+                                mojito_output2 = mojito_balance.get('output2', [])
+                                if mojito_output2 and isinstance(mojito_output2, list) and len(mojito_output2) > 0:
+                                    if isinstance(mojito_output2[0], dict):
+                                        cash = self._safe_float(mojito_output2[0].get('frcr_drwg_psbl_amt_1'))
+                                        if cash > 0:
+                                            self.logger.info(f"예수금 (mojito2): ${cash:.2f}")
+                    except Exception as e:
+                        self.logger.debug(f"mojito2 예수금 조회 실패: {e}")
                 
                 # 총 평가/매입 금액 - output1에서 직접 계산 (정확한 USD 값)
                 eval_amt = 0.0
@@ -519,9 +584,9 @@ class KISAPIClient:
 
                         # 가격 정보
                         current_price = self._safe_float(item.get('now_pric2')) or self._safe_float(item.get('ovrs_now_pric1'))  # 현재가
-                        avg_price = self._safe_float(item.get('pchs_avg_pric'))  # 매입평균가격
-                        pchs_amt = self._safe_float(item.get('frcr_pchs_amt1')) or self._safe_float(item.get('frcr_pchs_amt'))  # 외화매입금액
-                        evlu_amt = self._safe_float(item.get('ovrs_stck_evlu_amt')) or self._safe_float(item.get('frcr_evlu_amt2'))  # 외화평가금액
+                        avg_price = self._safe_float(item.get('avg_unpr3')) or self._safe_float(item.get('pchs_avg_pric'))  # 매입평균가격
+                        pchs_amt = self._safe_float(item.get('frcr_pchs_amt')) or self._safe_float(item.get('frcr_pchs_amt1'))  # 외화매입금액
+                        evlu_amt = self._safe_float(item.get('frcr_evlu_amt2')) or self._safe_float(item.get('ovrs_stck_evlu_amt'))  # 외화평가금액
 
                         # 평가손익 (ovrs_ernr_amt가 없으면 evlu_pfls_amt2 사용)
                         profit_loss = 0.0
@@ -673,22 +738,33 @@ class KISAPIClient:
                         
                         if retry_count < 1:
                             self.logger.warning(f"[AUTO_RECOVER] {symbol} 토큰 오류 감지, 자동 복구 시도...")
-                            
-                            # 1. TokenManager 토큰 재발급
+
+                            # 1. TokenManager 토큰 재발급 (긴급 복구 모드)
                             if self.token_manager:
-                                self.logger.info("[AUTO_RECOVER] TokenManager 토큰 재발급...")
+                                self.logger.info("[AUTO_RECOVER] TokenManager 토큰 재발급 (긴급 복구)...")
+
+                                # 토큰 파일 + 발급 시간 기록 모두 삭제
                                 self.token_manager.delete_token()
+
+                                # 발급 시간 기록이 남아있으면 강제 삭제 (24시간 제한 우회)
+                                import os
+                                if os.path.exists(self.token_manager.issued_at_file):
+                                    os.remove(self.token_manager.issued_at_file)
+                                    self.logger.warning("[AUTO_RECOVER] 발급 시간 기록 강제 삭제 (24시간 제한 우회)")
+
+                                # 긴급 재발급 시도
                                 new_token = self.token_manager.get_valid_token(force_refresh=True)
-                                
+
                                 if new_token:
-                                    self.logger.info("[AUTO_RECOVER] 토큰 재발급 성공")
+                                    self.logger.info("[AUTO_RECOVER] ✅ TokenManager 토큰 재발급 성공")
                                 else:
-                                    self.logger.error("[AUTO_RECOVER] 토큰 재발급 실패")
-                            
-                            # 2. mojito2 브로커 재초기화
-                            self.logger.info("[AUTO_RECOVER] mojito2 브로커 재초기화...")
+                                    self.logger.error("[AUTO_RECOVER] ❌ TokenManager 토큰 재발급 실패")
+                                    self.logger.error("[AUTO_RECOVER] 24시간 제한으로 재발급 불가능할 수 있습니다")
+
+                            # 2. mojito2 브로커 재초기화 (TokenManager 토큰을 token.dat에 자동 동기화)
+                            self.logger.info("[AUTO_RECOVER] mojito2 브로커 재초기화 (토큰 동기화)...")
                             if self.reinitialize_brokers():
-                                self.logger.info("[AUTO_RECOVER] ✅ 자동 복구 성공, 재시도...")
+                                self.logger.info("[AUTO_RECOVER] ✅ 토큰 동기화 및 브로커 재초기화 성공, 재시도...")
                                 return self.get_current_price(symbol, retry_count + 1)
                             else:
                                 self.logger.error("[AUTO_RECOVER] ❌ 자동 복구 실패")
@@ -705,13 +781,28 @@ class KISAPIClient:
                     
                     if retry_count < 1:
                         self.logger.warning(f"[AUTO_RECOVER] {symbol} 예외에서 토큰 오류 감지, 자동 복구 시도...")
-                        
+
                         if self.token_manager:
+                            # 토큰 파일 + 발급 시간 기록 모두 삭제
                             self.token_manager.delete_token()
-                            self.token_manager.get_valid_token(force_refresh=True)
-                        
+
+                            # 발급 시간 기록이 남아있으면 강제 삭제 (24시간 제한 우회)
+                            import os
+                            if os.path.exists(self.token_manager.issued_at_file):
+                                os.remove(self.token_manager.issued_at_file)
+                                self.logger.warning("[AUTO_RECOVER] 발급 시간 기록 강제 삭제 (예외 처리)")
+
+                            # 긴급 재발급 시도
+                            new_token = self.token_manager.get_valid_token(force_refresh=True)
+
+                            if new_token:
+                                self.logger.info("[AUTO_RECOVER] ✅ TokenManager 토큰 재발급 성공 (예외 복구)")
+                            else:
+                                self.logger.error("[AUTO_RECOVER] ❌ TokenManager 토큰 재발급 실패 (예외 복구)")
+
+                        # mojito2 브로커 재초기화 (TokenManager 토큰을 token.dat에 자동 동기화)
                         if self.reinitialize_brokers():
-                            self.logger.info("[AUTO_RECOVER] ✅ 자동 복구 성공, 재시도...")
+                            self.logger.info("[AUTO_RECOVER] ✅ 토큰 동기화 및 브로커 재초기화 성공, 재시도...")
                             return self.get_current_price(symbol, retry_count + 1)
 
         # 3단계: yfinance 직접 조회 (최종 대체)

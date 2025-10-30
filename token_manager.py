@@ -16,13 +16,14 @@ KIS_APP_SECRET = "2mfGKemkM4CTyvkQ1oquImEb+uUKwrflzTn23wjWJ5/PoFu5dwIW1OoyKYCoY2
 class TokenManager:
     def __init__(self, token_file="api_token.json"):
         self.token_file = token_file
+        self.issued_at_file = "token_issued_at.dat"  # 발급 시간 기록 파일
         self.logger = logging.getLogger(__name__)
-        
+
         # 로거 설정
         if not self.logger.handlers:
             self.logger.setLevel(logging.INFO)
             formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-            
+
             # 스트림 핸들러
             sh = logging.StreamHandler()
             sh.setFormatter(formatter)
@@ -54,6 +55,7 @@ class TokenManager:
         1. 마지막 발급 후 24시간 이상 경과
         2. 토큰이 완전 만료됨 (expires_at < 현재시각)
         3. 토큰 남은시간 5시간 이하
+        4. force_if_expired=True이고 토큰 파일이 없는 경우 (긴급 복구)
         """
         try:
             last_issued = self.get_last_issued_time()
@@ -81,6 +83,15 @@ class TokenManager:
                     if remaining <= 18000:  # 5시간 이하
                         self.logger.warning(f"[TOKEN] 긴급 토큰 재발급 허용 (남은시간: {remaining//3600}시간 {(remaining%3600)//60}분)")
                         return True
+            else:
+                # 토큰 파일이 없고 force_if_expired=True이면 긴급 재발급 허용
+                if force_if_expired:
+                    self.logger.warning(f"[TOKEN] 긴급 복구 모드: 토큰 파일 없음, 24시간 미경과({time_since_issued/3600:.1f}h)지만 재발급 허용")
+                    # 발급 시간 기록도 삭제하여 다음번 체크 시 24시간 경과로 처리
+                    if os.path.exists(self.issued_at_file):
+                        os.remove(self.issued_at_file)
+                        self.logger.info("[TOKEN] 긴급 복구: 발급 시간 기록 삭제")
+                    return True
 
             self.logger.debug(f"[TOKEN] 재발급 불가 - 24시간 미경과 ({time_since_issued/3600:.1f}시간)")
             return False
@@ -181,14 +192,38 @@ class TokenManager:
             remaining_hours = remaining // 3600
             remaining_minutes = (remaining % 3600) // 60
 
-            # 완전 만료된 경우 (0초 이하)
+            # 완전 만료된 경우 (0초 이하) - 파일 삭제하고 즉시 재발급 유도
             if remaining <= 0:
-                self.logger.warning(f"[TOKEN] 토큰 완전 만료 (만료 {abs(remaining)//60}분 전) - 재발급 필요")
+                self.logger.warning(f"[TOKEN] 토큰 완전 만료 (만료 {abs(remaining)//60}분 전) - 만료된 파일 삭제 및 재발급 필요")
+                try:
+                    # 만료된 토큰 파일 삭제
+                    if os.path.exists(self.token_file):
+                        os.remove(self.token_file)
+                        self.logger.info(f"[TOKEN] 만료된 토큰 파일 삭제: {self.token_file}")
+
+                    # 발급 시간 기록 파일도 삭제 (24시간 제한 우회) - 중요!
+                    if os.path.exists(self.issued_at_file):
+                        os.remove(self.issued_at_file)
+                        self.logger.info(f"[TOKEN] 발급 시간 기록 삭제: {self.issued_at_file}")
+                    else:
+                        self.logger.warning(f"[TOKEN] 발급 시간 기록 파일 없음 (이미 삭제됨)")
+
+                    self.logger.warning("[TOKEN] 만료된 토큰 관련 파일 모두 삭제 완료 - 새 토큰 발급 준비")
+                except Exception as e:
+                    self.logger.error(f"[TOKEN] 만료 파일 삭제 중 오류: {e}")
+
                 return None
 
             # 5시간(18000초) 이하로 떨어지면 None 반환하여 재발급 유도
             if remaining <= 18000:  # 5시간 = 5 * 3600
                 self.logger.warning(f"[TOKEN] 토큰 남은시간 5시간 이하 ({remaining_hours}시간 {remaining_minutes}분) - 재발급 필요")
+                # 5시간 이하일 때도 발급 시간 기록 삭제하여 재발급 허용
+                try:
+                    if os.path.exists(self.issued_at_file):
+                        os.remove(self.issued_at_file)
+                        self.logger.info(f"[TOKEN] 5시간 이하 남음: 발급 시간 기록 삭제하여 재발급 준비")
+                except Exception as e:
+                    self.logger.error(f"[TOKEN] 발급 시간 기록 삭제 오류: {e}")
                 return None
 
             # 토큰이 아직 유효한 경우
@@ -231,15 +266,27 @@ class TokenManager:
             return f"토큰 정보 조회 실패: {e}"
     
     def delete_token(self):
-        """저장된 토큰 삭제"""
+        """저장된 토큰 삭제 (토큰 파일 + 발급 시간 기록 모두 삭제)"""
         try:
+            deleted = False
+
+            # 1. api_token.json 삭제
             if os.path.exists(self.token_file):
                 os.remove(self.token_file)
-                self.logger.info("토큰 파일 삭제 완료")
-                return True
+                self.logger.info(f"토큰 파일 삭제 완료: {self.token_file}")
+                deleted = True
             else:
                 self.logger.info("삭제할 토큰 파일 없음")
-                return False
+
+            # 2. token_issued_at.dat 삭제 (24시간 제한 우회)
+            if os.path.exists(self.issued_at_file):
+                os.remove(self.issued_at_file)
+                self.logger.info(f"발급 시간 기록 삭제 완료: {self.issued_at_file}")
+                deleted = True
+            else:
+                self.logger.info("삭제할 발급 시간 기록 없음")
+
+            return deleted
         except Exception as e:
             self.logger.error(f"토큰 삭제 실패: {e}")
             return False
@@ -292,16 +339,34 @@ class TokenManager:
             return False
 
     def get_valid_token(self, force_refresh=False):
-        """유효한 토큰 반환 (만료 시 1회 재발급, 이후 24시간 추가 재발급 금지)"""
-        existing_token = self.load_token()
-        if existing_token:
-            return existing_token
-        # 토큰이 없거나 만료된 경우
-        # 만료된 경우에는 24시간 이내라도 1회 재발급 허용
+        """
+        유효한 토큰 반환 (만료 시 자동 재발급)
+
+        Args:
+            force_refresh (bool): True이면 기존 토큰 무시하고 강제 재발급 시도
+        """
+        # force_refresh가 아니면 기존 토큰 확인
+        if not force_refresh:
+            existing_token = self.load_token()
+            if existing_token:
+                return existing_token
+
+        # 토큰이 없거나 만료된 경우 재발급 시도
+        self.logger.info("[TOKEN] 유효한 토큰 없음 - 재발급 시도")
+
+        # force_refresh=True이거나 토큰이 없으면 긴급 재발급 허용
         if self.can_issue_token(force_if_expired=True):
-            return self.issue_new_token()
+            new_token = self.issue_new_token()
+            if new_token:
+                self.logger.info("[TOKEN] 새 토큰 발급 성공")
+                return new_token
+            else:
+                self.logger.error("[TOKEN] 토큰 재발급 실패")
+                return None
         else:
-            self.logger.warning("24시간 이내이므로 토큰 재발급 금지")
+            self.logger.error("[TOKEN] 재발급 조건 미충족 - 24시간 제한")
+            self.logger.error("[TOKEN] ⚠️ 토큰 없이 거래 불가능 상태!")
+            self.logger.error("[TOKEN] ⚠️ 긴급 복구 방법: 수동으로 token_issued_at.dat 파일을 삭제하세요")
             return None
 
 def check_token_status():

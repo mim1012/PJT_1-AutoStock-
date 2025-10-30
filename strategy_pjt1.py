@@ -45,7 +45,7 @@ class TradingStrategy:
             return filter_stocks, watch_list
 
         except Exception as e:
-            self.logger.error(f"stocks_config.json 로드 실패: {e}")
+            self.logger.exception("stocks_config.json 로드 실패")
             return [], []
 
 
@@ -88,7 +88,7 @@ class TradingStrategy:
                         self.logger.debug(f"필터 미충족: {symbol} ↓ (현재: ${current_price:.2f}, 전일: ${prev_close:.2f}, 변동: ${price_change:.2f} ({price_change_pct:.2f}%))")
                         
                 except Exception as e:
-                    self.logger.error(f"{symbol} 필터 확인 중 오류: {e}")
+                    self.logger.exception(f"{symbol} 필터 확인 중 오류")
                     failed_symbols.append(symbol)
                     continue
 
@@ -114,7 +114,7 @@ class TradingStrategy:
             return all_rising
             
         except Exception as e:
-            self.logger.error(f"필터 조건 확인 중 오류: {e}")
+            self.logger.exception("필터 조건 확인 중 오류")
             return False
 
     def calculate_decline_rate(self, symbol):
@@ -139,7 +139,7 @@ class TradingStrategy:
             return decline_rate
             
         except Exception as e:
-            self.logger.error(f"{symbol} 하락률 계산 중 오류: {e}")
+            self.logger.exception(f"{symbol} 하락률 계산 중 오류")
             return None
 
     def get_top_declining_stocks(self, count=3):
@@ -181,7 +181,7 @@ class TradingStrategy:
             return top_stocks
             
         except Exception as e:
-            self.logger.error(f"하락률 상위 종목 조회 중 오류: {e}")
+            self.logger.exception("하락률 상위 종목 조회 중 오류")
             return []
 
     def monitor_watch_list_trend(self):
@@ -220,7 +220,7 @@ class TradingStrategy:
                 for item in falling:
                     self.logger.info(f"- {item['symbol']}: {item['percent']:.2f}%")
         except Exception as e:
-            self.logger.error(f"모니터링 실패: {e}")
+            self.logger.exception("모니터링 실패")
 
     def calculate_position_size(self, symbol, available_cash):
         """매수 수량 계산"""
@@ -233,25 +233,30 @@ class TradingStrategy:
             # 예수금의 1/3을 한 종목당 최대 투자
             max_investment = available_cash / 3
             max_quantity = int(max_investment / current_price)
-            
-            # 최소 1주, 최대 100주로 제한
-            quantity = max(1, min(max_quantity, 100))
-            
+
+            # 잔고 부족 시 0 반환 (기존 버그: max(1, ...) 으로 강제 1주 매수)
+            if max_quantity <= 0:
+                self.logger.warning(f"{symbol}: 매수 자금 부족 (max_quantity={max_quantity}) → 매수 건너뜀")
+                return 0
+
+            # 최대 100주로 제한
+            quantity = min(max_quantity, 100)
+
             total_cost = quantity * current_price
             investment_ratio = (total_cost / available_cash) * 100
-            
+
             self.logger.info(f"{symbol} 매수 수량 계산:")
             self.logger.info(f"  - 현재가: ${current_price:.2f}")
             self.logger.info(f"  - 예수금: ${available_cash:.2f}")
             self.logger.info(f"  - 최대 투자금: ${max_investment:.2f} (33.3%)")
             self.logger.info(f"  - 계산된 수량: {max_quantity}주")
-            self.logger.info(f"  - 최종 수량: {quantity}주 (1~100주 제한)")
+            self.logger.info(f"  - 최종 수량: {quantity}주 (최대 100주 제한)")
             self.logger.info(f"  - 총 투자금: ${total_cost:.2f} ({investment_ratio:.1f}%)")
-            
+
             return quantity
             
         except Exception as e:
-            self.logger.error(f"{symbol} 매수 수량 계산 중 오류: {e}")
+            self.logger.exception(f"{symbol} 매수 수량 계산 중 오류")
             return 0
 
     def should_buy(self, symbol, current_price):
@@ -386,18 +391,29 @@ class TradingStrategy:
                 self.transaction_logger.log_strategy_execution("buy", "completed", "주문할 종목 없음")
                 
         except Exception as e:
-            self.logger.error(f"매수 전략 실패: {e}")
+            self.logger.exception("매수 전략 실패")
             self.transaction_logger.log_strategy_execution("buy", "error", f"오류: {e}")
 
     def calculate_profit_rate(self, symbol, current, avg_buy):
+        """
+        수익률 계산
+
+        Args:
+            symbol: 종목 코드
+            current: 현재가
+            avg_buy: 평균 매입가
+
+        Returns:
+            float: 수익률 (소수, 예: 0.015 = 1.5%) 또는 None (계산 불가 시)
+        """
         try:
             current = float(current)
             avg_buy = float(avg_buy)
             if avg_buy == 0:
-                return 'N/A'
+                return None  # 타입 일관성: 'N/A' 대신 None 반환
             return (current - avg_buy) / avg_buy
         except Exception:
-            return 'N/A'
+            return None  # 타입 일관성: 'N/A' 대신 None 반환
 
     def should_sell(self, symbol, current_price):
         """
@@ -586,7 +602,7 @@ class TradingStrategy:
                 self.transaction_logger.log_strategy_execution("sell", "completed", "주문할 종목 없음")
                 
         except Exception as e:
-            self.logger.error(f"매도 전략 실패: {e}")
+            self.logger.exception("매도 전략 실패")
             self.transaction_logger.log_strategy_execution("sell", "error", f"오류: {e}")
 
     def check_and_refresh_token(self):
@@ -609,4 +625,4 @@ class TradingStrategy:
                 self.logger.info("[토큰] 유효함")
         except Exception as e:
             print(f"[토큰] 점검 중 오류: {e}")
-            self.logger.error(f"[토큰] 점검 중 오류: {e}")
+            self.logger.exception("[토큰] 점검 중 오류")

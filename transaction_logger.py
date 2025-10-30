@@ -230,21 +230,20 @@ class TransactionLogger:
         return logs
     
     def get_summary(self) -> Dict:
-        """오늘 거래 요약"""
+        """오늘 거래 요약 (실제 매수/매도만 카운트)"""
         logs = self.get_today_logs()
         summary = {
-            'total_transactions': len(logs),
             'buy_orders': 0,
             'sell_orders': 0,
             'total_profit_loss': 0,
             'successful_trades': 0
         }
-        
+
         for log in logs:
             action = log.get('action', '')
             status = log.get('status', '')
             profit_loss = float(log.get('profit_loss', 0) or 0)
-            
+
             if action == 'buy':
                 summary['buy_orders'] += 1
             elif action == 'sell':
@@ -252,5 +251,8 @@ class TransactionLogger:
                 summary['total_profit_loss'] += profit_loss
                 if status == 'filled':
                     summary['successful_trades'] += 1
-        
+
+        # 실제 매수+매도 건수만 카운트
+        summary['total_transactions'] = summary['buy_orders'] + summary['sell_orders']
+
         return summary 

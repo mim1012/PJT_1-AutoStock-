@@ -20,8 +20,8 @@ STOCKS_CONFIG_FILE = "stocks_config.json"
 PROFIT_THRESHOLD = 0.05  # 매도 수익률 임계값 (5%)
 
 # 운영 시간 설정 (미국 동부시간 EST/EDT 기준)
-TRADING_START_TIME = "11:30"
-TRADING_END_TIME = "17:00"
+TRADING_START_TIME = "09:30"  # 미국 주식 시장 개장 시간 (ET)
+TRADING_END_TIME = "16:00"    # 미국 주식 시장 폐장 시간 (ET)
 
 # 스케줄 설정
 SELL_INTERVAL_MINUTES = 30  # 매도 체크 주기 (분)
