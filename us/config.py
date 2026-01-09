@@ -59,6 +59,9 @@ class USConfig:
     # 토큰 파일 접두사
     TOKEN_FILE_PREFIX = "us"
 
+    # mojito2 토큰 파일 (기존 token.dat 대체)
+    MOJITO_TOKEN_FILE = "us_token.dat"
+
     @classmethod
     def get_api_url(cls) -> str:
         """현재 모드에 맞는 API URL 반환"""

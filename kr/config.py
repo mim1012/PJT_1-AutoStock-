@@ -51,6 +51,9 @@ class KRConfig:
     # 토큰 파일 접두사
     TOKEN_FILE_PREFIX = "kr"
 
+    # mojito2 토큰 파일 (한국 주식용 - Phase 3에서 사용)
+    MOJITO_TOKEN_FILE = "kr_token.dat"
+
     # 한국 주식 특수 설정
     # 호가 단위 (가격대별)
     TICK_SIZES = {

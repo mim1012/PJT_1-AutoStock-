@@ -80,12 +80,14 @@ class USAPIClient(BaseAPIClient):
                     'timestamp': int(datetime.now().timestamp()) + 86400
                 }
 
+                # US 전용 mojito2 토큰 파일 사용
+                mojito_token_file = USConfig.MOJITO_TOKEN_FILE
                 try:
-                    with open('token.dat', 'wb') as f:
+                    with open(mojito_token_file, 'wb') as f:
                         pickle.dump(token_data, f)
-                    self.logger.info("[TOKEN_SYNC] TokenManager 토큰을 token.dat에 저장 완료")
+                    self.logger.info(f"[TOKEN_SYNC] TokenManager 토큰을 {mojito_token_file}에 저장 완료")
                 except Exception as e:
-                    self.logger.warning(f"[TOKEN_SYNC] token.dat 저장 실패: {e}")
+                    self.logger.warning(f"[TOKEN_SYNC] {mojito_token_file} 저장 실패: {e}")
             else:
                 self.logger.warning("[TOKEN_SYNC] TokenManager 토큰 없음 - mojito2가 자체 발급")
 
