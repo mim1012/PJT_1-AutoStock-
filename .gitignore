@@ -150,6 +150,8 @@ start_auto_trading_20250715.csv
 *.json
 !requirements.txt
 !stocks_config.json
+!kr_stocks_config.json
+!us_stocks_config.json
 
 # Secret files
 secret.json

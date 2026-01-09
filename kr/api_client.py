@@ -99,17 +99,25 @@ class KRAPIClient(BaseAPIClient):
 
             if balance and balance.get('rt_cd') == '0':
                 output1 = balance.get('output1', [])
-                output2 = balance.get('output2', {})
+                output2 = balance.get('output2', [])
 
                 if output1 and not isinstance(output1, list):
                     output1 = [output1]
 
+                # output2가 리스트인 경우 첫 번째 요소 사용
+                if output2 and isinstance(output2, list) and len(output2) > 0:
+                    output2_data = output2[0]
+                elif isinstance(output2, dict):
+                    output2_data = output2
+                else:
+                    output2_data = {}
+
                 # 예수금 (주문가능현금)
-                cash = self._safe_float(output2.get('dnca_tot_amt', 0))
+                cash = self._safe_float(output2_data.get('dnca_tot_amt', 0))
 
                 # 총 평가/매입금액
-                eval_amt = self._safe_float(output2.get('tot_evlu_amt', 0))
-                purchase_amt = self._safe_float(output2.get('pchs_amt_smtl_amt', 0))
+                eval_amt = self._safe_float(output2_data.get('tot_evlu_amt', 0))
+                purchase_amt = self._safe_float(output2_data.get('pchs_amt_smtl_amt', 0))
 
                 # 보유종목 파싱
                 positions = []
