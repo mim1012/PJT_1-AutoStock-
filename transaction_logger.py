@@ -8,15 +8,25 @@ import pytz
 from typing import Dict, List, Optional
 
 class TransactionLogger:
-    def __init__(self, csv_dir: str = "transaction_logs"):
+    def __init__(self, csv_dir: str = "transaction_logs", prefix: str = ""):
         """
         거래기록 CSV 저장기 초기화
-        
+
         Args:
             csv_dir: CSV 파일 저장 디렉토리
+            prefix: 파일명 접두사 (예: "kr" -> "kr_trading_log_...")
         """
         self.csv_dir = csv_dir
-        self.et_tz = pytz.timezone('US/Eastern')
+        self.prefix = prefix
+
+        # 한국 시장용은 Asia/Seoul, 미국은 US/Eastern
+        if prefix == "kr":
+            self.tz = pytz.timezone('Asia/Seoul')
+        else:
+            self.tz = pytz.timezone('US/Eastern')
+
+        # 하위 호환성을 위해 et_tz도 유지
+        self.et_tz = self.tz
         
         # 디렉토리 생성
         if not os.path.exists(csv_dir):
@@ -50,8 +60,10 @@ class TransactionLogger:
     
     def _get_csv_filename(self) -> str:
         """현재 날짜로 CSV 파일명 생성"""
-        et_now = datetime.now(self.et_tz)
-        return f"trading_log_{et_now.strftime('%Y%m%d')}.csv"
+        now = datetime.now(self.tz)
+        if self.prefix:
+            return f"{self.prefix}_trading_log_{now.strftime('%Y%m%d')}.csv"
+        return f"trading_log_{now.strftime('%Y%m%d')}.csv"
     
     def _init_csv_file(self):
         """CSV 파일 초기화 (헤더 작성)"""
@@ -90,16 +102,16 @@ class TransactionLogger:
             notes: 추가 메모
         """
         try:
-            et_now = datetime.now(self.et_tz)
-            
+            now = datetime.now(self.tz)
+
             # 총 거래금액 계산
             total_amount = quantity * price if quantity and price else 0
-            
+
             # CSV 행 데이터
             row_data = [
-                et_now.isoformat(),  # timestamp
-                et_now.strftime('%Y-%m-%d'),  # date
-                et_now.strftime('%H:%M:%S'),  # time
+                now.isoformat(),  # timestamp
+                now.strftime('%Y-%m-%d'),  # date
+                now.strftime('%H:%M:%S'),  # time
                 action,
                 symbol,
                 quantity,

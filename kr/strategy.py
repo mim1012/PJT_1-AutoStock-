@@ -15,6 +15,7 @@ if project_root not in sys.path:
 from common.base_strategy import BaseStrategy
 from kr.config import KRConfig
 from kr.api_client import KRAPIClient
+from transaction_logger import TransactionLogger
 from config import PROFIT_THRESHOLD
 
 
@@ -53,6 +54,7 @@ class KRStrategy(BaseStrategy):
             check_previous_sell_price
         )
 
+        self.transaction_logger = TransactionLogger(prefix="kr")
         self._filter_stocks = {}
         self._watch_list = []
 
@@ -179,6 +181,12 @@ class KRStrategy(BaseStrategy):
                     # 사용 가능 금액 업데이트
                     available_cash -= (quantity * current_price)
 
+                    # 트랜잭션 로그
+                    self.transaction_logger.log_buy_order(
+                        symbol, quantity, current_price,
+                        result['order_id'], "하락률 상위 매수"
+                    )
+
             return {
                 'executed': len(executed_orders) > 0,
                 'orders': executed_orders,
@@ -244,6 +252,14 @@ class KRStrategy(BaseStrategy):
                         'profit_rate': profit_rate,
                         'order_id': result['order_id']
                     })
+
+                    # 트랜잭션 로그
+                    self.transaction_logger.log_sell_order(
+                        symbol, quantity, current_price,
+                        pos.get('profit_loss', 0),
+                        result['order_id'],
+                        f"목표 수익률 달성 ({profit_rate*100:.2f}%)"
+                    )
 
             return {
                 'executed': len(executed_orders) > 0,
