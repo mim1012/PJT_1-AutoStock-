@@ -1,13 +1,32 @@
 # -*- coding: utf-8 -*-
 """
 스케줄러 및 메인 실행 로직
+
+새 구조:
+- common/: 공통 베이스 클래스
+- us/: 미국 주식 전용 모듈
+- kr/: 한국 주식 전용 모듈 (Phase 2에서 활성화)
+
+사용법:
+- 미국 주식: python main.py (기본)
+- 한국 주식: python main.py --market kr (Phase 2에서 지원)
 """
 import schedule
 import time
 import logging
 from datetime import datetime, time as dt_time
 import pytz
-from strategy_pjt1 import TradingStrategy
+import argparse
+
+# 새 구조의 US 모듈 임포트 시도, 실패 시 기존 모듈 사용
+try:
+    from us.strategy import USStrategy as TradingStrategy
+    from us.config import USConfig
+    USE_NEW_STRUCTURE = True
+except ImportError:
+    from strategy_pjt1 import TradingStrategy
+    USE_NEW_STRUCTURE = False
+
 from order_manager import OrderManager
 from transaction_logger import TransactionLogger
 from config import *
@@ -294,9 +313,15 @@ class TradingScheduler:
 
 def main():
     """메인 실행 함수"""
+    # 명령줄 인수 파싱
+    parser = argparse.ArgumentParser(description='자동매매 시스템')
+    parser.add_argument('--market', type=str, default='us', choices=['us', 'kr'],
+                        help='시장 선택: us (미국, 기본값), kr (한국, Phase 2)')
+    args = parser.parse_args()
+
     # 로깅 설정 (로그 로테이션 적용)
     from logging.handlers import RotatingFileHandler
-    
+
     # 로테이션 파일 핸들러
     file_handler = RotatingFileHandler(
         LOG_FILE,
@@ -307,27 +332,41 @@ def main():
     file_handler.setFormatter(
         logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
     )
-    
+
     # 콘솔 핸들러
     console_handler = logging.StreamHandler()
     console_handler.setFormatter(
         logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
     )
-    
+
     # 루트 로거 설정
     logging.basicConfig(
         level=getattr(logging, LOG_LEVEL),
         handlers=[file_handler, console_handler]
     )
-    
+
     logger = logging.getLogger(__name__)
-    
+
     try:
         # 설정 확인
         if KIS_APP_KEY == "your_app_key_here":
             logger.error("API 키가 설정되지 않았습니다. config.py를 확인해주세요.")
             return
-        
+
+        # 시장 선택 확인
+        if args.market == 'kr':
+            logger.error("한국 주식 시장은 Phase 2에서 지원 예정입니다.")
+            print("Korean stock market support is coming in Phase 2.")
+            return
+
+        # 모듈 구조 표시
+        if USE_NEW_STRUCTURE:
+            logger.info("=== 새 모듈 구조 사용 (us/) ===")
+            print("Using new module structure (us/)")
+        else:
+            logger.warning("=== 기존 모듈 구조 사용 (레거시) ===")
+            print("Using legacy module structure")
+
         # 실전거래 모드 확인 및 표시
         if USE_PAPER_TRADING:
             logger.warning("Paper Trading Mode Active")
@@ -337,11 +376,11 @@ def main():
             print("REAL TRADING MODE ACTIVE!")
             print("WARNING: Real money trading in progress!")
             print("=" * 50)
-        
+
         # 스케줄러 시작
         scheduler = TradingScheduler()
         scheduler.start()
-        
+
     except Exception as e:
         logger.error(f"시스템 시작 오류: {e}")
 
