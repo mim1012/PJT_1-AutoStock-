@@ -315,8 +315,8 @@ def main():
     """메인 실행 함수"""
     # 명령줄 인수 파싱
     parser = argparse.ArgumentParser(description='자동매매 시스템')
-    parser.add_argument('--market', type=str, default='us', choices=['us', 'kr'],
-                        help='시장 선택: us (미국, 기본값), kr (한국, Phase 2)')
+    parser.add_argument('--market', type=str, default='us', choices=['us', 'kr', 'both'],
+                        help='시장 선택: us (미국, 기본값), kr (한국), both (듀얼)')
     args = parser.parse_args()
 
     # 로깅 설정 (로그 로테이션 적용)
@@ -353,10 +353,19 @@ def main():
             logger.error("API 키가 설정되지 않았습니다. config.py를 확인해주세요.")
             return
 
-        # 시장 선택 확인
+        # 시장 선택에 따라 다른 스케줄러 사용
         if args.market == 'kr':
-            logger.error("한국 주식 시장은 Phase 2에서 지원 예정입니다.")
-            print("Korean stock market support is coming in Phase 2.")
+            logger.info("한국 주식 시장 전용 모드로 시작합니다.")
+            from dual_market_scheduler import DualMarketScheduler
+            scheduler = DualMarketScheduler(markets=['kr'])
+            scheduler.start()
+            return
+
+        if args.market == 'both':
+            logger.info("듀얼 마켓 모드로 시작합니다 (US + KR)")
+            from dual_market_scheduler import DualMarketScheduler
+            scheduler = DualMarketScheduler(markets=['us', 'kr'])
+            scheduler.start()
             return
 
         # 모듈 구조 표시
