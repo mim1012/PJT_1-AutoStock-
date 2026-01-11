@@ -57,12 +57,13 @@ class KRStrategy(BaseStrategy):
         self.transaction_logger = TransactionLogger(prefix="kr")
         self._filter_stocks = {}
         self._watch_list = []
+        self._sectors = None  # 섹터 구조 (있을 경우)
 
         # 설정 파일 로드
         self._load_stock_config()
 
     def _load_stock_config(self):
-        """종목 설정 파일 로드"""
+        """종목 설정 파일 로드 (섹터 구조 및 기존 구조 모두 지원)"""
         try:
             config_file = KRConfig.STOCKS_CONFIG_FILE
 
@@ -73,28 +74,128 @@ class KRStrategy(BaseStrategy):
             with open(config_file, 'r', encoding='utf-8') as f:
                 config = json.load(f)
 
-            filter_section = config.get("filter_stocks", {})
-            if isinstance(filter_section, dict):
-                self._filter_stocks = {k: v for k, v in filter_section.items() if v}
-            elif isinstance(filter_section, list):
-                self._filter_stocks = {s: True for s in filter_section}
+            # 섹터 구조가 있는지 확인
+            if 'sectors' in config:
+                # 새로운 섹터 기반 구조
+                self._sectors = config['sectors']
+                self.logger.info(f"KR 설정 로드 (섹터 모드): {len(self._sectors)}개 섹터")
 
-            self._watch_list = config.get("watch_list", [])
+                # 섹터 정보 로깅
+                for sector_key, sector_info in self._sectors.items():
+                    sector_name = sector_info.get('name', sector_key)
+                    filter_count = len(sector_info.get('filter_stocks', {}))
+                    watch_count = len(sector_info.get('watch_list', []))
+                    self.logger.info(f"  - {sector_name}: filter={filter_count}종목, watch={watch_count}종목")
+            else:
+                # 기존 flat 구조 (하위 호환성)
+                filter_section = config.get("filter_stocks", {})
+                if isinstance(filter_section, dict):
+                    self._filter_stocks = {k: v for k, v in filter_section.items() if v}
+                elif isinstance(filter_section, list):
+                    self._filter_stocks = {s: True for s in filter_section}
 
-            self.logger.info(f"KR 설정 로드: filter={len(self._filter_stocks)}종목, watch={len(self._watch_list)}종목")
+                self._watch_list = config.get("watch_list", [])
+
+                self.logger.info(f"KR 설정 로드 (레거시 모드): filter={len(self._filter_stocks)}종목, watch={len(self._watch_list)}종목")
 
         except Exception as e:
             self.logger.error(f"설정 파일 로드 실패: {e}")
 
     def get_watch_list(self) -> List[str]:
+        """감시 종목 리스트 반환 (레거시 모드용)"""
         return self._watch_list
 
     def get_filter_stocks(self) -> Dict[str, bool]:
+        """필터 종목 반환 (레거시 모드용)"""
         return self._filter_stocks
+
+    def get_sectors(self) -> Optional[Dict[str, Any]]:
+        """섹터 구조 반환 (섹터 모드용)"""
+        return self._sectors
+
+    def _get_active_watch_list(self) -> List[str]:
+        """
+        활성 watch_list 반환
+        - 섹터 모드: 필터 조건을 통과한 섹터의 watch_list만 반환
+        - 레거시 모드: 전체 watch_list 반환
+
+        Returns:
+            list: 매수 가능 종목 리스트
+        """
+        # 섹터 모드인 경우
+        if self._sectors:
+            passing_sectors = self.get_passing_sectors()
+
+            if not passing_sectors:
+                self.logger.debug("통과한 섹터 없음 - 빈 watch_list 반환")
+                return []
+
+            # 통과한 섹터들의 watch_list 합치기
+            active_watch_list = []
+            for sector in passing_sectors:
+                sector_key = sector['sector_key']
+                sector_info = self._sectors.get(sector_key, {})
+                sector_watch_list = sector_info.get('watch_list', [])
+                active_watch_list.extend(sector_watch_list)
+
+            # 중복 제거
+            active_watch_list = list(set(active_watch_list))
+
+            self.logger.info(f"활성 watch_list: {len(active_watch_list)}종목 "
+                           f"(통과 섹터 {len(passing_sectors)}개)")
+            return active_watch_list
+        else:
+            # 레거시 모드: 전체 watch_list 반환
+            return self._watch_list
 
     def _get_previous_close(self, symbol: str) -> Optional[float]:
         """전일 종가 조회"""
         return self.api_client.get_previous_close(symbol)
+
+    def get_top_declining_stocks(self, count: int = 3) -> List[Dict[str, Any]]:
+        """
+        하락률 상위 종목 조회 (섹터 필터 고려)
+
+        섹터 모드인 경우, 통과한 섹터의 watch_list만 대상으로 조회
+
+        Args:
+            count: 조회할 종목 수
+
+        Returns:
+            list: [{'symbol': str, 'decline_rate': float, 'current_price': float}, ...]
+        """
+        # 활성 watch_list 사용 (섹터 필터 적용됨)
+        watch_list = self._get_active_watch_list()
+
+        if not watch_list:
+            self.logger.warning("활성 watch_list가 비어있음")
+            return []
+
+        declining_stocks = []
+
+        for symbol in watch_list:
+            try:
+                current_price = self.api_client.get_current_price(symbol)
+                previous_close = self._get_previous_close(symbol)
+
+                if current_price is None or previous_close is None:
+                    continue
+
+                if previous_close > 0:
+                    decline_rate = (previous_close - current_price) / previous_close
+                    declining_stocks.append({
+                        'symbol': symbol,
+                        'decline_rate': decline_rate,
+                        'current_price': current_price,
+                        'previous_close': previous_close
+                    })
+            except Exception as e:
+                self.logger.debug(f"종목 {symbol} 하락률 계산 오류: {e}")
+                continue
+
+        # 하락률 내림차순 정렬 후 상위 N개 반환
+        declining_stocks.sort(key=lambda x: x['decline_rate'], reverse=True)
+        return declining_stocks[:count]
 
     def should_buy(self, symbol: str) -> bool:
         """매수 조건 확인"""

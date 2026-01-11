@@ -114,9 +114,20 @@ class BaseStrategy(ABC):
         """필터 종목 딕셔너리 반환"""
         pass
 
+    def get_sectors(self) -> Optional[Dict[str, Any]]:
+        """
+        섹터 구조 반환 (섹터별 필터링 사용 시)
+
+        Returns:
+            dict: 섹터 정보 또는 None (섹터 구조 미사용 시)
+        """
+        return None
+
     def check_filter_condition(self) -> bool:
         """
-        필터 조건 확인 (모든 필터 종목이 상승 중인지)
+        필터 조건 확인
+        - 섹터 구조가 있으면: 섹터별 OR 로직 (어느 섹터든 하나 통과하면 OK)
+        - 섹터 구조가 없으면: 기존 AND 로직 (모든 필터 종목 상승 필요)
 
         Returns:
             True: 필터 조건 충족 (매수 가능)
@@ -126,6 +137,12 @@ class BaseStrategy(ABC):
             self.logger.debug("필터 체크 비활성화됨")
             return True
 
+        # 섹터 구조가 있으면 섹터별 OR 필터 로직 사용
+        sectors = self.get_sectors()
+        if sectors:
+            return self._check_sector_filter_condition(sectors)
+
+        # 기존 방식 (AND 로직)
         filter_stocks = self.get_filter_stocks()
 
         if not filter_stocks:
@@ -153,6 +170,85 @@ class BaseStrategy(ABC):
 
         self.logger.info("필터 조건 충족 - 모든 필터 종목 상승 중")
         return True
+
+    def _check_sector_filter_condition(self, sectors: Dict[str, Any]) -> bool:
+        """
+        섹터별 OR 필터 조건 확인
+        - 각 섹터 내부: OR 로직 (어느 필터 종목이든 하나 상승하면 해당 섹터 통과)
+        - 섹터 간: OR 로직 (어느 섹터든 하나 통과하면 매수 허용)
+
+        Args:
+            sectors: 섹터 구조 딕셔너리
+
+        Returns:
+            True: 하나 이상의 섹터가 필터 조건 통과
+            False: 모든 섹터가 필터 조건 미충족
+        """
+        passing_sectors = []
+
+        for sector_key, sector_info in sectors.items():
+            sector_name = sector_info.get('name', sector_key)
+            filter_stocks = sector_info.get('filter_stocks', {})
+
+            if not filter_stocks:
+                self.logger.debug(f"섹터 {sector_name}: 필터 종목 없음 - 스킵")
+                continue
+
+            # 섹터 내부 OR 로직: 하나라도 상승하면 해당 섹터 통과
+            sector_passed = False
+            rising_stocks = []
+
+            for symbol in filter_stocks.keys():
+                try:
+                    current_price = self.api_client.get_current_price(symbol)
+                    previous_close = self._get_previous_close(symbol)
+
+                    if current_price is None or previous_close is None:
+                        self.logger.warning(f"섹터 {sector_name} 필터 종목 {symbol} 가격 조회 실패")
+                        continue
+
+                    if current_price > previous_close:
+                        rising_stocks.append(symbol)
+                        sector_passed = True
+                        self.logger.debug(f"섹터 {sector_name}: {symbol} 상승 중 "
+                                        f"(현재: {current_price}, 전일: {previous_close})")
+
+                except Exception as e:
+                    self.logger.error(f"섹터 {sector_name} 필터 종목 {symbol} 확인 오류: {e}")
+                    continue
+
+            if sector_passed:
+                passing_sectors.append({
+                    'sector_key': sector_key,
+                    'sector_name': sector_name,
+                    'rising_stocks': rising_stocks
+                })
+                self.logger.info(f"✓ 섹터 {sector_name} 통과: {len(rising_stocks)}개 종목 상승 중")
+            else:
+                self.logger.debug(f"✗ 섹터 {sector_name} 미통과: 모든 필터 종목 하락/보합")
+
+        # 섹터 간 OR 로직: 하나 이상의 섹터가 통과하면 OK
+        if passing_sectors:
+            self.logger.info(f"필터 조건 충족 - {len(passing_sectors)}개 섹터 통과")
+            # 통과한 섹터 정보 저장 (매수 전략에서 활용)
+            self._passing_sectors = passing_sectors
+            return True
+        else:
+            self.logger.info("필터 조건 미충족 - 모든 섹터 미통과")
+            self.stats['filter_blocks'] += 1
+            self._passing_sectors = []
+            return False
+
+    def get_passing_sectors(self) -> List[Dict[str, Any]]:
+        """
+        필터 조건을 통과한 섹터 리스트 반환
+
+        Returns:
+            list: [{'sector_key': str, 'sector_name': str, 'rising_stocks': list}, ...]
+        """
+        if not hasattr(self, '_passing_sectors'):
+            return []
+        return self._passing_sectors
 
     def _get_previous_close(self, symbol: str) -> Optional[float]:
         """
