@@ -258,9 +258,11 @@ class KRAPIClient(BaseAPIClient):
         """
         주문 실행 (Phase 2에서 상세 구현)
 
-        한국 주식용 TR:
-        - 매수: TTTC0802U (실전) / VTTC0802U (모의)
-        - 매도: TTTC0801U (실전) / VTTC0801U (모의)
+        한국 주식용 TR (2024년 신규 TR_ID 적용):
+        - 매수: TTTC0012U (실전) / VTTC0012U (모의)
+        - 매도: TTTC0011U (실전) / VTTC0011U (모의)
+
+        ※ 구 TR_ID (TTTC0802U/0801U)는 사전고지 없이 차단될 수 있음
         """
         try:
             access_token = self.token_manager.get_valid_token()
@@ -273,11 +275,11 @@ class KRAPIClient(BaseAPIClient):
             base_url = KRConfig.get_api_url()
             url = f"{base_url}/uapi/domestic-stock/v1/trading/order-cash"
 
-            # TR ID 설정
+            # TR ID 설정 (2024년 신규 TR_ID)
             if KRConfig.is_paper_trading():
-                tr_id = "VTTC0802U" if side.lower() == 'buy' else "VTTC0801U"
+                tr_id = "VTTC0012U" if side.lower() == 'buy' else "VTTC0011U"
             else:
-                tr_id = "TTTC0802U" if side.lower() == 'buy' else "TTTC0801U"
+                tr_id = "TTTC0012U" if side.lower() == 'buy' else "TTTC0011U"
 
             headers = {
                 "content-type": "application/json",
