@@ -1,0 +1,36 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -m py_compile:*)",
+      "Bash(python:*)",
+      "Bash(find:*)",
+      "Bash(ls:*)",
+      "Bash(git rm:*)",
+      "Bash(git add:*)",
+      "Bash(git reset:*)",
+      "Bash(git commit -m \"$(cat <<''EOF''\nrefactor: 코드 정리 및 venv/캐시 파일 제거\n\n- venv 폴더 git 추적에서 제거 (.gitignore 적용)\n- __pycache__ 폴더 git 추적에서 제거\n- 불필요한 테스트 파일 삭제\n- 배치 파일 정리\n- 핵심 전략/API 로직 업데이트\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(git push:*)",
+      "Bash(git pull:*)",
+      "Bash(git stash:*)",
+      "Bash(git fetch:*)",
+      "Bash(git checkout:*)",
+      "Bash(git commit:*)",
+      "Bash(dir:*)",
+      "Bash(wc:*)",
+      "Bash(diff:*)",
+      "Bash(echo:*)",
+      "Bash(codex exec:*)",
+      "Bash(iconv:*)",
+      "Bash(cat:*)",
+      "Bash(powershell -Command \"Get-Content ''start_main_system_cmd.bat''\")",
+      "Bash(powershell -Command:*)",
+      "Bash(del \"todo.md\" \"프로젝트 완료 요약.md\" \"한국투자증권 자동매매 시스템.md\" \"CHANGELOG_24h_optimization.md\" \"BUGFIX_REPORT_20260107.md\" \"TOKEN_REFRESH_FIX.md\" \"US_SECTOR_UPGRADE_PLAN.md\" \"KR_TR_ID_UPDATE.md\" \"TEST_REPORT_KR_TR_ID.md\" \"EQw00356_오류_해결_가이드.md\" \"운영시간_관리_상세.md\" \"조건_충족_비교_예시.md\" \"SECTOR_FILTER_GUIDE.md\")",
+      "Bash(del \"overseas_stock\\README_24H.md\")",
+      "SlashCommand(/bmad:bmm:workflows:code-review)",
+      "Bash(git init:*)",
+      "Bash(git remote add:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
