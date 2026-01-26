@@ -52,7 +52,7 @@ class KRConfig:
     TOKEN_FILE_PREFIX = "kr"
 
     # mojito2 토큰 파일 (한국 주식용 - Phase 3에서 사용)
-    MOJITO_TOKEN_FILE = "kr_token.dat"
+    MOJITO_TOKEN_FILE = "kr_krs_token.dat"
 
     # 한국 주식 특수 설정
     # 호가 단위 (가격대별)
@@ -73,6 +73,10 @@ class KRConfig:
 
     # 가격 제한 (전일 종가 대비)
     PRICE_LIMIT_RATE = 0.30  # ±30%
+
+    # 손절 설정 (한국 시장 전용)
+    STOP_LOSS_THRESHOLD = -0.10      # 손절 기준 (-10%)
+    STOP_LOSS_COOLDOWN_DAYS = 50     # 손절 후 재매수 금지 기간 (50일)
 
     @classmethod
     def get_api_url(cls) -> str:

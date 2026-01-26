@@ -138,7 +138,8 @@ class BaseTokenManager(ABC):
 
         except Exception as e:
             self.logger.error(f"[TOKEN] can_issue_token 오류: {e} - 안전을 위해 재발급 허용")
-            return True
+            # Fail-safe: 오류 발생 시 재발급 차단 (24시간 제한 우회 방지)
+            return False
 
     def issue_new_token(self) -> str:
         """새 토큰 발급"""
