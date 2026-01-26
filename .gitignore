@@ -1,0 +1,45 @@
+# Token files (MUST NOT commit - Security Critical)
+*_api_token.json
+*_token_issued_at.dat
+*_krs_token.dat
+us_token.dat
+kr_token.dat
+api_token.json
+token_issued_at.dat
+
+# Environment files
+.env
+.env.local
+config.py
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+.venv/
+ENV/
+*.egg-info/
+dist/
+build/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+logs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Trading data
+*_trading_log.csv
+*.xlsx
