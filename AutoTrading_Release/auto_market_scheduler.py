@@ -264,6 +264,14 @@ def main():
         handlers=[file_handler, console_handler]
     )
 
+    # 시작 전 설정 검증 및 확인
+    from startup_validator import run_startup_validation
+    import sys
+
+    if not run_startup_validation(check_kr=True, check_us=True):
+        logging.info("사용자가 시작을 취소했습니다.")
+        sys.exit(0)
+
     # 자동 시장 전환 스케줄러 시작
     scheduler = AutoMarketScheduler()
     scheduler.start()

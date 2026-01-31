@@ -367,8 +367,17 @@ def main():
             logger.error("API 키가 설정되지 않았습니다. config.py를 확인해주세요.")
             return
 
+        # 시작 전 설정 검증 (시장 선택에 따라)
+        from startup_validator import run_startup_validation
+        import sys
+
         # 시장 선택에 따라 다른 스케줄러 사용
         if args.market == 'kr':
+            # 한국 주식만 검증
+            if not run_startup_validation(check_kr=True, check_us=False):
+                logger.info("사용자가 시작을 취소했습니다.")
+                sys.exit(0)
+
             logger.info("한국 주식 시장 전용 모드로 시작합니다.")
             from dual_market_scheduler import DualMarketScheduler
             scheduler = DualMarketScheduler(markets=['kr'])
@@ -376,11 +385,21 @@ def main():
             return
 
         if args.market == 'both':
+            # 미국 + 한국 모두 검증
+            if not run_startup_validation(check_kr=True, check_us=True):
+                logger.info("사용자가 시작을 취소했습니다.")
+                sys.exit(0)
+
             logger.info("듀얼 마켓 모드로 시작합니다 (US + KR)")
             from dual_market_scheduler import DualMarketScheduler
             scheduler = DualMarketScheduler(markets=['us', 'kr'])
             scheduler.start()
             return
+
+        # 미국 주식만 검증 (기본값)
+        if not run_startup_validation(check_kr=False, check_us=True):
+            logger.info("사용자가 시작을 취소했습니다.")
+            sys.exit(0)
 
         # 모듈 구조 표시
         if USE_NEW_STRUCTURE:
