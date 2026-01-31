@@ -28,7 +28,18 @@
       "Bash(del \"overseas_stock\\README_24H.md\")",
       "SlashCommand(/bmad:bmm:workflows:code-review)",
       "Bash(git init:*)",
-      "Bash(git remote add:*)"
+      "Bash(git remote add:*)",
+      "Bash(mkdir:*)",
+      "Bash(bash:*)",
+      "Bash(tree:*)",
+      "Bash(cp:*)",
+      "Bash(timeout 5 python:*)",
+      "Bash(ren:*)",
+      "Bash(findstr:*)",
+      "Bash(copy:*)",
+      "Bash(del \"AutoTrading_Release\\kr_token_issued_at.dat\" \"AutoTrading_Release\\us_token_issued_at.dat\")",
+      "Bash(del \"AutoTrading_Release\\nul\")",
+      "Bash(rm:*)"
     ],
     "deny": [],
     "ask": []

@@ -1,0 +1,8 @@
+{
+    "filter_stocks": {
+        "NVDA": true,
+        "AMZN": true,
+        "MSFT": true
+    },
+    "watch_list": ["SOUN", "RGTI", "SMCI", "QUBT", "SES", "SMR", "QSI", "REKR", "SNOW", "INOD", "PDYN", "ARQQ", "HOTH"]
+}

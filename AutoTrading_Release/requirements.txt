@@ -1,0 +1,23 @@
+# 한국투자증권 자동매매 시스템 v4.7 - 필수 패키지
+
+# HTTP 요청
+requests==2.31.0
+
+# 시간대 처리
+pytz==2023.3
+
+# 데이터 분석
+pandas==2.0.3
+numpy==1.24.3
+
+# 환경 변수 관리
+python-dotenv==1.0.0
+
+# 웹소켓 (실시간 시세용)
+websocket-client==1.6.1
+
+# 스케줄링
+schedule==1.2.2
+
+# 한국투자증권 API 라이브러리 (mojito2)
+# 설치: pip install mojito2
