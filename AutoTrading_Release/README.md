@@ -72,8 +72,8 @@ USE_PAPER_TRADING=True
 
 ```json
 {
-  "AAPL": {"exchange": "NASDAQ"},
-  "TSLA": {"exchange": "NASDAQ"},
+  "NVDA": {"exchange": "NASDAQ"},
+  "AMZN": {"exchange": "NASDAQ"},
   "MSFT": {"exchange": "NASDAQ"}
 }
 ```

@@ -168,7 +168,7 @@ class BaseStrategy(ABC):
                     continue
 
                 if current_price <= previous_close:
-                    self.logger.info(f"필터 조건 미충족: {symbol} 하락 중 "
+                    self.logger.info(f"필터 조건 미충족: {symbol} 하락/보합 중 "
                                    f"(현재: {current_price}, 전일: {previous_close})")
                     self.stats['filter_blocks'] += 1
                     return False
