@@ -39,7 +39,18 @@
       "Bash(copy:*)",
       "Bash(del \"AutoTrading_Release\\kr_token_issued_at.dat\" \"AutoTrading_Release\\us_token_issued_at.dat\")",
       "Bash(del \"AutoTrading_Release\\nul\")",
-      "Bash(rm:*)"
+      "Bash(rm:*)",
+      "Bash(pip install:*)",
+      "Bash(Remove-Item \".env\" -ErrorAction SilentlyContinue)",
+      "Bash(Remove-Item \"*_api_token.json\" -ErrorAction SilentlyContinue)",
+      "Bash(Remove-Item \"*_token_issued_at.dat\" -ErrorAction SilentlyContinue)",
+      "Bash(Remove-Item \"*_krs_token.dat\" -ErrorAction SilentlyContinue)",
+      "Bash(Remove-Item \"*.log\" -ErrorAction SilentlyContinue)",
+      "Bash(Write-Host \"1단계: 보안 파일 제거 완료\")",
+      "Bash(del \"\\\\?\\\\D:\\\\Project\\\\PJT_1-AutoStock-\\\\AutoTrading_Release\\\\nul\")",
+      "Bash(del \"\\\\?\\\\D:\\\\Project\\\\PJT_1-AutoStock-\\\\AutoTrading_Release\\\\transaction_logs\\\\nul\")",
+      "Bash(cmd /c \"del /f /q \"\"\\\\?\\\\D:\\\\Project\\\\PJT_1-AutoStock-\\\\AutoTrading_Release\\\\nul\"\"\")",
+      "Bash(cmd /c \"del /f /q \"\"\\\\?\\\\D:\\\\Project\\\\PJT_1-AutoStock-\\\\AutoTrading_Release\\\\transaction_logs\\\\nul\"\"\")"
     ],
     "deny": [],
     "ask": []

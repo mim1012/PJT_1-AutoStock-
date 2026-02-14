@@ -1,0 +1,83 @@
+# ============================================
+# 한국투자증권 자동매매 시스템 - Git 무시 목록
+# ============================================
+
+# ===== 보안 중요 파일 (절대 커밋 금지!) =====
+.env
+config_secret.py
+secret.json
+
+# API 토큰 파일
+*_api_token.json
+*_token_issued_at.dat
+*_krs_token.dat
+us_token.dat
+kr_token.dat
+api_token.json
+token.dat
+
+# ===== 로그 파일 =====
+*.log
+*.log.*
+logs/
+trading.log*
+
+# ===== Python 관련 =====
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# ===== 가상 환경 =====
+venv/
+ENV/
+env/
+.venv
+
+# ===== IDE 설정 =====
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# ===== 테스트 및 커버리지 =====
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.hypothesis/
+
+# ===== 임시 파일 =====
+*.tmp
+*.bak
+*.backup
+temp/
+tmp/
+
+# ===== 운영 데이터 =====
+*.db
+*.sqlite
+*.sqlite3
+
+# ===== 개인 설정 =====
+my_config.json
+personal_settings.json

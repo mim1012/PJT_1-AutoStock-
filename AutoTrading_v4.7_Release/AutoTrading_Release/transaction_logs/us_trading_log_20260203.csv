@@ -1,0 +1,4 @@
+﻿timestamp,date,time,action,symbol,quantity,price,total_amount,order_type,status,profit_loss,profit_rate,balance_cash,balance_total,notes
+2026-02-03T09:45:35.327023-05:00,2026-02-03,09:45:35,strategy_sell,STRATEGY,0,0,0,strategy,started,,,,,매도 조건 검사 시작
+2026-02-03T09:45:36.022514-05:00,2026-02-03,09:45:36,strategy_sell,STRATEGY,0,0,0,strategy,completed,,,,,매도 조건 검사 완료 - 보유 종목 없음
+2026-02-03T09:45:38.024544-05:00,2026-02-03,09:45:38,strategy_buy,STRATEGY,0,0,0,strategy,started,,,,,매수 조건 검사 시작
