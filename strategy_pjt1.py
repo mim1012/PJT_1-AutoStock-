@@ -20,6 +20,18 @@ class TradingStrategy:
         self.last_buy_prices = {}
         self.filter_stocks, self.watch_list = self.load_stock_config()
 
+        # StopLossTracker 초기화 (미국 시장 전용)
+        from stop_loss_tracker import StopLossTracker
+        from us.config import USConfig
+
+        self.stop_loss_tracker = StopLossTracker(
+            blacklist_file="us_stop_loss_blacklist.json",
+            cooldown_days=USConfig.STOP_LOSS_COOLDOWN_DAYS,
+            timezone=USConfig.TIMEZONE,
+            transaction_logger=self.transaction_logger
+        )
+        self.stop_loss_threshold = USConfig.STOP_LOSS_THRESHOLD
+
     def load_stock_config(self):
         try:
             with open(STOCKS_CONFIG_FILE, 'r') as f:
@@ -263,6 +275,12 @@ class TradingStrategy:
         """매수 조건 확인"""
         from config import CHECK_PREVIOUS_SELL_PRICE
 
+        # 블랙리스트 체크 (최우선)
+        if self.stop_loss_tracker.is_blocked(symbol):
+            remaining = self.stop_loss_tracker.get_remaining_days(symbol)
+            self.logger.info(f"{symbol}: 손절 후 재매수 금지 중 (남은 기간: {remaining}일)")
+            return False
+
         # 이전 매도가격 체크 옵션이 OFF인 경우
         if not CHECK_PREVIOUS_SELL_PRICE:
             self.logger.info(f"{symbol}: 매수 조건 충족 (이전 매도가격 체크 OFF)")
@@ -297,12 +315,12 @@ class TradingStrategy:
                 self.logger.critical("=== 매수 전략 실행 시작 (실전거래 모드) ===")
                 print("🔴 실전 매수 전략 실행 중...")
 
-            self.transaction_logger.log_strategy_execution("buy", "started", "매수 전략 실행 시작")
-            
+            self.transaction_logger.log_strategy_execution("buy", "started", "매수 조건 검사 시작")
+
             self.monitor_watch_list_trend()
             if not self.check_filter_condition():
                 self.logger.info("필터 미충족 → 매수 중단")
-                self.transaction_logger.log_strategy_execution("buy", "skipped", "필터 조건 미충족")
+                self.transaction_logger.log_strategy_execution("buy", "skipped", "매수 조건 검사 완료 - 필터 조건 미충족")
                 return
 
             balance = self.api_client.get_account_balance()
@@ -314,10 +332,10 @@ class TradingStrategy:
             # 잔고 기록 저장
             self.transaction_logger.log_balance_check(balance)
             
-            available_cash = balance["cash"]
+            available_cash = balance.get("available_cash", balance.get("cash", 0))
             if available_cash < 100:
                 self.logger.info(f"예수금 부족 (${available_cash:.2f}) → 매수 생략")
-                self.transaction_logger.log_strategy_execution("buy", "skipped", f"예수금 부족: ${available_cash:.2f}")
+                self.transaction_logger.log_strategy_execution("buy", "skipped", f"매수 조건 검사 완료 - 예수금 부족: ${available_cash:.2f}")
                 return
 
             self.logger.info(f"예수금: ${available_cash:.2f}")
@@ -373,7 +391,7 @@ class TradingStrategy:
 
                     balance = self.api_client.get_account_balance()
                     if balance:
-                        available_cash = balance["cash"]
+                        available_cash = balance.get("available_cash", balance.get("cash", 0))
                         self.logger.info(f"잔액 업데이트 완료: ${available_cash:.2f}")
                     else:
                         # 잔액 조회 실패시 예상 잔액으로 계산
@@ -384,11 +402,11 @@ class TradingStrategy:
                     self.logger.error(f"{symbol}: 매수 주문 실패")
             
             if buy_orders_placed > 0:
-                self.logger.info(f"매수 전략 완료: {buy_orders_placed}건 주문 성공")
-                self.transaction_logger.log_strategy_execution("buy", "completed", f"{buy_orders_placed}건 매수 주문 성공")
+                self.logger.info(f"매수 조건 검사 완료: {buy_orders_placed}건 주문 실행")
+                self.transaction_logger.log_strategy_execution("buy", "completed", f"매수 조건 검사 완료 - {buy_orders_placed}건 매수 주문 실행")
             else:
-                self.logger.info("매수 전략 완료: 주문할 종목 없음")
-                self.transaction_logger.log_strategy_execution("buy", "completed", "주문할 종목 없음")
+                self.logger.info("매수 조건 검사 완료: 주문할 종목 없음")
+                self.transaction_logger.log_strategy_execution("buy", "completed", "매수 조건 검사 완료 - 주문할 종목 없음")
                 
         except Exception as e:
             self.logger.exception("매수 전략 실패")
@@ -415,47 +433,31 @@ class TradingStrategy:
         except Exception:
             return None  # 타입 일관성: 'N/A' 대신 None 반환
 
-    def should_sell(self, symbol, current_price):
+    def should_sell(self, symbol, current_price, profit_rate):
         """
-        매도 조건 확인 (API에서 실시간 평균단가 조회)
-        - 메모리에만 의존하지 않고 API에서 실제 평균단가 확인
-        - 프로그램 재시작 후에도 정확한 판단 가능
+        매도 조건 확인 (개선된 시그니처 - API 중복 호출 방지)
+
+        Args:
+            symbol: 종목 코드
+            current_price: 현재가
+            profit_rate: 수익률 (소수, 예: 0.015 = 1.5%)
+
+        Returns:
+            True: 매도 조건 충족 (익절 또는 손절)
+            False: 매도 조건 미충족
         """
-        # 먼저 API에서 현재 보유 종목의 평균단가 조회
-        balance = self.api_client.get_account_balance()
-        if balance and balance.get('positions'):
-            for position in balance['positions']:
-                if position['symbol'] == symbol:
-                    avg_price = float(position.get('avg_price', 0))
-                    if avg_price > 0:
-                        # API에서 조회한 평균단가 기준으로 판단
-                        # 매도 조건: 현재가 >= 평균단가 * 1.015 (1.5% 수익)
-                        target_price = avg_price * 1.015
-                        profit_rate = (current_price - avg_price) / avg_price
-
-                        if current_price >= target_price:
-                            self.logger.info(f"{symbol}: 매도 조건 충족 (현재가: ${current_price:.2f} >= 목표가: ${target_price:.2f}, 수익률: {profit_rate:.2%})")
-                            return True
-                        else:
-                            self.logger.info(f"{symbol}: 매도 조건 불충족 (현재가: ${current_price:.2f} < 목표가: ${target_price:.2f}, 수익률: {profit_rate:.2%})")
-                            return False
-
-        # API에서 못 찾으면 메모리 기준으로 폴백
-        if symbol not in self.last_buy_prices:
-            self.logger.info(f"{symbol}: 매도 조건 충족 (이전 매수 기록 없음, API 조회 실패)")
+        # 익절 조건 (1.5% 수익률)
+        if profit_rate >= 0.015:
+            self.logger.info(f"{symbol}: 익절 조건 충족 (현재가: ${current_price:.2f}, 수익률: {profit_rate:.2%})")
             return True
 
-        # 메모리의 매수가 기준 1.5% 수익 확인
-        buy_price = self.last_buy_prices[symbol]
-        target_price = buy_price * 1.015
-        profit_rate = (current_price - buy_price) / buy_price
-
-        if current_price >= target_price:
-            self.logger.info(f"{symbol}: 매도 조건 충족 (현재가: ${current_price:.2f} >= 목표가: ${target_price:.2f}, 수익률: {profit_rate:.2%})")
+        # 손절 조건
+        if profit_rate <= self.stop_loss_threshold:
+            self.logger.warning(f"{symbol}: 손절 조건 충족 (현재가: ${current_price:.2f}, 수익률: {profit_rate:.2%})")
             return True
-        else:
-            self.logger.info(f"{symbol}: 매도 조건 불충족 (현재가: ${current_price:.2f} < 목표가: ${target_price:.2f}, 수익률: {profit_rate:.2%})")
-            return False
+
+        self.logger.info(f"{symbol}: 매도 조건 불충족 (현재가: ${current_price:.2f}, 수익률: {profit_rate:.2%})")
+        return False
 
     def execute_sell_strategy(self):
         try:
@@ -473,12 +475,12 @@ class TradingStrategy:
                 self.logger.critical("=== 매도 전략 실행 시작 (실전거래 모드) ===")
                 print("🔴 실전 매도 전략 실행 중...")
 
-            self.transaction_logger.log_strategy_execution("sell", "started", "매도 전략 실행 시작")
-            
+            self.transaction_logger.log_strategy_execution("sell", "started", "매도 조건 검사 시작")
+
             balance = self.api_client.get_account_balance()
             if balance is None:
                 self.logger.error("잔고 조회 실패")
-                self.transaction_logger.log_strategy_execution("sell", "error", "잔고 조회 실패")
+                self.transaction_logger.log_strategy_execution("sell", "error", "매도 조건 검사 완료 - 잔고 조회 실패")
                 return
             
             # 잔고 기록 저장
@@ -487,10 +489,11 @@ class TradingStrategy:
             positions = balance.get("positions", [])
             if not positions:
                 self.logger.info("보유 종목 없음")
-                self.transaction_logger.log_strategy_execution("sell", "completed", "보유 종목 없음")
+                self.transaction_logger.log_strategy_execution("sell", "completed", "매도 조건 검사 완료 - 보유 종목 없음")
                 return
 
             self.logger.info(f"보유 종목 수: {len(positions)}개")
+            stop_loss_candidates = []
             high_profit = []
             other = []
 
@@ -507,7 +510,10 @@ class TradingStrategy:
                 profit = self.calculate_profit_rate(symbol, current, avg_buy)
                 self.logger.info(f"{symbol}: 수익률 {profit:.2%} (평균단가: ${avg_buy:.2f}, 현재가: ${current:.2f})")
 
-                if profit >= PROFIT_THRESHOLD:
+                if profit <= self.stop_loss_threshold:
+                    stop_loss_candidates.append((symbol, quantity, current, profit, avg_buy))
+                    self.logger.warning(f"{symbol}: 손절 매도 대상 (수익률: {profit:.2%}, 임계값: {self.stop_loss_threshold:.2%})")
+                elif profit >= PROFIT_THRESHOLD:
                     high_profit.append((symbol, quantity, current, profit, avg_buy))
                     self.logger.info(f"{symbol}: 고수익 매도 대상 (수익률: {profit:.2%})")
                 else:
@@ -515,27 +521,32 @@ class TradingStrategy:
                     self.logger.info(f"{symbol}: 일반 매도 대상 (수익률: {profit:.2%})")
 
             sell_orders_placed = 0
-            
-            # 고수익 매도 처리 (가장 수익률이 높은 종목 1개만)
-            if high_profit:
-                high_profit.sort(key=lambda x: x[3], reverse=True)
-                symbol, qty, price, rate, avg_buy = high_profit[0]
-                if self.should_sell(symbol, price):
-                    # 가격을 소수점 2자리로 반올림 (API 요구사항)
+
+            # [우선순위 1] 손절 매도 처리 (손실률이 가장 큰 종목부터)
+            if stop_loss_candidates:
+                stop_loss_candidates.sort(key=lambda x: x[3])  # 손실률 큰 순 (가장 낮은 profit 먼저)
+                self.logger.warning(f"=== 손절 대상 {len(stop_loss_candidates)}종목 감지 ===")
+                for symbol, qty, price, rate, avg_buy in stop_loss_candidates:
                     rounded_price = round(price, 2)
-                    self.logger.info(f"고수익 매도 시도: {symbol} {qty}주 @ ${rounded_price:.2f} (수익률: {rate:.2%})")
+                    self.logger.warning(f"손절 매도 시도: {symbol} {qty}주 @ ${rounded_price:.2f} (수익률: {rate:.2%})")
                     if not USE_PAPER_TRADING:
-                        print(f"🔴 실전 고수익 매도: {symbol} {qty}주 @ ${rounded_price:.2f} (수익률: {rate:.2%})")
-                    
+                        print(f"🔴 실전 손절 매도: {symbol} {qty}주 @ ${rounded_price:.2f} (수익률: {rate:.2%})")
+
                     order_id = self.api_client.place_order(symbol, qty, rounded_price, "sell")
                     if order_id:
-                        self.last_sell_prices[symbol] = rounded_price
                         sell_orders_placed += 1
+                        self.stop_loss_tracker.add_stop_loss(
+                            symbol=symbol,
+                            avg_price=avg_buy,
+                            loss_price=price,
+                            loss_rate=rate
+                        )
+                        notes = f"stop_loss_triggered - 수익률 {rate:.2%}"
+
                         if not USE_PAPER_TRADING:
-                            print(f"✅ 실전 고수익 매도 완료: {symbol} {qty}주 @ ${price:.2f} (수익률: {rate:.2%})")
-                        self.logger.info(f"고수익 매도 완료: {symbol} {qty}주 @ ${price:.2f} (수익률: {rate:.2%})")
-                        
-                        # 매도 주문 기록 저장
+                            print(f"✅ 실전 손절 매도 완료: {symbol} {qty}주 @ ${price:.2f} (수익률: {rate:.2%})")
+                        self.logger.warning(f"손절 매도 완료: {symbol} {qty}주 @ ${price:.2f} (수익률: {rate:.2%})")
+
                         profit_loss = (price - avg_buy) * qty
                         self.transaction_logger.log_sell_order(
                             symbol=symbol,
@@ -545,35 +556,74 @@ class TradingStrategy:
                             profit_rate=rate,
                             order_type="market",
                             status="filled",
-                            notes=f"고수익 매도 - 수익률 {rate:.2%} (임계값: {PROFIT_THRESHOLD:.1%})"
+                            notes=notes
+                        )
+                        break  # 1 sell per cycle
+                    else:
+                        self.logger.error(f"{symbol}: 손절 매도 주문 실패")
+            else:
+                self.logger.info("손절 대상 종목 없음")
+
+            # [우선순위 2] 고수익 매도 처리 (손절 매도가 없을 때만, 가장 수익률이 높은 종목 1개)
+            if sell_orders_placed == 0 and high_profit:
+                high_profit.sort(key=lambda x: x[3], reverse=True)
+                symbol, qty, price, rate, avg_buy = high_profit[0]
+                if self.should_sell(symbol, price, rate):
+                    rounded_price = round(price, 2)
+                    self.logger.info(f"고수익 매도 시도: {symbol} {qty}주 @ ${rounded_price:.2f} (수익률: {rate:.2%})")
+                    if not USE_PAPER_TRADING:
+                        print(f"🔴 실전 고수익 매도: {symbol} {qty}주 @ ${rounded_price:.2f} (수익률: {rate:.2%})")
+
+                    order_id = self.api_client.place_order(symbol, qty, rounded_price, "sell")
+                    if order_id:
+                        sell_orders_placed += 1
+                        self.last_sell_prices[symbol] = rounded_price
+                        notes = f"고수익 매도 - 수익률 {rate:.2%} (임계값: {PROFIT_THRESHOLD:.1%})"
+
+                        if not USE_PAPER_TRADING:
+                            print(f"✅ 실전 고수익 매도 완료: {symbol} {qty}주 @ ${price:.2f} (수익률: {rate:.2%})")
+                        self.logger.info(f"고수익 매도 완료: {symbol} {qty}주 @ ${price:.2f} (수익률: {rate:.2%})")
+
+                        profit_loss = (price - avg_buy) * qty
+                        self.transaction_logger.log_sell_order(
+                            symbol=symbol,
+                            quantity=qty,
+                            price=price,
+                            profit_loss=profit_loss,
+                            profit_rate=rate,
+                            order_type="market",
+                            status="filled",
+                            notes=notes
                         )
                     else:
                         self.logger.error(f"{symbol}: 고수익 매도 주문 실패")
                 else:
                     self.logger.info(f"{symbol}: 매도 조건 불충족 → 스킵")
-            else:
+            elif sell_orders_placed == 0:
                 self.logger.info("고수익 매도 대상 종목 없음")
 
-            # 일반 매도 처리 (고수익 매도가 없을 때만, 가장 수익률이 높은 종목 1개)
+            # [우선순위 3] 일반 매도 처리 (손절/익절 매도가 없을 때만, 가장 수익률이 높은 종목 1개)
             if sell_orders_placed == 0 and other:
                 other.sort(key=lambda x: x[3], reverse=True)
-                symbol, qty, price, rate, avg_buy = other[0]
-                if rate > 0 and self.should_sell(symbol, price):
-                    # 가격을 소수점 2자리로 반올림 (API 요구사항)
+                for symbol, qty, price, rate, avg_buy in other:
+                    if not self.should_sell(symbol, price, rate):
+                        continue
+
                     rounded_price = round(price, 2)
                     self.logger.info(f"일반 매도 시도: {symbol} {qty}주 @ ${rounded_price:.2f} (수익률: {rate:.2%})")
                     if not USE_PAPER_TRADING:
                         print(f"🔴 실전 일반 매도: {symbol} {qty}주 @ ${rounded_price:.2f} (수익률: {rate:.2%})")
-                    
+
                     order_id = self.api_client.place_order(symbol, qty, rounded_price, "sell")
                     if order_id:
-                        self.last_sell_prices[symbol] = rounded_price
                         sell_orders_placed += 1
+                        self.last_sell_prices[symbol] = rounded_price
+                        notes = f"일반 매도 - 수익률 {rate:.2%} (임계값 미달)"
+
                         if not USE_PAPER_TRADING:
                             print(f"✅ 실전 일반 매도 완료: {symbol} {qty}주 @ ${price:.2f} (수익률: {rate:.2%})")
                         self.logger.info(f"일반 매도 완료: {symbol} {qty}주 @ ${price:.2f} (수익률: {rate:.2%})")
-                        
-                        # 소폭 수익 매도 기록 저장
+
                         profit_loss = (price - avg_buy) * qty
                         self.transaction_logger.log_sell_order(
                             symbol=symbol,
@@ -583,23 +633,22 @@ class TradingStrategy:
                             profit_rate=rate,
                             order_type="market",
                             status="filled",
-                            notes=f"일반 매도 - 수익률 {rate:.2%} (임계값 미달)"
+                            notes=notes
                         )
+                        break  # 1 sell per cycle
                     else:
                         self.logger.error(f"{symbol}: 일반 매도 주문 실패")
-                else:
-                    self.logger.info(f"{symbol}: 매도 조건 불충족 (수익률: {rate:.2%}) → 스킵")
             elif sell_orders_placed > 0:
-                self.logger.info("고수익 매도 실행됨 → 일반 매도 생략")
+                self.logger.info("손절/익절 매도 실행됨 → 일반 매도 생략")
             else:
                 self.logger.info("일반 매도 대상 종목 없음")
 
             if sell_orders_placed > 0:
-                self.logger.info(f"매도 전략 완료: {sell_orders_placed}건 주문 성공")
-                self.transaction_logger.log_strategy_execution("sell", "completed", f"{sell_orders_placed}건 매도 주문 성공")
+                self.logger.info(f"매도 조건 검사 완료: {sell_orders_placed}건 주문 실행")
+                self.transaction_logger.log_strategy_execution("sell", "completed", f"매도 조건 검사 완료 - {sell_orders_placed}건 매도 주문 실행")
             else:
-                self.logger.info("매도 전략 완료: 주문할 종목 없음")
-                self.transaction_logger.log_strategy_execution("sell", "completed", "주문할 종목 없음")
+                self.logger.info("매도 조건 검사 완료: 주문할 종목 없음")
+                self.transaction_logger.log_strategy_execution("sell", "completed", "매도 조건 검사 완료 - 주문할 종목 없음")
                 
         except Exception as e:
             self.logger.exception("매도 전략 실패")
