@@ -34,16 +34,7 @@ class TokenManager:
         try:
             if os.path.exists('token_issued_at.dat'):
                 with open('token_issued_at.dat', 'r') as f:
-                    issued_time = float(f.read().strip())
-
-                    # 미래 시간 체크 (잘못된 데이터 방지)
-                    current_time = time.time()
-                    if issued_time > current_time:
-                        self.logger.warning(f"[TOKEN] 발급 시간이 미래({issued_time})입니다. 파일 삭제 후 재설정")
-                        os.remove('token_issued_at.dat')
-                        return 0
-
-                    return issued_time
+                    return float(f.read().strip())
         except Exception:
             pass
         return 0

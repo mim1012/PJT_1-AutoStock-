@@ -1,101 +1,101 @@
 @echo off
-chcp 65001 >nul
+chcp 949 >nul
 echo ========================================
-echo í•œêµ­íˆ¬ìžì¦ê¶Œ ìžë™ë§¤ë§¤ ì‹œìŠ¤í…œ v4.7
-echo ìžë™ ì„¤ì¹˜ í”„ë¡œê·¸ëž¨
+echo ÇÑ±¹ÅõÀÚÁõ±Ç ÀÚµ¿¸Å¸Å ½Ã½ºÅÛ v4.7
+echo ÀÚµ¿ ¼³Ä¡ ÇÁ·Î±×·¥
 echo ========================================
 echo.
 
-REM Python ì„¤ì¹˜ í™•ì¸
-echo [1/5] Python ì„¤ì¹˜ í™•ì¸ ì¤‘...
+REM Python ¼³Ä¡ È®ÀÎ
+echo [1/5] Python ¼³Ä¡ È®ÀÎ Áß...
 python --version >nul 2>&1
 if errorlevel 1 (
-    echo [ERROR] Pythonì´ ì„¤ì¹˜ë˜ì–´ ìžˆì§€ ì•ŠìŠµë‹ˆë‹¤.
+    echo [ERROR] PythonÀÌ ¼³Ä¡µÇ¾î ÀÖÁö ¾Ê½À´Ï´Ù.
     echo.
-    echo Python 3.8 ì´ìƒì„ ë¨¼ì € ì„¤ì¹˜í•˜ì„¸ìš”:
+    echo Python 3.8 ÀÌ»óÀ» ¸ÕÀú ¼³Ä¡ÇÏ¼¼¿ä:
     echo https://www.python.org/downloads/
     echo.
-    echo ì„¤ì¹˜ ì‹œ "Add Python to PATH" ì˜µì…˜ì„ ì²´í¬í•˜ì„¸ìš”!
+    echo ¼³Ä¡ ½Ã "Add Python to PATH" ¿É¼ÇÀ» Ã¼Å©ÇÏ¼¼¿ä!
     pause
     exit /b 1
 )
 
 python --version
-echo [OK] Pythonì´ ì„¤ì¹˜ë˜ì–´ ìžˆìŠµë‹ˆë‹¤.
+echo [OK] PythonÀÌ ¼³Ä¡µÇ¾î ÀÖ½À´Ï´Ù.
 echo.
 
-REM pip ì—…ê·¸ë ˆì´ë“œ
-echo [2/5] pip ì—…ê·¸ë ˆì´ë“œ ì¤‘...
+REM pip ¾÷±×·¹ÀÌµå
+echo [2/5] pip ¾÷±×·¹ÀÌµå Áß...
 python -m pip install --upgrade pip
 if errorlevel 1 (
-    echo [WARN] pip ì—…ê·¸ë ˆì´ë“œ ì‹¤íŒ¨ (ë¬´ì‹œí•˜ê³  ê³„ì†)
+    echo [WARN] pip ¾÷±×·¹ÀÌµå ½ÇÆÐ (¹«½ÃÇÏ°í °è¼Ó)
 )
 echo.
 
-REM í•„ìˆ˜ íŒ¨í‚¤ì§€ ì„¤ì¹˜
-echo [3/5] í•„ìˆ˜ íŒ¨í‚¤ì§€ ì„¤ì¹˜ ì¤‘...
+REM ÇÊ¼ö ÆÐÅ°Áö ¼³Ä¡
+echo [3/5] ÇÊ¼ö ÆÐÅ°Áö ¼³Ä¡ Áß...
 pip install -r requirements.txt
 if errorlevel 1 (
-    echo [ERROR] íŒ¨í‚¤ì§€ ì„¤ì¹˜ ì‹¤íŒ¨
+    echo [ERROR] ÆÐÅ°Áö ¼³Ä¡ ½ÇÆÐ
     pause
     exit /b 1
 )
-echo [OK] í•„ìˆ˜ íŒ¨í‚¤ì§€ ì„¤ì¹˜ ì™„ë£Œ
+echo [OK] ÇÊ¼ö ÆÐÅ°Áö ¼³Ä¡ ¿Ï·á
 echo.
 
-REM mojito2 ì„¤ì¹˜
-echo [4/5] í•œêµ­íˆ¬ìžì¦ê¶Œ API ë¼ì´ë¸ŒëŸ¬ë¦¬ ì„¤ì¹˜ ì¤‘...
+REM mojito2 ¼³Ä¡
+echo [4/5] ÇÑ±¹ÅõÀÚÁõ±Ç API ¶óÀÌºê·¯¸® ¼³Ä¡ Áß...
 pip install mojito2
 if errorlevel 1 (
-    echo [ERROR] mojito2 ì„¤ì¹˜ ì‹¤íŒ¨
+    echo [ERROR] mojito2 ¼³Ä¡ ½ÇÆÐ
     pause
     exit /b 1
 )
-echo [OK] mojito2 ì„¤ì¹˜ ì™„ë£Œ
+echo [OK] mojito2 ¼³Ä¡ ¿Ï·á
 echo.
 
-REM í™˜ê²½ ë³€ìˆ˜ íŒŒì¼ í™•ì¸
-echo [5/5] í™˜ê²½ ì„¤ì • í™•ì¸ ì¤‘...
+REM È¯°æ º¯¼ö ÆÄÀÏ È®ÀÎ
+echo [5/5] È¯°æ ¼³Á¤ È®ÀÎ Áß...
 if not exist .env (
-    echo [WARN] .env íŒŒì¼ì´ ì—†ìŠµë‹ˆë‹¤.
+    echo [WARN] .env ÆÄÀÏÀÌ ¾ø½À´Ï´Ù.
     echo.
-    echo .env.example íŒŒì¼ì„ ë³µì‚¬í•˜ì—¬ .env íŒŒì¼ì„ ìƒì„±í•©ë‹ˆë‹¤...
+    echo .env.example ÆÄÀÏÀ» º¹»çÇÏ¿© .env ÆÄÀÏÀ» »ý¼ºÇÕ´Ï´Ù...
     copy .env.example .env >nul
     echo.
-    echo [ì¤‘ìš”] .env íŒŒì¼ì„ ì—´ì–´ì„œ ë‹¤ìŒ ì •ë³´ë¥¼ ìž…ë ¥í•˜ì„¸ìš”:
-    echo   - KIS_APP_KEY (í•œêµ­íˆ¬ìžì¦ê¶Œ APP KEY)
-    echo   - KIS_APP_SECRET (í•œêµ­íˆ¬ìžì¦ê¶Œ APP SECRET)
-    echo   - KIS_ACCOUNT_NUMBER (ê³„ì¢Œë²ˆí˜¸)
+    echo [Áß¿ä] .env ÆÄÀÏÀ» ¿­¾î¼­ ´ÙÀ½ Á¤º¸¸¦ ÀÔ·ÂÇÏ¼¼¿ä:
+    echo   - KIS_APP_KEY (ÇÑ±¹ÅõÀÚÁõ±Ç APP KEY)
+    echo   - KIS_APP_SECRET (ÇÑ±¹ÅõÀÚÁõ±Ç APP SECRET)
+    echo   - KIS_ACCOUNT_NUMBER (°èÁÂ¹øÈ£)
     echo.
-    echo API í‚¤ ë°œê¸‰: https://apiportal.koreainvestment.com
+    echo API Å° ¹ß±Þ: https://apiportal.koreainvestment.com
     echo.
     notepad .env
 ) else (
-    echo [OK] .env íŒŒì¼ì´ ì¡´ìž¬í•©ë‹ˆë‹¤.
+    echo [OK] .env ÆÄÀÏÀÌ Á¸ÀçÇÕ´Ï´Ù.
 )
 echo.
 
-REM ì„¤ì¹˜ ì™„ë£Œ
+REM ¼³Ä¡ ¿Ï·á
 echo ========================================
-echo ì„¤ì¹˜ê°€ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤!
+echo ¼³Ä¡°¡ ¿Ï·áµÇ¾ú½À´Ï´Ù!
 echo ========================================
 echo.
-echo ë‹¤ìŒ ë‹¨ê³„:
-echo 1. .env íŒŒì¼ì— API í‚¤ ìž…ë ¥ (ìœ„ì—ì„œ ìžë™ìœ¼ë¡œ ì—´ë ¸ìŠµë‹ˆë‹¤)
-echo 2. us_stocks_config.json, kr_stocks_config.json íŒŒì¼ì— ê±°ëž˜í•  ì¢…ëª© ì„¤ì •
-echo 3. í”„ë¡œê·¸ëž¨ ì‹¤í–‰ (3ê°€ì§€ ë°©ë²•):
+echo ´ÙÀ½ ´Ü°è:
+echo 1. .env ÆÄÀÏ¿¡ API Å° ÀÔ·Â (À§¿¡¼­ ÀÚµ¿À¸·Î ¿­·È½À´Ï´Ù)
+echo 2. us_stocks_config.json, kr_stocks_config.json ÆÄÀÏ¿¡ °Å·¡ÇÒ Á¾¸ñ ¼³Á¤
+echo 3. ÇÁ·Î±×·¥ ½ÇÇà (3°¡Áö ¹æ¹ý):
 echo.
-echo    â­ [ê¶Œìž¥] start_auto.bat - ìžë™ ì‹œìž¥ ì „í™˜ ëª¨ë“œ
-echo       â””â”€ í•œêµ­ ìž¥ ì‹œê°„ â†’ í•œêµ­ ì‹œìž¥ë§Œ
-echo       â””â”€ ë¯¸êµ­ ìž¥ ì‹œê°„ â†’ ë¯¸êµ­ ì‹œìž¥ë§Œ
+echo    ? [±ÇÀå] start_auto.bat - ÀÚµ¿ ½ÃÀå ÀüÈ¯ ¸ðµå
+echo       ¦¦¦¡ ÇÑ±¹ Àå ½Ã°£ ¡æ ÇÑ±¹ ½ÃÀå¸¸
+echo       ¦¦¦¡ ¹Ì±¹ Àå ½Ã°£ ¡æ ¹Ì±¹ ½ÃÀå¸¸
 echo.
-echo    ë˜ëŠ”
-echo    - start.bat          - ë¯¸êµ­ ì£¼ì‹ë§Œ
-echo    - python main.py --market kr  - í•œêµ­ ì£¼ì‹ë§Œ
-echo    - python main.py --market both - ë“€ì–¼ ë§ˆì¼“
+echo    ¶Ç´Â
+echo    - start.bat          - ¹Ì±¹ ÁÖ½Ä¸¸
+echo    - python main.py --market kr  - ÇÑ±¹ ÁÖ½Ä¸¸
+echo    - python main.py --market both - µà¾ó ¸¶ÄÏ
 echo.
-echo ì²˜ìŒ ì‚¬ìš©í•˜ì‹œëŠ” ê²½ìš°:
-echo - USE_PAPER_TRADING=True ë¡œ ì„¤ì • (ëª¨ì˜íˆ¬ìž)
-echo - ì¶©ë¶„ížˆ í…ŒìŠ¤íŠ¸ í›„ ì‹¤ì „ íˆ¬ìž ì‹œìž‘
+echo Ã³À½ »ç¿ëÇÏ½Ã´Â °æ¿ì:
+echo - USE_PAPER_TRADING=True ·Î ¼³Á¤ (¸ðÀÇÅõÀÚ)
+echo - ÃæºÐÈ÷ Å×½ºÆ® ÈÄ ½ÇÀü ÅõÀÚ ½ÃÀÛ
 echo.
 pause

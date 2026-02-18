@@ -1,0 +1,143 @@
+{
+  "agents": [
+    {
+      "agent_id": "afbb4da",
+      "agent_type": "researcher",
+      "started_at": "2026-02-14T16:25:00.302Z",
+      "parent_mode": "none",
+      "status": "completed",
+      "completed_at": "2026-02-14T16:31:20.168Z",
+      "duration_ms": 379866
+    },
+    {
+      "agent_id": "aa6916d",
+      "agent_type": "writer",
+      "started_at": "2026-02-14T16:25:00.642Z",
+      "parent_mode": "none",
+      "status": "completed",
+      "completed_at": "2026-02-14T16:33:16.273Z",
+      "duration_ms": 495631
+    },
+    {
+      "agent_id": "ac7f603",
+      "agent_type": "executor",
+      "started_at": "2026-02-14T16:25:03.132Z",
+      "parent_mode": "none",
+      "status": "completed",
+      "completed_at": "2026-02-14T16:36:54.483Z",
+      "duration_ms": 711351
+    },
+    {
+      "agent_id": "aa18282",
+      "agent_type": "researcher",
+      "started_at": "2026-02-14T16:31:20.507Z",
+      "parent_mode": "none",
+      "status": "completed",
+      "completed_at": "2026-02-14T16:31:39.459Z",
+      "duration_ms": 18952
+    },
+    {
+      "agent_id": "a7f0963",
+      "agent_type": "writer",
+      "started_at": "2026-02-14T16:33:16.520Z",
+      "parent_mode": "none",
+      "status": "completed",
+      "completed_at": "2026-02-14T16:33:28.272Z",
+      "duration_ms": 11752
+    },
+    {
+      "agent_id": "aa967db",
+      "agent_type": "writer",
+      "started_at": "2026-02-14T16:33:28.569Z",
+      "parent_mode": "none",
+      "status": "completed",
+      "completed_at": "2026-02-14T16:33:40.041Z",
+      "duration_ms": 11472
+    },
+    {
+      "agent_id": "aadb407",
+      "agent_type": "writer",
+      "started_at": "2026-02-14T16:33:40.284Z",
+      "parent_mode": "none",
+      "status": "completed",
+      "completed_at": "2026-02-14T16:33:55.400Z",
+      "duration_ms": 15116
+    },
+    {
+      "agent_id": "a3668cf",
+      "agent_type": "writer",
+      "started_at": "2026-02-14T16:33:55.734Z",
+      "parent_mode": "none",
+      "status": "completed",
+      "completed_at": "2026-02-14T16:34:04.996Z",
+      "duration_ms": 9262
+    },
+    {
+      "agent_id": "a580100",
+      "agent_type": "executor",
+      "started_at": "2026-02-14T16:36:54.820Z",
+      "parent_mode": "none",
+      "status": "completed",
+      "completed_at": "2026-02-14T16:38:06.340Z",
+      "duration_ms": 71520
+    },
+    {
+      "agent_id": "a5ecfd9",
+      "agent_type": "executor",
+      "started_at": "2026-02-14T16:40:53.445Z",
+      "parent_mode": "none",
+      "status": "completed",
+      "completed_at": "2026-02-14T16:45:13.422Z",
+      "duration_ms": 259977
+    },
+    {
+      "agent_id": "a72c59a",
+      "agent_type": "writer",
+      "started_at": "2026-02-14T16:40:54.132Z",
+      "parent_mode": "none",
+      "status": "completed",
+      "completed_at": "2026-02-14T16:41:52.675Z",
+      "duration_ms": 58543
+    },
+    {
+      "agent_id": "aeb188e",
+      "agent_type": "writer",
+      "started_at": "2026-02-14T16:41:52.892Z",
+      "parent_mode": "none",
+      "status": "completed",
+      "completed_at": "2026-02-14T16:43:12.375Z",
+      "duration_ms": 79483
+    },
+    {
+      "agent_id": "a66d97a",
+      "agent_type": "executor",
+      "started_at": "2026-02-14T16:45:13.819Z",
+      "parent_mode": "none",
+      "status": "completed",
+      "completed_at": "2026-02-14T16:45:25.914Z",
+      "duration_ms": 12095
+    },
+    {
+      "agent_id": "afe5afd",
+      "agent_type": "executor",
+      "started_at": "2026-02-14T16:45:26.354Z",
+      "parent_mode": "none",
+      "status": "completed",
+      "completed_at": "2026-02-14T16:45:36.155Z",
+      "duration_ms": 9801
+    },
+    {
+      "agent_id": "a3b328f",
+      "agent_type": "writer",
+      "started_at": "2026-02-14T17:15:52.657Z",
+      "parent_mode": "none",
+      "status": "completed",
+      "completed_at": "2026-02-14T17:17:39.074Z",
+      "duration_ms": 106417
+    }
+  ],
+  "total_spawned": 15,
+  "total_completed": 15,
+  "total_failed": 0,
+  "last_updated": "2026-02-18T01:13:45.351Z"
+}

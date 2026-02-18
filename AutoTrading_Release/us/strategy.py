@@ -16,6 +16,7 @@ from common.base_strategy import BaseStrategy
 from us.config import USConfig
 from us.api_client import USAPIClient
 from transaction_logger import TransactionLogger
+from stop_loss_tracker import StopLossTracker
 from config import PROFIT_THRESHOLD
 
 
@@ -48,14 +49,24 @@ class USStrategy(BaseStrategy):
 
         super().__init__(
             api_client,
-            profit_threshold,
-            enable_filter_check,
-            check_previous_sell_price
+            profit_threshold=profit_threshold,
+            stop_loss_threshold=USConfig.STOP_LOSS_THRESHOLD,
+            stop_loss_cooldown_days=USConfig.STOP_LOSS_COOLDOWN_DAYS,
+            enable_filter_check=enable_filter_check,
+            check_previous_sell_price=check_previous_sell_price
         )
 
         self.transaction_logger = TransactionLogger()
         self._filter_stocks = {}
         self._watch_list = []
+
+        # StopLossTracker 초기화
+        self.stop_loss_tracker = StopLossTracker(
+            blacklist_file="us_stop_loss_blacklist.json",
+            cooldown_days=USConfig.STOP_LOSS_COOLDOWN_DAYS,
+            timezone=USConfig.TIMEZONE,
+            transaction_logger=self.transaction_logger
+        )
 
         # 설정 파일 로드
         self._load_stock_config()
@@ -102,6 +113,12 @@ class USStrategy(BaseStrategy):
     def should_buy(self, symbol: str) -> bool:
         """매수 조건 확인"""
         try:
+            # 손절 블랙리스트 체크 (최우선)
+            if self.stop_loss_tracker.is_blocked(symbol):
+                remaining = self.stop_loss_tracker.get_remaining_days(symbol)
+                self.logger.info(f"{symbol}: 손절 후 재매수 금지 중 (남은 기간: {remaining}일)")
+                return False
+
             current_price = self.api_client.get_current_price(symbol)
             if current_price is None:
                 return False
@@ -119,6 +136,10 @@ class USStrategy(BaseStrategy):
 
     def should_sell(self, symbol: str, profit_rate: float) -> bool:
         """매도 조건 확인"""
+        # 손절 조건
+        if profit_rate <= self.stop_loss_threshold:
+            return True
+        # 익절 조건
         return profit_rate >= self.profit_threshold
 
     def execute_buy_strategy(self) -> Dict[str, Any]:
@@ -239,14 +260,32 @@ class USStrategy(BaseStrategy):
 
                 current_price = pos.get('current_price', 0)
 
-                # 주문 실행
-                result = self.api_client.place_order(symbol, 'sell', quantity)
+                # 주문 실행 (해외주식은 시장가 미지원 → 현재가 지정가 매도)
+                result = self.api_client.place_order(
+                    symbol, 'sell', quantity,
+                    price=current_price if current_price > 0 else None
+                )
 
                 if result['success']:
                     self.stats['sell_successes'] += 1
 
-                    # 매도 가격 기록
-                    self.record_sell_price(symbol, current_price)
+                    # 손절 여부 확인
+                    is_stop_loss = profit_rate <= self.stop_loss_threshold
+
+                    if is_stop_loss:
+                        # 손절 블랙리스트 추가
+                        avg_price = pos.get('avg_price', 0)
+                        self.stop_loss_tracker.add_stop_loss(
+                            symbol=symbol,
+                            avg_price=avg_price,
+                            loss_price=current_price,
+                            loss_rate=profit_rate
+                        )
+                        reason = f"손절 실행 ({profit_rate*100:.2f}%)"
+                    else:
+                        # 익절 시 매도 가격 기록
+                        self.record_sell_price(symbol, current_price)
+                        reason = f"목표 수익률 달성 ({profit_rate*100:.2f}%)"
 
                     executed_orders.append({
                         'symbol': symbol,
@@ -261,7 +300,7 @@ class USStrategy(BaseStrategy):
                         symbol, quantity, current_price,
                         pos.get('profit_loss', 0),
                         result['order_id'],
-                        f"목표 수익률 달성 ({profit_rate*100:.2f}%)"
+                        reason
                     )
 
             return {

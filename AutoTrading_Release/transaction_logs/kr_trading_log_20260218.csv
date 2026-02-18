@@ -1,0 +1,5 @@
+﻿timestamp,date,time,action,symbol,quantity,price,total_amount,order_type,status,profit_loss,profit_rate,balance_cash,balance_total,notes
+2026-02-18T11:14:50.781575+09:00,2026-02-18,11:14:50,strategy_sell,STRATEGY,0,0,0,strategy,started,,,,,매도 조건 검사 시작
+2026-02-18T11:14:50.861604+09:00,2026-02-18,11:14:50,strategy_sell,STRATEGY,0,0,0,strategy,completed,,,,,매도 조건 검사 완료 - 0건 매도 실행
+2026-02-18T11:14:52.863258+09:00,2026-02-18,11:14:52,strategy_buy,STRATEGY,0,0,0,strategy,started,,,,,매수 조건 검사 시작
+2026-02-18T11:14:53.140135+09:00,2026-02-18,11:14:53,strategy_buy,STRATEGY,0,0,0,strategy,completed,,,,,매수 조건 검사 완료 - 필터 조건 미충족

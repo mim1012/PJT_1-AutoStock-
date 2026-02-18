@@ -1,0 +1,213 @@
+{
+  "version": "1.0.0",
+  "lastScanned": 1771375482340,
+  "projectRoot": "D:\\Project\\PJT v4.7 1023 new (2)",
+  "techStack": {
+    "languages": [],
+    "frameworks": [],
+    "packageManager": null,
+    "runtime": null
+  },
+  "build": {
+    "buildCommand": null,
+    "testCommand": null,
+    "lintCommand": null,
+    "devCommand": null,
+    "scripts": {}
+  },
+  "conventions": {
+    "namingStyle": null,
+    "importStyle": null,
+    "testPattern": null,
+    "fileOrganization": null
+  },
+  "structure": {
+    "isMonorepo": false,
+    "workspaces": [],
+    "mainDirectories": [
+      "docs"
+    ],
+    "gitBranches": null
+  },
+  "customNotes": [],
+  "directoryMap": {
+    "AutoTrading_Release": {
+      "path": "AutoTrading_Release",
+      "purpose": null,
+      "fileCount": 32,
+      "lastAccessed": 1771375482292,
+      "keyFiles": [
+        "api_token.json",
+        "auto_market_scheduler.py",
+        "check_balance.bat",
+        "check_balance.py",
+        "config.py"
+      ]
+    },
+    "docs": {
+      "path": "docs",
+      "purpose": "Documentation",
+      "fileCount": 6,
+      "lastAccessed": 1771375482293,
+      "keyFiles": [
+        "BATCH_FILE_TROUBLESHOOTING.md",
+        "CODE_REVIEW_REPORT_ADVERSARIAL.md",
+        "DEPLOYMENT_CHECKLIST.md",
+        "EXAMPLE_kr_trading_log.csv",
+        "EXAMPLE_LOG_24H.log"
+      ]
+    },
+    "PJT v4.7 1023 new": {
+      "path": "PJT v4.7 1023 new",
+      "purpose": null,
+      "fileCount": 33,
+      "lastAccessed": 1771375482293,
+      "keyFiles": [
+        "api_token.json",
+        "auto_market_scheduler.py",
+        "check_balance.bat",
+        "check_balance.py",
+        "config.py"
+      ]
+    },
+    "_bmad-output": {
+      "path": "_bmad-output",
+      "purpose": null,
+      "fileCount": 2,
+      "lastAccessed": 1771375482294,
+      "keyFiles": [
+        "apply_code_review_fixes.sh",
+        "test-review.md"
+      ]
+    }
+  },
+  "hotPaths": [
+    {
+      "path": "AutoTrading_Release\\startup_validator.py",
+      "accessCount": 8,
+      "lastAccessed": 1771381192911,
+      "type": "file"
+    },
+    {
+      "path": "AutoTrading_Release\\us\\strategy.py",
+      "accessCount": 4,
+      "lastAccessed": 1771376528844,
+      "type": "file"
+    },
+    {
+      "path": "AutoTrading_Release",
+      "accessCount": 4,
+      "lastAccessed": 1771376603019,
+      "type": "directory"
+    },
+    {
+      "path": "AutoTrading_Release\\us\\config.py",
+      "accessCount": 4,
+      "lastAccessed": 1771377020359,
+      "type": "file"
+    },
+    {
+      "path": "AutoTrading_Release\\kr\\config.py",
+      "accessCount": 4,
+      "lastAccessed": 1771377021171,
+      "type": "file"
+    },
+    {
+      "path": "AutoTrading_Release\\us\\api_client.py",
+      "accessCount": 2,
+      "lastAccessed": 1771375816058,
+      "type": "file"
+    },
+    {
+      "path": "AutoTrading_Release\\common\\base_strategy.py",
+      "accessCount": 2,
+      "lastAccessed": 1771376575746,
+      "type": "file"
+    },
+    {
+      "path": "AutoTrading_Release\\kr_stocks_config.json",
+      "accessCount": 2,
+      "lastAccessed": 1771381193911,
+      "type": "file"
+    },
+    {
+      "path": "AutoTrading_Release\\kr\\api_client.py",
+      "accessCount": 1,
+      "lastAccessed": 1771375547848,
+      "type": "file"
+    },
+    {
+      "path": "AutoTrading_Release\\common\\base_token_manager.py",
+      "accessCount": 1,
+      "lastAccessed": 1771375548167,
+      "type": "file"
+    },
+    {
+      "path": "AutoTrading_Release\\main.py",
+      "accessCount": 1,
+      "lastAccessed": 1771375561184,
+      "type": "file"
+    },
+    {
+      "path": "AutoTrading_Release\\token_manager.py",
+      "accessCount": 1,
+      "lastAccessed": 1771375561653,
+      "type": "file"
+    },
+    {
+      "path": "AutoTrading_Release\\dual_market_scheduler.py",
+      "accessCount": 1,
+      "lastAccessed": 1771375571414,
+      "type": "file"
+    },
+    {
+      "path": "AutoTrading_Release\\config.py",
+      "accessCount": 1,
+      "lastAccessed": 1771375571864,
+      "type": "file"
+    },
+    {
+      "path": "AutoTrading_Release\\common\\base_api.py",
+      "accessCount": 1,
+      "lastAccessed": 1771375963375,
+      "type": "file"
+    },
+    {
+      "path": "AutoTrading_Release\\kr\\strategy.py",
+      "accessCount": 1,
+      "lastAccessed": 1771375964679,
+      "type": "file"
+    },
+    {
+      "path": "AutoTrading_Release\\kr\\token_manager.py",
+      "accessCount": 1,
+      "lastAccessed": 1771376415457,
+      "type": "file"
+    },
+    {
+      "path": "AutoTrading_Release\\us\\token_manager.py",
+      "accessCount": 1,
+      "lastAccessed": 1771376415926,
+      "type": "file"
+    },
+    {
+      "path": "AutoTrading_Release\\start_auto.bat",
+      "accessCount": 1,
+      "lastAccessed": 1771377134745,
+      "type": "file"
+    },
+    {
+      "path": "AutoTrading_Release\\auto_market_scheduler.py",
+      "accessCount": 1,
+      "lastAccessed": 1771377144021,
+      "type": "file"
+    },
+    {
+      "path": "AutoTrading_Release\\us_stocks_config.json",
+      "accessCount": 1,
+      "lastAccessed": 1771381193633,
+      "type": "file"
+    }
+  ],
+  "userDirectives": []
+}

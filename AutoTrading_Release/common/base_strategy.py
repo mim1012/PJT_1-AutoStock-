@@ -158,24 +158,34 @@ class BaseStrategy(ABC):
             self.logger.debug("필터 종목 없음 - 필터 조건 통과")
             return True
 
+        checked_count = 0
         for symbol in filter_stocks.keys():
             try:
                 current_price = self.api_client.get_current_price(symbol)
                 previous_close = self._get_previous_close(symbol)
 
                 if current_price is None or previous_close is None:
-                    self.logger.warning(f"필터 종목 {symbol} 가격 조회 실패")
-                    continue
+                    self.logger.warning(f"필터 종목 {symbol} 가격 조회 실패 - 안전을 위해 매수 중단")
+                    self.stats['filter_blocks'] += 1
+                    return False
+
+                checked_count += 1
 
                 if current_price <= previous_close:
-                    self.logger.info(f"필터 조건 미충족: {symbol} 하락/보합 중 "
+                    self.logger.info(f"필터 조건 미충족: {symbol} 하락 중 "
                                    f"(현재: {current_price}, 전일: {previous_close})")
                     self.stats['filter_blocks'] += 1
                     return False
 
             except Exception as e:
-                self.logger.error(f"필터 종목 {symbol} 확인 오류: {e}")
-                continue
+                self.logger.error(f"필터 종목 {symbol} 확인 오류: {e} - 안전을 위해 매수 중단")
+                self.stats['filter_blocks'] += 1
+                return False
+
+        if checked_count == 0:
+            self.logger.warning("필터 종목을 하나도 확인하지 못함 - 매수 중단")
+            self.stats['filter_blocks'] += 1
+            return False
 
         self.logger.info("필터 조건 충족 - 모든 필터 종목 상승 중")
         return True

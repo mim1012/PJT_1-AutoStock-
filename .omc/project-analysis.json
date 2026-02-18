@@ -1,0 +1,543 @@
+{
+  "project": {
+    "name": "KIS 24-Hour Automated Stock Trading System",
+    "version": "4.7",
+    "description": "KIS (한국투자증권) OpenAPI 기반 24시간 자동 주식 매매 시스템. 한국 주식(KOSPI/KOSDAQ)과 미국 주식(NASDAQ/NYSE)을 동시 운영.",
+    "language": "Python 3",
+    "platform": "Windows (primary), Linux (supported)",
+    "primary_library": "mojito2 (KIS OpenAPI wrapper)",
+    "root_path": "/mnt/d/Project/PJT v4.7 1023 new (2)/PJT v4.7 1023 new"
+  },
+
+  "dependencies": {
+    "runtime": [
+      "requests==2.31.0",
+      "pytz==2023.3",
+      "pandas==2.0.3",
+      "numpy==1.24.3",
+      "python-dotenv==1.0.0",
+      "websocket-client==1.6.1",
+      "schedule==1.2.2",
+      "mojito2 (external, optional but recommended)"
+    ],
+    "dev": [
+      "pytest (for tests/ directory)"
+    ]
+  },
+
+  "directory_structure": {
+    "common/": {
+      "description": "Abstract base classes (ABC) for shared trading system functionality",
+      "files": {
+        "__init__.py": {
+          "exports": ["BaseTokenManager", "BaseAPIClient", "BaseStrategy"],
+          "description": "Package init - exports all three base classes"
+        },
+        "base_api.py": {
+          "class": "BaseAPIClient(ABC)",
+          "lines": 222,
+          "abstract_methods": ["get_timezone()", "get_market_hours()", "get_account_balance()", "get_current_price(symbol)", "place_order(symbol, side, quantity, price)"],
+          "concrete_methods": ["is_market_open()", "get_market_status()", "get_cached_price()", "set_cached_price()", "clear_cache()", "get_price_with_cache()", "calculate_position_size()", "format_order_result()"],
+          "description": "Base API client with market time checking, price caching, and position sizing"
+        },
+        "base_strategy.py": {
+          "class": "BaseStrategy(ABC)",
+          "lines": 367,
+          "abstract_methods": ["execute_buy_strategy()", "execute_sell_strategy()", "should_buy(symbol)", "should_sell(symbol, profit_rate)", "get_watch_list()", "get_filter_stocks()"],
+          "concrete_methods": ["check_filter_condition()", "_check_sector_filter_condition()", "get_passing_sectors()", "_get_previous_close()", "record_sell_price()", "get_last_sell_price()", "clear_sell_price()", "is_price_above_last_sell()", "get_top_declining_stocks()", "get_strategy_stats()", "reset_stats()"],
+          "description": "Base trading strategy with filter logic (AND/sector-OR), sell price tracking, declining stock ranking, and execution statistics"
+        },
+        "base_token_manager.py": {
+          "class": "BaseTokenManager(ABC)",
+          "lines": 344,
+          "abstract_methods": ["get_api_url()", "get_app_credentials()", "get_token_file_prefix()"],
+          "concrete_methods": ["get_last_issued_time()", "set_last_issued_time()", "can_issue_token()", "issue_new_token()", "save_token()", "load_token()", "get_valid_token()", "delete_token()", "get_token_info()", "is_token_valid()"],
+          "constants": {
+            "TOKEN_EXPIRY_HOURS": 24,
+            "REFRESH_THRESHOLD_HOURS": 5
+          },
+          "description": "Base token lifecycle manager with 24h expiry policy, auto-renewal, and prefix-based file separation"
+        }
+      }
+    },
+
+    "us/": {
+      "description": "US stock trading module - NASDAQ/NYSE implementation",
+      "files": {
+        "__init__.py": {
+          "exports": ["USTokenManager", "USAPIClient", "USStrategy", "USConfig"],
+          "description": "Package init - fully active exports"
+        },
+        "config.py": {
+          "class": "USConfig",
+          "lines": 107,
+          "key_settings": {
+            "TIMEZONE": "US/Eastern",
+            "TRADING_HOURS": "09:30-16:00",
+            "EXCHANGE_CODES": {"NASDAQ": "NASD", "NYSE": "NYS", "AMEX": "AMS"},
+            "STOP_LOSS_THRESHOLD": -0.15,
+            "STOP_LOSS_COOLDOWN_DAYS": 100,
+            "TOKEN_FILE_PREFIX": "us",
+            "STOCKS_CONFIG_FILE": "us_stocks_config.json"
+          },
+          "imports_from": ["config (root)", "os.getenv"],
+          "description": "US market configuration with dual credential loading (env vars > config.py fallback)"
+        },
+        "api_client.py": {
+          "class": "USAPIClient(BaseAPIClient)",
+          "lines": 500,
+          "extends": "common.base_api.BaseAPIClient",
+          "imports": ["common.base_api.BaseAPIClient", "us.config.USConfig", "us.token_manager.USTokenManager", "currency_utils.format_usd_krw", "mojito (optional)"],
+          "features": ["Dual exchange support (NASDAQ/NYSE)", "mojito2 integration", "Exchange auto-detection cache"],
+          "description": "US stock API client with dual broker setup for NASDAQ and NYSE"
+        },
+        "strategy.py": {
+          "class": "USStrategy(BaseStrategy)",
+          "lines": 330,
+          "extends": "common.base_strategy.BaseStrategy",
+          "imports": ["common.base_strategy.BaseStrategy", "us.config.USConfig", "us.api_client.USAPIClient", "transaction_logger.TransactionLogger", "stop_loss_tracker.StopLossTracker", "config.PROFIT_THRESHOLD"],
+          "description": "US stock trading strategy implementing filter-based buy conditions and profit target sells"
+        },
+        "token_manager.py": {
+          "class": "USTokenManager(BaseTokenManager)",
+          "lines": 121,
+          "extends": "common.base_token_manager.BaseTokenManager",
+          "imports": ["common.base_token_manager.BaseTokenManager", "us.config.USConfig"],
+          "token_files": ["us_api_token.json", "us_token_issued_at.dat"],
+          "cli_commands": ["check", "delete", "refresh", "get"],
+          "description": "US token manager with CLI interface for token lifecycle management"
+        }
+      }
+    },
+
+    "kr/": {
+      "description": "Korean stock trading module - KOSPI/KOSDAQ implementation (Phase 2)",
+      "phase_status": "Phase 2 - __init__.py imports are commented out but all files are implemented",
+      "files": {
+        "__init__.py": {
+          "exports": [],
+          "note": "Imports commented out (Phase 2 marker), but modules are directly importable",
+          "description": "Package init - exports empty but modules work via direct import"
+        },
+        "config.py": {
+          "class": "KRConfig",
+          "lines": 109,
+          "key_settings": {
+            "TIMEZONE": "Asia/Seoul",
+            "TRADING_HOURS": "09:00-15:30",
+            "EXCHANGE_CODES": {"KOSPI": "KRX", "KOSDAQ": "KRX"},
+            "STOP_LOSS_THRESHOLD": -0.10,
+            "STOP_LOSS_COOLDOWN_DAYS": 50,
+            "TOKEN_FILE_PREFIX": "kr",
+            "STOCKS_CONFIG_FILE": "kr_stocks_config.json",
+            "TICK_SIZES": "Price-dependent tick size table",
+            "SELLING_TAX_RATE": 0.0023,
+            "PRICE_LIMIT_RATE": 0.30
+          },
+          "imports_from": ["config (root)"],
+          "description": "KR market configuration with tick size table, tax rates, and price limits"
+        },
+        "api_client.py": {
+          "class": "KRAPIClient(BaseAPIClient)",
+          "lines": 390,
+          "extends": "common.base_api.BaseAPIClient",
+          "imports": ["common.base_api.BaseAPIClient", "kr.config.KRConfig", "kr.token_manager.KRTokenManager"],
+          "features": ["KRX support", "Tick size handling", "Direct HTTP API calls"],
+          "description": "Korean stock API client with tick size processing and KRX integration"
+        },
+        "strategy.py": {
+          "class": "KRStrategy(BaseStrategy)",
+          "lines": 470,
+          "extends": "common.base_strategy.BaseStrategy",
+          "imports": ["common.base_strategy.BaseStrategy", "kr.config.KRConfig", "kr.api_client.KRAPIClient", "transaction_logger.TransactionLogger", "config.PROFIT_THRESHOLD"],
+          "description": "Korean stock trading strategy with tick-size-aware order placement"
+        },
+        "token_manager.py": {
+          "class": "KRTokenManager(BaseTokenManager)",
+          "lines": 92,
+          "extends": "common.base_token_manager.BaseTokenManager",
+          "imports": ["common.base_token_manager.BaseTokenManager", "kr.config.KRConfig"],
+          "token_files": ["kr_api_token.json", "kr_token_issued_at.dat"],
+          "cli_commands": ["check", "delete", "get"],
+          "description": "KR token manager with CLI interface"
+        },
+        "KR_API_ANALYSIS.md": {
+          "description": "Detailed analysis document of KR API field mappings and behaviors"
+        }
+      }
+    },
+
+    "overseas_stock/": {
+      "description": "Alternate 24H trading system using kis_auth module (legacy/alternate approach)",
+      "files": {
+        "main_24h_trading.py": {
+          "class": "Market24hScheduler",
+          "lines": 280,
+          "imports": ["kr.strategy.KRStrategy", "strategy_pjt1.TradingStrategy", "kis_auth", "token_manager_24h.TokenManager24h"],
+          "features": ["KR market: 09:00-15:30 KST", "US market: 09:30-16:00 ET", "Continuous polling loop"],
+          "description": "Alternative 24h scheduler using kis_auth module instead of common/ hierarchy"
+        },
+        "token_manager_24h.py": {
+          "class": "TokenManager24h",
+          "lines": 180,
+          "imports": ["kis_auth"],
+          "features": ["Thread-based token monitoring", "30-minute check interval", "Daemon thread"],
+          "description": "Thread-based token monitor for 24h operation"
+        },
+        "kis_auth.py": {
+          "lines": 750,
+          "description": "KIS authentication module (standalone, used by overseas_stock entry point)"
+        },
+        "overseas_stock_functions.py": {
+          "lines": 6600,
+          "description": "Comprehensive KIS overseas stock API function library (reference)"
+        },
+        "overseas_stock_examples.py": {
+          "lines": 560,
+          "description": "Example usage of overseas stock functions"
+        },
+        "overseas_stock_functions_ws.py": {
+          "lines": 220,
+          "description": "WebSocket functions for real-time overseas stock data"
+        },
+        "overseas_stock_examples_ws.py": {
+          "lines": 50,
+          "description": "WebSocket usage examples"
+        },
+        "kis_devlp.yaml": {
+          "description": "KIS API development configuration"
+        },
+        "test_logging_format.py": {
+          "description": "Logging format test script"
+        }
+      }
+    },
+
+    "tests/": {
+      "description": "Pytest-compatible test suite (plain functions, no fixtures/markers)",
+      "test_runner": "pytest",
+      "files": {
+        "test_dual_token.py": {
+          "lines": 240,
+          "test_functions": ["test_token_file_paths()", "test_token_independence()", "test_concurrent_token_ops()"],
+          "tests_module": ["us.token_manager.USTokenManager", "kr.token_manager.KRTokenManager"],
+          "description": "Verifies US/KR token file path separation and independence"
+        },
+        "test_integration.py": {
+          "lines": 330,
+          "test_functions": ["test_module_imports()", "test_config_loading()", "test_market_time_detection()"],
+          "tests_module": ["common.*", "us.*", "kr.*", "dual_market_scheduler"],
+          "description": "Comprehensive integration test for all module imports, configs, and market detection"
+        },
+        "test_kr_api.py": {
+          "lines": 175,
+          "test_functions": ["test_balance_query()", "test_current_price()", "test_previous_close()", "test_order_structure()", "test_stock_config()"],
+          "tests_module": ["kr.api_client.KRAPIClient"],
+          "description": "Korean stock API functionality tests"
+        }
+      }
+    },
+
+    "docs/": {
+      "description": "Project documentation",
+      "files": {
+        "API_DOCUMENTATION.md": "KIS API field mapping and endpoint reference",
+        "API_SETUP_GUIDE.md": "API key setup and configuration guide",
+        "CLAUDE.md": "Extended Claude Code instructions (copy of root CLAUDE.md)",
+        "EXCEL_LOG_GUIDE.md": "Excel transaction log format guide",
+        "SETUP_24H.md": "24-hour dual-market setup instructions",
+        "TESTING_GUIDE.md": "Test execution guide for all test types",
+        "TRADING_STRATEGY.md": "Trading strategy logic documentation"
+      }
+    },
+
+    "root_level_files": {
+      "entry_points": {
+        "main.py": {
+          "class": "TradingScheduler",
+          "lines": 490,
+          "description": "US-only scheduler. Tries us.strategy.USStrategy first, falls back to strategy_pjt1.TradingStrategy",
+          "imports": ["us.strategy.USStrategy (primary)", "strategy_pjt1.TradingStrategy (fallback)", "order_manager.OrderManager", "transaction_logger.TransactionLogger", "config.*"]
+        },
+        "dual_market_scheduler.py": {
+          "classes": ["MarketScheduler", "DualMarketManager"],
+          "lines": 370,
+          "description": "Full dual-market scheduler for simultaneous US + KR trading",
+          "imports": ["us.strategy.USStrategy", "us.config.USConfig", "kr.strategy.KRStrategy", "kr.config.KRConfig", "order_manager.OrderManager", "transaction_logger.TransactionLogger", "config.*"]
+        }
+      },
+      "legacy_modules": {
+        "kis_api.py": {
+          "class": "KISAPIClient",
+          "lines": 1480,
+          "description": "Original US-focused KIS API client with dual NASDAQ/NYSE detection, mojito2 integration, and direct HTTP fallback. Pre-refactor version still used by main.py fallback and strategy_pjt1.py",
+          "imports": ["config.*", "token_manager.TokenManager", "currency_utils.format_usd_krw", "mojito (optional)"]
+        },
+        "strategy_pjt1.py": {
+          "class": "TradingStrategy",
+          "lines": 890,
+          "description": "Original PJT#1 US trading strategy. Loads stocks_config.json, uses StopLossTracker. Pre-refactor version used as fallback",
+          "imports": ["kis_api.KISAPIClient", "token_manager.TokenManager", "transaction_logger.TransactionLogger", "config.*", "stop_loss_tracker.StopLossTracker"]
+        },
+        "token_manager.py": {
+          "class": "TokenManager",
+          "lines": 540,
+          "description": "Original token lifecycle manager with 24h policy. Uses api_token.json and token_issued_at.dat (no prefix). WARNING: Contains hardcoded API credentials on line 14",
+          "imports": ["config.*"]
+        },
+        "order_manager.py": {
+          "class": "OrderManager",
+          "lines": 220,
+          "description": "Order tracking with 20-minute timeout and auto-cleanup via daemon threads",
+          "imports": ["kis_api.KISAPIClient", "config.*"]
+        },
+        "transaction_logger.py": {
+          "class": "TransactionLogger",
+          "lines": 265,
+          "description": "CSV transaction logger to transaction_logs/. Prefix-aware (kr_trading_log_* vs trading_log_*). UTF-8 BOM encoding for Excel compatibility",
+          "imports": ["pytz"]
+        },
+        "stop_loss_tracker.py": {
+          "class": "StopLossTracker",
+          "lines": 330,
+          "description": "JSON cache + CSV hybrid blacklist for stop-loss tracking. Atomic writes with .bak backup. Timezone-aware cooldown management",
+          "imports": ["pytz"]
+        },
+        "currency_utils.py": {
+          "function": "format_usd_krw(amount_usd, exchange_rate=1300)",
+          "lines": 22,
+          "description": "USD to KRW format conversion utility"
+        }
+      },
+      "config_files": {
+        "config.py": {
+          "lines": 51,
+          "description": "Global configuration. Loads credentials from .env via python-dotenv. Defines trading parameters (PROFIT_THRESHOLD, intervals, etc.)",
+          "key_variables": ["KIS_APP_KEY", "KIS_APP_SECRET", "KIS_ACCOUNT_NUMBER", "USE_PAPER_TRADING", "PROFIT_THRESHOLD", "SELL_INTERVAL_MINUTES", "BUY_INTERVAL_MINUTES", "possible_fields"]
+        },
+        "stocks_config.json": {
+          "description": "US stock configuration - filter_stocks (NVDA, AMZN, MSFT) and watch_list (13 symbols including SOUN, RGTI, SMCI)"
+        },
+        "kr_stocks_config.json": {
+          "description": "KR stock configuration - filter_stocks (005930/Samsung, 000660/SK Hynix, 035420/NAVER) and watch_list (13 symbols)"
+        },
+        ".env.example": {
+          "description": "Environment variable template for API credentials"
+        }
+      },
+      "batch_files": {
+        "start_24h_trading.bat": "Production 24h dual-market startup script (recommended)",
+        "start_auto_trading.bat": "Legacy US-only auto trading startup",
+        "start_main_system.bat": "Main system startup with venv activation",
+        "start_main_system_cmd.bat": "Main system startup (CMD variant)",
+        "start_test_mode.bat": "Test mode startup",
+        "setup_and_run.bat": "Initial setup and run script"
+      },
+      "debug_utilities": [
+        "api_validator.py - APIValidator class for pre-trade validation",
+        "api_key_validator.py - API key format validation",
+        "debug_raw_balance.py - Raw balance API response debugger",
+        "debug_balance_detailed.py - Detailed balance debugging",
+        "debug_profit_flow.py - Profit calculation flow debugger",
+        "debug_quantity_fields.py - Quantity field name debugger",
+        "debug_api_response.py - Generic API response debugger",
+        "debug_account_issue.py - Account issue diagnosis",
+        "simple_balance_check.py - Quick balance check",
+        "check_api_status.py - API connection health check",
+        "check_exchange.py - Exchange detection check",
+        "check_kr_config.py - KR config validation",
+        "check_buyable_vs_available.py - Buyable vs available quantity comparison",
+        "check_realized_profit.py - Realized profit checker",
+        "check_total_profit.py - Total profit calculation",
+        "check_real_positions.py - Real position status check",
+        "check_cash_difference.py - Cash discrepancy diagnosis",
+        "check_outside_hours_trades.py - Outside-hours trade checker"
+      ],
+      "standalone_test_scripts": [
+        "test_sector_filter.py - Sector filter logic test (standalone, not pytest)",
+        "test_excel_logging.py - Excel logging format test (standalone)",
+        "test_logic_switch.py - Logic switching test",
+        "test_hypothesis.py - Trading hypothesis verification",
+        "test_current_price.py - Current price API test",
+        "test_current_price_30.py - 30-second interval price test",
+        "test_token_refresh.py - Token refresh cycle test",
+        "test_pykis_api.py - PyKIS API test",
+        "test_realized_profit_api.py - Realized profit API test",
+        "test_price_fix.py - Price fix verification",
+        "test_account_status.py - Account status test",
+        "test_balance_quick.py - Quick balance test"
+      ],
+      "analysis_scripts": [
+        "analyze_log.py - Basic log analysis",
+        "analyze_log_detailed.py - Detailed log analysis",
+        "analyze_trade_decisions.py - Trade decision analysis",
+        "analyze_trading_logs.py - Trading log comprehensive analysis"
+      ]
+    }
+  },
+
+  "inheritance_hierarchy": {
+    "token_management": {
+      "base": "common.base_token_manager.BaseTokenManager (ABC)",
+      "children": [
+        {
+          "class": "us.token_manager.USTokenManager",
+          "prefix": "us",
+          "files": ["us_api_token.json", "us_token_issued_at.dat"]
+        },
+        {
+          "class": "kr.token_manager.KRTokenManager",
+          "prefix": "kr",
+          "files": ["kr_api_token.json", "kr_token_issued_at.dat"]
+        }
+      ],
+      "legacy": {
+        "class": "token_manager.TokenManager",
+        "prefix": "(none)",
+        "files": ["api_token.json", "token_issued_at.dat", "token.dat"]
+      }
+    },
+    "api_clients": {
+      "base": "common.base_api.BaseAPIClient (ABC)",
+      "children": [
+        {
+          "class": "us.api_client.USAPIClient",
+          "market": "US (NASDAQ/NYSE)",
+          "features": ["Dual exchange support", "mojito2 integration", "Exchange auto-detection"]
+        },
+        {
+          "class": "kr.api_client.KRAPIClient",
+          "market": "KR (KOSPI/KOSDAQ)",
+          "features": ["Tick size handling", "Direct HTTP API"]
+        }
+      ],
+      "legacy": {
+        "class": "kis_api.KISAPIClient",
+        "market": "US only",
+        "features": ["NASDAQ/NYSE dual detection", "mojito2 + HTTP fallback"]
+      }
+    },
+    "strategies": {
+      "base": "common.base_strategy.BaseStrategy (ABC)",
+      "children": [
+        {
+          "class": "us.strategy.USStrategy",
+          "market": "US",
+          "stop_loss": "-15%, 100-day cooldown"
+        },
+        {
+          "class": "kr.strategy.KRStrategy",
+          "market": "KR",
+          "stop_loss": "-10%, 50-day cooldown"
+        }
+      ],
+      "legacy": {
+        "class": "strategy_pjt1.TradingStrategy",
+        "market": "US only",
+        "note": "Uses KISAPIClient and TokenManager directly (not base classes)"
+      }
+    }
+  },
+
+  "entry_point_dependency_graph": {
+    "main.py (US-only)": {
+      "primary_path": ["us.strategy.USStrategy", "us.api_client.USAPIClient", "us.token_manager.USTokenManager", "us.config.USConfig", "common.base_*"],
+      "fallback_path": ["strategy_pjt1.TradingStrategy", "kis_api.KISAPIClient", "token_manager.TokenManager"],
+      "shared": ["order_manager.OrderManager", "transaction_logger.TransactionLogger", "config.*"]
+    },
+    "dual_market_scheduler.py (US+KR)": {
+      "us_path": ["us.strategy.USStrategy", "us.config.USConfig"],
+      "kr_path": ["kr.strategy.KRStrategy", "kr.config.KRConfig"],
+      "shared": ["order_manager.OrderManager", "transaction_logger.TransactionLogger", "config.*"]
+    },
+    "overseas_stock/main_24h_trading.py (alternate 24H)": {
+      "us_path": ["strategy_pjt1.TradingStrategy (legacy)"],
+      "kr_path": ["kr.strategy.KRStrategy"],
+      "auth": ["overseas_stock.kis_auth", "overseas_stock.token_manager_24h.TokenManager24h"]
+    }
+  },
+
+  "trading_logic_summary": {
+    "buy_strategy": {
+      "step_1": "Check filter condition - all filter_stocks must be rising (if ENABLE_FILTER_CHECK=True)",
+      "step_1_alt": "If sectors defined: sector-OR logic (any sector passing = OK, within sector: any stock rising = sector pass)",
+      "step_2": "Select top 3 declining stocks from watch_list",
+      "step_3": "Check previous sell price (skip if current price > last sell price)",
+      "step_4": "Check stop-loss blacklist (skip if in cooldown period)",
+      "step_5": "Calculate position size: available_cash / 3, max 100 shares",
+      "step_6": "Place buy order"
+    },
+    "sell_strategy": {
+      "step_1": "Get account balance and positions",
+      "step_2": "For each position, calculate profit rate using API-sourced average price",
+      "step_3": "If profit_rate >= PROFIT_THRESHOLD (5%): sell (highest profit first)",
+      "step_4": "If profit_rate <= STOP_LOSS_THRESHOLD: execute stop-loss sell and add to blacklist"
+    },
+    "stop_loss": {
+      "us_market": {"threshold": "-15%", "cooldown_days": 100},
+      "kr_market": {"threshold": "-10%", "cooldown_days": 50}
+    }
+  },
+
+  "token_architecture": {
+    "description": "US and KR tokens are independently managed with prefix-based file separation",
+    "us_files": ["us_api_token.json", "us_token_issued_at.dat", "us_krs_token.dat"],
+    "kr_files": ["kr_api_token.json", "kr_token_issued_at.dat", "kr_krs_token.dat"],
+    "legacy_files": ["api_token.json", "token_issued_at.dat", "token.dat"],
+    "policy": {
+      "expiry": "24 hours (KIS API policy)",
+      "auto_renewal": "Triggers when < 5 hours remaining",
+      "emergency_reissue": "Bypasses 24h limit when token file missing"
+    }
+  },
+
+  "configuration_hierarchy": {
+    "credentials": {
+      "priority_1": ".env file (via python-dotenv)",
+      "priority_2": "config.py fallback values",
+      "key_vars": ["KIS_APP_KEY", "KIS_APP_SECRET", "KIS_ACCOUNT_NUMBER"]
+    },
+    "trading_params": {
+      "source": "config.py",
+      "key_params": {
+        "USE_PAPER_TRADING": "True=paper, False=REAL MONEY",
+        "PROFIT_THRESHOLD": "0.05 (5%)",
+        "SELL_INTERVAL_MINUTES": 30,
+        "BUY_INTERVAL_MINUTES": 60
+      }
+    },
+    "stock_lists": {
+      "us": "stocks_config.json",
+      "kr": "kr_stocks_config.json",
+      "format": "{filter_stocks: {SYMBOL: bool}, watch_list: [SYMBOL, ...]}"
+    }
+  },
+
+  "conventions": {
+    "timezone": "All time comparisons use pytz timezone-aware datetimes. US=US/Eastern, KR=Asia/Seoul",
+    "settlement": "T+1 for US stocks (changed from T+2 on May 28, 2024). Only ord_psbl_qty (settled shares) for sell orders",
+    "encoding": "CSV logs use UTF-8 BOM for Excel compatibility with Korean text",
+    "path_resolution": "sys.path.insert(0, project_root) used throughout submodules",
+    "api_field_fallback": "Multiple field name attempts for KIS API responses (real/paper mode differences)"
+  },
+
+  "security_notes": [
+    "WARNING: token_manager.py (root legacy) contains hardcoded API credentials on lines 13-14",
+    "Credentials should be stored in .env file (not committed to git)",
+    "secret.json exists in root - should be in .gitignore",
+    "api_token.json contains actual tokens - should be in .gitignore"
+  ],
+
+  "open_trading_api_dir": {
+    "description": "KIS reference SDK samples - NOT part of the runtime system",
+    "subdirs": ["examples_llm/domestic_stock/", "examples_llm/domestic_futureoption/", "examples_llm/domestic_bond/", "examples_llm/elw/", "examples_llm/etfetn/", "examples_llm/overseas_futureoption/", "examples_llm/overseas_stock/", "legacy/"],
+    "note": "Reference only - do not modify or depend on these files"
+  },
+
+  "analysis_metadata": {
+    "analyzed_at": "2026-02-15",
+    "analyzed_by": "researcher agent",
+    "total_core_files_analyzed": 30,
+    "total_directories_scanned": 8
+  }
+}

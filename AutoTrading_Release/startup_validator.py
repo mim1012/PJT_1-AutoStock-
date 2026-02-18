@@ -153,12 +153,13 @@ class StartupValidator:
         # filter_stocks 검증
         filter_stocks = config.get('filter_stocks', {})
         if isinstance(filter_stocks, dict):
-            for symbol in filter_stocks.keys():
+            for symbol, enabled in filter_stocks.items():
                 valid, name = self._validate_kr_stock(symbol)
                 results[symbol] = {
                     'valid': valid,
                     'name': name,
-                    'type': 'filter'
+                    'type': 'filter',
+                    'enabled': bool(enabled)
                 }
                 if not valid:
                     self.errors.append(f"[국장 필터] {symbol}: {name}")
@@ -183,22 +184,37 @@ class StartupValidator:
 
         Returns:
             {
-                'symbol': {'valid': bool, 'name': str, 'exchange': str},
+                'symbol': {'valid': bool, 'name': str, 'type': 'filter'|'watch'},
                 ...
             }
         """
         results = {}
 
-        for symbol, info in config.items():
-            exchange = info.get('exchange', 'UNKNOWN')
+        # filter_stocks 검증
+        filter_stocks = config.get('filter_stocks', {})
+        if isinstance(filter_stocks, dict):
+            for symbol, enabled in filter_stocks.items():
+                valid, name = self._validate_us_stock(symbol)
+                results[symbol] = {
+                    'valid': valid,
+                    'name': name,
+                    'type': 'filter',
+                    'enabled': bool(enabled)
+                }
+                if not valid:
+                    self.errors.append(f"[미장 필터] {symbol}: {name}")
+
+        # watch_list 검증
+        watch_list = config.get('watch_list', [])
+        for symbol in watch_list:
             valid, name = self._validate_us_stock(symbol)
             results[symbol] = {
                 'valid': valid,
                 'name': name,
-                'exchange': exchange
+                'type': 'watch'
             }
             if not valid:
-                self.errors.append(f"[미장] {symbol} ({exchange}): {name}")
+                self.errors.append(f"[미장 감시] {symbol}: {name}")
 
         return results
 
@@ -227,8 +243,10 @@ class StartupValidator:
                 result = validation_results.get(symbol, {})
                 valid = result.get('valid', False)
                 name = result.get('name', '알 수 없음')
+                enabled = result.get('enabled', True)
+                on_off = "ON" if enabled else "OFF"
                 status = "✅" if valid else "❌"
-                print(f"{status} {symbol}: {name}")
+                print(f"{status} {symbol}: {name} ({on_off})")
         else:
             print("⚠️  필터 종목 없음 (모든 시간에 매수 가능)")
 
@@ -264,20 +282,37 @@ class StartupValidator:
         print(f"📌 재매수 금지: {USConfig.STOP_LOSS_COOLDOWN_DAYS}일")
         print(f"📌 목표 수익률: {PROFIT_THRESHOLD*100:.1f}%")
 
-        # 종목 표시
-        print("\n[거래 종목]")
+        # filter_stocks 표시
+        print("\n[필터 종목] - 모두 상승 시에만 매수 진행")
         print("-"*80)
+        filter_stocks = config.get('filter_stocks', {})
 
-        if config:
-            for i, (symbol, info) in enumerate(config.items(), 1):
-                exchange = info.get('exchange', 'UNKNOWN')
+        if filter_stocks:
+            for symbol in filter_stocks.keys():
+                result = validation_results.get(symbol, {})
+                valid = result.get('valid', False)
+                name = result.get('name', '알 수 없음')
+                enabled = result.get('enabled', True)
+                on_off = "ON" if enabled else "OFF"
+                status = "✅" if valid else "❌"
+                print(f"{status} {symbol}: {name} ({on_off})")
+        else:
+            print("⚠️  필터 종목 없음 (모든 시간에 매수 가능)")
+
+        # watch_list 표시
+        print("\n[감시 종목] - 실제 매수 후보 (하락률 상위 3개 매수)")
+        print("-"*80)
+        watch_list = config.get('watch_list', [])
+
+        if watch_list:
+            for i, symbol in enumerate(watch_list, 1):
                 result = validation_results.get(symbol, {})
                 valid = result.get('valid', False)
                 name = result.get('name', '알 수 없음')
                 status = "✅" if valid else "❌"
-                print(f"{status} {i:2d}. {symbol:6s} ({exchange:6s}): {name}")
+                print(f"{status} {i:2d}. {symbol}: {name}")
         else:
-            print("⚠️  거래 종목 없음")
+            print("⚠️  감시 종목 없음")
 
         print("="*80)
 

@@ -74,16 +74,7 @@ class BaseTokenManager(ABC):
         try:
             if os.path.exists(self.issued_at_file):
                 with open(self.issued_at_file, 'r') as f:
-                    issued_time = float(f.read().strip())
-
-                    # 미래 시간 체크 (잘못된 데이터 방지)
-                    current_time = time.time()
-                    if issued_time > current_time:
-                        self.logger.warning(f"[TOKEN] 발급 시간이 미래({issued_time})입니다. 파일 삭제 후 재설정")
-                        os.remove(self.issued_at_file)
-                        return 0
-
-                    return issued_time
+                    return float(f.read().strip())
         except Exception as e:
             self.logger.debug(f"발급 시간 읽기 실패: {e}")
         return 0

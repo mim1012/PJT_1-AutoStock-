@@ -63,12 +63,6 @@ class KRAPIClient(BaseAPIClient):
                 return None
 
             app_key, app_secret, acc_no = KRConfig.get_credentials()
-
-            # 계좌번호 형식 검증
-            if '-' not in acc_no:
-                self.logger.error(f"계좌번호 형식 오류: 하이픈(-) 필요 (예: 12345678-01), 현재: {acc_no}")
-                return None
-
             cano, acnt_prdt_cd = acc_no.split('-')
 
             base_url = KRConfig.get_api_url()
@@ -297,12 +291,6 @@ class KRAPIClient(BaseAPIClient):
                 return self.format_order_result(False, message="토큰 획득 실패")
 
             app_key, app_secret, acc_no = KRConfig.get_credentials()
-
-            # 계좌번호 형식 검증
-            if '-' not in acc_no:
-                self.logger.error(f"계좌번호 형식 오류: 하이픈(-) 필요 (예: 12345678-01), 현재: {acc_no}")
-                return self.format_order_result(False, message=f"계좌번호 형식 오류: {acc_no}")
-
             cano, acnt_prdt_cd = acc_no.split('-')
 
             base_url = KRConfig.get_api_url()

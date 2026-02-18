@@ -224,12 +224,6 @@ class USAPIClient(BaseAPIClient):
                 return None
 
             app_key, app_secret, acc_no = USConfig.get_credentials()
-
-            # 계좌번호 형식 검증
-            if '-' not in acc_no:
-                self.logger.error(f"계좌번호 형식 오류: 하이픈(-) 필요 (예: 12345678-01), 현재: {acc_no}")
-                return None
-
             cano, acnt_prdt_cd = acc_no.split('-')
 
             base_url = USConfig.get_api_url()
@@ -249,7 +243,7 @@ class USAPIClient(BaseAPIClient):
             params = {
                 "CANO": cano,
                 "ACNT_PRDT_CD": acnt_prdt_cd,
-                "OVRS_EXCG_CD": "",
+                "OVRS_EXCG_CD": "NASD",
                 "TR_CRCY_CD": "USD",
                 "CTX_AREA_FK200": "",
                 "CTX_AREA_NK200": ""
@@ -271,6 +265,20 @@ class USAPIClient(BaseAPIClient):
                 if output2 and isinstance(output2, list) and len(output2) > 0:
                     if isinstance(output2[0], dict):
                         cash = self._safe_float(output2[0].get('frcr_drwg_psbl_amt_1'))
+
+                # Fallback: inquire-present-balance API로 예수금 조회
+                if cash == 0.0 and self.broker:
+                    try:
+                        present_balance = self.broker.fetch_present_balance()
+                        if present_balance and present_balance.get('rt_cd') == '0':
+                            pb_output2 = present_balance.get('output2', [])
+                            if pb_output2 and isinstance(pb_output2, list) and len(pb_output2) > 0:
+                                if isinstance(pb_output2[0], dict):
+                                    cash = self._safe_float(pb_output2[0].get('frcr_drwg_psbl_amt_1'))
+                                    if cash > 0:
+                                        self.logger.info(f"예수금 (present-balance fallback): ${cash:.2f}")
+                    except Exception as e:
+                        self.logger.debug(f"present-balance 예수금 조회 실패: {e}")
 
                 # 평가/매입금액 계산
                 eval_amt = 0.0

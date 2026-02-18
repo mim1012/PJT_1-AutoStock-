@@ -43,3 +43,4 @@ Thumbs.db
 # Trading data
 *_trading_log.csv
 *.xlsx
+nul

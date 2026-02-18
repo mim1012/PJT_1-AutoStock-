@@ -1,0 +1,4 @@
+﻿timestamp,date,time,action,symbol,quantity,price,total_amount,order_type,status,profit_loss,profit_rate,balance_cash,balance_total,notes
+2026-02-16T13:47:55.112264+09:00,2026-02-16,13:47:55,strategy_sell,STRATEGY,0,0,0,strategy,started,,,,,매도 조건 검사 시작
+2026-02-16T13:47:55.215487+09:00,2026-02-16,13:47:55,strategy_sell,STRATEGY,0,0,0,strategy,completed,,,,,매도 조건 검사 완료 - 0건 매도 실행
+2026-02-16T13:47:57.217473+09:00,2026-02-16,13:47:57,strategy_buy,STRATEGY,0,0,0,strategy,started,,,,,매수 조건 검사 시작
