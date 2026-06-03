@@ -72,7 +72,7 @@ SCREEN_DISPARITY_MAX = 120.0                 # 이격도 과열 차단 상한(%)
 SCREEN_DISPARITY_BASE_MA = 20               # 이격도 기준 이평선
 
 # 종목 발굴
-USE_DYNAMIC_UNIVERSE = False                 # True면 pykrx/yfinance 동적 발굴 사용
+USE_DYNAMIC_UNIVERSE = True                 # True면 pykrx/yfinance 동적 발굴 사용
 UNIVERSE_LIMIT = 50                          # 발굴 종목 최대 수
 UNIVERSE_MIN_MARKET_CAP = 5e10               # 최소 시총 500억
 CANDLE_COUNT = 120                           # get_candles() 기본 조회 봉 수
