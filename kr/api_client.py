@@ -360,7 +360,7 @@ class KRAPIClient(BaseAPIClient):
     def get_candles(self, symbol: str, count: int = 120) -> list:
         """
         국내 주식 일봉 데이터 조회 (최근 count봉, 오래된→최신 정렬)
-        KIS FHKST03010100 TR 사용 (직접 HTTP 호출)
+        KIS FHKST03010100 TR 사용. 100봉 제한으로 count>100 시 페이징.
         실패 시 빈 리스트 반환
         """
         try:
@@ -369,17 +369,13 @@ class KRAPIClient(BaseAPIClient):
 
             access_token = self.token_manager.get_valid_token()
             if not access_token:
-                self.logger.warning(f"{symbol} 일봉 조회: 토큰 획득 실패 (스크리너 스킵)")
+                self.logger.warning(f"{symbol} 일봉 조회: 토큰 획득 실패")
                 return []
 
-            # count만큼 날짜 범위 계산 (영업일 기준 넉넉하게 1.5배)
-            end_date = datetime.date.today()
-            start_date = end_date - datetime.timedelta(days=int(count * 1.5))
-
             app_key, app_secret, _ = KRConfig.get_credentials()
-            base_url = KRConfig.get_api_url()
+            # 차트 조회는 모의투자 서버(VTS)가 미지원 → 항상 실전 서버 사용 (read-only)
+            base_url = KRConfig.BASE_URL
             url = f"{base_url}/uapi/domestic-stock/v1/quotations/inquire-daily-itemchartprice"
-
             headers = {
                 "content-type": "application/json",
                 "authorization": f"Bearer {access_token}",
@@ -389,43 +385,59 @@ class KRAPIClient(BaseAPIClient):
                 "custtype": "P"
             }
 
-            params = {
-                "FID_COND_MRKT_DIV_CODE": "J",
-                "FID_INPUT_ISCD": symbol,
-                "FID_INPUT_DATE_1": start_date.strftime("%Y%m%d"),
-                "FID_INPUT_DATE_2": end_date.strftime("%Y%m%d"),
-                "FID_PERIOD_DIV_CODE": "D",
-                "FID_ORG_ADJ_PRC": "0",
-            }
+            all_candles = []
+            # KIS API 1회 최대 100봉 → count를 100봉 단위로 나눠 페이징
+            end_date = datetime.date.today()
+            # 한 페이지당 100봉 = 약 140 달력일 (주말/공휴일 40% 여유)
+            page_days = 140
+            remaining = count
 
-            response = requests.get(url, headers=headers, params=params, timeout=10)
-            response.raise_for_status()
-            result = response.json()
+            while remaining > 0:
+                start_date = end_date - datetime.timedelta(days=page_days)
+                params = {
+                    "FID_COND_MRKT_DIV_CODE": "J",
+                    "FID_INPUT_ISCD": symbol,
+                    "FID_INPUT_DATE_1": start_date.strftime("%Y%m%d"),
+                    "FID_INPUT_DATE_2": end_date.strftime("%Y%m%d"),
+                    "FID_PERIOD_DIV_CODE": "D",
+                    "FID_ORG_ADJ_PRC": "0",
+                }
+                resp = requests.get(url, headers=headers, params=params, timeout=10)
+                resp.raise_for_status()
+                rows = resp.json().get("output2", []) or []
 
-            rows = []
-            if isinstance(result, dict):
-                rows = result.get("output2", []) or []
-
-            candles = []
-            for row in rows:
-                try:
-                    if not row or not row.get("stck_bsop_date"):
+                page_candles = []
+                for row in rows:
+                    try:
+                        if not row or not row.get("stck_bsop_date"):
+                            continue
+                        page_candles.append(Candle(
+                            time=str(row["stck_bsop_date"]),
+                            open=float(row.get("stck_oprc", 0)),
+                            high=float(row.get("stck_hgpr", 0)),
+                            low=float(row.get("stck_lwpr", 0)),
+                            close=float(row.get("stck_clpr", 0)),
+                            volume=int(float(row.get("acml_vol", 0))),
+                        ))
+                    except (ValueError, TypeError):
                         continue
-                    candles.append(Candle(
-                        time=str(row.get("stck_bsop_date", "")),
-                        open=float(row.get("stck_oprc", 0)),
-                        high=float(row.get("stck_hgpr", 0)),
-                        low=float(row.get("stck_lwpr", 0)),
-                        close=float(row.get("stck_clpr", 0)),
-                        volume=int(float(row.get("acml_vol", 0))),
-                    ))
-                except (ValueError, TypeError):
-                    continue
 
-            # KIS 응답은 최신→과거 순, 단테는 오래된→최신 순 전제이므로 정렬
-            candles.sort(key=lambda c: c.time)
+                if not page_candles:
+                    break
 
-            return candles[-count:] if len(candles) > count else candles
+                all_candles = page_candles + all_candles  # 이전 페이지가 더 오래된 것
+                remaining -= len(page_candles)
+
+                # 다음 페이지: 현재 페이지의 가장 오래된 봉 날짜 하루 전까지
+                oldest = min(c.time for c in page_candles)
+                end_date = datetime.datetime.strptime(oldest, "%Y%m%d").date() - datetime.timedelta(days=1)
+
+                if len(page_candles) < 90:  # 페이지가 거의 비었으면 더 이상 데이터 없음
+                    break
+
+            # 오래된→최신 정렬 후 최근 count봉만 반환
+            all_candles.sort(key=lambda c: c.time)
+            return all_candles[-count:] if len(all_candles) > count else all_candles
 
         except Exception as e:
             self.logger.warning(f"{symbol} 일봉 조회 실패 (스크리너 스킵): {e}")
