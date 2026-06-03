@@ -21,17 +21,23 @@ class BaseStrategy(ABC):
     """
 
     def __init__(self, api_client, profit_threshold: float = 0.05,
+                 stop_loss_threshold: float = -0.10,
+                 stop_loss_cooldown_days: int = 50,
                  enable_filter_check: bool = True,
                  check_previous_sell_price: bool = True):
         """
         Args:
             api_client: API 클라이언트 인스턴스 (BaseAPIClient 서브클래스)
             profit_threshold: 목표 수익률 (기본 5%)
+            stop_loss_threshold: 손절 기준 (기본 -10%)
+            stop_loss_cooldown_days: 손절 후 재매수 금지 기간 (기본 50일)
             enable_filter_check: 필터 체크 활성화 여부
             check_previous_sell_price: 이전 매도가 체크 여부
         """
         self.api_client = api_client
         self.profit_threshold = profit_threshold
+        self.stop_loss_threshold = stop_loss_threshold
+        self.stop_loss_cooldown_days = stop_loss_cooldown_days
         self.enable_filter_check = enable_filter_check
         self.check_previous_sell_price = check_previous_sell_price
 
@@ -39,6 +45,9 @@ class BaseStrategy(ABC):
 
         # 매도 가격 기록 (재매수 방지용)
         self.last_sell_prices: Dict[str, float] = {}
+
+        # 손절 추적 (서브클래스에서 초기화)
+        self.stop_loss_tracker = None
 
         # 전략 실행 통계
         self.stats = {
@@ -48,6 +57,16 @@ class BaseStrategy(ABC):
             'sell_successes': 0,
             'filter_blocks': 0
         }
+
+        # 트레일링 스탑용 고점 추적 (메모리 캐시)
+        self.peak_prices: Dict[str, float] = {}
+
+        # 스크리너 파라미터
+        try:
+            from common.screener import StrategyParams
+            self.strategy_params = StrategyParams.from_config()
+        except ImportError:
+            self.strategy_params = None
 
     @abstractmethod
     def execute_buy_strategy(self) -> Dict[str, Any]:
@@ -355,3 +374,78 @@ class BaseStrategy(ABC):
             'sell_successes': 0,
             'filter_blocks': 0
         }
+
+    def update_peak(self, symbol: str, price: float):
+        """트레일링 스탑용 종목 고점 갱신"""
+        self.peak_prices[symbol] = max(self.peak_prices.get(symbol, 0), price)
+
+    def get_peak(self, symbol: str) -> Optional[float]:
+        return self.peak_prices.get(symbol)
+
+    def clear_peak(self, symbol: str):
+        self.peak_prices.pop(symbol, None)
+
+    def passes_screen(self, symbol: str) -> bool:
+        """
+        세력봉 스크리너 통과 여부.
+        get_candles 미구현 또는 봉 데이터 없으면 True(기존 로직 유지)
+        """
+        try:
+            if not hasattr(self.api_client, 'get_candles'):
+                return True
+            candles = self.api_client.get_candles(symbol)
+            if not candles:
+                return True
+            from common.screener import screen
+            result = screen(candles, self.strategy_params)
+            if not result.passed:
+                self.logger.debug(f"{symbol} 스크리너 탈락: {result.reasons}")
+            return result.passed
+        except Exception as e:
+            self.logger.warning(f"{symbol} 스크리너 오류(통과 처리): {e}")
+            return True
+
+    def get_daily_realized_pnl(self) -> float:
+        """당일 매도 실현 손익 합산 (킬스위치용, transaction_logs CSV 기반)"""
+        try:
+            import csv, glob, os
+            from datetime import date
+            today = date.today().strftime('%Y%m%d')
+            total = 0.0
+            log_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'transaction_logs')
+            if not os.path.exists(log_dir):
+                return 0.0
+            for csv_path in glob.glob(os.path.join(log_dir, f'*{today}*.csv')):
+                with open(csv_path, 'r', encoding='utf-8-sig') as f:
+                    for row in csv.DictReader(f):
+                        if row.get('type', '').upper() in ('SELL', '매도'):
+                            try:
+                                total += float(row.get('profit_loss', 0))
+                            except (ValueError, TypeError):
+                                pass
+            return total
+        except Exception as e:
+            self.logger.warning(f"당일 손익 조회 오류: {e}")
+            return 0.0
+
+    def is_trading_halted(self) -> bool:
+        """킬스위치: 당일 손실이 DAILY_LOSS_LIMIT_PCT 초과 시 True"""
+        try:
+            from config import DAILY_LOSS_LIMIT_PCT
+        except ImportError:
+            DAILY_LOSS_LIMIT_PCT = 0.05
+        daily_pnl = self.get_daily_realized_pnl()
+        if daily_pnl >= 0:
+            return False
+        try:
+            balance = self.api_client.get_account_balance()
+            capital = (balance or {}).get('total_eval', 0)
+            if capital > 0 and daily_pnl <= -(capital * DAILY_LOSS_LIMIT_PCT):
+                self.logger.warning(
+                    f"[킬스위치] 당일 실현손실 {daily_pnl:,.0f}원 "
+                    f"(한도 {DAILY_LOSS_LIMIT_PCT*100:.0f}% = {capital*DAILY_LOSS_LIMIT_PCT:,.0f}원 초과)"
+                )
+                return True
+        except Exception:
+            pass
+        return False

@@ -16,6 +16,7 @@ from common.base_strategy import BaseStrategy
 from us.config import USConfig
 from us.api_client import USAPIClient
 from transaction_logger import TransactionLogger
+from stop_loss_tracker import StopLossTracker
 from config import PROFIT_THRESHOLD
 
 
@@ -48,14 +49,24 @@ class USStrategy(BaseStrategy):
 
         super().__init__(
             api_client,
-            profit_threshold,
-            enable_filter_check,
-            check_previous_sell_price
+            profit_threshold=profit_threshold,
+            stop_loss_threshold=USConfig.STOP_LOSS_THRESHOLD,
+            stop_loss_cooldown_days=USConfig.STOP_LOSS_COOLDOWN_DAYS,
+            enable_filter_check=enable_filter_check,
+            check_previous_sell_price=check_previous_sell_price
         )
 
         self.transaction_logger = TransactionLogger()
         self._filter_stocks = {}
         self._watch_list = []
+
+        # StopLossTracker 초기화
+        self.stop_loss_tracker = StopLossTracker(
+            blacklist_file="us_stop_loss_blacklist.json",
+            cooldown_days=USConfig.STOP_LOSS_COOLDOWN_DAYS,
+            timezone=USConfig.TIMEZONE,
+            transaction_logger=self.transaction_logger
+        )
 
         # 설정 파일 로드
         self._load_stock_config()
@@ -90,6 +101,21 @@ class USStrategy(BaseStrategy):
             self.logger.error(f"설정 파일 로드 실패: {e}")
 
     def get_watch_list(self) -> List[str]:
+        try:
+            from config import USE_DYNAMIC_UNIVERSE
+        except ImportError:
+            USE_DYNAMIC_UNIVERSE = False
+
+        if USE_DYNAMIC_UNIVERSE:
+            try:
+                from common.universe import get_us_provider
+                discovered = get_us_provider().discover()
+                if discovered:
+                    self.logger.info(f"US 동적 유니버스 사용: {len(discovered)}종목")
+                    return discovered
+            except Exception as e:
+                self.logger.warning(f"US 동적 발굴 실패, watch_list 폴백: {e}")
+
         return self._watch_list
 
     def get_filter_stocks(self) -> Dict[str, bool]:
@@ -102,6 +128,12 @@ class USStrategy(BaseStrategy):
     def should_buy(self, symbol: str) -> bool:
         """매수 조건 확인"""
         try:
+            # 손절 블랙리스트 체크 (최우선)
+            if self.stop_loss_tracker.is_blocked(symbol):
+                remaining = self.stop_loss_tracker.get_remaining_days(symbol)
+                self.logger.info(f"{symbol}: 손절 후 재매수 금지 중 (남은 기간: {remaining}일)")
+                return False
+
             current_price = self.api_client.get_current_price(symbol)
             if current_price is None:
                 return False
@@ -111,6 +143,45 @@ class USStrategy(BaseStrategy):
                 self.logger.info(f"{symbol}: 현재가 ${current_price:.2f}가 이전 매도가보다 높음 → 매수 불가")
                 return False
 
+            # === 신규 추가 ===
+
+            # 킬스위치 체크
+            if self.is_trading_halted():
+                self.logger.info(f"{symbol}: 킬스위치 활성 → 매수 불가")
+                return False
+
+            # 매수 시간대 제한 (09:30~15:30 ET, 마감 30분 전까지)
+            import pytz
+            from datetime import datetime, time as dt_time
+            now_et = datetime.now(pytz.timezone('US/Eastern'))
+            buy_start = dt_time(9, 30)
+            buy_end = dt_time(15, 30)
+            if not (buy_start <= now_et.time() <= buy_end):
+                self.logger.debug(f"{symbol}: 매수 허용 시간 외 ({now_et.strftime('%H:%M')} ET)")
+                return False
+
+            # 하락률 범위 필터 (너무 조금 또는 너무 많이 떨어진 종목 제외)
+            previous_close = self.api_client.get_previous_close(symbol)
+            if previous_close and previous_close > 0:
+                decline_pct = (previous_close - current_price) / previous_close * 100
+                min_d = getattr(self.strategy_params, 'min_decline_pct', 0.5) if self.strategy_params else 0.5
+                max_d = getattr(self.strategy_params, 'max_decline_pct', 8.0) if self.strategy_params else 8.0
+                if decline_pct < min_d:
+                    self.logger.debug(f"{symbol}: 하락률 {decline_pct:.2f}% < 최소 {min_d}% → 스킵")
+                    return False
+                if decline_pct > max_d:
+                    self.logger.info(f"{symbol}: 하락률 {decline_pct:.2f}% > 최대 {max_d}% (과도 하락) → 스킵")
+                    return False
+
+            # 세력봉 스크리너 통과 여부 (USE_SCREENER=True일 때)
+            try:
+                from config import USE_SCREENER
+            except ImportError:
+                USE_SCREENER = True
+            if USE_SCREENER and not self.passes_screen(symbol):
+                self.logger.info(f"{symbol}: 스크리너 탈락 → 매수 불가")
+                return False
+
             return True
 
         except Exception as e:
@@ -118,8 +189,39 @@ class USStrategy(BaseStrategy):
             return False
 
     def should_sell(self, symbol: str, profit_rate: float) -> bool:
-        """매도 조건 확인"""
-        return profit_rate >= self.profit_threshold
+        """
+        매도 조건 (우선순위: 손절 > 익절 > 트레일링)
+        profit_rate: 소수 단위 (0.05 = 5%)
+        """
+        # 1. 손절 (최우선)
+        if profit_rate <= self.stop_loss_threshold:
+            self.logger.warning(f"{symbol}: 손절 ({profit_rate*100:.2f}%)")
+            return True
+
+        # 2. 익절
+        if profit_rate >= self.profit_threshold:
+            return True
+
+        # 3. 트레일링 스탑 (수익 중일 때만)
+        try:
+            from config import ENABLE_TRAILING_STOP, TRAIL_PCT
+        except ImportError:
+            ENABLE_TRAILING_STOP, TRAIL_PCT = True, 0.02
+
+        if ENABLE_TRAILING_STOP and profit_rate > 0:
+            peak = self.get_peak(symbol)
+            if peak and peak > 0:
+                current_price = self.api_client.get_current_price(symbol)
+                if current_price and current_price > 0:
+                    drop_from_peak = (peak - current_price) / peak
+                    if drop_from_peak >= TRAIL_PCT:
+                        self.logger.info(
+                            f"{symbol}: 트레일링 스탑 (고점 대비 -{drop_from_peak*100:.2f}%, "
+                            f"수익률 {profit_rate*100:.2f}%)"
+                        )
+                        return True
+
+        return False
 
     def execute_buy_strategy(self) -> Dict[str, Any]:
         """매수 전략 실행"""
@@ -170,7 +272,7 @@ class USStrategy(BaseStrategy):
                     continue
 
                 # 주문 실행
-                result = self.api_client.place_order(symbol, 'buy', quantity)
+                result = self.api_client.place_order(symbol, 'buy', quantity, price=round(current_price, 2))
 
                 if result['success']:
                     self.stats['buy_successes'] += 1
@@ -183,6 +285,9 @@ class USStrategy(BaseStrategy):
 
                     # 사용 가능 금액 업데이트
                     available_cash -= (quantity * current_price)
+
+                    # 트레일링 스탑용 고점 초기화
+                    self.update_peak(symbol, current_price)
 
                     # 트랜잭션 로그
                     self.transaction_logger.log_buy_order(
@@ -229,6 +334,11 @@ class USStrategy(BaseStrategy):
                 symbol = pos['symbol']
                 profit_rate = pos.get('profit_rate', 0) / 100  # 퍼센트 → 소수
 
+                # 고점 갱신 (트레일링 스탑용)
+                current_price_for_peak = pos.get('current_price', 0)
+                if current_price_for_peak > 0:
+                    self.update_peak(symbol, current_price_for_peak)
+
                 # 매도 조건 확인
                 if not self.should_sell(symbol, profit_rate):
                     continue
@@ -239,14 +349,35 @@ class USStrategy(BaseStrategy):
 
                 current_price = pos.get('current_price', 0)
 
-                # 주문 실행
-                result = self.api_client.place_order(symbol, 'sell', quantity)
+                # 주문 실행 (해외주식은 시장가 미지원 → 현재가 지정가 매도)
+                result = self.api_client.place_order(
+                    symbol, 'sell', quantity,
+                    price=round(current_price, 2) if current_price > 0 else None
+                )
 
                 if result['success']:
                     self.stats['sell_successes'] += 1
 
-                    # 매도 가격 기록
-                    self.record_sell_price(symbol, current_price)
+                    # 트레일링 스탑용 고점 기록 삭제
+                    self.clear_peak(symbol)
+
+                    # 손절 여부 확인
+                    is_stop_loss = profit_rate <= self.stop_loss_threshold
+
+                    if is_stop_loss:
+                        # 손절 블랙리스트 추가
+                        avg_price = pos.get('avg_price', 0)
+                        self.stop_loss_tracker.add_stop_loss(
+                            symbol=symbol,
+                            avg_price=avg_price,
+                            loss_price=current_price,
+                            loss_rate=profit_rate
+                        )
+                        reason = f"손절 실행 ({profit_rate*100:.2f}%)"
+                    else:
+                        # 익절 시 매도 가격 기록
+                        self.record_sell_price(symbol, current_price)
+                        reason = f"목표 수익률 달성 ({profit_rate*100:.2f}%)"
 
                     executed_orders.append({
                         'symbol': symbol,
@@ -261,7 +392,7 @@ class USStrategy(BaseStrategy):
                         symbol, quantity, current_price,
                         pos.get('profit_loss', 0),
                         result['order_id'],
-                        f"목표 수익률 달성 ({profit_rate*100:.2f}%)"
+                        reason
                     )
 
             return {

@@ -243,7 +243,7 @@ class USAPIClient(BaseAPIClient):
             params = {
                 "CANO": cano,
                 "ACNT_PRDT_CD": acnt_prdt_cd,
-                "OVRS_EXCG_CD": "",
+                "OVRS_EXCG_CD": "NASD",
                 "TR_CRCY_CD": "USD",
                 "CTX_AREA_FK200": "",
                 "CTX_AREA_NK200": ""
@@ -265,6 +265,20 @@ class USAPIClient(BaseAPIClient):
                 if output2 and isinstance(output2, list) and len(output2) > 0:
                     if isinstance(output2[0], dict):
                         cash = self._safe_float(output2[0].get('frcr_drwg_psbl_amt_1'))
+
+                # Fallback: inquire-present-balance API로 예수금 조회
+                if cash == 0.0 and self.broker:
+                    try:
+                        present_balance = self.broker.fetch_present_balance()
+                        if present_balance and present_balance.get('rt_cd') == '0':
+                            pb_output2 = present_balance.get('output2', [])
+                            if pb_output2 and isinstance(pb_output2, list) and len(pb_output2) > 0:
+                                if isinstance(pb_output2[0], dict):
+                                    cash = self._safe_float(pb_output2[0].get('frcr_drwg_psbl_amt_1'))
+                                    if cash > 0:
+                                        self.logger.info(f"예수금 (present-balance fallback): ${cash:.2f}")
+                    except Exception as e:
+                        self.logger.debug(f"present-balance 예수금 조회 실패: {e}")
 
                 # 평가/매입금액 계산
                 eval_amt = 0.0
@@ -420,7 +434,11 @@ class USAPIClient(BaseAPIClient):
             self.logger.info(f"=== {side.upper()} 주문 실행 ===")
             self.logger.info(f"종목: {symbol} ({exchange_name})")
             self.logger.info(f"수량: {quantity}주")
-            self.logger.info(f"가격: {'시장가' if price is None else f'${price:.2f}'}")
+            self.logger.info(f"가격: {'시장가' if price is None else f'${price:.2f} (지정가)'}")
+
+            # 소숫점 2자리 반올림 (KIS API 제한)
+            if price is not None:
+                price = round(float(price), 2)
 
             if side.lower() == 'buy':
                 if price:
@@ -450,3 +468,46 @@ class USAPIClient(BaseAPIClient):
         except Exception as e:
             self.logger.error(f"주문 실행 오류: {e}")
             return self.format_order_result(False, message=str(e))
+
+    def get_candles(self, symbol: str, count: int = 120) -> list:
+        """
+        미국 주식 일봉 데이터 조회 (yfinance 기반, 오래된→최신 정렬)
+        실패 시 빈 리스트 반환
+        """
+        try:
+            import yfinance as yf
+            from common.candle import Candle
+
+            # count봉에 충분한 기간 (영업일 기준 1.5배)
+            period_days = int(count * 1.5)
+            ticker = yf.Ticker(symbol)
+            hist = ticker.history(period=f"{period_days}d", interval="1d", auto_adjust=True)
+
+            if hist.empty:
+                return []
+
+            candles = []
+            for ts, row in hist.iterrows():
+                try:
+                    candles.append(Candle(
+                        time=ts.strftime("%Y%m%d"),
+                        open=float(row["Open"]),
+                        high=float(row["High"]),
+                        low=float(row["Low"]),
+                        close=float(row["Close"]),
+                        volume=int(row["Volume"]),
+                    ))
+                except (ValueError, TypeError):
+                    continue
+
+            # yfinance는 이미 오래된→최신 정렬이지만 명시적으로 보장
+            candles.sort(key=lambda c: c.time)
+
+            return candles[-count:] if len(candles) > count else candles
+
+        except ImportError:
+            self.logger.warning("yfinance 미설치 — US 일봉 조회 불가")
+            return []
+        except Exception as e:
+            self.logger.warning(f"{symbol} US 일봉 조회 실패 (스크리너 스킵): {e}")
+            return []

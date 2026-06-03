@@ -52,7 +52,7 @@ class KRAPIClient(BaseAPIClient):
 
     def get_account_balance(self) -> Dict[str, Any]:
         """
-        계좌 잔고 조회 (Phase 2에서 상세 구현)
+        계좌 잔고 조회 (페이징 지원)
 
         한국 주식용 TR: TTTC8434R (실전) / VTTC8434R (모의)
         """
@@ -79,48 +79,44 @@ class KRAPIClient(BaseAPIClient):
                 "custtype": "P"
             }
 
-            params = {
-                "CANO": cano,
-                "ACNT_PRDT_CD": acnt_prdt_cd,
-                "AFHR_FLPR_YN": "N",
-                "OFL_YN": "",
-                "INQR_DVSN": "01",  # 대출일별
-                "UNPR_DVSN": "01",  # 기준가
-                "FUND_STTL_ICLD_YN": "N",
-                "FNCG_AMT_AUTO_RDPT_YN": "N",
-                "PRCS_DVSN": "01",
-                "CTX_AREA_FK100": "",
-                "CTX_AREA_NK100": ""
-            }
+            # 페이징 처리를 위한 변수
+            all_positions = []
+            ctx_area_fk100 = ""
+            ctx_area_nk100 = ""
+            page_count = 0
+            max_pages = 20  # 안전장치: 최대 20페이지
 
-            response = requests.get(url, headers=headers, params=params, timeout=10)
-            response.raise_for_status()
-            balance = response.json()
+            # 페이징 루프
+            while page_count < max_pages:
+                params = {
+                    "CANO": cano,
+                    "ACNT_PRDT_CD": acnt_prdt_cd,
+                    "AFHR_FLPR_YN": "N",
+                    "OFL_YN": "",
+                    "INQR_DVSN": "01",  # 대출일별
+                    "UNPR_DVSN": "01",  # 기준가
+                    "FUND_STTL_ICLD_YN": "N",
+                    "FNCG_AMT_AUTO_RDPT_YN": "N",
+                    "PRCS_DVSN": "01",
+                    "CTX_AREA_FK100": ctx_area_fk100,
+                    "CTX_AREA_NK100": ctx_area_nk100
+                }
 
-            if balance and balance.get('rt_cd') == '0':
+                response = requests.get(url, headers=headers, params=params, timeout=10)
+                response.raise_for_status()
+                balance = response.json()
+
+                if not balance or balance.get('rt_cd') != '0':
+                    self.logger.error(f"잔고 조회 실패: {balance}")
+                    return None
+
                 output1 = balance.get('output1', [])
                 output2 = balance.get('output2', [])
 
                 if output1 and not isinstance(output1, list):
                     output1 = [output1]
 
-                # output2가 리스트인 경우 첫 번째 요소 사용
-                if output2 and isinstance(output2, list) and len(output2) > 0:
-                    output2_data = output2[0]
-                elif isinstance(output2, dict):
-                    output2_data = output2
-                else:
-                    output2_data = {}
-
-                # 예수금 (주문가능현금)
-                cash = self._safe_float(output2_data.get('dnca_tot_amt', 0))
-
-                # 총 평가/매입금액
-                eval_amt = self._safe_float(output2_data.get('tot_evlu_amt', 0))
-                purchase_amt = self._safe_float(output2_data.get('pchs_amt_smtl_amt', 0))
-
-                # 보유종목 파싱
-                positions = []
+                # 현재 페이지의 보유종목 파싱
                 for item in output1:
                     symbol = item.get('pdno', '')  # 종목코드
                     quantity = int(self._safe_float(item.get('hldg_qty', 0)))
@@ -133,7 +129,7 @@ class KRAPIClient(BaseAPIClient):
                         profit_rate = self._safe_float(item.get('evlu_pfls_rt', 0))
                         sellable_qty = int(self._safe_float(item.get('ord_psbl_qty', 0)))
 
-                        positions.append({
+                        all_positions.append({
                             'symbol': symbol,
                             'name': item.get('prdt_name', ''),
                             'quantity': quantity,
@@ -145,20 +141,45 @@ class KRAPIClient(BaseAPIClient):
                             'sellable_qty': sellable_qty
                         })
 
-                self.logger.info(f"예수금: {cash:,.0f}원")
-                self.logger.info(f"총 평가금액: {eval_amt:,.0f}원")
-                self.logger.info(f"총 매입금액: {purchase_amt:,.0f}원")
+                # 다음 페이지 체크
+                tr_cont = balance.get('tr_cont', '')
+                if tr_cont in ['F', 'M']:  # F: 다음 데이터 있음, M: 중간
+                    ctx_area_fk100 = balance.get('ctx_area_fk100', '')
+                    ctx_area_nk100 = balance.get('ctx_area_nk100', '')
+                    page_count += 1
+                    self.logger.info(f"다음 페이지 조회 중... (페이지 {page_count + 1})")
+                    import time
+                    time.sleep(0.1)  # Rate limiting
+                else:
+                    # 마지막 페이지
+                    break
 
-                return {
-                    'total_eval': eval_amt,
-                    'total_profit': eval_amt - purchase_amt,
-                    'available_cash': cash,
-                    'positions': positions
-                }
-
+            # output2에서 계좌 정보 추출 (마지막 응답 사용)
+            if output2 and isinstance(output2, list) and len(output2) > 0:
+                output2_data = output2[0]
+            elif isinstance(output2, dict):
+                output2_data = output2
             else:
-                self.logger.error(f"잔고 조회 실패: {balance}")
-                return None
+                output2_data = {}
+
+            # 예수금 (주문가능현금)
+            cash = self._safe_float(output2_data.get('dnca_tot_amt', 0))
+
+            # 총 평가/매입금액
+            eval_amt = self._safe_float(output2_data.get('tot_evlu_amt', 0))
+            purchase_amt = self._safe_float(output2_data.get('pchs_amt_smtl_amt', 0))
+
+            self.logger.info(f"예수금: {cash:,.0f}원")
+            self.logger.info(f"총 평가금액: {eval_amt:,.0f}원")
+            self.logger.info(f"총 매입금액: {purchase_amt:,.0f}원")
+            self.logger.info(f"보유종목 수: {len(all_positions)}개 (페이지: {page_count + 1})")
+
+            return {
+                'total_eval': eval_amt,
+                'total_profit': eval_amt - purchase_amt,
+                'available_cash': cash,
+                'positions': all_positions
+            }
 
         except Exception as e:
             self.logger.error(f"잔고 조회 오류: {e}")
@@ -335,3 +356,77 @@ class KRAPIClient(BaseAPIClient):
         except Exception as e:
             self.logger.error(f"주문 실행 오류: {e}")
             return self.format_order_result(False, message=str(e))
+
+    def get_candles(self, symbol: str, count: int = 120) -> list:
+        """
+        국내 주식 일봉 데이터 조회 (최근 count봉, 오래된→최신 정렬)
+        KIS FHKST03010100 TR 사용 (직접 HTTP 호출)
+        실패 시 빈 리스트 반환
+        """
+        try:
+            from common.candle import Candle
+            import datetime
+
+            access_token = self.token_manager.get_valid_token()
+            if not access_token:
+                self.logger.warning(f"{symbol} 일봉 조회: 토큰 획득 실패 (스크리너 스킵)")
+                return []
+
+            # count만큼 날짜 범위 계산 (영업일 기준 넉넉하게 1.5배)
+            end_date = datetime.date.today()
+            start_date = end_date - datetime.timedelta(days=int(count * 1.5))
+
+            app_key, app_secret, _ = KRConfig.get_credentials()
+            base_url = KRConfig.get_api_url()
+            url = f"{base_url}/uapi/domestic-stock/v1/quotations/inquire-daily-itemchartprice"
+
+            headers = {
+                "content-type": "application/json",
+                "authorization": f"Bearer {access_token}",
+                "appkey": app_key,
+                "appsecret": app_secret,
+                "tr_id": "FHKST03010100",
+                "custtype": "P"
+            }
+
+            params = {
+                "FID_COND_MRKT_DIV_CODE": "J",
+                "FID_INPUT_ISCD": symbol,
+                "FID_INPUT_DATE_1": start_date.strftime("%Y%m%d"),
+                "FID_INPUT_DATE_2": end_date.strftime("%Y%m%d"),
+                "FID_PERIOD_DIV_CODE": "D",
+                "FID_ORG_ADJ_PRC": "0",
+            }
+
+            response = requests.get(url, headers=headers, params=params, timeout=10)
+            response.raise_for_status()
+            result = response.json()
+
+            rows = []
+            if isinstance(result, dict):
+                rows = result.get("output2", []) or []
+
+            candles = []
+            for row in rows:
+                try:
+                    if not row or not row.get("stck_bsop_date"):
+                        continue
+                    candles.append(Candle(
+                        time=str(row.get("stck_bsop_date", "")),
+                        open=float(row.get("stck_oprc", 0)),
+                        high=float(row.get("stck_hgpr", 0)),
+                        low=float(row.get("stck_lwpr", 0)),
+                        close=float(row.get("stck_clpr", 0)),
+                        volume=int(float(row.get("acml_vol", 0))),
+                    ))
+                except (ValueError, TypeError):
+                    continue
+
+            # KIS 응답은 최신→과거 순, 단테는 오래된→최신 순 전제이므로 정렬
+            candles.sort(key=lambda c: c.time)
+
+            return candles[-count:] if len(candles) > count else candles
+
+        except Exception as e:
+            self.logger.warning(f"{symbol} 일봉 조회 실패 (스크리너 스킵): {e}")
+            return []

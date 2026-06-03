@@ -1,0 +1,100 @@
+"""기술적 지표 계산 (순수 함수, StockDante 이식 + RSI 추가)."""
+from __future__ import annotations
+
+from common.candle import Candle
+
+
+def sma(values: list[float], period: int) -> float | None:
+    """단순이동평균. 데이터가 period 미만이면 None."""
+    if period <= 0 or len(values) < period:
+        return None
+    window = values[-period:]
+    return sum(window) / period
+
+
+def closes(candles: list[Candle]) -> list[float]:
+    return [c.close for c in candles]
+
+
+def volumes(candles: list[Candle]) -> list[int]:
+    return [c.volume for c in candles]
+
+
+def volume_ratio(candles: list[Candle], period: int) -> float | None:
+    """당일(마지막 봉) 거래량 / 직전 period봉 평균 거래량.
+
+    직전 period봉을 기준으로 하므로 당일 봉은 평균에서 제외한다.
+    """
+    if len(candles) < period + 1:
+        return None
+    prev = volumes(candles[-(period + 1):-1])
+    avg = sum(prev) / period
+    if avg == 0:
+        return None
+    return candles[-1].volume / avg
+
+
+def is_volume_high(candles: list[Candle], lookback: int) -> bool:
+    """마지막 봉 거래량이 직전 lookback봉 내 최고치인지."""
+    if len(candles) < lookback + 1:
+        return False
+    prev_max = max(volumes(candles[-(lookback + 1):-1]))
+    return candles[-1].volume >= prev_max
+
+
+def disparity(candles: list[Candle], period: int) -> float | None:
+    """이격도(%) = 현재가 / 이평 * 100."""
+    ma = sma(closes(candles), period)
+    if ma is None or ma == 0:
+        return None
+    return candles[-1].close / ma * 100
+
+
+def ma_alignment(candles: list[Candle], periods: list[int]) -> str:
+    """이동평균선 배열 상태.
+
+    반환: 'bullish'(정배열, 단기>장기), 'bearish'(역배열), 'mixed'(혼조), 'insufficient'.
+    """
+    mas: list[float] = []
+    cl = closes(candles)
+    for p in sorted(periods):
+        m = sma(cl, p)
+        if m is None:
+            return "insufficient"
+        mas.append(m)
+    # mas는 짧은기간→긴기간 순. 정배열이면 단조 감소.
+    if all(mas[i] > mas[i + 1] for i in range(len(mas) - 1)):
+        return "bullish"
+    if all(mas[i] < mas[i + 1] for i in range(len(mas) - 1)):
+        return "bearish"
+    return "mixed"
+
+
+def rsi(values: list[float], period: int = 14) -> float | None:
+    """RSI (Wilder 방식, 순수 파이썬 구현).
+
+    gain/loss EMA(Wilder smoothing) → RS → RSI = 100 - (100/(1+RS)).
+    데이터 부족(len < period+1) 시 None 반환.
+    """
+    if period <= 0 or len(values) < period + 1:
+        return None
+
+    # 가격 변화량 (delta)
+    deltas = [values[i] - values[i - 1] for i in range(1, len(values))]
+    gains = [d if d > 0 else 0.0 for d in deltas]
+    losses = [-d if d < 0 else 0.0 for d in deltas]
+
+    # 최초 period 구간 단순평균으로 시드
+    avg_gain = sum(gains[:period]) / period
+    avg_loss = sum(losses[:period]) / period
+
+    # 이후 Wilder smoothing (EMA)
+    for i in range(period, len(deltas)):
+        avg_gain = (avg_gain * (period - 1) + gains[i]) / period
+        avg_loss = (avg_loss * (period - 1) + losses[i]) / period
+
+    if avg_loss == 0:
+        # 손실이 없으면 RSI 100 (완전 상승)
+        return 100.0
+    rs = avg_gain / avg_loss
+    return 100.0 - (100.0 / (1.0 + rs))

@@ -50,6 +50,8 @@ class KRStrategy(BaseStrategy):
         super().__init__(
             api_client,
             profit_threshold,
+            KRConfig.STOP_LOSS_THRESHOLD,
+            KRConfig.STOP_LOSS_COOLDOWN_DAYS,
             enable_filter_check,
             check_previous_sell_price
         )
@@ -58,6 +60,15 @@ class KRStrategy(BaseStrategy):
         self._filter_stocks = {}
         self._watch_list = []
         self._sectors = None  # 섹터 구조 (있을 경우)
+
+        # StopLossTracker 초기화
+        from stop_loss_tracker import StopLossTracker
+        self.stop_loss_tracker = StopLossTracker(
+            blacklist_file="kr_stop_loss_blacklist.json",
+            cooldown_days=KRConfig.STOP_LOSS_COOLDOWN_DAYS,
+            timezone=KRConfig.TIMEZONE,
+            transaction_logger=self.transaction_logger
+        )
 
         # 설정 파일 로드
         self._load_stock_config()
@@ -116,12 +127,29 @@ class KRStrategy(BaseStrategy):
     def _get_active_watch_list(self) -> List[str]:
         """
         활성 watch_list 반환
+        - 동적 발굴 모드: pykrx 기반 당일 조건 통과 종목 반환
         - 섹터 모드: 필터 조건을 통과한 섹터의 watch_list만 반환
         - 레거시 모드: 전체 watch_list 반환
 
         Returns:
             list: 매수 가능 종목 리스트
         """
+        # 동적 발굴 모드
+        try:
+            from config import USE_DYNAMIC_UNIVERSE
+        except ImportError:
+            USE_DYNAMIC_UNIVERSE = False
+
+        if USE_DYNAMIC_UNIVERSE:
+            try:
+                from common.universe import get_kr_provider
+                discovered = get_kr_provider().discover()
+                if discovered:
+                    self.logger.info(f"동적 유니버스 사용: {len(discovered)}종목")
+                    return discovered
+            except Exception as e:
+                self.logger.warning(f"동적 발굴 실패, watch_list 폴백: {e}")
+
         # 섹터 모드인 경우
         if self._sectors:
             passing_sectors = self.get_passing_sectors()
@@ -200,6 +228,12 @@ class KRStrategy(BaseStrategy):
     def should_buy(self, symbol: str) -> bool:
         """매수 조건 확인"""
         try:
+            # 블랙리스트 체크 (최우선)
+            if self.stop_loss_tracker.is_blocked(symbol):
+                remaining = self.stop_loss_tracker.get_remaining_days(symbol)
+                self.logger.info(f"{symbol}: 손절 후 재매수 금지 중 (남은 기간: {remaining}일)")
+                return False
+
             current_price = self.api_client.get_current_price(symbol)
             if current_price is None:
                 return False
@@ -209,6 +243,45 @@ class KRStrategy(BaseStrategy):
                 self.logger.info(f"{symbol}: 현재가 {current_price:,.0f}원이 이전 매도가보다 높음 → 매수 불가")
                 return False
 
+            # === 신규 추가 ===
+
+            # 킬스위치 체크
+            if self.is_trading_halted():
+                self.logger.info(f"{symbol}: 킬스위치 활성 → 매수 불가")
+                return False
+
+            # 매수 시간대 제한 (장 시작 30분, 마감 30분 제외)
+            import pytz
+            from datetime import datetime, time as dt_time
+            now_kr = datetime.now(pytz.timezone('Asia/Seoul'))
+            buy_start = dt_time(9, 30)
+            buy_end = dt_time(15, 0)
+            if not (buy_start <= now_kr.time() <= buy_end):
+                self.logger.debug(f"{symbol}: 매수 허용 시간 외 ({now_kr.strftime('%H:%M')} KST)")
+                return False
+
+            # 하락률 범위 필터 (너무 조금 또는 너무 많이 떨어진 종목 제외)
+            previous_close = self.api_client.get_previous_close(symbol)
+            if previous_close and previous_close > 0:
+                decline_pct = (previous_close - current_price) / previous_close * 100
+                min_d = getattr(self.strategy_params, 'min_decline_pct', 0.5) if self.strategy_params else 0.5
+                max_d = getattr(self.strategy_params, 'max_decline_pct', 8.0) if self.strategy_params else 8.0
+                if decline_pct < min_d:
+                    self.logger.debug(f"{symbol}: 하락률 {decline_pct:.2f}% < 최소 {min_d}% → 스킵")
+                    return False
+                if decline_pct > max_d:
+                    self.logger.info(f"{symbol}: 하락률 {decline_pct:.2f}% > 최대 {max_d}% (과도 하락) → 스킵")
+                    return False
+
+            # 세력봉 스크리너 통과 여부 (USE_SCREENER=True일 때)
+            try:
+                from config import USE_SCREENER
+            except ImportError:
+                USE_SCREENER = True
+            if USE_SCREENER and not self.passes_screen(symbol):
+                self.logger.info(f"{symbol}: 스크리너 탈락 → 매수 불가")
+                return False
+
             return True
 
         except Exception as e:
@@ -216,8 +289,39 @@ class KRStrategy(BaseStrategy):
             return False
 
     def should_sell(self, symbol: str, profit_rate: float) -> bool:
-        """매도 조건 확인"""
-        return profit_rate >= self.profit_threshold
+        """
+        매도 조건 (우선순위: 손절 > 익절 > 트레일링)
+        profit_rate: 소수 단위 (0.05 = 5%)
+        """
+        # 1. 손절 (최우선)
+        if profit_rate <= KRConfig.STOP_LOSS_THRESHOLD:
+            self.logger.warning(f"{symbol}: 손절 ({profit_rate*100:.2f}%)")
+            return True
+
+        # 2. 익절
+        if profit_rate >= self.profit_threshold:
+            return True
+
+        # 3. 트레일링 스탑 (수익 중일 때만)
+        try:
+            from config import ENABLE_TRAILING_STOP, TRAIL_PCT
+        except ImportError:
+            ENABLE_TRAILING_STOP, TRAIL_PCT = True, 0.02
+
+        if ENABLE_TRAILING_STOP and profit_rate > 0:
+            peak = self.get_peak(symbol)
+            if peak and peak > 0:
+                current_price = self.api_client.get_current_price(symbol)
+                if current_price and current_price > 0:
+                    drop_from_peak = (peak - current_price) / peak
+                    if drop_from_peak >= TRAIL_PCT:
+                        self.logger.info(
+                            f"{symbol}: 트레일링 스탑 (고점 대비 -{drop_from_peak*100:.2f}%, "
+                            f"수익률 {profit_rate*100:.2f}%)"
+                        )
+                        return True
+
+        return False
 
     def execute_buy_strategy(self) -> Dict[str, Any]:
         """매수 전략 실행"""
@@ -282,10 +386,18 @@ class KRStrategy(BaseStrategy):
                     # 사용 가능 금액 업데이트
                     available_cash -= (quantity * current_price)
 
+                    # 트레일링 스탑용 고점 초기화
+                    self.update_peak(symbol, current_price)
+
                     # 트랜잭션 로그
                     self.transaction_logger.log_buy_order(
-                        symbol, quantity, current_price,
-                        result['order_id'], "하락률 상위 매수"
+                        symbol=symbol,
+                        quantity=quantity,
+                        price=current_price,
+                        order_type="market",
+                        status="filled",
+                        balance_cash=available_cash,
+                        notes=f"하락률 상위 매수 (주문번호: {result['order_id']})"
                     )
 
             return {
@@ -327,6 +439,11 @@ class KRStrategy(BaseStrategy):
                 symbol = pos['symbol']
                 profit_rate = pos.get('profit_rate', 0) / 100  # 퍼센트 → 소수
 
+                # 고점 갱신 (트레일링 스탑용)
+                current_price_for_peak = pos.get('current_price', 0)
+                if current_price_for_peak > 0:
+                    self.update_peak(symbol, current_price_for_peak)
+
                 # 매도 조건 확인
                 if not self.should_sell(symbol, profit_rate):
                     continue
@@ -343,8 +460,25 @@ class KRStrategy(BaseStrategy):
                 if result['success']:
                     self.stats['sell_successes'] += 1
 
-                    # 매도 가격 기록
-                    self.record_sell_price(symbol, current_price)
+                    # 트레일링 스탑용 고점 기록 삭제
+                    self.clear_peak(symbol)
+
+                    # 손절 여부 확인
+                    is_stop_loss = profit_rate <= KRConfig.STOP_LOSS_THRESHOLD
+
+                    if is_stop_loss:
+                        # 손절 블랙리스트 추가
+                        self.stop_loss_tracker.add_stop_loss(
+                            symbol=symbol,
+                            avg_price=pos.get('avg_price', 0),
+                            loss_price=current_price,
+                            loss_rate=profit_rate
+                        )
+                        notes = f"stop_loss_triggered ({profit_rate*100:.2f}%) (주문번호: {result['order_id']})"
+                    else:
+                        # 익절 기록
+                        self.record_sell_price(symbol, current_price)
+                        notes = f"profit_target_reached ({profit_rate*100:.2f}%) (주문번호: {result['order_id']})"
 
                     executed_orders.append({
                         'symbol': symbol,
@@ -354,12 +488,16 @@ class KRStrategy(BaseStrategy):
                         'order_id': result['order_id']
                     })
 
-                    # 트랜잭션 로그
+                    # 트랜잭션 로그 (손절/익절 구분)
                     self.transaction_logger.log_sell_order(
-                        symbol, quantity, current_price,
-                        pos.get('profit_loss', 0),
-                        result['order_id'],
-                        f"목표 수익률 달성 ({profit_rate*100:.2f}%)"
+                        symbol=symbol,
+                        quantity=quantity,
+                        price=current_price,
+                        profit_loss=pos.get('profit_loss', 0),
+                        profit_rate=profit_rate,
+                        order_type="market",
+                        status="filled",
+                        notes=notes
                     )
 
             return {
