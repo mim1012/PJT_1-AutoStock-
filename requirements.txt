@@ -5,6 +5,7 @@ numpy==1.24.3
 python-dotenv==1.0.0
 websocket-client==1.6.1
 schedule==1.2.2
-requests
-pytz
+finance-datareader>=0.9.0
+yfinance>=0.2.65
+mojito2
 

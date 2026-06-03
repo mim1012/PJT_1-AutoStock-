@@ -1,7 +1,7 @@
 """
 동적 종목 발굴 모듈
 
-pykrx (한국), yfinance (미국) 기반으로 매수 후보 종목을 자동 발굴한다.
+FinanceDataReader(KR) + yfinance(US) 기반으로 매수 후보 종목을 자동 발굴한다.
 USE_DYNAMIC_UNIVERSE=False인 경우 기존 watch_list 방식 유지.
 """
 from __future__ import annotations
@@ -15,14 +15,14 @@ logger = logging.getLogger(__name__)
 
 class KRUniverseProvider:
     """
-    pykrx 기반 한국 주식 동적 종목 발굴.
+    FinanceDataReader 기반 한국 주식 동적 종목 발굴.
 
     조건:
     1. 시가총액 >= UNIVERSE_MIN_MARKET_CAP (기본 500억)
     2. 당일 등락률 >= SCREEN_RISE_PCT (세력봉 후보: 5% 이상 상승)
-    3. 관리종목/거래정지/우선주 제외 (종목명 기반 필터)
+    3. 우선주/ETF 제외 (종목코드 끝자리 '0' 보통주만)
 
-    pykrx 미설치 시 빈 리스트 반환 (graceful degradation).
+    finance-datareader 미설치 시 빈 리스트 반환 (graceful degradation).
     """
 
     def __init__(self):
@@ -45,63 +45,43 @@ class KRUniverseProvider:
 
     def _fetch(self, today: date, limit: int) -> list[str]:
         try:
-            from pykrx import stock
+            import FinanceDataReader as fdr
         except ImportError:
-            logger.warning("pykrx 미설치 — KR 동적 발굴 불가. pip install pykrx")
+            logger.warning("finance-datareader 미설치 — KR 동적 발굴 불가. pip install finance-datareader")
             return []
 
         try:
-            date_str = today.strftime("%Y%m%d")
-
-            # 1) 시총 조회 (KOSPI + KOSDAQ 통합)
-            cap_df = stock.get_market_cap_by_ticker(date_str, market="ALL")
-            if cap_df is None or cap_df.empty:
-                return []
-
-            # 시총 필터
             try:
-                from config import UNIVERSE_MIN_MARKET_CAP
+                from config import UNIVERSE_MIN_MARKET_CAP, SCREEN_RISE_PCT
             except ImportError:
                 UNIVERSE_MIN_MARKET_CAP = 5e10
-            cap_df = cap_df[cap_df["시가총액"] >= UNIVERSE_MIN_MARKET_CAP]
+                SCREEN_RISE_PCT = 5.0
 
-            # 2) 당일 OHLCV + 등락률
-            ohlcv_df = stock.get_market_ohlcv_by_ticker(date_str, market="ALL")
-            if ohlcv_df is None or ohlcv_df.empty:
+            # 1) KRX 전체 종목 리스트 + 당일 시세 (Code, Name, Close, ChagesRatio, Volume, Marcap 포함)
+            krx_df = fdr.StockListing('KRX')
+            if krx_df is None or krx_df.empty:
+                logger.warning("KR 종목 목록 조회 실패")
                 return []
 
-            # 등락률 필터: 세력봉 후보 (상승 종목)
-            try:
-                from config import SCREEN_RISE_PCT
-            except ImportError:
-                SCREEN_RISE_PCT = 5.0
-            ohlcv_df = ohlcv_df[ohlcv_df["등락률"] >= SCREEN_RISE_PCT]
+            # 2) 시총 필터 (Marcap 컬럼, 단위: 원)
+            krx_df = krx_df[krx_df['Marcap'] >= UNIVERSE_MIN_MARKET_CAP]
 
-            # 3) 교집합 (시총 + 등락률 둘 다 통과)
-            candidates = cap_df.index.intersection(ohlcv_df.index).tolist()
+            # 3) 등락률 필터 (ChagesRatio 컬럼, 단위: %)
+            krx_df = krx_df[krx_df['ChagesRatio'] >= SCREEN_RISE_PCT]
 
-            # 4) 우선주/ETF 제외 (종목코드 끝자리가 0이 아닌 것 중 일부 제외)
-            #    간단 필터: 종목코드 6자리 중 끝 한 자리가 '0' (보통주) 또는 'K'(ETF 제외)
-            filtered = []
-            for code in candidates:
-                if len(code) == 6 and code[-1] == '0':
-                    filtered.append(code)
+            # 4) 보통주만 (Code 끝자리 '0', 우선주/ETF/ETN 제외)
+            krx_df = krx_df[krx_df['Code'].str[-1] == '0']
 
-            # 거래량 많은 순으로 정렬 (유동성 우선)
-            if filtered and not ohlcv_df.empty:
-                common_codes = [c for c in filtered if c in ohlcv_df.index]
-                if common_codes:
-                    volume_sorted = (
-                        ohlcv_df.loc[common_codes, "거래량"]
-                        .sort_values(ascending=False)
-                        .index.tolist()
-                    )
-                    filtered = volume_sorted
+            # 5) 거래량 내림차순 정렬 (유동성 우선)
+            krx_df = krx_df.sort_values('Volume', ascending=False)
 
-            logger.info(f"KR 동적 발굴: {len(filtered)}종목 (시총 {UNIVERSE_MIN_MARKET_CAP/1e8:.0f}억+, "
-                        f"등락률 +{SCREEN_RISE_PCT:.0f}% 이상)")
+            result = krx_df['Code'].tolist()[:limit]
 
-            return filtered[:limit]
+            logger.info(
+                f"KR 동적 발굴: {len(result)}종목 "
+                f"(시총 {UNIVERSE_MIN_MARKET_CAP/1e8:.0f}억+, 등락률 +{SCREEN_RISE_PCT:.0f}% 이상)"
+            )
+            return result
 
         except Exception as e:
             logger.error(f"KR 동적 발굴 실패: {e}")
