@@ -33,13 +33,13 @@ FWD_WINDOWS = [5, 10, 20]
 MIN_HISTORY = 460   # 448MA + 여유
 
 
-def load_universe(n: int):
+def load_universe(n: int, offset: int = 0):
     import FinanceDataReader as fdr
     df = fdr.StockListing("KRX")
     df = df[(df["Marcap"] >= 1e10) & (df["Code"].astype(str).str[-1] == "0")]
     df = df.sort_values("Marcap", ascending=False)
     step = max(1, len(df) // n)
-    sample = df.iloc[::step][:n]
+    sample = df.iloc[offset::step][:n]  # offset으로 다른 종목군 샘플(견고성 검증용)
     data = {}
     for _, r in sample.iterrows():
         code, name = r["Code"], r["Name"]
@@ -75,14 +75,22 @@ def fwd_returns(cs, idx):
     return out
 
 
-def backtest(data, screen_fn, params, sample_step=20):
-    """반환: {'signals':n, 'baseline_n':m, per-window {'avg','win','base_avg'}}."""
+def backtest(data, screen_fn, params, sample_step=20, asof_half=None):
+    """반환: {'signals':n, 'baseline_n':m, per-window {'avg','win','base_avg'}}.
+
+    asof_half: None=전체, 'early'=앞 절반 시점, 'late'=뒤 절반 시점(시간 분할 견고성).
+    """
     sig_rets = {w: [] for w in FWD_WINDOWS}
     base_rets = {w: [] for w in FWD_WINDOWS}
     n_sig = 0
     n_base = 0
     for code, (name, cs) in data.items():
-        for idx in asof_indices(len(cs), sample_step):
+        idxs = asof_indices(len(cs), sample_step)
+        if asof_half == "early":
+            idxs = idxs[: len(idxs) // 2]
+        elif asof_half == "late":
+            idxs = idxs[len(idxs) // 2:]
+        for idx in idxs:
             window = cs[: idx + 1]
             fr = fwd_returns(cs, idx)
             for w in FWD_WINDOWS:
@@ -116,6 +124,44 @@ def _fmt(label, r):
         e10 = f"엣지{round(r[10]['avg'] - r[10]['base_avg'], 2):+}%p"
     print(f"  {label:<22} 신호 {r['signals']:>4} | "
           f"+5d {r[5]['avg']}% / +10d {r[10]['avg']}%(승{r[10]['win']}%) / +20d {r[20]['avg']}% | {e10}")
+
+
+def run_a_sweep(data, step):
+    """Task 1: A 오전장 파라미터 심화 스윕."""
+    from common.screener_dante_extra import DanteMorningParams
+    print("=== A 오전장 심화 스윕 ===")
+    print("[vol_prev_mult] 전일대비 거래량 배수:")
+    for v in (1.5, 2.0, 2.5, 3.0):
+        _fmt(f"  vol={v}", backtest(data, screen_dante_morning, DanteMorningParams(vol_prev_mult=v), step))
+    print("[등락률 band] change_min~max:")
+    for lo, hi in ((1, 15), (2, 15), (3, 15), (2, 10), (2, 20)):
+        _fmt(f"  {lo}~{hi}%", backtest(data, screen_dante_morning, DanteMorningParams(change_min_pct=lo, change_max_pct=hi), step))
+    print("[bb_near_pct] 볼린저 상단 근접:")
+    for b in (2, 4, 6, 8):
+        _fmt(f"  bb={b}%", backtest(data, screen_dante_morning, DanteMorningParams(bb_near_pct=b), step))
+    print("[옵션 플래그] 60일선/448역배열:")
+    _fmt("  trend60=on", backtest(data, screen_dante_morning, DanteMorningParams(require_trend_ma=True), step))
+    _fmt("  avoid448=on", backtest(data, screen_dante_morning, DanteMorningParams(require_avoid_high=True), step))
+    _fmt("  both=on", backtest(data, screen_dante_morning, DanteMorningParams(require_trend_ma=True, require_avoid_high=True), step))
+
+
+def run_robustness(data, step):
+    """Task 2: 시간 분할(앞/뒤 절반) 견고성 — 튜닝값 + A가 두 기간 모두 양의 엣지인가."""
+    from common.screener_dante_extra import DanteMorningParams
+    specs = [
+        ("A 오전장", screen_dante_morning, DanteMorningParams()),
+        ("C 신고가(5)", screen_dante_newhigh, DanteNewHighParams()),
+        ("F 기준봉(15)", screen_dante_basecandle, DanteBaseCandleParams()),
+        ("B-2 이격수렴(8)", screen_dante_convergence, DanteConvergenceParams()),
+    ]
+    print("=== 시간 분할 견고성 (앞 절반 / 뒤 절반 시점) ===")
+    for label, fn, p in specs:
+        re_ = backtest(data, fn, p, step, asof_half="early")
+        rl_ = backtest(data, fn, p, step, asof_half="late")
+        def edge(r):
+            if r[10]["avg"] is None or r[10]["base_avg"] is None: return None
+            return round(r[10]["avg"] - r[10]["base_avg"], 2)
+        print(f"  {label:<16} 앞[신호{re_['signals']:>3} 엣지{edge(re_)}%p] / 뒤[신호{rl_['signals']:>3} 엣지{edge(rl_)}%p]")
 
 
 def main():
@@ -168,5 +214,24 @@ def main():
         _fmt(f"  near_high_pct={nh}", r)
 
 
+def run_mode(mode, n, step, offset=0):
+    print(f"유니버스 로딩 (시총100억+ ~{n}종목, offset={offset})...")
+    data = load_universe(n, offset=offset)
+    sample = next(iter(data.values()))[1] if data else []
+    n_asof = len(asof_indices(len(sample), step)) if sample else 0
+    print(f"로드 {len(data)}종목 × as-of {n_asof}개 시점 (간격 {step}봉)\n")
+    if mode == "asweep":
+        run_a_sweep(data, step)
+    elif mode == "robust":
+        run_robustness(data, step)
+
+
 if __name__ == "__main__":
-    main()
+    if len(sys.argv) > 1 and sys.argv[1] in ("asweep", "robust"):
+        mode = sys.argv[1]
+        n = int(sys.argv[2]) if len(sys.argv) > 2 else 120
+        step = int(sys.argv[3]) if len(sys.argv) > 3 else 20
+        offset = int(sys.argv[4]) if len(sys.argv) > 4 else 0
+        run_mode(mode, n, step, offset)
+    else:
+        main()
