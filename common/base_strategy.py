@@ -152,7 +152,13 @@ class BaseStrategy(ABC):
             True: 필터 조건 충족 (매수 가능)
             False: 필터 조건 미충족 (매수 불가)
         """
-        if not self.enable_filter_check:
+        # settings.json 런타임 오버라이드 동적 반영
+        try:
+            from common.settings_store import read_settings
+            _enable = read_settings().get('ENABLE_FILTER_CHECK', self.enable_filter_check)
+        except Exception:
+            _enable = self.enable_filter_check
+        if not _enable:
             self.logger.debug("필터 체크 비활성화됨")
             return True
 
@@ -388,19 +394,65 @@ class BaseStrategy(ABC):
     def passes_screen(self, symbol: str) -> bool:
         """
         세력봉 스크리너 통과 여부.
+        - breakout 전략: 오늘 캔들이 세력봉 조건 충족
+        - pullback 전략: 최근 5일 내 세력봉이 한 번이라도 있었는지 확인
         get_candles 미구현 또는 봉 데이터 없으면 True(기존 로직 유지)
         """
         try:
             if not hasattr(self.api_client, 'get_candles'):
                 return True
-            candles = self.api_client.get_candles(symbol)
+            from common.screener import screen
+            try:
+                from config import TRADING_STRATEGY
+            except ImportError:
+                TRADING_STRATEGY = "pullback"
+
+            # breakout은 config의 전체 이평선(최대 MA240)을 그대로 평가하므로
+            # 그만큼 봉이 필요하다. 봉이 부족하면 ma_alignment가 'insufficient'를
+            # 반환해 모든 종목이 탈락한다(기본 120봉으로는 MA240 계산 불가).
+            # pullback은 [5,20,60]만 쓰므로 120봉으로 충분.
+            if TRADING_STRATEGY == "breakout":
+                ma = self.strategy_params.ma_periods or [120]
+                candle_count = max(max(ma) + 30, 120)  # 이격/정렬 계산 여유 30봉
+            else:
+                candle_count = 120
+            candles = self.api_client.get_candles(symbol, count=candle_count)
             if not candles:
                 return True
-            from common.screener import screen
-            result = screen(candles, self.strategy_params)
-            if not result.passed:
-                self.logger.debug(f"{symbol} 스크리너 탈락: {result.reasons}")
-            return result.passed
+
+            if TRADING_STRATEGY == "pullback":
+                # 눌림목 전략: 완화된 임계값으로 최근 10일 내 기준봉 탐색
+                # (breakout 5%/0.6/3x 보다 느슨하게: 2%/0.35/2x)
+                from common.screener import StrategyParams
+                pullback_params = StrategyParams(
+                    rise_pct=2.0,
+                    body_ratio=0.35,
+                    vol_mult=2.0,
+                    vol_avg_period=self.strategy_params.vol_avg_period,
+                    vol_high_lookback=self.strategy_params.vol_high_lookback,
+                    # CANDLE_COUNT=120 기준으로 계산 가능한 MA 기간만 사용 (240일 제외)
+                    ma_periods=[5, 20, 60],
+                    disparity_max=self.strategy_params.disparity_max,
+                    disparity_base_ma=self.strategy_params.disparity_base_ma,
+                )
+                historical = candles[:-1] if len(candles) > 1 else candles
+                lookback = historical[-10:] if len(historical) >= 10 else historical
+                for i in range(len(lookback)):
+                    window = candles[:-(len(lookback) - i)] if (len(lookback) - i) > 0 else candles
+                    if len(window) < 5:
+                        continue
+                    result = screen(window, pullback_params)
+                    if result.passed:
+                        self.logger.debug(f"{symbol} 눌림목 스크리너 통과 (최근 {len(lookback)-i}일 전 기준봉)")
+                        return True
+                self.logger.debug(f"{symbol} 눌림목 스크리너 탈락: 최근 10일 내 기준봉 없음")
+                return False
+            else:
+                # breakout: 오늘 캔들이 세력봉
+                result = screen(candles, self.strategy_params)
+                if not result.passed:
+                    self.logger.debug(f"{symbol} 스크리너 탈락: {result.reasons}")
+                return result.passed
         except Exception as e:
             self.logger.warning(f"{symbol} 스크리너 오류(통과 처리): {e}")
             return True
