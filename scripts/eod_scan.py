@@ -36,13 +36,17 @@ from common.screener import (
     screen_dante_convergence, screen_dante_newhigh,
     screen_dante_closebet, screen_dante_basecandle,
 )
+from common.screener_dante_extra import screen_dante_bottom, screen_dante_morning
 
-# 추가 단테 검색기 (코드, 라벨, 실행함수) — 모두 일봉 ≥448 필요
+# 추가 단테 검색기 (코드, 라벨, 실행함수) — 모두 일봉 기반
+# (B-2/C/F는 ≥448봉 필요, G/A·D-3은 더 짧게도 가능하나 동일 일봉 재사용)
 _DANTE_SCREENS = [
     ("convergence", "B-2 이격수렴", screen_dante_convergence),
     ("newhigh", "C 역사적신고가", screen_dante_newhigh),
     ("closebet", "D-3 종가베팅", screen_dante_closebet),
     ("basecandle", "F 기준봉", screen_dante_basecandle),
+    ("bottom", "G 바닥", screen_dante_bottom),
+    ("morning", "A 오전장 급등단타", screen_dante_morning),
 ]
 from common import indicators as ind
 
