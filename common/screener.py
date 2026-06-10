@@ -297,10 +297,11 @@ def screen_entry_timing(current_price: float,
 class DanteConvergenceParams:
     """B-2 초보 단타(이격수렴) — 영상24. 모든 이평이 한곳에 수렴 + 바닥 골든크로스."""
     converge_mas: list = field(default_factory=lambda: [33, 112, 224, 448])
-    # ±5%는 장기선(224/448)엔 과도하게 엄격(0종목). 영상24 author 실사용값 10%로 기본.
-    converge_pct: float = 10.0     # 위 이평들 이격 ±10% 이내
+    # 실측 튜닝(screener_backtest): converge_pct 10→8에서 +10d 엣지 -0.26%p→+0.66%p
+    # (8%가 신호수 35로 적지만 엣지·품질 최선. 더 많은 신호 원하면 12~15로 완화)
+    converge_pct: float = 8.0      # 위 이평들 이격 ±8% 이내
     loose_ma: int = 7              # 7일선은 더 완화
-    loose_pct: float = 15.0
+    loose_pct: float = 13.0
     gc_fast: int = 5               # 5이평 ×
     gc_slow: int = 224             # 224이평 골든크로스
     gc_lookback: int = 50          # 최근 50봉 내
@@ -362,7 +363,8 @@ def screen_dante_convergence(candles: list[Candle],
 class DanteNewHighParams:
     """C 역사적 신고가 대시세 — 영상21. 448 안착 + 신고가 근접 + 구름 위."""
     high_lookback: int = 252       # 52주(약 252거래일) 신고가 기준
-    near_high_pct: float = 3.0     # 신고가 대비 -3% 이내 = 근접/돌파
+    # 실측 튜닝(screener_backtest): near_high_pct 3→5에서 +10d 엣지 -1.4%p→+2.79%p
+    near_high_pct: float = 5.0     # 신고가 대비 -5% 이내 = 근접/돌파
     anchor_ma: int = 448           # 현재가 > 448일선 (대시세 안착)
     require_ichimoku: bool = True  # 종가 > 선행스팬2
     vol_avg_period: int = 20
@@ -485,7 +487,8 @@ def screen_dante_closebet(candles: list[Candle],
 class DanteBaseCandleParams:
     """F 기준봉 speed dial — 영상15. 최근 기준봉(급등+거래량) + 224일선 근접."""
     move_lookback: int = 10        # 최근 10봉 내
-    move_min_pct: float = 10.0     # 종가 전일대비 ≥10% 상승봉
+    # 실측 튜닝: move_min_pct 10→15에서 +10d 엣지 -0.4%p→+2.32%p (신호수 적어짐 주의)
+    move_min_pct: float = 15.0     # 종가 전일대비 ≥15% 상승봉(강한 기준봉)
     vol_lookback: int = 10
     vol_mult: float = 2.0          # 거래량 전일대비 ≥200%
     anchor_ma: int = 224           # 224일선 근접
