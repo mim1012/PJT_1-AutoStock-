@@ -442,3 +442,128 @@ class KRAPIClient(BaseAPIClient):
         except Exception as e:
             self.logger.warning(f"{symbol} 일봉 조회 실패 (스크리너 스킵): {e}")
             return []
+
+    def get_orderbook(self, symbol: str) -> Optional[Dict[str, float]]:
+        """국내주식 호가 총잔량 조회 (타점 단계용).
+
+        KIS inquire-asking-price-exp-ccn (FHKST01010200). 차트와 달리 모의서버는
+        호가를 지원하므로 BASE_URL 그대로 사용.
+        반환: {'ask_total': 총매도잔량, 'bid_total': 총매수잔량,
+               'ratio': 매도/매수 비율(%)} 또는 실패 시 None.
+        """
+        try:
+            token = self.token_manager.get_valid_token()
+            if not token:
+                return None
+            app_key, app_secret, _ = KRConfig.get_credentials()
+            # 호가는 차트와 달리 모드별 도메인 사용 (모의 모드는 모의 도메인에서만 허용)
+            url = f"{KRConfig.get_api_url()}/uapi/domestic-stock/v1/quotations/inquire-asking-price-exp-ccn"
+            headers = {
+                "content-type": "application/json",
+                "authorization": f"Bearer {token}",
+                "appkey": app_key, "appsecret": app_secret,
+                "tr_id": "FHKST01010200", "custtype": "P",
+            }
+            params = {"FID_COND_MRKT_DIV_CODE": "J", "FID_INPUT_ISCD": symbol}
+            resp = requests.get(url, headers=headers, params=params, timeout=10)
+            resp.raise_for_status()
+            o1 = resp.json().get("output1", {}) or {}
+            ask = float(o1.get("total_askp_rsqn", 0) or 0)  # 총 매도호가 잔량
+            bid = float(o1.get("total_bidp_rsqn", 0) or 0)  # 총 매수호가 잔량
+            ratio = (ask / bid * 100) if bid > 0 else 0.0
+            return {"ask_total": ask, "bid_total": bid, "ratio": round(ratio, 1)}
+        except Exception as e:
+            self.logger.debug(f"{symbol} 호가 조회 실패: {e}")
+            return None
+
+    def get_minute_candles(self, symbol: str, minutes: int = 5,
+                           count: int = 80) -> list:
+        """국내주식 당일 분봉 조회 후 N분봉으로 집계 (타점 단계용, 오래된→최신).
+
+        KIS inquire-time-itemchartprice (FHKST03010200)는 1회 ~30개 1분봉을 주므로
+        입력시간을 거슬러 올라가며 페이징해 1분봉을 모은 뒤 minutes분으로 집계한다.
+        일목 기준선(26봉)·전환선(9봉) 계산이 목적이므로 count는 그 이상이면 충분.
+        실패 시 빈 리스트.
+        """
+        try:
+            from common.candle import Candle
+            import datetime
+            token = self.token_manager.get_valid_token()
+            if not token:
+                return []
+            app_key, app_secret, _ = KRConfig.get_credentials()
+            # 차트 계열은 모의서버(VTS) 미지원 → 실전 서버 사용 (read-only)
+            url = f"{KRConfig.BASE_URL}/uapi/domestic-stock/v1/quotations/inquire-time-itemchartprice"
+            headers = {
+                "content-type": "application/json",
+                "authorization": f"Bearer {token}",
+                "appkey": app_key, "appsecret": app_secret,
+                "tr_id": "FHKST03010200", "custtype": "P",
+            }
+            need_1min = count * minutes + minutes * 30  # 집계 여유
+            one_min = {}  # 'HHMM' -> [o,h,l,c,v] (중복 제거용)
+            cursor = "153000"  # 장 마감 시각부터 거슬러
+            for _ in range(need_1min // 30 + 2):
+                params = {
+                    "FID_ETC_CLS_CODE": "", "FID_COND_MRKT_DIV_CODE": "J",
+                    "FID_INPUT_ISCD": symbol, "FID_INPUT_HOUR_1": cursor,
+                    "FID_PW_DATA_INCU_YN": "Y",
+                }
+                # 페이지별 예외는 break — 누적된 분봉은 보존(레이트리밋 대비)
+                try:
+                    resp = requests.get(url, headers=headers, params=params, timeout=10)
+                    resp.raise_for_status()
+                    rows = resp.json().get("output2", []) or []
+                except Exception:
+                    break
+                if not rows:
+                    break
+                for r in rows:
+                    hhmm = str(r.get("stck_cntg_hour", ""))[:4]
+                    if not hhmm:
+                        continue
+                    try:
+                        o1v = (float(r.get("stck_oprc", 0)), float(r.get("stck_hgpr", 0)),
+                               float(r.get("stck_lwpr", 0)), float(r.get("stck_prpr", 0)),
+                               int(float(r.get("cntg_vol", 0))))
+                    except (ValueError, TypeError):
+                        continue
+                    if o1v[0] > 0:
+                        one_min[hhmm] = o1v
+                # 다음 페이지: 가장 이른 시각 1분 전
+                earliest = min(str(r.get("stck_cntg_hour", "9999"))[:6] for r in rows)
+                if earliest <= "090000":
+                    break
+                t = datetime.datetime.strptime(earliest.ljust(6, "0"), "%H%M%S") - datetime.timedelta(minutes=1)
+                cursor = t.strftime("%H%M%S")
+                if len(one_min) >= need_1min:
+                    break
+
+            if not one_min:
+                return []
+            # 1분봉 → N분봉 집계 (시각 오름차순)
+            items = sorted(one_min.items())  # [(HHMM,[o,h,l,c,v]), ...]
+            agg = []
+            bucket = []
+            def _flush(b):
+                if not b:
+                    return None
+                o = b[0][1][0]; c = b[-1][1][3]
+                h = max(x[1][1] for x in b); l = min(x[1][2] for x in b)
+                v = sum(x[1][4] for x in b)
+                return Candle(b[0][0], o, h, l, c, v)
+            for hhmm, ohlcv in items:
+                bucket.append((hhmm, ohlcv))
+                mm = int(hhmm[2:4])
+                if mm % minutes == (minutes - 1) or len(bucket) >= minutes:
+                    cd = _flush(bucket)
+                    if cd:
+                        agg.append(cd)
+                    bucket = []
+            tail = _flush(bucket)
+            if tail:
+                agg.append(tail)
+            return agg[-count:] if len(agg) > count else agg
+        except Exception as e:
+            self.logger.debug(f"{symbol} 분봉 조회 실패: {e}")
+            return []

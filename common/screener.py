@@ -201,3 +201,89 @@ def screen_dante_reversal(candles: list[Candle],
     if passed:
         reasons.append("PASS")
     return ScreenResult(passed, reasons, metrics)
+
+
+@dataclass
+class EntryTimingParams:
+    """타점(진입 타이밍) 파라미터 — 발굴 워치리스트 종목의 '지금 살 자리' 판정.
+
+    단테식 눌림목 타점: 일봉 기준선/5일선을 지지선으로 두고, 장중 현재가가
+    5일선을 회복한 채 기준선에 눌려 근접 + 호가 매도잔량 우위일 때 진입.
+    데이터: 일봉(캐시) + 현재가 + 호가만 사용(분봉 깊은 조회 불필요, 폴링 친화).
+    근거: RESEARCH/dante_strategy_pipeline.md / 영상 08·14·16.
+    """
+    kijun_period: int = 26         # 일목 기준선 (지지 기준선)
+    recover_ma: int = 5            # 5일선 (회복 라인, 오도리)
+    pullback_pct: float = 3.0      # 현재가가 기준선에 이 % 이내 근접 = 눌림 도달
+    chase_max_pct: float = 5.0     # 현재가가 5일선 위로 이 % 초과 = 추격 → 제외
+    min_orderbook_ratio: float = 150.0  # 매도총잔량/매수총잔량(%) 하한
+    require_orderbook: bool = True  # 호가 없으면(조회실패) 호가 조건 스킵(통과 처리)
+
+
+def screen_entry_timing(current_price: float,
+                        daily_candles: list[Candle],
+                        orderbook: dict | None = None,
+                        params: EntryTimingParams | None = None) -> ScreenResult:
+    """타점 판정 — 워치리스트 종목에 대해 '지금이 진입 자리인가'.
+
+    조건(AND):
+      1) 회복: 현재가 ≥ 5일선
+      2) 추격방지: 현재가 ≤ 5일선 × (1 + chase_max_pct%)
+      3) 눌림 도달: 현재가가 일목 기준선에 pullback_pct% 이내 근접
+      4) 호가: 매도/매수 총잔량비 ≥ min_orderbook_ratio (호가 없으면 스킵)
+
+    daily_candles는 오래된→최신(발굴 시 캐시한 일봉 재사용). current_price/orderbook은 장중 실시간.
+    """
+    params = params or EntryTimingParams()
+    reasons: list[str] = []
+    metrics: dict = {}
+    if not daily_candles or current_price <= 0:
+        return ScreenResult(False, ["데이터 없음"], {})
+
+    cl = ind.closes(daily_candles)
+    ma5 = ind.sma(cl, params.recover_ma)
+    ichi = ind.ichimoku(daily_candles)
+    kijun = ichi.get("kijun")
+    metrics["price"] = current_price
+    metrics["ma5"] = round(ma5, 1) if ma5 else None
+    metrics["kijun"] = round(kijun, 1) if kijun else None
+
+    # 1) 5일선 회복
+    recover_ok = ma5 is not None and current_price >= ma5
+    if not recover_ok:
+        reasons.append(f"5일선 미회복(현재가 {current_price} < {metrics['ma5']})")
+
+    # 2) 추격 방지 (5일선 위 과도 이격 제외)
+    chase_ok = ma5 is not None and current_price <= ma5 * (1 + params.chase_max_pct / 100)
+    if ma5 and not chase_ok:
+        over = round((current_price / ma5 - 1) * 100, 2)
+        reasons.append(f"추격 구간(5일선 +{over}% > {params.chase_max_pct}%)")
+
+    # 3) 눌림 도달 (일목 기준선 근접)
+    if kijun:
+        dist = abs(current_price - kijun) / kijun * 100
+        metrics["kijun_dist_pct"] = round(dist, 2)
+        pullback_ok = dist <= params.pullback_pct
+        if not pullback_ok:
+            reasons.append(f"기준선 미근접(이격 {metrics['kijun_dist_pct']}% > {params.pullback_pct}%)")
+    else:
+        pullback_ok = False
+        reasons.append("기준선 계산 불가(일봉 부족)")
+
+    # 4) 호가 잔량비
+    if orderbook and orderbook.get("ratio", 0) > 0:
+        metrics["orderbook_ratio"] = orderbook["ratio"]
+        orderbook_ok = orderbook["ratio"] >= params.min_orderbook_ratio
+        if not orderbook_ok:
+            reasons.append(f"호가잔량비 부족({orderbook['ratio']}% < {params.min_orderbook_ratio}%)")
+    else:
+        # 호가 조회 실패 시: require_orderbook=True면 스킵(통과), False면 탈락
+        orderbook_ok = params.require_orderbook
+        metrics["orderbook_ratio"] = None
+        if not orderbook_ok:
+            reasons.append("호가 조회 실패")
+
+    passed = recover_ok and chase_ok and pullback_ok and orderbook_ok
+    if passed:
+        reasons.append("ENTRY")
+    return ScreenResult(passed, reasons, metrics)
