@@ -33,14 +33,24 @@ if _ROOT not in sys.path:
 from common.candle import Candle
 from common.screener import (
     screen, screen_dante_reversal, StrategyParams, DanteReversalParams,
+    screen_dante_convergence, screen_dante_newhigh,
+    screen_dante_closebet, screen_dante_basecandle,
 )
+
+# 추가 단테 검색기 (코드, 라벨, 실행함수) — 모두 일봉 ≥448 필요
+_DANTE_SCREENS = [
+    ("convergence", "B-2 이격수렴", screen_dante_convergence),
+    ("newhigh", "C 역사적신고가", screen_dante_newhigh),
+    ("closebet", "D-3 종가베팅", screen_dante_closebet),
+    ("basecandle", "F 기준봉", screen_dante_basecandle),
+]
 from common import indicators as ind
 
 logger = logging.getLogger(__name__)
 
 # 유니버스 규모 기본값 (마감 후 배치라 넉넉히)
 DEFAULT_BREAKOUT_LIMIT = 60      # breakout 후보(당일 급등) 평가 상한
-DEFAULT_REVERSAL_LIMIT = 300     # 역배열 평가 대상(시총 중상위)
+DEFAULT_REVERSAL_LIMIT = 500     # 역배열/단테 검색기 평가 대상(시총 100억+ 상위)
 WATCHLIST_TOP = 12               # 역배열 워치리스트 출력 수
 
 
@@ -103,8 +113,9 @@ def _kr_universe(breakout_limit: int, reversal_limit: int):
     bdf = bdf.sort_values("Volume", ascending=False).head(breakout_limit)
     breakout = list(zip(bdf["Code"], bdf["Name"]))
 
-    # reversal: 시총 중상위(3백억~1조)에서 시총순 샘플
-    rdf = df[(df["Marcap"] >= 3e10) & (df["Marcap"] <= 1e12)]
+    # reversal/단테 검색기: 시총 100억+ 보통주, 시총순 상위 reversal_limit (넓은 유니버스)
+    # (검색기 자체에 거래량/대금 유동성 필터가 있어 잡주는 걸러짐)
+    rdf = df[df["Marcap"] >= 1e10]
     rdf = rdf.sort_values("Marcap", ascending=False).head(reversal_limit)
     reversal = list(zip(rdf["Code"], rdf["Name"]))
     return breakout, reversal
@@ -134,6 +145,7 @@ def _scan(candidates_breakout, candidates_reversal, fetch):
             breakout_pass.append((code, name, dict(res.metrics)))
 
     reversal_pass, watch = [], []
+    dante = {key: [] for key, _, _ in _DANTE_SCREENS}  # 추가 검색기 통과 결과
     for code, name in candidates_reversal:
         cs = fetch(code)
         if not cs or len(cs) < 448:
@@ -145,8 +157,14 @@ def _scan(candidates_breakout, candidates_reversal, fetch):
             ma112 = ind.sma(ind.closes(cs), 112)
             if ma112:
                 watch.append((code, name, round(cs[-1].close / ma112 * 100, 1)))
+        # 추가 단테 검색기 (같은 일봉 재사용)
+        for key, _, fn in _DANTE_SCREENS:
+            r = fn(cs)
+            if r.passed:
+                dante[key].append((code, name, dict(r.metrics)))
     watch.sort(key=lambda x: -x[2])
-    return {"breakout": breakout_pass, "reversal": reversal_pass, "watch": watch}
+    return {"breakout": breakout_pass, "reversal": reversal_pass,
+            "watch": watch, "dante": dante}
 
 
 def _render_report(market: str, scan_date: str, result: dict) -> str:
@@ -178,6 +196,18 @@ def _render_report(market: str, scan_date: str, result: dict) -> str:
                          f"(발동까지 +{round(100 - ratio, 1)}%p)")
     else:
         lines.append("- (역배열 종목 없음)")
+
+    # ③ 추가 단테 검색기
+    dante = result.get("dante", {})
+    lines.append("\n## ③ 추가 단테 검색기")
+    for key, label, _ in _DANTE_SCREENS:
+        hits = dante.get(key, [])
+        lines.append(f"\n### {label} ({len(hits)}종목)")
+        if hits:
+            for code, name, _m in hits[:WATCHLIST_TOP]:
+                lines.append(f"- ✅ `{code}` {name}")
+        else:
+            lines.append("- (통과 종목 없음)")
     lines.append("")
     return "\n".join(lines)
 

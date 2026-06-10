@@ -70,6 +70,56 @@ def ma_alignment(candles: list[Candle], periods: list[int]) -> str:
     return "mixed"
 
 
+def golden_cross_within(candles: list[Candle], fast: int, slow: int,
+                        lookback: int) -> bool:
+    """최근 lookback봉 내 fast이평이 slow이평을 상향돌파(골든크로스)한 적이 있는지."""
+    cl = closes(candles)
+    n = len(cl)
+    if n < slow + 1:
+        return False
+    start = max(slow, n - lookback)
+    for i in range(start, n):
+        f_prev, s_prev = sma(cl[:i], fast), sma(cl[:i], slow)
+        f_cur, s_cur = sma(cl[:i + 1], fast), sma(cl[:i + 1], slow)
+        if None in (f_prev, s_prev, f_cur, s_cur):
+            continue
+        if f_prev <= s_prev and f_cur > s_cur:
+            return True
+    return False
+
+
+def price_range_pct(candles: list[Candle], lookback: int) -> float | None:
+    """최근 lookback봉의 (최고가-최저가)/최저가 * 100 (변동폭 %)."""
+    if len(candles) < lookback:
+        return None
+    window = candles[-lookback:]
+    hi = max(c.high for c in window)
+    lo = min(c.low for c in window)
+    return (hi - lo) / lo * 100 if lo > 0 else None
+
+
+def highest_high(candles: list[Candle], lookback: int) -> float | None:
+    """최근 lookback봉의 최고 고가 (신고가 판정용). 데이터 부족 시 전체 사용."""
+    if not candles:
+        return None
+    window = candles[-lookback:] if len(candles) >= lookback else candles
+    return max(c.high for c in window)
+
+
+def max_change_pct(candles: list[Candle], lookback: int) -> float | None:
+    """최근 lookback봉 내 봉별 전일대비 종가 상승률(%)의 최댓값."""
+    if len(candles) < 2:
+        return None
+    window = candles[-(lookback + 1):] if len(candles) > lookback + 1 else candles
+    best = None
+    for i in range(1, len(window)):
+        prev = window[i - 1].close
+        if prev > 0:
+            chg = (window[i].close - prev) / prev * 100
+            best = chg if best is None else max(best, chg)
+    return best
+
+
 def bollinger(values: list[float], period: int = 20, mult: float = 2.0):
     """볼린저밴드 (중심=SMA, 상/하단=중심±mult*표준편차).
 

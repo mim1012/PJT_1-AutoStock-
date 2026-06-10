@@ -287,3 +287,261 @@ def screen_entry_timing(current_price: float,
     if passed:
         reasons.append("ENTRY")
     return ScreenResult(passed, reasons, metrics)
+
+
+# ============================================================================
+# 단테 추가 검색기 (발굴 단계, 일봉 기반). 근거: RESEARCH/dante_*.md
+# ============================================================================
+
+@dataclass
+class DanteConvergenceParams:
+    """B-2 초보 단타(이격수렴) — 영상24. 모든 이평이 한곳에 수렴 + 바닥 골든크로스."""
+    converge_mas: list = field(default_factory=lambda: [33, 112, 224, 448])
+    # ±5%는 장기선(224/448)엔 과도하게 엄격(0종목). 영상24 author 실사용값 10%로 기본.
+    converge_pct: float = 10.0     # 위 이평들 이격 ±10% 이내
+    loose_ma: int = 7              # 7일선은 더 완화
+    loose_pct: float = 15.0
+    gc_fast: int = 5               # 5이평 ×
+    gc_slow: int = 224             # 224이평 골든크로스
+    gc_lookback: int = 50          # 최근 50봉 내
+    range_lookback: int = 60       # 변동폭 기간
+    range_min_pct: float = 30.0    # 변동폭 ≥30%
+
+
+def screen_dante_convergence(candles: list[Candle],
+                             params: DanteConvergenceParams | None = None) -> ScreenResult:
+    """B-2: 모든 이평 이격≤5% 수렴 + 5×224 골든크로스(50봉) + 변동폭≥30%."""
+    params = params or DanteConvergenceParams()
+    reasons: list[str] = []
+    metrics: dict = {}
+    if not candles:
+        return ScreenResult(False, ["데이터 없음"], {})
+
+    # 1) 이평 수렴 (각 이평 이격도 [100-pct, 100+pct])
+    lo, hi = 100 - params.converge_pct, 100 + params.converge_pct
+    conv_ok = True
+    for p in params.converge_mas:
+        d = ind.disparity(candles, p)
+        if d is None:
+            conv_ok = False
+            reasons.append(f"{p}일선 이격 계산불가")
+            break
+        metrics[f"disp{p}"] = round(d, 1)
+        if not (lo <= d <= hi):
+            conv_ok = False
+    if conv_ok:
+        # 7일선 완화 이격
+        d7 = ind.disparity(candles, params.loose_ma)
+        if d7 is not None:
+            metrics[f"disp{params.loose_ma}"] = round(d7, 1)
+            if not (100 - params.loose_pct <= d7 <= 100 + params.loose_pct):
+                conv_ok = False
+    if not conv_ok:
+        reasons.append(f"이평 수렴 미충족(이격 ±{params.converge_pct}% 밖)")
+
+    # 2) 골든크로스 5×224 (최근 50봉)
+    gc_ok = ind.golden_cross_within(candles, params.gc_fast, params.gc_slow, params.gc_lookback)
+    metrics["golden_cross"] = gc_ok
+    if not gc_ok:
+        reasons.append(f"{params.gc_fast}×{params.gc_slow} 골든크로스 없음(최근{params.gc_lookback}봉)")
+
+    # 3) 변동폭
+    rng = ind.price_range_pct(candles, params.range_lookback)
+    metrics["range_pct"] = round(rng, 1) if rng else None
+    range_ok = rng is not None and rng >= params.range_min_pct
+    if not range_ok:
+        reasons.append(f"변동폭 부족({metrics.get('range_pct')}% < {params.range_min_pct}%)")
+
+    passed = conv_ok and gc_ok and range_ok
+    if passed:
+        reasons.append("PASS")
+    return ScreenResult(passed, reasons, metrics)
+
+
+@dataclass
+class DanteNewHighParams:
+    """C 역사적 신고가 대시세 — 영상21. 448 안착 + 신고가 근접 + 구름 위."""
+    high_lookback: int = 252       # 52주(약 252거래일) 신고가 기준
+    near_high_pct: float = 3.0     # 신고가 대비 -3% 이내 = 근접/돌파
+    anchor_ma: int = 448           # 현재가 > 448일선 (대시세 안착)
+    require_ichimoku: bool = True  # 종가 > 선행스팬2
+    vol_avg_period: int = 20
+    min_avg_volume: float = 50_000
+
+
+def screen_dante_newhigh(candles: list[Candle],
+                         params: DanteNewHighParams | None = None) -> ScreenResult:
+    """C: 448일선 위 + 52주 신고가 근접 + 선행스팬2 위 + 거래량."""
+    params = params or DanteNewHighParams()
+    reasons: list[str] = []
+    metrics: dict = {}
+    if not candles:
+        return ScreenResult(False, ["데이터 없음"], {})
+    last = candles[-1]
+    cl = ind.closes(candles)
+
+    # 1) 448일선 위
+    anchor = ind.sma(cl, params.anchor_ma)
+    anchor_ok = anchor is not None and last.close > anchor
+    metrics[f"ma{params.anchor_ma}"] = round(anchor, 1) if anchor else None
+    if not anchor_ok:
+        reasons.append(f"{params.anchor_ma}일선 위 아님(안착 미확인)")
+
+    # 2) 52주 신고가 근접/돌파
+    hh = ind.highest_high(candles, params.high_lookback)
+    metrics["high_252"] = round(hh, 1) if hh else None
+    near_ok = hh is not None and last.close >= hh * (1 - params.near_high_pct / 100)
+    if not near_ok:
+        reasons.append(f"신고가 미근접(종가 {last.close} < 고점 {metrics.get('high_252')} -{params.near_high_pct}%)")
+
+    # 3) 선행스팬2 위
+    ichi_ok = True
+    if params.require_ichimoku:
+        ichi = ind.ichimoku(candles)
+        metrics["senkou_b"] = round(ichi["senkou_b"], 1) if ichi["senkou_b"] else None
+        ichi_ok = ichi["senkou_b"] is not None and last.close > ichi["senkou_b"]
+        if not ichi_ok:
+            reasons.append(f"종가 ≤ 선행스팬2({metrics.get('senkou_b')})")
+
+    # 4) 거래량
+    vr_vol = ind.sma([c.volume for c in candles], params.vol_avg_period) if len(candles) >= params.vol_avg_period else None
+    vol_ok = vr_vol is not None and vr_vol >= params.min_avg_volume
+    metrics["avg_volume"] = int(vr_vol) if vr_vol else None
+    if not vol_ok:
+        reasons.append(f"평균거래량 부족({metrics.get('avg_volume')})")
+
+    passed = anchor_ok and near_ok and ichi_ok and vol_ok
+    if passed:
+        reasons.append("PASS")
+    return ScreenResult(passed, reasons, metrics)
+
+
+@dataclass
+class DanteCloseBetParams:
+    """D-3 종가베팅 3번자리 — 영상18. 거래량 급감(눌림) + 최근 강세 + 60일선 위."""
+    vol_drop_ratio: float = 0.5    # 오늘 거래량 / 어제 거래량 ≤ 0.5 (급감)
+    move_lookback: int = 20        # 최근 20봉
+    move_close_pct: float = 10.0   # 종가 상승률 ≥10% (OR)
+    move_high_pct: float = 20.0    # 고가 변동폭 ≥20% (OR)
+    support_ma: int = 60           # 현재가 > 60일선
+    require_ichimoku: bool = True  # 선행스팬2 위
+    min_avg_volume: float = 50_000
+    vol_avg_period: int = 20
+
+
+def screen_dante_closebet(candles: list[Candle],
+                          params: DanteCloseBetParams | None = None) -> ScreenResult:
+    """D-3: 거래량 전일대비 급감(눌림) + 최근 20봉 강세 + 60일선 위 + 구름 위."""
+    params = params or DanteCloseBetParams()
+    reasons: list[str] = []
+    metrics: dict = {}
+    if len(candles) < 2:
+        return ScreenResult(False, ["데이터 없음"], {})
+    last = candles[-1]
+    cl = ind.closes(candles)
+
+    # 1) 거래량 급감
+    prev_vol = candles[-2].volume
+    vol_ratio = last.volume / prev_vol if prev_vol > 0 else 999
+    metrics["vol_ratio"] = round(vol_ratio, 2)
+    drop_ok = vol_ratio <= params.vol_drop_ratio
+    if not drop_ok:
+        reasons.append(f"거래량 급감 아님(전일대비 {round(vol_ratio*100)}% > {round(params.vol_drop_ratio*100)}%)")
+
+    # 2) 최근 강세 (종가 변동 OR 고가 변동)
+    win = candles[-params.move_lookback:] if len(candles) >= params.move_lookback else candles
+    cmax = max(c.close for c in win); cmin = min(c.close for c in win)
+    close_chg = (cmax - cmin) / cmin * 100 if cmin > 0 else 0
+    high_chg = ind.price_range_pct(candles, params.move_lookback) or 0
+    metrics["close_move"] = round(close_chg, 1)
+    metrics["high_move"] = round(high_chg, 1)
+    move_ok = close_chg >= params.move_close_pct or high_chg >= params.move_high_pct
+    if not move_ok:
+        reasons.append(f"최근 강세 부족(종가 {metrics['close_move']}%/고가 {metrics['high_move']}%)")
+
+    # 3) 60일선 위
+    sup = ind.sma(cl, params.support_ma)
+    sup_ok = sup is not None and last.close > sup
+    metrics[f"ma{params.support_ma}"] = round(sup, 1) if sup else None
+    if not sup_ok:
+        reasons.append(f"{params.support_ma}일선 위 아님")
+
+    # 4) 선행스팬2 위
+    ichi_ok = True
+    if params.require_ichimoku:
+        ichi = ind.ichimoku(candles)
+        metrics["senkou_b"] = round(ichi["senkou_b"], 1) if ichi["senkou_b"] else None
+        ichi_ok = ichi["senkou_b"] is not None and last.close > ichi["senkou_b"]
+        if not ichi_ok:
+            reasons.append(f"종가 ≤ 선행스팬2({metrics.get('senkou_b')})")
+
+    passed = drop_ok and move_ok and sup_ok and ichi_ok
+    if passed:
+        reasons.append("PASS")
+    return ScreenResult(passed, reasons, metrics)
+
+
+@dataclass
+class DanteBaseCandleParams:
+    """F 기준봉 speed dial — 영상15. 최근 기준봉(급등+거래량) + 224일선 근접."""
+    move_lookback: int = 10        # 최근 10봉 내
+    move_min_pct: float = 10.0     # 종가 전일대비 ≥10% 상승봉
+    vol_lookback: int = 10
+    vol_mult: float = 2.0          # 거래량 전일대비 ≥200%
+    anchor_ma: int = 224           # 224일선 근접
+    anchor_band_pct: float = 8.0   # ±8%
+    vol_avg_period: int = 5
+    min_avg_volume: float = 70_000  # 5일 평균 ≥7만
+
+
+def screen_dante_basecandle(candles: list[Candle],
+                            params: DanteBaseCandleParams | None = None) -> ScreenResult:
+    """F: 최근 10봉 내 기준봉(≥10% 급등+거래량 폭증) + 224일선 ±8% + 5일평균 거래량."""
+    params = params or DanteBaseCandleParams()
+    reasons: list[str] = []
+    metrics: dict = {}
+    if len(candles) < 2:
+        return ScreenResult(False, ["데이터 없음"], {})
+    last = candles[-1]
+    cl = ind.closes(candles)
+
+    # 1) 최근 기준봉 (전일대비 ≥10% 상승봉)
+    mc = ind.max_change_pct(candles, params.move_lookback)
+    metrics["max_change"] = round(mc, 1) if mc is not None else None
+    move_ok = mc is not None and mc >= params.move_min_pct
+    if not move_ok:
+        reasons.append(f"기준봉 없음(최근{params.move_lookback}봉 최대 {metrics.get('max_change')}% < {params.move_min_pct}%)")
+
+    # 2) 거래량 폭증 (최근 vol_lookback 내 평균대비 vol_mult)
+    vol_ok = False
+    win = candles[-params.vol_lookback:] if len(candles) >= params.vol_lookback else candles
+    base_avg = ind.sma([c.volume for c in candles[:-1]], 20) if len(candles) > 21 else None
+    if base_avg and base_avg > 0:
+        peak = max(c.volume for c in win)
+        metrics["vol_peak_x"] = round(peak / base_avg, 1)
+        vol_ok = peak / base_avg >= params.vol_mult
+    if not vol_ok:
+        reasons.append(f"거래량 폭증 없음(최근 최대 x{metrics.get('vol_peak_x')} < {params.vol_mult})")
+
+    # 3) 224일선 근접 ±8%
+    anchor = ind.sma(cl, params.anchor_ma)
+    if anchor and anchor > 0:
+        dist = abs(last.close - anchor) / anchor * 100
+        metrics[f"ma{params.anchor_ma}_dist"] = round(dist, 1)
+        anchor_ok = dist <= params.anchor_band_pct
+    else:
+        anchor_ok = False
+    if not anchor_ok:
+        reasons.append(f"{params.anchor_ma}일선 ±{params.anchor_band_pct}% 밖")
+
+    # 4) 5일 평균 거래량
+    av = ind.sma([c.volume for c in candles], params.vol_avg_period) if len(candles) >= params.vol_avg_period else None
+    avg_ok = av is not None and av >= params.min_avg_volume
+    metrics["avg_volume"] = int(av) if av else None
+    if not avg_ok:
+        reasons.append(f"5일 평균거래량 부족({metrics.get('avg_volume')})")
+
+    passed = move_ok and vol_ok and anchor_ok and avg_ok
+    if passed:
+        reasons.append("PASS")
+    return ScreenResult(passed, reasons, metrics)
