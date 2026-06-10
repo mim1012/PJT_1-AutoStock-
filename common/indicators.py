@@ -70,6 +70,50 @@ def ma_alignment(candles: list[Candle], periods: list[int]) -> str:
     return "mixed"
 
 
+def bollinger(values: list[float], period: int = 20, mult: float = 2.0):
+    """볼린저밴드 (중심=SMA, 상/하단=중심±mult*표준편차).
+
+    반환: (lower, mid, upper) 또는 데이터 부족 시 None. (순수 파이썬, 모표준편차)
+    """
+    if period <= 0 or len(values) < period:
+        return None
+    window = values[-period:]
+    mid = sum(window) / period
+    var = sum((x - mid) ** 2 for x in window) / period
+    sd = var ** 0.5
+    return (mid - mult * sd, mid, mid + mult * sd)
+
+
+def _hl_mid(candles: list[Candle], period: int) -> float | None:
+    """최근 period봉의 (최고가+최저가)/2. 데이터 부족 시 None."""
+    if len(candles) < period:
+        return None
+    window = candles[-period:]
+    return (max(c.high for c in window) + min(c.low for c in window)) / 2
+
+
+def ichimoku(candles: list[Candle], conv: int = 9, base: int = 26,
+             span_b: int = 52) -> dict:
+    """일목균형표 — 현재(마지막) 봉에 걸리는 값.
+
+    전환선/기준선은 현재 기준, 선행스팬1·2는 base봉 전 데이터로 계산된 값이
+    현재에 표시된다(앞당김 표시 보정). 계산 불가 항목은 None.
+    """
+    tenkan = _hl_mid(candles, conv)
+    kijun = _hl_mid(candles, base)
+    # 선행스팬: base봉 전 데이터 기준 (현재 봉에 표시되는 구름)
+    past = candles[:-base] if len(candles) > base else []
+    if len(past) >= span_b:
+        t_p = _hl_mid(past, conv)
+        k_p = _hl_mid(past, base)
+        senkou_a = (t_p + k_p) / 2 if (t_p is not None and k_p is not None) else None
+        senkou_b = _hl_mid(past, span_b)
+    else:
+        senkou_a = senkou_b = None
+    return {"tenkan": tenkan, "kijun": kijun,
+            "senkou_a": senkou_a, "senkou_b": senkou_b}
+
+
 def rsi(values: list[float], period: int = 14) -> float | None:
     """RSI (Wilder 방식, 순수 파이썬 구현).
 

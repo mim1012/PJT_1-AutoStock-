@@ -109,3 +109,95 @@ def screen(candles: list[Candle], params: StrategyParams | None = None) -> Scree
     if passed:
         reasons.append("PASS")
     return ScreenResult(passed, reasons, metrics)
+
+
+@dataclass
+class DanteReversalParams:
+    """주식단테 'B-1 저평가 역배열 스윙' 검색기 파라미터 (유튜브 조건식 이식).
+
+    핵심: 장기 이평 역배열(저평가 바닥)인데 종가가 가장 짧은 장기선(112일)을
+    막 회복한 첫 단추 + 거래량/일목 구름 확인. 단테 표준 이평 5/20/60/112/224/448 사용.
+    근거: RESEARCH/dante_youtube_screener_conditions.md (영상 06·10·13·04·20).
+    """
+    ma_periods: list = field(default_factory=lambda: [112, 224, 448])  # 역배열 체크용 장기선
+    recover_ma: int = 112              # 종가가 이 선 위로 회복해야 함
+    vol_avg_period: int = 5            # 평균 거래량/대금 기간(일)
+    min_avg_volume: float = 50_000     # 평균 거래량 ≥ 5만주
+    min_avg_value: float = 5e8         # 평균 거래대금 ≥ 5억 (종가*거래량 근사)
+    vol_value_and: bool = False        # True=거래량 AND 대금, False=둘 중 하나(OR)
+    require_ichimoku: bool = True      # 종가 > 일목 선행스팬2 (구름 위)
+    require_kijun: bool = False        # 종가 > 일목 기준선
+
+
+def screen_dante_reversal(candles: list[Candle],
+                          params: DanteReversalParams | None = None) -> ScreenResult:
+    """단테 B-1 저평가 역배열 스윙 검색기.
+
+    조건(AND):
+      1) 역배열: 112일선 < 224일선 < 448일선 (장기선이 위 = 바닥권 저평가)
+      2) 회복확인: 종가 > 112일선 (가장 짧은 장기선 회복)
+      3) 유동성: 평균거래량 ≥ 5만주 OR(기본)/AND 평균거래대금 ≥ 5억
+      4) (옵션) 종가 > 일목 선행스팬2 (구름 위), 종가 > 기준선
+
+    candles는 오래된→최신. 448일선 때문에 최소 ~448봉 필요(부족 시 insufficient).
+    """
+    params = params or DanteReversalParams()
+    reasons: list[str] = []
+    metrics: dict = {}
+    if not candles:
+        return ScreenResult(False, ["데이터 없음"], {})
+
+    last = candles[-1]
+    cl = ind.closes(candles)
+
+    # 1) 역배열 (단기<장기 = 단테식 '역배열' = ma_alignment 'bearish')
+    align = ind.ma_alignment(candles, params.ma_periods)
+    align_ok = align == "bearish"
+    metrics["ma_alignment"] = align
+    if not align_ok:
+        reasons.append(f"역배열 아님({align}) — 저평가 바닥 조건 미충족")
+
+    # 2) 종가 > 112일선 (회복 첫 단추)
+    recover_ma = ind.sma(cl, params.recover_ma)
+    recover_ok = recover_ma is not None and last.close > recover_ma
+    if recover_ma is not None:
+        metrics[f"ma{params.recover_ma}"] = round(recover_ma, 1)
+    if not recover_ok:
+        reasons.append(f"종가 {last.close} ≤ {params.recover_ma}일선 — 회복 미확인")
+
+    # 3) 유동성: 평균거래량 / 평균거래대금
+    n = params.vol_avg_period
+    if len(candles) >= n:
+        vols = ind.volumes(candles[-n:])
+        avg_vol = sum(vols) / n
+        avg_value = sum(c.close * c.volume for c in candles[-n:]) / n
+        metrics["avg_volume"] = int(avg_vol)
+        metrics["avg_value"] = int(avg_value)
+        vol_ok = avg_vol >= params.min_avg_volume
+        value_ok = avg_value >= params.min_avg_value
+        liquidity_ok = (vol_ok and value_ok) if params.vol_value_and else (vol_ok or value_ok)
+    else:
+        liquidity_ok = False
+        reasons.append("유동성 계산 봉 부족")
+    if len(candles) >= n and not liquidity_ok:
+        reasons.append(f"유동성 미충족(거래량 {metrics.get('avg_volume')}, 대금 {metrics.get('avg_value')})")
+
+    # 4) 일목균형표 (옵션)
+    ichi_ok = True
+    if params.require_ichimoku or params.require_kijun:
+        ichi = ind.ichimoku(candles)
+        metrics["senkou_b"] = round(ichi["senkou_b"], 1) if ichi["senkou_b"] else None
+        metrics["kijun"] = round(ichi["kijun"], 1) if ichi["kijun"] else None
+        if params.require_ichimoku:
+            if ichi["senkou_b"] is None or last.close <= ichi["senkou_b"]:
+                ichi_ok = False
+                reasons.append(f"종가 ≤ 선행스팬2({metrics.get('senkou_b')}) — 구름 아래")
+        if params.require_kijun and ichi_ok:
+            if ichi["kijun"] is None or last.close <= ichi["kijun"]:
+                ichi_ok = False
+                reasons.append(f"종가 ≤ 기준선({metrics.get('kijun')})")
+
+    passed = align_ok and recover_ok and liquidity_ok and ichi_ok
+    if passed:
+        reasons.append("PASS")
+    return ScreenResult(passed, reasons, metrics)
